@@ -1,5 +1,3 @@
-const { eventNames } = require("gulp");
-
 class PredictiveSearch extends HTMLElement {
     constructor() {
         super();
