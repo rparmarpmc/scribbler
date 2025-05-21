@@ -1,37 +1,37 @@
-<link href="{{ 'card-flipper.css' | asset_url }}" rel="stylesheet" type="text/css">
+<link href="{{ 'card-flipper.css' | asset_url }}" rel="stylesheet" type="text/css" />
 
 <script defer>
-  new Promise(async function(resolve, reject) {
-      while (!loadStatus.dom) {
-          consoleMsg("waiting for enable dom", null, null);
-          await delay(500);
-      }
+    new Promise(async function(resolve, reject) {
+        while (!loadStatus.dom) {
+            consoleMsg("waiting for enable dom", null, null);
+            await delay(500);
+        }
 
-      if(!loadStatus.product_form_custom_started){
-          loadStatus.product_form_custom_started = true;
-          loadJS("product-form-custom", "{{ 'product-form-custom.js' | asset_url }}", "product_form_custom_loaded", true);
-      }
+        if(!loadStatus.product_form_custom_started){
+            loadStatus.product_form_custom_started = true;
+            loadJS("product-form-custom", "{{ 'product-form-custom.js' | asset_url }}", "product_form_custom_loaded", true);
+        }
 
-      if(!loadStatus.card_flipper_started){
-          loadStatus.card_flipper_started = true;
-          loadJS("card-flipper", "{{ 'card-flipper.js' | asset_url }}", "card_flipper_loaded", true);
-      }
-
-
-      resolve(true);
-  });
-
-  if (sessionStorage.getItem("editor_item_key") !== null) {
-    navigation.addEventListener("navigate", e => {
-      if(e.destination.url.split('=')[0] !== window.location.href.split('=')[0]){
-          sessionStorage.removeItem("editor_item_key");
-          sessionStorage.removeItem("editor_variant_id");
-          sessionStorage.removeItem('editor_state')
-          sessionStorage.removeItem('editor_properties')
-          sessionStorage.removeItem('editor_quantity')
-      }
+        if(!loadStatus.card_flipper_started){
+            loadStatus.card_flipper_started = true;
+            loadJS("card-flipper", "{{ 'card-flipper.js' | asset_url }}", "card_flipper_loaded", true);
+        }
+ 
+        
+        resolve(true);
     });
-  }
+
+    if (sessionStorage.getItem("editor_item_key") !== null) {
+      navigation.addEventListener("navigate", e => {
+        if(e.destination.url.split('=')[0] !== window.location.href.split('=')[0]){
+            sessionStorage.removeItem("editor_item_key");
+            sessionStorage.removeItem("editor_variant_id");
+            sessionStorage.removeItem('editor_state')
+            sessionStorage.removeItem('editor_properties')
+            sessionStorage.removeItem('editor_quantity')
+        }
+      });
+    }
 </script>
 
 <section id="MainProduct-{{ section.id }}" data-section="{{ section.id }}">
@@ -40,15 +40,14 @@
     <div class="product-side-column-left"></div>
     <div class="product-media">
       <div id="card-editor" style="aspect-ratio: {{ product.media[0].aspect_ratio }}; margin: 0 auto 0;">
-        <img
-          src="{{ product.media[0].src | image_url: width: 440 }}"
-          alt="Card editor placeholder"
-          decoding="async"
-          width="440"
-          height="610"
-          loading="eager"
-          style="width: 100%; height: auto; border: 1px solid #bfbfbf; box-shadow: 0 2px 4px 0 #bfbfbf;"
-        >
+          <img
+            src="{{ product.media[0].src | image_url: width: 440 }}"
+            alt="Card editor placeholder" decoding="async"
+            width="440" 
+            height="610"
+            loading="eager"
+            style="width: 100%; height: auto; border: 1px solid #bfbfbf; box-shadow: 0 2px 4px 0 #bfbfbf;"
+          >
       </div>
       <script defer>
         new Promise(async function(resolve, reject) {
@@ -64,40 +63,18 @@
 
             resolve(true);
         });
-      </script>
+      </script>  
     </div>
 
     <div class="product-side-column-right">
       <div class="product-form-quantity box-shadow">
-        <label class="product-form-label" for="Quantity-{{ section.id }}">
-          {{- 'products.product.quantity.label' | t -}}
-        </label>
+        <label class="product-form-label" for="Quantity-{{ section.id }}">{{ 'products.product.quantity.label' | t }}</label>
         <div class="quantity">
-          <button
-            class="quantity__button no-js-hidden"
-            name="minus"
-            type="button"
-            aria-label="Increment quantity"
-            onclick="document.getElementById('Quantity-{{ section.id }}').stepDown()"
-          >
+          <button class="quantity__button no-js-hidden" name="minus" type="button" aria-label="Increment quantity" onclick="document.getElementById('Quantity-{{ section.id }}').stepDown()">
             {% render 'icon-minus' %}
           </button>
-          <input
-            class="quantity__input"
-            type="number"
-            name="quantity"
-            id="Quantity-{{ section.id }}"
-            min="1"
-            value="1"
-            form="{{ product_form_id }}"
-          >
-          <button
-            class="quantity__button no-js-hidden"
-            name="plus"
-            type="button"
-            aria-label="Decrement quantity"
-            onclick="document.getElementById('Quantity-{{ section.id }}').stepUp()"
-          >
+          <input class="quantity__input" type="number" name="quantity" id="Quantity-{{ section.id }}" min="1" value="1" form="{{ product_form_id }}">
+          <button class="quantity__button no-js-hidden" name="plus" type="button" aria-label="Decrement quantity" onclick="document.getElementById('Quantity-{{ section.id }}').stepUp()">
             {% render 'icon-plus' %}
           </button>
         </div>
@@ -109,24 +86,15 @@
             <fieldset class="js product-form__input">
               <legend class="form__label">{{ option.name }}</legend>
               {%- for value in option.values -%}
-                <input
-                  type="radio"
-                  id="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}"
-                  name="{{ option.name }}"
-                  value="{{ value | escape }}"
-                  form="{{ product_form_id }}"
-                  {% if option.selected_value == value %}
-                    checked
-                  {% endif %}
-                >
+                <input type="radio" id="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}" name="{{ option.name }}" value="{{ value | escape }}" form="{{ product_form_id }}" {% if option.selected_value == value %}checked{% endif %}>
                 <label for="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}">{{ value }}</label>
               {%- endfor -%}
             </fieldset>
           {%- endfor -%}
-          <script type="application/json">
-            {{ product.variants | json }}
-          </script>
-        </variant-radios>
+            <script type="application/json">
+              {{ product.variants | json }}
+            </script>
+        </variant-radios> 
       </div>
 
       <product-form-custom-card class="product-form">
@@ -139,33 +107,13 @@
           </svg>
           <span class="product-form__error-message"></span>
         </div>
-        {%- form 'product',
-          product,
-          id: product_form_id,
-          class: 'form',
-          novalidate: 'novalidate',
-          data-type: 'add-to-cart-form'
-        -%}
+        {%- form 'product', product, id: product_form_id, class: 'form', novalidate: 'novalidate', data-type: 'add-to-cart-form' -%}
           <div class="product-form__buttons">
             <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
-            <input type="hidden" name="product_type" form="{{ product_form_id }}" value="{{ product.type }}">
-            <input
-              type="hidden"
-              name="properties[_shipping_address]"
-              form="{{ product_form_id }}"
-              value="{% if customer %}{"firstName":"{{ customer.default_address.first_name }}","lastName":"{{ customer.default_address.last_name }}","address1":"{{ customer.default_address.address1 }}","address2":"{{ customer.default_address.address2 }}","city":"{{ customer.default_address.city }}","province":"{{ customer.default_address.province }}","country":"{{ customer.default_address.country }}","zip":"{{ customer.default_address.zip }}","phone":"{{ customer.default_address.phone }}","addressType":"Indirect"}{% endif %}"
-            >
-
-            <button
-              type="submit"
-              name="add"
-              id="KlaviyoAddToCart"
-              aria-label="Add customized card to cart"
-              class="product-form__submit button--add-to-cart"
-              {% if product.selected_or_first_available_variant.available == false %}
-                disabled
-              {% endif %}
-            >
+            <input type="hidden" name="product_type" form="{{ product_form_id }}" value='{{ product.type }}'>
+            <input type="hidden" name="properties[_shipping_address]" form="{{ product_form_id }}" value='{% if customer %}{"firstName":"{{ customer.default_address.first_name }}","lastName":"{{ customer.default_address.last_name }}","address1":"{{ customer.default_address.address1 }}","address2":"{{ customer.default_address.address2 }}","city":"{{ customer.default_address.city }}","province":"{{ customer.default_address.province }}","country":"{{ customer.default_address.country }}","zip":"{{ customer.default_address.zip }}","phone":"{{ customer.default_address.phone }}","addressType":"Indirect"}{% endif %}'>
+          
+            <button type="submit" name="add" id="KlaviyoAddToCart" aria-label="Add customized card to cart"  class="product-form__submit button--add-to-cart" {% if product.selected_or_first_available_variant.available == false %}disabled{% endif %}>
               <span>
                 {%- if product.selected_or_first_available_variant.available -%}
                   {{ 'products.product.add_to_cart' | t }}
@@ -174,14 +122,7 @@
                 {%- endif -%}
               </span>
               <div class="loading-overlay__spinner hidden">
-                <svg
-                  aria-hidden="true"
-                  focusable="false"
-                  role="presentation"
-                  class="spinner"
-                  viewBox="0 0 66 66"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
+                <svg aria-hidden="true" focusable="false" role="presentation" class="spinner" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
                   <circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
                 </svg>
               </div>
@@ -189,33 +130,27 @@
           </div>
         {%- endform -%}
       </product-form-custom-card>
-      {% render 'printess-add-to-basket',
-      product: product,
-      buttonLabel: "Design now",
-      buttonClasses: "product-form__submit button--add-to-cart",
-      shopToken: "eyJhbGciOiJSUzI1NiIsImtpZCI6InByaW50ZXNzLXNhYXMtYWxwaGEiLCJ0eXAiOiJKV1QifQ.eyJzdWIiOiJOZVRUcGtubUI0UWdWWjc1cjQ5TExPOVV1d3cxIiwianRpIjoiY2lCZ0FEUmF1VmZpdkFTR3lxU3Q0SWhPc0NqZ2R2emoiLCJyb2xlIjoic2hvcCIsIm5iZiI6MTcyMjMzMzQ2OSwiZXhwIjoyMDM3NjkzNDY5LCJpYXQiOjE3MjIzMzM0NjksImlzcyI6IlByaW50ZXNzIEdtYkggJiBDby5LRyIsImF1ZCI6InByaW50ZXNzLXNhYXMifQ.QQvTEojs7ZRkepAIqfSqMb82aq8YXSdFsNuMcHzHIFqBclQj8lqNRNFk9kYDD7U-F38zMLbah0C2JREowKPFMmvNtL_5Ptqq0c66N0ZE3YEZhDJCOFILg9JxRw9gIe25nJokZkR2soKVdmT507YaD1s8K1HNcyz49mGXvKKrS8BMv9Z7Z8WXjEYricotwBdt4YwkJNFnBaICoibdNoGD4hZYWzkHVvlF7ZvwgXBQsZ2EaYFWC_DSCZvHRiiP8ndtMynR9c241ceiu3c8dvlrxugqYomAhzshXdF89LrT1d_2c9yf46QxgpaNrZdD9WbSIp-k5VgnqKSSh2W5DNXKYiLxYh7F0IdTllKg3bmTD1YCvCm1rzTazB-CB4PuDxRpOi-MLoHIDFZwp4lUqLf9lB7NyXPZ9Ie-DVOmgS-uxPqdAEbj_SVBpwyo13xfC1VvJm46UESY0Ojr38lHfJRZOwhQpaT_gxv42aUXAqldcjkqB6eWmN-x11xiucA-5dbVLDXKtq7oA2guN-alRkKTLFl4iVY4ca7PkC32FB3wtJ_eb1UOjECPbvjPavkYeF82qjrDcZT9wHxzlD-JM8NcqQnBFAI8TDhMEWTz1BfLrfIDc0czrad86Bzm50nlPqHTJioAh5oFtyZBNHLZXIM98-EuPYMisYmVVPNFYQS62bY",
-      startupLogoUrl: "",
-      showStartupAnimation: false,
-      hidePricesInEditor: true,
-      editorVersion: "",
-      legalText: "incl. tax, excl. shipping",
-      theme: "",
-      showProductName: false,
-      showAlertOnTabClose: false,
-      startupBackgroundColor: "",
-      additionalAttachParams: '',
-    %}
-         
       <script defer type="module">
         if (sessionStorage.getItem("editor_item_key") !== null) {
           document.querySelector('[name="id"]').value = sessionStorage.getItem("editor_variant_id")
           document.querySelector('input[name="quantity"]').value = sessionStorage.getItem("editor_quantity")
           document.getElementById("KlaviyoAddToCart").getElementsByTagName('span')[0].innerText = 'Save Changes'
-        }
+        } 
       </script>
 
+
+
+
+
+
+
+
+
+
+
+      
       <div class="box-shadow product-form-price">
-        {%- liquid
+        {%- liquid 
           assign target = product.selected_or_first_available_variant
           assign compare_at_price = target.compare_at_price
           assign price = target.price | default: 1999
@@ -228,22 +163,19 @@
         <div class="product-form-price-label">Price</div>
         <div class="product-form-price-value" id="price-container">
           {%- if available == false %}
-            <div class="product-form-price-sold-out">Sold out!</div>
+            <div class="product-form-price-sold-out" >Sold out!</div>
           {%- else -%}
             {%- unless product.price_varies == false and product.compare_at_price_varies %}
               <div class="product-form-price-old">
-                {{ compare_at_price | money }}
-              </div>
+                {{ compare_at_price | money }} 
+              </div>    
             {%- endunless -%}
             <div class="product-form-price-current">
               {{ money_price }}
-            </div>
+            </div>   
           {% endif -%}
         </div>
-        <script
-          defer
-          type="module"
-        >
+        <script defer type="module">
           const updatePrice = () => {
             const selectedTitle = document.querySelector('input[name="Size"]:checked').value;
             const variants = {{ product.variants | json }}
@@ -268,20 +200,10 @@
         <label class="form__label">More by {{ product.vendor }}</label>
         <div class="vendor_logo">
           <a href="{{ "Scribbler" | url_for_vendor }}">
-            <img
-              class="vendor_logo_image"
-              src="{{ shop.brand.square_logo | image_url }}"
-              alt="{{ product.vendor | json }}"
-              width="60"
-              height="60"
-              loading="lazy"
-            >
+            <img class="vendor_logo_image" src="{{ shop.brand.square_logo | image_url }}" alt="{{ product.vendor | json }}" width="60" height="60" loading="lazy">
           </a>
         </div>
-        <script
-          defer
-          type="module"
-        >
+        <script defer type="module">
           fetch(`/apps/scribblerApi/v1/shoppify/public/products/{{ product.id | json }}`, { method: 'GET', priority: 'low', headers: { 'Content-Type': 'application/json' } })
             .then(response => response.json())
             .then(response => {
@@ -309,15 +231,9 @@
               </svg>
             </div>
           </summary>
-          <div
-            class="accordion__content rte"
-            id="ProductAccordion-9bf8938c-390d-4cfe-8658-fcec6e9e92e1-template--18273605714145__main"
-          >
+          <div class="accordion__content rte" id="ProductAccordion-9bf8938c-390d-4cfe-8658-fcec6e9e92e1-template--18273605714145__main">  
             <div id="shipping-estimation"></div>
-            <script
-              defer
-              type="module"
-            >
+            <script defer type="module">
               const convertFormatShippingCurrency = (price) => {
                 return Intl.NumberFormat(window.Shopify.currency.countryCode, { style: 'currency', currency: window.Shopify.currency.active }).format(price / 100)        
               }
@@ -408,7 +324,7 @@
               </svg>
             </div>
           </summary>
-          <div class="accordion__content rte">
+          <div class="accordion__content rte">  
             <p>{{ product.metafields.custom.card_materials }}</p>
           </div>
         </details>
@@ -417,12 +333,12 @@
   </div>
 
   {%- liquid
-    if product.selected_or_first_available_variant.featured_media
-      assign seo_media = product.selected_or_first_available_variant.featured_media
-    else
-      assign seo_media = product.featured_media
-    endif
-  -%}
+     if product.selected_or_first_available_variant.featured_media
+       assign seo_media = product.selected_or_first_available_variant.featured_media
+     else
+       assign seo_media = product.featured_media
+     endif
+   -%}
 
   <script type="application/ld+json">
     {
