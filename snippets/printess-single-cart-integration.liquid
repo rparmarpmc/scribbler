@@ -101,7 +101,6 @@
               displayProductName: !({{showProductName | json}} === false),
           };
 
-          {% if showSplitterGridSizeButton != null %}settings["showSplitterGridSizeButton"] = {{showSplitterGridSizeButton | json}};{% endif %}
 
           editor.show(settings);
       };
