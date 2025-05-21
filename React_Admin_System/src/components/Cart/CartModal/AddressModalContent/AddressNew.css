@@ -1,0 +1,72 @@
+.cart-page-new-address {
+    padding-top: calc(10px * var(--zoom-factor));
+    padding-bottom: calc(20px * var(--zoom-factor));
+}
+
+.address-field-box {
+    position: relative;
+    width: 100%;
+    padding-top: calc(15px * var(--zoom-factor));
+}
+
+.address-field-error {
+    position: absolute;
+    top: calc(10px * var(--zoom-factor));
+    right: calc(10px * var(--zoom-factor));
+    color: red;
+    font-size: calc(14px * var(--zoom-factor));
+}
+
+.address-field-box input[type='text'] {
+    width: 100%;
+    height: 100%;
+    border: none;
+    outline: none;
+    border: none;
+    font-weight: bold;
+    font-size: calc(20px * var(--zoom-factor));
+    color: black;
+    background-color: #e3e3e3;
+    height: calc(50px * var(--zoom-factor));
+    border-radius: calc(25px * var(--zoom-factor));
+    text-align: center;
+}
+
+.address-field-box input[type='text']::placeholder {
+    color: rgb(107, 107, 107);
+}
+
+.address-field-box input[type='text']:focus-visible {
+    border: 1px solid transparent;
+    box-shadow: none;
+    color: rgb(0, 0, 0);
+}
+
+.address-field-box input:-webkit-autofill,
+.address-field-box input:-webkit-autofill:hover,
+.address-field-box input:-webkit-autofill:focus {
+    border: 1px solid none;
+    -webkit-text-fill-color: #888888;
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+@media screen and (max-width: 749px) {
+    .cart-page-new-address {
+        padding-top: 0;
+        padding-bottom: 10px;
+    }
+
+    .address-field-box {
+        padding-top: 8px;
+    }
+
+    .address-field-box input[type='text'] {
+        font-size: 14px;
+        height: 40px;
+    }
+
+    .address-field-error {
+        top: 6px;
+        font-size: 12px;
+    }
+}

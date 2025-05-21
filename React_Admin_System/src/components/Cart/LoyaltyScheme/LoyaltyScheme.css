@@ -1,0 +1,115 @@
+.loyalty-scheme-wrapper {
+    width: 100%;
+}
+
+.loyalty-scheme-wrapper-title {
+    font-size: 26px;
+    font-weight: bold;
+}
+
+.loyalty-progress-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 30px;
+}
+
+.loyalty-progress {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    background-color: #ECEEEC;
+    width: calc(100% - 60px);
+    height: 35px;
+    position: relative;
+    -webkit-border-top-left-radius: 18px;
+    -webkit-border-bottom-left-radius: 18px;
+    -moz-border-radius-topLeft: 18px;
+    -moz-border-radius-bottomLeft: 18px;
+    border-top-left-radius: 18px;
+    border-bottom-left-radius: 18px;
+}
+
+.loyalty-progress-current {
+    position: absolute;
+    left: 0;
+    height: 100%;
+    transition: width 500ms;
+    padding-top: 4px;
+    padding-left: 12px;
+    padding-right: 12px;
+    background-color: #CBD81D;
+    -webkit-border-radius: 18px;
+    -moz-border-radius: 18px;
+    border-radius: 18px;
+    text-align: right;
+    font-size: 20px;
+    font-weight: bold;
+    color: black;
+}
+
+.loyalty-progress-after {
+    height: 100%;
+    transition: width 500ms;
+    left: 0;
+    padding-top: 4px;
+    padding-left: 12px;
+    padding-right: 12px;
+    background-color: #a2a2a2;
+    -webkit-border-radius: 18px;
+    -moz-border-radius: 18px;
+    border-radius: 18px;
+    text-align: right;
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+}
+
+.loyalty-progress-current-label,
+.loyalty-progress-after-label {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    transition: left 500ms;
+    bottom: 50px;
+    height: 30px;
+    font-size: 12px;
+    line-height: 100%;
+    font-weight: bold;
+    text-align: center;
+    width: 74px;
+}
+
+.loyalty-progress-current-label:after,
+.loyalty-progress-after-label:after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: 0;
+    height: 0;
+    border-top: 10px solid #CBD81D;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+}
+
+.loyalty-progress-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60px;
+    height: 80px;
+    border: 2px solid #CBD81D;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.loyalty-scheme-link {
+    font-size: 14px;
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}

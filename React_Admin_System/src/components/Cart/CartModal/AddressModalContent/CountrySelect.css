@@ -1,0 +1,87 @@
+.countryModalBackdrop {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    z-index: 300;
+}
+
+.countryModalWrapper {
+    overflow: hidden;
+    background-color: #CBD81D;
+    -webkit-box-shadow: 0px 2px 4px 0px rgba(191, 191, 191, 1);
+    -moz-box-shadow: 0px 2px 4px 0px rgba(191, 191, 191, 1);
+    box-shadow: 0px 2px 4px 0px rgba(191, 191, 191, 1);
+    -webkit-border-radius: calc(14px * var(--zoom-factor));
+    -moz-border-radius: calc(14px * var(--zoom-factor));
+    border-radius: calc(14px * var(--zoom-factor));
+    width: 100%;
+    height: calc(470px * var(--zoom-factor));
+    margin-top: calc(65px * var(--zoom-factor));
+}
+
+.countryModalTitle {
+    font-size: calc(16px * var(--zoom-factor));
+    font-weight: 700;
+    padding: calc(5px * var(--zoom-factor)) 0 calc(5px * var(--zoom-factor)) calc(10px * var(--zoom-factor));
+}
+
+.countrySugestions {
+    position: relative;
+    z-index: 302;
+    display: flex;
+    flex-direction: column;
+    height: calc(486px * var(--zoom-factor));
+    overflow-y: scroll;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.countrySugestions::-webkit-scrollbar {
+    overflow-y: scroll;
+    width: 12px;
+}
+
+.countrySugestions::-webkit-scrollbar-thumb {
+    background-color: #53B7C0;
+    border: 4px solid #CBD81D;
+}
+
+.countrySugestionsButton {
+    border: none;
+    border-bottom: 1px solid black;
+    background-color: #CBD81D;
+    width: calc(100% - (56px* var(--zoom-factor)));
+    font-size: calc(14px * var(--zoom-factor));
+    font-weight: 900;
+    margin-left: calc(30px * var(--zoom-factor));
+    margin-right: calc(26px * var(--zoom-factor));
+    color: black;
+    padding: calc(15px * var(--zoom-factor)) 0 calc(15px * var(--zoom-factor)) 0;
+}
+
+.countrySugestionsButton:hover {
+    background-color: rgba(236, 238, 236, 0.5);
+    border-radius: 12px;
+}
+
+@media screen and (max-width: 749px) {
+    .countryModalWrapper {
+        margin-top: 50px;
+        /* height: var(--app-height); */
+    }
+
+    .countryModalWrapper {
+        height: 340px;
+    }
+
+    .countrySugestionsButton {
+        width: calc(100% - 0px);
+        margin-left: 16px;
+        margin-right: 0px;
+        width: calc(100% - 0px);
+        padding: 8px 0 8px 0;
+    }
+}

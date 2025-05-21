@@ -1,0 +1,608 @@
+{
+  "article": [],
+  "blog": [],
+  "brand": [],
+  "collection": [
+    {
+      "key": "collection_slides",
+      "namespace": "custom",
+      "name": "Banners Images",
+      "description": "Add slider image",
+      "type": {
+        "name": "list.file_reference",
+        "category": "REFERENCE"
+      }
+    },
+    {
+      "key": "banner_urls",
+      "namespace": "custom",
+      "name": "Banners URLs",
+      "description": "Urls for banners",
+      "type": {
+        "name": "list.url",
+        "category": "URL"
+      }
+    },
+    {
+      "key": "promo_text",
+      "namespace": "custom",
+      "name": "Promo Text",
+      "description": "Short informational text",
+      "type": {
+        "name": "list.single_line_text_field",
+        "category": "TEXT"
+      }
+    },
+    {
+      "key": "promo_urls",
+      "namespace": "custom",
+      "name": "Promo URLs",
+      "description": "Links for promo",
+      "type": {
+        "name": "list.url",
+        "category": "URL"
+      }
+    },
+    {
+      "key": "promo_images",
+      "namespace": "custom",
+      "name": "Promo Images",
+      "description": "Small images to be displayed on both sides of info text",
+      "type": {
+        "name": "list.file_reference",
+        "category": "REFERENCE"
+      }
+    },
+    {
+      "key": "circles_names",
+      "namespace": "custom",
+      "name": "Circles Names",
+      "description": "",
+      "type": {
+        "name": "list.single_line_text_field",
+        "category": "TEXT"
+      }
+    },
+    {
+      "key": "circles_urls",
+      "namespace": "custom",
+      "name": "Circles URLs",
+      "description": "",
+      "type": {
+        "name": "list.url",
+        "category": "URL"
+      }
+    },
+    {
+      "key": "circles_images",
+      "namespace": "custom",
+      "name": "Circles Images",
+      "description": "Use square images",
+      "type": {
+        "name": "list.file_reference",
+        "category": "REFERENCE"
+      }
+    },
+    {
+      "key": "single_collection_slider",
+      "namespace": "custom",
+      "name": "SIngle Collection Slider",
+      "description": "Slingle line collectionn slider",
+      "type": {
+        "name": "collection_reference",
+        "category": "REFERENCE"
+      }
+    },
+    {
+      "key": "double_collection_slider",
+      "namespace": "custom",
+      "name": "Double Collection Slider",
+      "description": "Add collection to be displayed in two lines",
+      "type": {
+        "name": "collection_reference",
+        "category": "REFERENCE"
+      }
+    },
+    {
+      "key": "quadruple_collection_slider",
+      "namespace": "custom",
+      "name": "Quadruple Collection Slider",
+      "description": "Select 4 Collection to be displayed in 4 sliders",
+      "type": {
+        "name": "list.collection_reference",
+        "category": "REFERENCE"
+      }
+    },
+    {
+      "key": "single_collection_slider_2",
+      "namespace": "custom",
+      "name": "SIngle Collection Slider 2",
+      "description": "Duplicate of SIngle Collection Slider",
+      "type": {
+        "name": "collection_reference",
+        "category": "REFERENCE"
+      }
+    },
+    {
+      "key": "single_collection_slider_3",
+      "namespace": "custom",
+      "name": "SIngle Collection Slider 3",
+      "description": "Duplicate of SIngle Collection Slider",
+      "type": {
+        "name": "collection_reference",
+        "category": "REFERENCE"
+      }
+    },
+    {
+      "key": "single_collection_slider_4",
+      "namespace": "custom",
+      "name": "SIngle Collection Slider 4",
+      "description": "Dupicate of SIngle Collection Slider",
+      "type": {
+        "name": "collection_reference",
+        "category": "REFERENCE"
+      }
+    },
+    {
+      "key": "single_collection_slider_5",
+      "namespace": "custom",
+      "name": "SIngle Collection Slider 5",
+      "description": "Duplicate of SIngle Collection Slider",
+      "type": {
+        "name": "collection_reference",
+        "category": "REFERENCE"
+      }
+    },
+    {
+      "key": "gift_collection_slider",
+      "namespace": "custom",
+      "name": "Gift Collection Slider",
+      "description": "Gift Collection Slider",
+      "type": {
+        "name": "collection_reference",
+        "category": "REFERENCE"
+      }
+    },
+    {
+      "key": "gift_collection_slider_2",
+      "namespace": "custom",
+      "name": "Gift Collection Slider 2",
+      "description": "Duplicate of Gift Collection Slider",
+      "type": {
+        "name": "collection_reference",
+        "category": "REFERENCE"
+      }
+    },
+    {
+      "key": "gift_collection_slider_3",
+      "namespace": "custom",
+      "name": "Gift Collection Slider 3",
+      "description": "Duplicate of Gift Collection Slider",
+      "type": {
+        "name": "collection_reference",
+        "category": "REFERENCE"
+      }
+    },
+    {
+      "key": "circles_images_2",
+      "namespace": "custom",
+      "name": "Circles Images 2",
+      "description": "Duplicate of meta circles ",
+      "type": {
+        "name": "list.file_reference",
+        "category": "REFERENCE"
+      }
+    },
+    {
+      "key": "circles_urls_2",
+      "namespace": "custom",
+      "name": "Circles URLs 2",
+      "description": "Duplicate of circle urls",
+      "type": {
+        "name": "list.url",
+        "category": "URL"
+      }
+    },
+    {
+      "key": "circles_names_2",
+      "namespace": "custom",
+      "name": "Circles Names 2",
+      "description": "Duplicate of circle names",
+      "type": {
+        "name": "list.single_line_text_field",
+        "category": "TEXT"
+      }
+    },
+    {
+      "key": "banners_mobile_images",
+      "namespace": "custom",
+      "name": "Banners mobile images",
+      "description": "Banners mobile images",
+      "type": {
+        "name": "list.file_reference",
+        "category": "REFERENCE"
+      }
+    },
+    {
+      "key": "show_description",
+      "namespace": "custom",
+      "name": "Show Description",
+      "description": "Show Collection Description",
+      "type": {
+        "name": "boolean",
+        "category": "TRUE_FALSE"
+      }
+    },
+    {
+      "key": "search_weight",
+      "namespace": "custom",
+      "name": "Search Weight",
+      "description": "Category Search Weight",
+      "type": {
+        "name": "number_integer",
+        "category": "NUMBER"
+      }
+    },
+    {
+      "key": "single_collection_slider_name",
+      "namespace": "custom",
+      "name": "Single Slider Name",
+      "description": "Metafield Single Collection Slider Name",
+      "type": {
+        "name": "single_line_text_field",
+        "category": "TEXT"
+      }
+    },
+    {
+      "key": "single_collection_slider_name_2",
+      "namespace": "custom",
+      "name": "Single Slider Name 2",
+      "description": "Meta Single Collection Slider Name 2",
+      "type": {
+        "name": "single_line_text_field",
+        "category": "TEXT"
+      }
+    },
+    {
+      "key": "single_collection_slider_name_3",
+      "namespace": "custom",
+      "name": "Single Slider Name 3",
+      "description": " Meta Single Collection Slider Name 3",
+      "type": {
+        "name": "single_line_text_field",
+        "category": "TEXT"
+      }
+    },
+    {
+      "key": "single_collection_slider_name_4",
+      "namespace": "custom",
+      "name": "Single Slider Name 4",
+      "description": "Meta Single Collection Slider Name 4",
+      "type": {
+        "name": "single_line_text_field",
+        "category": "TEXT"
+      }
+    },
+    {
+      "key": "single_collection_slider_name_5",
+      "namespace": "custom",
+      "name": "Single Slider Name 5",
+      "description": "Meta Single Collection Slider Name 5",
+      "type": {
+        "name": "single_line_text_field",
+        "category": "TEXT"
+      }
+    },
+    {
+      "key": "gift_collection_slider_name",
+      "namespace": "custom",
+      "name": "Gift Collection Slider Name",
+      "description": "Meta Gift Collection Slider Name ",
+      "type": {
+        "name": "single_line_text_field",
+        "category": "TEXT"
+      }
+    },
+    {
+      "key": "gift_collection_slider_name_2",
+      "namespace": "custom",
+      "name": "Gift Collection Slider Name 2",
+      "description": "Meta Gift Collection Slider Name",
+      "type": {
+        "name": "single_line_text_field",
+        "category": "TEXT"
+      }
+    },
+    {
+      "key": "gift_collection_slider_name_3",
+      "namespace": "custom",
+      "name": "Gift Collection Slider Name 3",
+      "description": "Meta Gift Collection Slider Name 3",
+      "type": {
+        "name": "single_line_text_field",
+        "category": "TEXT"
+      }
+    },
+    {
+      "key": "collection_sort_order",
+      "namespace": "custom",
+      "name": "Collection sort order",
+      "description": "Collection filter sort order",
+      "type": {
+        "name": "list.metaobject_reference",
+        "category": "REFERENCE"
+      }
+    }
+  ],
+  "company": [],
+  "company_location": [],
+  "location": [],
+  "market": [],
+  "order": [],
+  "page": [],
+  "product": [
+    {
+      "key": "card_materials",
+      "namespace": "custom",
+      "name": "Card Materials",
+      "description": "Repurposed Board with 15GSM and using Eco Ink from HP",
+      "type": {
+        "name": "multi_line_text_field",
+        "category": "TEXT"
+      }
+    },
+    {
+      "key": "rating",
+      "namespace": "reviews",
+      "name": "Product rating",
+      "description": "Average rating from customers",
+      "type": {
+        "name": "rating",
+        "category": "RATING"
+      }
+    },
+    {
+      "key": "rating_count",
+      "namespace": "reviews",
+      "name": "Product rating count",
+      "description": "Total number of ratings from customers",
+      "type": {
+        "name": "number_integer",
+        "category": "NUMBER"
+      }
+    },
+    {
+      "key": "queries",
+      "namespace": "shopify--discovery--product_search_boost",
+      "name": "Search product boosts",
+      "description": "List of search queries for which a product gets higher rank in search results",
+      "type": {
+        "name": "list.single_line_text_field",
+        "category": "TEXT"
+      }
+    },
+    {
+      "key": "related_products",
+      "namespace": "shopify--discovery--product_recommendation",
+      "name": "Related products",
+      "description": "List of related products",
+      "type": {
+        "name": "list.product_reference",
+        "category": "REFERENCE"
+      }
+    },
+    {
+      "key": "related_products_display",
+      "namespace": "shopify--discovery--product_recommendation",
+      "name": "Related products settings",
+      "description": "Determines how related products are displayed along with algorithmic product recommendations",
+      "type": {
+        "name": "single_line_text_field",
+        "category": "TEXT"
+      }
+    },
+    {
+      "key": "complementary_products",
+      "namespace": "shopify--discovery--product_recommendation",
+      "name": "Complementary products",
+      "description": "List of complementary products",
+      "type": {
+        "name": "list.product_reference",
+        "category": "REFERENCE"
+      }
+    },
+    {
+      "key": "product_text",
+      "namespace": "custom",
+      "name": "Product Text",
+      "description": "Product Text Description",
+      "type": {
+        "name": "single_line_text_field",
+        "category": "TEXT"
+      }
+    },
+    {
+      "key": "product_image",
+      "namespace": "custom",
+      "name": "Product Image",
+      "description": "Product Image",
+      "type": {
+        "name": "single_line_text_field",
+        "category": "TEXT"
+      }
+    },
+    {
+      "key": "special_info",
+      "namespace": "custom",
+      "name": "Special Info",
+      "description": "Special Info on PDP page",
+      "type": {
+        "name": "list.metaobject_reference",
+        "category": "REFERENCE"
+      }
+    },
+    {
+      "key": "color_picker",
+      "namespace": "custom",
+      "name": "Color Picker",
+      "description": "Product Color Picker",
+      "type": {
+        "name": "single_line_text_field",
+        "category": "TEXT"
+      }
+    },
+    {
+      "key": "custom_product",
+      "namespace": "mm-google-shopping",
+      "name": "Google: Custom Product",
+      "description": "Use to indicate whether or not the unique product identifiers (UPIs) GTIN, MPN, and brand are available for your product.",
+      "type": {
+        "name": "boolean",
+        "category": "TRUE_FALSE"
+      }
+    },
+    {
+      "key": "prime_tag",
+      "namespace": "custom",
+      "name": "Prime_Tag",
+      "description": "Manual sort order intervention",
+      "type": {
+        "name": "number_integer",
+        "category": "NUMBER"
+      }
+    },
+    {
+      "key": "prepay_extra_percentage",
+      "namespace": "custom",
+      "name": "Prepay Extra Percentage",
+      "description": "",
+      "type": {
+        "name": "number_integer",
+        "category": "NUMBER"
+      }
+    },
+    {
+      "key": "prepay_extra_value",
+      "namespace": "custom",
+      "name": "PrePay Extra Value",
+      "description": "",
+      "type": {
+        "name": "number_decimal",
+        "category": "NUMBER"
+      }
+    }
+  ],
+  "variant": [
+    {
+      "key": "custom_label_4",
+      "namespace": "mm-google-shopping",
+      "name": "Google: Custom Label 4",
+      "description": "Label that you assign to a product to help organize bidding and reporting in Shopping campaigns",
+      "type": {
+        "name": "single_line_text_field",
+        "category": "TEXT"
+      }
+    },
+    {
+      "key": "custom_label_3",
+      "namespace": "mm-google-shopping",
+      "name": "Google: Custom Label 3",
+      "description": "Label that you assign to a product to help organize bidding and reporting in Shopping campaigns",
+      "type": {
+        "name": "single_line_text_field",
+        "category": "TEXT"
+      }
+    },
+    {
+      "key": "custom_label_2",
+      "namespace": "mm-google-shopping",
+      "name": "Google: Custom Label 2",
+      "description": "Label that you assign to a product to help organize bidding and reporting in Shopping campaigns",
+      "type": {
+        "name": "single_line_text_field",
+        "category": "TEXT"
+      }
+    },
+    {
+      "key": "custom_label_1",
+      "namespace": "mm-google-shopping",
+      "name": "Google: Custom Label 1",
+      "description": "Label that you assign to a product to help organize bidding and reporting in Shopping campaigns",
+      "type": {
+        "name": "single_line_text_field",
+        "category": "TEXT"
+      }
+    },
+    {
+      "key": "custom_label_0",
+      "namespace": "mm-google-shopping",
+      "name": "Google: Custom Label 0",
+      "description": "Label that you assign to a product to help organize bidding and reporting in Shopping campaigns",
+      "type": {
+        "name": "single_line_text_field",
+        "category": "TEXT"
+      }
+    },
+    {
+      "key": "size_system",
+      "namespace": "mm-google-shopping",
+      "name": "Google: Size System",
+      "description": "The country of the size system used by your product.",
+      "type": {
+        "name": "single_line_text_field",
+        "category": "TEXT"
+      }
+    },
+    {
+      "key": "size_type",
+      "namespace": "mm-google-shopping",
+      "name": "Google: Size Type",
+      "description": "Your apparel product’s cut.",
+      "type": {
+        "name": "single_line_text_field",
+        "category": "TEXT"
+      }
+    },
+    {
+      "key": "mpn",
+      "namespace": "mm-google-shopping",
+      "name": "Google: MPN",
+      "description": "Your product’s Manufacturer Part Number (MPN).",
+      "type": {
+        "name": "single_line_text_field",
+        "category": "TEXT"
+      }
+    },
+    {
+      "key": "gender",
+      "namespace": "mm-google-shopping",
+      "name": "Google: Gender",
+      "description": "The gender for which your product is intended.",
+      "type": {
+        "name": "single_line_text_field",
+        "category": "TEXT"
+      }
+    },
+    {
+      "key": "condition",
+      "namespace": "mm-google-shopping",
+      "name": "Google: Condition",
+      "description": "The condition of your product at time of sale.",
+      "type": {
+        "name": "single_line_text_field",
+        "category": "TEXT"
+      }
+    },
+    {
+      "key": "age_group",
+      "namespace": "mm-google-shopping",
+      "name": "Google: Age Group",
+      "description": "The demographic for which your product is intended.",
+      "type": {
+        "name": "single_line_text_field",
+        "category": "TEXT"
+      }
+    }
+  ],
+  "shop": []
+}

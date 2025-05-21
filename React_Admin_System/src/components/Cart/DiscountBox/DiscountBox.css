@@ -1,0 +1,116 @@
+.cart-discount-box-wrapper {
+    width: 100%;
+    margin-bottom: calc(20px * var(--zoom-factor));
+}
+
+.cart-discount-box-title {
+    font-size: calc(20px * var(--zoom-factor));
+    font-weight: bold;
+    margin-bottom: calc(10px * var(--zoom-factor));
+}
+
+.cart-discount-status-success {
+    border: 1px solid #cbd81d;
+    border-radius: 8px;
+    background-color: rgba(203, 216, 29, 0.05);
+    font-size: 18px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding-left: 5px;
+    color: #CBD81D;
+}
+
+.cart-discount-status-error {
+    border: 1px solid #ffb8b8;
+    border-radius: 8px;
+    background-color: rgba(255, 56, 56, 0.05);
+    color: #ff3838;
+    font-size: 18px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding-left: 5px;
+}
+
+.cart-discount-box-input-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.cart-discount-box-input-wrapper input {
+    border: 1px solid #a2a2a2;
+    height: calc(50px * var(--zoom-factor));
+    font-size: calc(20px * var(--zoom-factor));
+    color: #a2a2a2;
+    width: calc(100% - (80px * var(--zoom-factor)));
+    padding-left: calc(20px * var(--zoom-factor));
+    padding-right: calc(20px * var(--zoom-factor));
+    border-radius: 0;
+}
+
+.cart-discount-box-input-wrapper input:focus {
+    outline: none;
+}
+
+.discount-box-apply-button {
+    background-color: #a2a2a2;
+    color: white;
+    border: none;
+    height: calc(50px * var(--zoom-factor));
+    width: calc(80px * var(--zoom-factor));
+    font-size: calc(20px * var(--zoom-factor));
+    cursor: pointer;
+    position: relative;
+}
+
+.discount-box-apply-button:hover {
+    color: black;
+}
+
+.discount-box-apply-button .discount-apply-spinner {
+    position: absolute;
+    top: calc(50% - 12px);
+    left: calc(50% - 12px);
+    display: flex;
+    height: 25px;
+    width: 25px;
+}
+
+.active-discount-box {
+    background-color: #CBD81D;
+}
+
+.remove-discount-wrapper {
+    display: flex;
+    width: fit-content;
+    justify-content: center;
+    align-items: center;
+    height: calc(30px * var(--zoom-factor));
+    font-size: calc(14px * var(--zoom-factor));
+    background-color: #CBD81D;
+    color: white;
+    border-radius: calc(16px * var(--zoom-factor));
+    padding: 2%;
+    margin-top: 2%;
+    margin-right: 2%;
+    margin-bottom: 2%;
+}
+
+.remove-discount-selector {
+    font-family: 'BrandonRegular';
+    width: calc(30px * var(--zoom-factor));
+    height: calc(30px * var(--zoom-factor));
+    background-color: #CBD81D;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    padding: 4%;
+    border: none;
+    border-radius: 50%;
+}
+
+.remove-discount-selector svg:hover path {
+    fill: black;
+}

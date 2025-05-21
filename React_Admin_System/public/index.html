@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#000000" />
+  <meta name="description" content="Web site created using create-react-app" />
+  <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+  <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+  <title>React App</title>
+  <style>
+    body {
+      background-color: #ffffff;
+      width: 100%;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+    }
+    *,
+    *:before,
+    *:after {
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+    }
+  </style>
+</head>
+
+<body>
+  <noscript>You need to enable JavaScript to run this app.</noscript>
+  
+  <div id="card-editor" style="border: 1px solid red; margin:0 auto; width: 100%; margin-top: 70px"></div>
+  <div id="portal-root"></div>
+  <button onclick="window.eventBus.publish('GENERATE_CARD', {})" >add to cart</button>
+
+  <script>
+    var media = [
+        {
+          "alt": null,
+          "id": 31102992679137,
+          "position": 1,
+          "preview_image": {
+            "aspect_ratio": 0.7,
+            "height": 919,
+            "width": 643,
+            "src": "https://cdn.shopify.com/s/files/1/0657/9637/4753/products/SCR22ED0022-user-1.png?v=1671625310"
+          },
+          "aspect_ratio": 0.7,
+          "height": 919,
+          "media_type": "image",
+          "src": "https://cdn.shopify.com/s/files/1/0657/9637/4753/products/SCR22ED0022-user-1.png?v=1671625310",
+          "width": 643
+        },
+        {
+          "alt": null,
+          "id": 31102993006817,
+          "position": 2,
+          "preview_image": {
+            "aspect_ratio": 0.7,
+            "height": 919,
+            "width": 643,
+            "src": "https://cdn.shopify.com/s/files/1/0657/9637/4753/products/SCR22ED0022-user-3.png?v=1671625310"
+          },
+          "aspect_ratio": 0.7,
+          "height": 919,
+          "media_type": "image",
+          "src": "https://cdn.shopify.com/s/files/1/0657/9637/4753/products/SCR22ED0022-user-3.png?v=1671625310",
+          "width": 643
+        },
+        {
+          "alt": null,
+          "id": 31102995235041,
+          "position": 3,
+          "preview_image": {
+            "aspect_ratio": 0.7,
+            "height": 919,
+            "width": 643,
+            "src": "https://cdn.shopify.com/s/files/1/0657/9637/4753/products/SCR22ED0022-user-2.png?v=1671625310"
+          },
+          "aspect_ratio": 0.7,
+          "height": 919,
+          "media_type": "image",
+          "src": "https://cdn.shopify.com/s/files/1/0657/9637/4753/products/SCR22ED0022-user-2.png?v=1671625310",
+          "width": 643
+        },
+        {
+          "alt": null,
+          "id": 31102995595489,
+          "position": 4,
+          "preview_image": {
+            "aspect_ratio": 0.7,
+            "height": 919,
+            "width": 643,
+            "src": "https://cdn.shopify.com/s/files/1/0657/9637/4753/products/SCR22ED0022-user-0_bbc8684a-c073-42fd-a0c6-7e58501f84e7.png?v=1671627576"
+          },
+          "aspect_ratio": 0.7,
+          "height": 919,
+          "media_type": "image",
+          "src": "https://cdn.shopify.com/s/files/1/0657/9637/4753/products/SCR22ED0022-user-0_bbc8684a-c073-42fd-a0c6-7e58501f84e7.png?v=1671627576",
+          "width": 643
+        }
+      ];
+    document.addEventListener('DOMContentLoaded', function () {
+      window.eventBus.publish('ADD_WIDGET', { 'mounting_point': 'card-editor', 'widget_type': 'card-editor', 'media': media, 'endpoint': 'https://devwholesale.scribbler.com', 'product_form_id': 'product-form-template--16604963242209__main', 'product_id': '123123123123','custom_pages': [1, 2] })
+    }, false);
+  </script>
+
+  <!-- <div class="widget_wrapper" style="width:700px">
+    <div class="scribbler_widget" data-type="flipper"
+      data-payload="[&quot;//cdn.shopify.com/s/files/1/0605/0670/2031/products/1.jpg?v=1659088984&amp;width=493&quot;,&quot;//cdn.shopify.com/s/files/1/0605/0670/2031/products/2.jpg?v=1659089000&amp;width=493&quot;,&quot;//cdn.shopify.com/s/files/1/0605/0670/2031/products/3.jpg?v=1659089011&amp;width=493&quot;,&quot;//cdn.shopify.com/s/files/1/0605/0670/2031/products/4.jpg?v=1659089024&amp;width=493&quot;]">
+    </div>
+  </div> -->
+
+  <!-- <div class="widget_wrapper" style="width:700px">
+    <div class="scribbler_widget" data-type="menu" data-payload="[&quot;Pawel cich&quot;,&quot;developer&quot;]"></div>
+  </div> -->
+
+  <!-- <div class="widget_wrapper" style="width:700px">
+    <div class="scribbler_widget" data-type="menu" data-payload="[&quot;Pawel cich&quot;,&quot;developer&quot;]"></div>
+  </div> -->
+
+  <!-- <div id="cart-drawer" style=" margin:0 auto; width: 100%; display:flex; justify-content: flex-end;"></div>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        window.eventBus.publish('ADD_WIDGET', {
+          "mounting_point": "cart-drawer",
+          "widget_type": "cart-drawer",
+          "cartItems": [
+            {
+              "id": 43421613687009,
+              "properties": {},
+              "quantity": 1,
+              "variant_id": 43421613687009,
+              "key": "43421613687009:bad6afb91f0c90f1d4b1b9db6aad5742",
+              "title": "Pawel custom product - Standard (120mm x 170mm)",
+              "price": 400,
+              "original_price": 400,
+              "discounted_price": 400,
+              "line_price": 400,
+              "original_line_price": 400,
+              "total_discount": 0,
+              "discounts": [],
+              "sku": "1000",
+              "grams": 0,
+              "vendor": "Scribbler Cards & Gifts",
+              "taxable": true,
+              "product_id": 7786580410593,
+              "product_has_only_default_variant": false,
+              "gift_card": false,
+              "final_price": 400,
+              "final_line_price": 400,
+              "url": "/products/pawel-custom-product?variant=43421613687009",
+              "featured_image": {
+                "aspect_ratio": 0.708,
+                "alt": "Pawel custom product",
+                "height": 2372,
+                "url": "https://cdn.shopify.com/s/files/1/0657/9637/4753/products/SCR22ED0022-user-1.png?v=1671625310",
+                "width": 1679
+              },
+              "image": "https://cdn.shopify.com/s/files/1/0657/9637/4753/products/SCR22ED0022-user-1.png?v=1671625310",
+              "handle": "pawel-custom-product",
+              "requires_shipping": true,
+              "product_type": "",
+              "product_title": "Pawel custom product",
+              "product_description": "Pawel custom product with embedded react widget",
+              "variant_title": "Standard (120mm x 170mm)",
+              "variant_options": [
+                "Standard (120mm x 170mm)"
+              ],
+              "options_with_values": [
+                {
+                  "name": "Available Sizes",
+                  "value": "Standard (120mm x 170mm)"
+                }
+              ],
+              "line_level_discount_allocations": [],
+              "line_level_total_discount": 0
+            },
+            {
+              "id": 43132470591713,
+              "properties": {},
+              "quantity": 1,
+              "variant_id": 43132470591713,
+              "key": "43132470591713:82bf9e569909d2cf756dab623a799f2c",
+              "title": "I Wanna See You Wiggle Wiggle - Louis Theroux Rap Anniversary Card - Standard (120mm x 170mm)",
+              "price": 850,
+              "original_price": 850,
+              "discounted_price": 850,
+              "line_price": 850,
+              "original_line_price": 850,
+              "total_discount": 0,
+              "discounts": [],
+              "sku": "SCR22CO0001",
+              "grams": 5,
+              "vendor": "Pickled Post",
+              "taxable": true,
+              "product_id": 7786580934881,
+              "product_has_only_default_variant": false,
+              "gift_card": false,
+              "final_price": 850,
+              "final_line_price": 850,
+              "url": "/products/i-wanna-see-you-wiggle-wiggle-louis-theroux-rap-anniversary-card?variant=43132470591713",
+              "featured_image": {
+                "aspect_ratio": 0.719,
+                "alt": "I Wanna See You Wiggle Wiggle - Louis Theroux Rap Anniversary Card",
+                "height": 1001,
+                "url": "https://cdn.shopify.com/s/files/1/0657/9637/4753/products/PPO104.jpg?v=1660231750",
+                "width": 720
+              },
+              "image": "https://cdn.shopify.com/s/files/1/0657/9637/4753/products/PPO104.jpg?v=1660231750",
+              "handle": "i-wanna-see-you-wiggle-wiggle-louis-theroux-rap-anniversary-card",
+              "requires_shipping": true,
+              "product_type": "Anniversary Cards",
+              "product_title": "I Wanna See You Wiggle Wiggle - Louis Theroux Rap Anniversary Card",
+              "product_description": "\nYou Make My Heart Flutter Card - AR97\nA romantic sentiment is conveyed in this beautiful love card featuring a digital collage style butterfly illustration. Suitable for an anniversary, Valentine's day or just to show someone how you feel.",
+              "variant_title": "Standard (120mm x 170mm)",
+              "variant_options": [
+                "Standard (120mm x 170mm)"
+              ],
+              "options_with_values": [
+                {
+                  "name": "Available Sizes",
+                  "value": "Standard (120mm x 170mm)"
+                }
+              ],
+              "line_level_discount_allocations": [],
+              "line_level_total_discount": 0
+            },
+            {
+              "id": 43132470493409,
+              "properties": {},
+              "quantity": 1,
+              "variant_id": 43132470493409,
+              "key": "43132470493409:ec170e756bf554a0cf974e065fb434a9",
+              "title": "Crystal 15 Year Anniversary Card - Large",
+              "price": 450,
+              "original_price": 450,
+              "discounted_price": 450,
+              "line_price": 450,
+              "original_line_price": 450,
+              "total_discount": 0,
+              "discounts": [],
+              "sku": "SCR22CO0003",
+              "grams": 5,
+              "vendor": "TeePee Creations",
+              "taxable": true,
+              "product_id": 7786580869345,
+              "product_has_only_default_variant": false,
+              "gift_card": false,
+              "final_price": 450,
+              "final_line_price": 450,
+              "url": "/products/crystal-15-year-anniversary-card?variant=43132470493409",
+              "featured_image": {
+                "aspect_ratio": 0.719,
+                "alt": "Crystal 15 Year Anniversary Card",
+                "height": 1001,
+                "url": "https://cdn.shopify.com/s/files/1/0657/9637/4753/products/TCR184.jpg?v=1660231746",
+                "width": 720
+              },
+              "image": "https://cdn.shopify.com/s/files/1/0657/9637/4753/products/TCR184.jpg?v=1660231746",
+              "handle": "crystal-15-year-anniversary-card",
+              "requires_shipping": true,
+              "product_type": "Anniversary Cards",
+              "product_title": "Crystal 15 Year Anniversary Card",
+              "product_description": "Crystal 15 Year Anniversary Card - TCR184\nThis funny 15 year anniversary card features a crystal ball illustration with the phrase \"I forsee us staying together forever 15 Years Together Happy Crystal Anniversary\" on the front.",
+              "variant_title": "Large",
+              "variant_options": [
+                "Large"
+              ],
+              "options_with_values": [
+                {
+                  "name": "Size",
+                  "value": "Large"
+                }
+              ],
+              "line_level_discount_allocations": [],
+              "line_level_total_discount": 0
+            },
+            {
+              "id": 43132470231265,
+              "properties": {},
+              "quantity": 1,
+              "variant_id": 43132470231265,
+              "key": "43132470231265:d86eb127ce257b2fa6f112986fa984bc",
+              "title": "Cheesy Love Card - Large",
+              "price": 450,
+              "original_price": 450,
+              "discounted_price": 450,
+              "line_price": 450,
+              "original_line_price": 450,
+              "total_discount": 0,
+              "discounts": [],
+              "sku": "SCR22CO0004",
+              "grams": 5,
+              "vendor": "Scribbler",
+              "taxable": true,
+              "product_id": 7786580771041,
+              "product_has_only_default_variant": false,
+              "gift_card": false,
+              "final_price": 450,
+              "final_line_price": 450,
+              "url": "/products/cheesy-love-card?variant=43132470231265",
+              "featured_image": {
+                "aspect_ratio": 0.719,
+                "alt": "Cheesy Love Card",
+                "height": 1001,
+                "url": "https://cdn.shopify.com/s/files/1/0657/9637/4753/products/VA1335.jpg?v=1660231745",
+                "width": 720
+              },
+              "image": "https://cdn.shopify.com/s/files/1/0657/9637/4753/products/VA1335.jpg?v=1660231745",
+              "handle": "cheesy-love-card",
+              "requires_shipping": true,
+              "product_type": "Anniversary Cards",
+              "product_title": "Cheesy Love Card",
+              "product_description": "\nNot to sound cheesy, but you guys are really gouda together! Make your partner melt and show them you brie-long together with this Sribbler Valentine's Anniversary card.\n",
+              "variant_title": "Large",
+              "variant_options": [
+                "Large"
+              ],
+              "options_with_values": [
+                {
+                  "name": "Size",
+                  "value": "Large"
+                }
+              ],
+              "line_level_discount_allocations": [],
+              "line_level_total_discount": 0
+            }
+          ],
+          "isLoggedIn": true,
+          "addresses": [
+            {
+              "id": 7982227128545,
+              "customer_id": 6424325226721,
+              "first_name": "Pawel",
+              "last_name": "Cich",
+              "company": "",
+              "address1": "7 Lealholm Road",
+              "address2": "7",
+              "city": "Newcastle upon Tyne",
+              "province": "England",
+              "country": "United Kingdom",
+              "zip": "NE7 7NN",
+              "phone": "",
+              "name": "Pawel Cich",
+              "province_code": "ENG",
+              "country_code": "GB",
+              "country_name": "United Kingdom",
+              "default": false
+            },
+            {
+              "id": 8099624386785,
+              "customer_id": 6424325226721,
+              "first_name": "Pawel",
+              "last_name": "Cich",
+              "company": "Lion Heart",
+              "address1": "Wegrzce 2A",
+              "address2": "ul. A5",
+              "city": "Wegrzce",
+              "province": null,
+              "country": "Poland",
+              "zip": "32-086",
+              "phone": "797860850",
+              "name": "Pawel Cich",
+              "province_code": null,
+              "country_code": "PL",
+              "country_name": "Poland",
+              "default": true
+            },
+            {
+              "id": 8140103614689,
+              "customer_id": 6424325226721,
+              "first_name": "Pawel",
+              "last_name": "Cich",
+              "company": "Lion Heart",
+              "address1": "Wegrzce 5A",
+              "address2": "ul. A5",
+              "city": "Wegrzce",
+              "province": null,
+              "country": "Poland",
+              "zip": "32-086",
+              "phone": "797860850",
+              "name": "Pawel Cich",
+              "province_code": null,
+              "country_code": "PL",
+              "country_name": "Poland",
+              "default": false
+            },
+            {
+              "id": 8140103942369,
+              "customer_id": 6424325226721,
+              "first_name": "Pawel",
+              "last_name": "Cich",
+              "company": "Lion Heart",
+              "address1": "Wegrzce 12A",
+              "address2": "ul. A5",
+              "city": "Wegrzce",
+              "province": null,
+              "country": "Poland",
+              "zip": "32-086",
+              "phone": "797860850",
+              "name": "Pawel Cich",
+              "province_code": null,
+              "country_code": "PL",
+              "country_name": "Poland",
+              "default": false
+            }
+          ],
+          "login_url": "/account/login",
+          "cart_add_url": "/cart/add",
+          "cart_change_url": "/cart/change",
+          "cart_update_url": "/cart/update",
+          "cart_url": "/cart",
+          "cart_drawer_collection": []
+        })
+      }, false);
+    </script>
+
+    <button style="position:absolute; top: 0; left:0;" onclick="window.eventBus.publish('OPEN_CART', {})">open cart</button>
+    <button style="position:absolute; top: 25px; left:0;"onclick="window.eventBus.publish('CLOSE_CART', {})">close cart</button> -->
+</body>
+
+</html>

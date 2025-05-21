@@ -1,0 +1,15 @@
+.prepay-balance-wrapper {
+    border-top: 1px solid #CBD81D;
+    padding-top: calc(10px * var(--zoom-factor));
+    width: 100%;
+}
+
+.prepay-balance-title {
+    font-size: calc(20px * var(--zoom-factor));
+    font-weight: bold;
+}
+
+.prepay-balance-amount {
+    font-size: calc(36px * var(--zoom-factor));
+    color: #CBD81D;
+}

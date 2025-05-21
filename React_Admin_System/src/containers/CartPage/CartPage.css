@@ -1,0 +1,16 @@
+.cart-page {
+    margin: 20px 10%;
+}
+
+@media screen and (min-width: 750px) and (max-width: 989px) {
+    .cart-page {
+        margin: 20px 10%;
+        min-height: calc(100vh - 350px);
+    }
+}
+
+@media screen and (max-width: 749px) {
+    .cart-page {
+        margin: 10px 10px;
+    }
+}

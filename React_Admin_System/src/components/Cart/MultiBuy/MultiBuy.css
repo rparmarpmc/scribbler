@@ -1,0 +1,198 @@
+.multibuy-wrapper {
+    display: grid;
+    grid-template-columns: repeat(14, 1fr);
+    gap: 30px;
+    padding: 10px;
+    border-bottom: 1px solid #CBD81D;
+    background-color: #FAFBE8;
+    margin-bottom: 20px;
+}
+
+.multibuy-add-card-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(30px * var(--zoom-factor));
+    width: calc(30px * var(--zoom-factor));
+    background-color: #CBD81D;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.multibuy-add-card-button:hover svg path {
+    fill: black;
+    stroke: black;
+}
+
+.multibuy-grid-card-1,
+.multibuy-grid-card-2,
+.multibuy-grid-card-3 {
+    grid-column: span 2 / span 2;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.multibuy-grid-card-1:not(:has(img)),
+.multibuy-grid-card-2:not(:has(img)),
+.multibuy-grid-card-3:not(:has(img)) {
+    border: 1px solid #CBD81D;
+}
+
+.multibuy-grid-card-1 img,
+.multibuy-grid-card-2 img,
+.multibuy-grid-card-3 img,
+.multibuy-grid-card-4 img {
+    width: 100%;
+    display: block;
+}
+
+.multibuy-grid-equal-sign {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    grid-column-start: 7;
+    font-size: calc(60px * var(--zoom-factor));
+    line-height: 100%;
+    color: #CBD81D;
+}
+
+.multibuy-grid-card-4 {
+    grid-column: span 2 / span 2;
+    grid-column-start: 8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    line-height: 100%;
+}
+
+.multibuy-grid-card-4:not(:has(img)) {
+    border: 1px solid #CBD81D;
+}
+
+.free-card-text {
+    text-align: center;
+}
+
+.multibuy-card-promo-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    grid-column: span 5 / span 5;
+    grid-column-start: 10;
+    border: 1px dashed #CBD81D;
+    text-align: center;
+}
+
+.multibuy-card-promo-text-top {
+    font-size: calc(18px * var(--zoom-factor));
+}
+
+.multibuy-add-free-card-button {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    background-color: transparent;
+    font-size: calc(18px * var(--zoom-factor));
+    cursor: pointer;
+    color: black;
+    line-height: 100%;
+    gap: calc(10px * var(--zoom-factor));
+}
+
+.multibuy-add-free-card-button svg {
+    height: calc(30px * var(--zoom-factor));
+    width: calc(30px * var(--zoom-factor));
+    padding: 8px;
+    background-color: #CBD81D;
+    border: none;
+    border-radius: 50%;
+}
+
+.multibuy-add-free-card-button:hover svg path {
+    stroke: black;
+}
+
+.multibuy-card-promo-text-bottom {
+    font-weight: 900;
+    font-size: calc(36px * var(--zoom-factor));
+}
+
+@media screen and (min-width: 990px) and (max-width: 1460px) {
+    .multibuy-wrapper {
+        padding: 5px;
+        gap: 15px;
+    }
+
+    .multibuy-card-promo-text-top {
+        font-size: 14px;
+    }
+
+    .multibuy-card-promo-text-bottom {
+        font-size: 30px;
+    }
+}
+
+@media screen and (min-width: 750px) and (max-width: 1020px) {
+    .multibuy-wrapper {
+        padding: 5px;
+        gap: 5px;
+    }
+
+    .multibuy-card-promo-text-top {
+        font-size: 14px;
+    }
+
+    .multibuy-card-promo-text-bottom {
+        font-size: 22px;
+        line-height: 100%;
+    }
+}
+
+@media screen and (max-width: 749px) {
+    .multibuy-wrapper {
+        padding: 5px;
+        gap: 5px;
+    }
+
+    .multibuy-card-promo-text-top {
+        font-size: 14px;
+        line-height: 80%;
+    }
+
+    .multibuy-card-promo-text-bottom {
+        font-size: 18px;
+    }
+
+    .multibuy-add-card-button {
+        height: 25px;
+        width: 25px;
+        padding: 6px;
+    }
+
+    .multibuy-add-free-card-button {
+        font-size: 12px;
+        line-height: 100%;
+        color: black;
+    }
+
+    .multibuy-grid-card-4 {
+        font-size: 12px;
+        line-height: 100%;
+    }
+
+    .multibuy-add-free-card-button svg {
+        height: 25px;
+        width: 25px;
+        padding: 6px;
+    }
+
+    .multibuy-grid-equal-sign {
+        font-size: 40px;
+    }
+}

@@ -1,0 +1,237 @@
+.cart-page-register {
+    padding-top: calc(10px * var(--zoom-factor));
+    padding-bottom: calc(40px * var(--zoom-factor));
+}
+
+.cart-page-register-header {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.cart-page-register-message {
+    display: flex;
+    justify-content: center;
+    font-weight: bold;
+    font-size: calc(20px * var(--zoom-factor));
+    margin-top: calc(10px * var(--zoom-factor));
+}
+
+.cart-page-register-go-back-to-login {
+    position: absolute;
+    cursor: pointer;
+    height: calc(50px * var(--zoom-factor));
+    width: calc(50px * var(--zoom-factor));
+    border: 2px solid #CBD81D;
+    background-color: #CBD81D;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.register-error {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    color: red;
+}
+
+.cart-page-register-field {
+    position: relative;
+    width: 100%;
+    padding-top: calc(15px * var(--zoom-factor));
+}
+
+.cart-page-register-field-error {
+    position: absolute;
+    top: calc(15px * var(--zoom-factor));
+    right: calc(10px * var(--zoom-factor));
+    color: red;
+    font-size: calc(14px * var(--zoom-factor));
+    z-index: 10;
+}
+
+.cart-page-register-field input[type='text'],
+.cart-page-register-field input[type='password'] {
+    width: 100%;
+    height: 100%;
+    border: none;
+    outline: none;
+    border: none;
+    font-weight: bold;
+    font-size: calc(20px * var(--zoom-factor));
+    color: black;
+    background-color: #e3e3e3;
+    height: calc(50px * var(--zoom-factor));
+    border-radius: calc(25px * var(--zoom-factor));
+    text-align: center;
+}
+
+.cart-page-register-field input[type='text']::placeholder {
+    color: black;
+}
+
+.cart-page-register-field input[type='text']:focus-visible {
+    border: none;
+    box-shadow: none;
+}
+
+.cart-page-register-checkbox {
+    position: relative;
+    display: inline-flex;
+    height: calc(50px * var(--zoom-factor));
+    width: 100%;
+}
+
+.cart-page-register-checkbox label {
+    cursor: pointer;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+    outline: none;
+    border: none;
+    font-weight: bold;
+    font-size: calc(20px * var(--zoom-factor));
+    color: black;
+    background-color: #e3e3e3;
+    height: calc(50px * var(--zoom-factor));
+    border-radius: calc(25px * var(--zoom-factor));
+    text-align: center;
+}
+
+.cart-page-register-checkbox label:after {
+    border: 1px solid red;
+    border-top: none;
+    border-right: none;
+    content: "";
+    height: calc(6px * var(--zoom-factor));
+    left: calc(-80px * var(--zoom-factor));
+    opacity: 0;
+    position: absolute;
+    top: 0px;
+    transform: rotate(-45deg);
+    width: calc(12px * var(--zoom-factor));
+}
+
+.cart-page-register-checkbox input[type="checkbox"] {
+    visibility: hidden;
+    margin-right: 0;
+}
+
+.cart-page-register-checkbox input[type="checkbox"]:checked+label {
+    background-color: #CBD81D;
+    border: none;
+    height: 100%;
+    width: 100%;
+}
+
+.cart-page-register-checkbox input[type="checkbox"]:checked+label:after {
+    opacity: 1;
+}
+
+.cart-page-register-checkbox-label {
+    font-weight: bold;
+    font-size: calc(20px * var(--zoom-factor));
+    color: black;
+    display: flex;
+    margin-top: calc(7px * var(--zoom-factor));
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.cart-page-register-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    outline: none;
+    border: none;
+    font-weight: bold;
+    font-size: calc(20px * var(--zoom-factor));
+    color: black;
+    background-color: #CBD81D;
+    height: calc(50px * var(--zoom-factor));
+    border-radius: calc(25px * var(--zoom-factor));
+    text-align: center;
+    margin-top: calc(15px * var(--zoom-factor));
+}
+
+.cart-page-register-button:hover {
+    color: white;
+}
+
+.cart-page-register-button .api-loading-spinner {
+    display: none;
+}
+
+.cart-page-register-button.loading .api-loading-spinner {
+    display: flex;
+}
+
+.cart-page-register-button .api-loading-spinner {
+    margin-left: calc(110px * var(--zoom-factor));
+}
+
+@media screen and (max-width: 749px) {
+    .cart-page-register {
+        padding-bottom: 20px;
+    }
+
+    .cart-page-register-header {
+        height: 40px;
+    }
+
+    .cart-page-register-message {
+        font-size: 14px;
+        margin-top: 10px;
+    }
+
+    .cart-page-register-go-back-to-login {
+        height: 40px;
+        width: 40px;
+    }
+
+    .cart-page-register-field {
+        padding-top: 0;
+        margin-top: 8px;
+    }
+
+    .cart-page-register-field input[type='text'],
+    .cart-page-register-field input[type='password'] {
+        font-size: 14px;
+        height: 40px;
+    }
+
+    .cart-page-register-checkbox label {
+        height: 40px;
+    }
+
+    .cart-page-register-checkbox-label {
+        font-size: 14px;
+        margin-top: 0px;
+    }
+
+    .cart-page-register-checkbox {
+        height: 40px;
+    }
+
+    .cart-page-register-button {
+        font-size: 14px;
+        height: 40px;
+        margin-top: 8px;
+    }
+
+    .cart-page-register-field-error {
+        top: 0;
+        font-size: 12px;
+    }
+}

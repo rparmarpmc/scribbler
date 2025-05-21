@@ -1,0 +1,21 @@
+.address-alphabet-group {
+    text-align: left;
+}
+
+.address-alphabet-group-title {
+    color: black;
+    font-size: calc(15px * var(--zoom-factor));
+    font-weight: 700;
+    padding-left: calc(5px * var(--zoom-factor));
+}
+
+.address-alphabet-group-children-wrapper {
+    padding: calc(8px * var(--zoom-factor)) calc(5px * var(--zoom-factor)) calc(8px * var(--zoom-factor)) calc(5px * var(--zoom-factor));
+}
+
+@media screen and (max-width: 749px) {
+    .address-alphabet-group-title {
+        font-size: 14px;
+        padding-left: 0;
+    }
+}

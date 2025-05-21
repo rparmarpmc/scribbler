@@ -1,0 +1,147 @@
+.cart-gift-modal-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: white;
+    border-radius: 14px;
+    box-shadow: 0px 2px 4px 0px rgba(191, 191, 191, 1);
+    overflow: hidden;
+    height: fit-content;
+}
+
+.cart-gift-modal-item-image-wrapper {
+    position: relative;
+}
+
+.cart-gift-modal-item-image {
+    width: 100%;
+    aspect-ratio: 1/1;
+    display: block;
+}
+
+.cart-gift-modal-item-price {
+    position: absolute;
+    right: 5px;
+    bottom: 0;
+    min-width: 50px;
+    height: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 3px;
+    color: white;
+    -webkit-border-top-left-radius: 25px;
+    -webkit-border-top-right-radius: 25px;
+    -moz-border-radius-topleft: 25px;
+    -moz-border-radius-topright: 25px;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    background-color: #CBD81D;
+}
+
+.cart-gift-modal-item-old {
+    color: #000;
+    font-size: 12px;
+    text-decoration: line-through;
+}
+
+.cart-gift-modal-item-actual {
+    color: #000;
+    font-size: 15px;
+}
+
+.cart-gift-modal-item-actual.promo {
+    color: red;
+}
+
+.cart-gift-modal-item-title {
+    width: 100%;
+    text-align: center;
+    padding: 0 5px 0 5px;
+}
+
+.cart-gift-modal-item-title a {
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: bold;
+    color: #aeaeae;
+    width: 100%;
+    display: block;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    line-height: 20px;
+}
+
+.cart-gift-modal-item-vendor {
+    width: 100%;
+    text-align: center;
+    padding: 0 5px;
+}
+
+.cart-gift-modal-item-vendor a {
+    text-decoration: none;
+    font-size: 12px;
+    color: #aeaeae;
+    width: 100%;
+    display: block;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    line-height: 10px;
+}
+
+.cart-gift-modal-item-option {
+    color: #aeaeae;
+    font-size: 13px;
+    text-align: center;
+    letter-spacing: 0.1rem;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.gift-product-variants-selector {
+    width: 100%;
+    padding: 0;
+    color: #aeaeae;
+    font-size: 13px;
+    letter-spacing: 0.1rem;
+    text-align: center;
+    text-align-last: center;
+    border: 0;
+    height: 30px;
+    color: #aeaeae;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    background-color: white;
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" id="right" x="0" y="0" version="1.1" viewBox="0 0 29 29"><path fill="none" stroke="%23000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2" d="m11.5 8.5 6 6-6 6" style="fill:none;stroke:%23000;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10"></path></svg>');
+    background-repeat: no-repeat;
+    background-position: right .5em top 50%;
+    background-size: 25px auto;
+}
+
+.gift-product-variants-selector:focus {
+    outline: none;
+}
+
+
+
+.cart-gift-modal-item-add-button {
+    height: 40px;
+    color: black;
+    font-size: 18px;
+    background-color: #CBD81D;
+    cursor: pointer;
+    font-family: BrandonRegular;
+    border: none;
+}
+
+.cart-gift-modal-item-add-button:hover {
+    color: white;
+}

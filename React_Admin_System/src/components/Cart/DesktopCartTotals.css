@@ -1,0 +1,11 @@
+.desktop-cart-page-totals {
+    width: 33.33%;
+    padding-top: 10px;
+    padding-left: 25px;
+    padding-right: 25px;
+    -webkit-box-shadow: 1px 0px 4px 4px rgba(235, 235, 235, 1);
+    -moz-box-shadow: 1px 0px 4px 4px rgba(235, 235, 235, 1);
+    box-shadow: 1px 0px 4px 4px rgba(235, 235, 235, 1);
+    border-radius: 14px;
+    height: fit-content;
+}

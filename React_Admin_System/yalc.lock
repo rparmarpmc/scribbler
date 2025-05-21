@@ -1,0 +1,10 @@
+{
+  "version": "v1",
+  "packages": {
+    "scribbler-components-library": {
+      "signature": "36d1708e271bb23c9faeaeba137a772d",
+      "file": true,
+      "replaced": "git+ssh:git@github.com:Scribbler-Holdings-Limited/react_components_library.git"
+    }
+  }
+}
