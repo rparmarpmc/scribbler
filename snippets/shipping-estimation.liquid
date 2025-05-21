@@ -1,0 +1,106 @@
+<div id="shipping-estimation"></div>
+
+<script>
+    new Promise(async function(resolve, reject){
+        while (!loadStatus.dom) {
+            consoleMsg("waiting for enable global gift", null, null);
+            await delay(500);
+        }
+
+        // coverts and format currency in full number 1420 not 14,20
+        const convertFormatShippingCurrency = (price) => {
+            try{
+                return Intl.NumberFormat(window.Shopify.currency.countryCode, { style: 'currency', currency: window.Shopify.currency.active }).format((price * window.Shopify.currency.rate) / 100)
+            }catch(err){
+                consoleMsg(null, "convertFormatShippingCurrency", err);
+            } 
+        }
+
+        const getShipping = () => {
+            {%- if type == 'Cards' -%}
+            const option = document.querySelector('input[name="Size"]:checked') ? document.querySelector('input[name="Size"]:checked').value  : 'Standard';
+            const requestData = { product_type: "Card", product_size: option.includes("Standard") ? "Standard" : "Large"};
+            {%- endif -%}
+
+            {%- if type == 'Gifts' -%}
+            const requestData = { product_type: "Gifts", product_size:  "Standard"};
+            {%- endif -%}
+
+            {%- if type == 'Products' -%}
+            const requestData = { product_type: "Gifts", product_size: "Standard"};
+            {%- endif -%}
+
+            {%- if type == 'Alcohol' -%}
+            const requestData = { product_type: "Alcohol", product_size: "Standard" };
+            {%- endif -%}
+
+            fetch(`{{ settings.endpoint }}/v1/shoppify/private/cart/shipping_rate_info`,  { method: 'POST', headers: { 'Content-Type': 'application/json', Accept: `application/json` }, body: JSON.stringify(requestData) })
+                .then(response => {
+                    if (!response.ok) {
+                        var error = new Error(response.status)
+                        throw error
+                    }
+                    return response.json()
+                })
+                .then(data => {
+                    let estimationHTML = '';
+
+                    if (data.length > 0) {
+                        const ukShipping = []
+                        const euShipping = []
+                        const rowShipping = []
+
+                        data.map(shipping => {
+                            if(shipping.delivery_id === 1 || shipping.delivery_id === 2 || shipping.delivery_id === 3) {
+                                ukShipping.push(shipping)
+                            }
+                            if (shipping.delivery_id === 4 ) {
+                                euShipping.push(shipping)
+                            }
+                            if (shipping.delivery_id === 5 ) {
+                                rowShipping.push(shipping)
+                            }
+                        })
+
+                        if(ukShipping.length > 0) {
+                            estimationHTML += '<div class="shipping_zone">UK Shipping</div>';
+
+                            ukShipping.map( shipping => {
+                                estimationHTML += '<div class="shipping_rate"><div class="shipping_rate_name">'+ shipping.DeliveryName +'</div><div class="shipping_rate_price">' + convertFormatShippingCurrency(shipping.initial_price * 100) + '</div></div>';
+                            })
+                        }
+
+                        if (euShipping.length > 0) {
+                            estimationHTML += '<div class="shipping_zone">EU Shipping</div>';
+
+                            euShipping.map(shipping => {
+                                estimationHTML += '<div class="shipping_rate"><div class="shipping_rate_name">' + shipping.DeliveryName + '</div><div class="shipping_rate_price">' + convertFormatShippingCurrency(shipping.initial_price * 100) + '</div></div>';
+                            })
+                        }
+
+                        if (rowShipping.length > 0) {
+                            estimationHTML += '<div class="shipping_zone">Rest of World</div>';
+
+                            rowShipping.map(shipping => {
+                                estimationHTML += '<div class="shipping_rate"><div class="shipping_rate_name">' + shipping.DeliveryName + '</div><div class="shipping_rate_price">' + convertFormatShippingCurrency(shipping.initial_price * 100) + '</div></div>';
+                            })
+                        }
+
+                    }
+
+                    document.querySelector("#shipping-estimation").innerHTML = estimationHTML;
+                })
+                .catch(error => {
+                    throw error
+                })
+        }
+
+        getShipping()
+
+        document.querySelectorAll("input[name='Size']").forEach((input) => {
+            input.addEventListener('change', getShipping);
+        });
+
+        resolve(true);
+    });
+</script>

@@ -1,0 +1,29 @@
+#shopify-section-announcement-bar {
+    height: 46px;
+    width: 100%;
+    display: flex;
+    background-color: black;
+}
+
+.announcement-bar {
+    height: 46px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.announcement-bar-link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    white-space: nowrap;
+}
+
+.announcement-bar-link svg {
+    margin-left: 20px;
+    width: 24px;
+}

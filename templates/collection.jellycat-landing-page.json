@@ -1,0 +1,251 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "dc6d40f4-c837-4d4a-8b7e-747bf8a691d5": {
+      "type": "collection-meta-info-slider",
+      "settings": {
+        "padding_bottom": 12,
+        "fading_interval": 3
+      }
+    },
+    "817ba0d4-43c4-4ef0-80cb-e4ccd14e1a22": {
+      "type": "collection-meta-slider",
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "e77e9799-5af6-4dba-9d8d-f3c6eaf17c8d": {
+      "type": "collection-meta-circles",
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "3a17b483-625c-4324-a796-080eed18ee83": {
+      "type": "collection-meta-double-slider",
+      "disabled": true,
+      "settings": {
+        "sort_order": "best-selling",
+        "products_to_show_slider": 22,
+        "columns_desktop": 5,
+        "columns_small_desktop": 4,
+        "columns_tablet": 3,
+        "columns_mobile": 2,
+        "padding_top": 20,
+        "padding_bottom": 20
+      }
+    },
+    "4dda3ecc-8852-496c-8de0-d2055ddb86f2": {
+      "type": "collection-meta-single-slider-2",
+      "disabled": true,
+      "settings": {
+        "sort_order": "best-selling",
+        "products_to_show_slider": 22,
+        "columns_desktop": 5,
+        "columns_small_desktop": 4,
+        "columns_tablet": 3,
+        "columns_mobile": 2,
+        "padding_top": 32,
+        "padding_bottom": 32
+      }
+    },
+    "d83b8bd1-8ef0-48c2-a89f-38023416b367": {
+      "type": "collection-meta-circles-2",
+      "disabled": true,
+      "settings": {
+        "padding_top": 32,
+        "padding_bottom": 32
+      }
+    },
+    "ff9452fc-e26d-46de-834c-f1621e9077cc": {
+      "type": "collection-meta-quadruple-slider",
+      "disabled": true,
+      "settings": {
+        "sort_order": "best-selling",
+        "products_to_show_slider": 22,
+        "columns_desktop": 3,
+        "columns_small_desktop": 2,
+        "columns_tablet": 2,
+        "columns_mobile": 2,
+        "padding_top": 32,
+        "padding_bottom": 32
+      }
+    },
+    "f4906bf4-44c2-4db4-b2e1-179f53d62d8a": {
+      "type": "collection-meta-single-slider-4",
+      "disabled": true,
+      "settings": {
+        "sort_order": "best-selling",
+        "products_to_show_slider": 22,
+        "columns_desktop": 5,
+        "columns_small_desktop": 4,
+        "columns_tablet": 3,
+        "columns_mobile": 2,
+        "padding_top": 20,
+        "padding_bottom": 20
+      }
+    },
+    "679d6148-8d1f-419c-aaab-3e3619bc37f3": {
+      "type": "collection-meta-single-slider-5",
+      "disabled": true,
+      "settings": {
+        "sort_order": "best-selling",
+        "products_to_show_slider": 22,
+        "columns_desktop": 5,
+        "columns_small_desktop": 4,
+        "columns_tablet": 3,
+        "columns_mobile": 2,
+        "padding_top": 20,
+        "padding_bottom": 20
+      }
+    },
+    "7e5e4a92-bc01-49c3-898b-0887888fb113": {
+      "type": "collection-meta-gift-slider",
+      "settings": {
+        "sort_order": "created-descending",
+        "title": "Gift Collection slider 1",
+        "products_to_show_slider": 22,
+        "columns_desktop": 6,
+        "columns_small_desktop": 5,
+        "columns_tablet": 5,
+        "columns_mobile": 2,
+        "padding_top": 0,
+        "padding_bottom": 24
+      }
+    },
+    "93f93d31-9568-4bbb-9927-0a18e5206f6e": {
+      "type": "collection-meta-gift-slider-2",
+      "settings": {
+        "sort_order": "best-selling",
+        "title": "Gift Collection slider 2",
+        "products_to_show_slider": 22,
+        "columns_desktop": 6,
+        "columns_small_desktop": 5,
+        "columns_tablet": 5,
+        "columns_mobile": 2,
+        "padding_top": 0,
+        "padding_bottom": 24
+      }
+    },
+    "e4ec6e71-4584-48d3-8251-e85ff941ddfa": {
+      "type": "collection-meta-gift-slider-3",
+      "settings": {
+        "sort_order": "best-selling",
+        "title": "Gift Collection slider 3",
+        "products_to_show_slider": 22,
+        "columns_desktop": 6,
+        "columns_small_desktop": 5,
+        "columns_tablet": 5,
+        "columns_mobile": 2,
+        "padding_top": 0,
+        "padding_bottom": 24
+      }
+    },
+    "4e0a63e3-1e9b-4e50-a5ff-2bc8b0f20ca5": {
+      "type": "collection-meta-single-slider",
+      "settings": {
+        "sort_order": "best-selling",
+        "products_to_show_slider": 22,
+        "columns_desktop": 5,
+        "columns_small_desktop": 4,
+        "columns_tablet": 3,
+        "columns_mobile": 2,
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "48a69650-c5f3-4b3f-910d-db6fbbd046c1": {
+      "type": "collection-meta-single-slider-3",
+      "disabled": true,
+      "settings": {
+        "sort_order": "best-selling",
+        "products_to_show_slider": 22,
+        "columns_desktop": 5,
+        "columns_small_desktop": 4,
+        "columns_tablet": 3,
+        "columns_mobile": 2,
+        "padding_top": 32,
+        "padding_bottom": 32
+      }
+    },
+    "product-grid": {
+      "type": "main-collection-product-grid",
+      "disabled": true,
+      "settings": {
+        "product_layout": "card",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "05692ecd-0d59-4a7d-9682-8da77e2c8ee6": {
+      "type": "featured-blog",
+      "settings": {
+        "heading": "From the Blog",
+        "blog": "news",
+        "post_limit": 2,
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "493effdb-f371-44c7-84da-f8f3f37b7be2": {
+      "type": "newsletter",
+      "blocks": {
+        "template--16827013333217__493effdb-f371-44c7-84da-f8f3f37b7be2-heading-1": {
+          "type": "heading",
+          "disabled": true,
+          "settings": {
+            "heading": "Subscribe to our emails",
+            "heading_size": "h1"
+          }
+        },
+        "template--16827013333217__493effdb-f371-44c7-84da-f8f3f37b7be2-paragraph-1": {
+          "type": "paragraph",
+          "settings": {
+            "text": "<p>Join over 800,000 card lovers and subscribe to Scribbler for the latest on designers, deals and snazzy new products!</p>"
+          }
+        },
+        "template--16827013333217__493effdb-f371-44c7-84da-f8f3f37b7be2-email_form-1": {
+          "type": "email_form",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "template--16827013333217__493effdb-f371-44c7-84da-f8f3f37b7be2-heading-1",
+        "template--16827013333217__493effdb-f371-44c7-84da-f8f3f37b7be2-paragraph-1",
+        "template--16827013333217__493effdb-f371-44c7-84da-f8f3f37b7be2-email_form-1"
+      ],
+      "settings": {
+        "padding_top": 36,
+        "padding_bottom": 0
+      }
+    }
+  },
+  "order": [
+    "dc6d40f4-c837-4d4a-8b7e-747bf8a691d5",
+    "817ba0d4-43c4-4ef0-80cb-e4ccd14e1a22",
+    "e77e9799-5af6-4dba-9d8d-f3c6eaf17c8d",
+    "3a17b483-625c-4324-a796-080eed18ee83",
+    "4dda3ecc-8852-496c-8de0-d2055ddb86f2",
+    "d83b8bd1-8ef0-48c2-a89f-38023416b367",
+    "ff9452fc-e26d-46de-834c-f1621e9077cc",
+    "f4906bf4-44c2-4db4-b2e1-179f53d62d8a",
+    "679d6148-8d1f-419c-aaab-3e3619bc37f3",
+    "7e5e4a92-bc01-49c3-898b-0887888fb113",
+    "93f93d31-9568-4bbb-9927-0a18e5206f6e",
+    "e4ec6e71-4584-48d3-8251-e85ff941ddfa",
+    "4e0a63e3-1e9b-4e50-a5ff-2bc8b0f20ca5",
+    "48a69650-c5f3-4b3f-910d-db6fbbd046c1",
+    "product-grid",
+    "05692ecd-0d59-4a7d-9682-8da77e2c8ee6",
+    "493effdb-f371-44c7-84da-f8f3f37b7be2"
+  ]
+}

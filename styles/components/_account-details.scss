@@ -1,0 +1,350 @@
+.edit-customer-form {
+  width: 100%;
+}
+
+.edit-account-header {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 30px;
+}
+
+.edit-account-header-left {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+}
+
+.edit-account-header-title {
+  display: none;
+  font-size: 30px;
+  padding-left: 5px;
+}
+
+.edit-account-header-subtitle {
+  display: flex;
+  color: #d4d4d4;
+  font-size: 20px;
+  font-style: italic;
+}
+
+.edit-account-header-right {
+  flex: 1;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+}
+
+.edit-account-header-right .edit-account-save-button {
+  -webkit-border-radius: 14px;
+  -moz-border-radius: 14px;
+  border-radius: 14px;
+  background-color: #53b7c0;
+  cursor: pointer;
+  color: #fff;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 30px;
+  padding-left: 20px;
+  padding-right: 20px;
+  border: none;
+}
+
+.edit-account-header-right .edit-account-save-button:hover {
+  color: black;
+}
+
+.edit-account-tab-wrapper {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.edit-account-column {
+  flex: 1;
+  background-color: #f6f6f6;
+  border-radius: 20px;
+  padding: 40px;
+}
+
+.edit-account-column:nth-child(1) {
+  margin-right: 25px;
+}
+  
+.edit-account-column:nth-child(2) {
+  margin-left: 25px;
+  margin-right: 25px;
+}
+  
+.edit-account-column:nth-child(3) {
+  margin-left: 25px;
+}
+
+.edit-account-column-header {
+  font-size: 20px;
+}
+
+.edit-account-column p {
+  font-size: 18px;
+}
+
+.edit-account-default-address-notice {
+  color: #d4d4d4;
+  font-size: 20px;
+  font-style: italic;
+}
+
+/* edit-customer-field */
+.edit-customer-field {
+  position: relative;
+}
+
+.edit-customer-field-error {
+  font-size: 14px;
+  text-align: right;
+  color: red;
+  position: absolute;
+  right: 10px;
+}
+
+.edit-customer-field label {
+  display: block;
+  font-size: 18px;
+  line-height: 100%;
+  margin-top: 20px;
+  margin-bottom: 5px;
+}
+
+.edit-customer-field input[type=text],
+.edit-customer-field input[type=password] {
+  width: 100%;
+  border-radius: 14px;
+  height: 50px;
+  font-size: 18px;
+  border: none;
+  padding-left: 10px;
+}
+
+.edit-customer-field input:-webkit-autofill,
+.edit-customer-field input:-webkit-autofill:hover,
+.edit-customer-field input:-webkit-autofill:focus,
+.edit-customer-field input:-webkit-autofill:active,
+.edit-customer-field input:-webkit-autofill:first-line {
+  -webkit-box-shadow: 0 0 0 30px white inset !important;
+  -webkit-text-fill-color: #c1c1bf !important;
+  font-size: 22px;
+  line-height: inherit;
+  color: #c1c1bf;
+}
+
+.edit-customer-field input:focus-visible {
+  outline: none;
+  outline-offset: unset;
+  box-shadow: none;
+}
+
+.edit-customer-field input::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  position: absolute;
+  top: 5px;
+  color: #c1c1bf;
+}
+
+.edit-customer-field input:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  position: absolute;
+  top: 5px;
+  color: #c1c1bf;
+}
+
+.edit-customer-field input::-ms-input-placeholder {
+  /* Microsoft Edge */
+  position: absolute;
+  top: 5px;
+  color: #c1c1bf;
+}
+
+.edit-customer-field input[type=password]::-webkit-input-placeholder {
+  position: absolute;
+  top: 9px;
+  color: #c1c1bf;
+}
+
+.edit-customer-field input:-moz-placeholder {
+  /* Firefox 18- */
+  position: absolute;
+  top: 5px;
+  color: #c1c1bf;
+}
+
+.edit-customer-field input::-moz-placeholder {
+  /* Firefox 19+ */
+  position: absolute;
+  top: 5px;
+  color: #c1c1bf;
+}
+
+.edit-customer-field input[type=password]::-internal-input-suggested {
+  position: absolute;
+  top: 9px;
+  color: red;
+  font-size: 22px;
+}
+
+.marketing-signup {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.email-segments-notice {
+  font-size: 18px;
+  padding-left: 30px;
+}
+
+.marketing-checkbox-field {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.marketing-checkbox-field input[type=checkbox] {
+  display: none;
+}
+
+.marketing-checkbox-field input[type=checkbox]:checked+label {
+  background-color: #cbd81d;
+}
+
+.marketing-checkbox-field .round-label {
+  background-color: #fff;
+  border: 1px solid #888;
+  border-radius: 50%;
+  cursor: pointer;
+  height: 20px;
+  width: 20px;
+  display: inline-block;
+  margin-top: 4px;
+  margin-right: 10px;
+  vertical-align: top;
+}
+
+.marketing-checkbox-field .second-checkbox-label {
+  border: none;
+  width: auto;
+  color: black;
+  font-size: 18px;
+  display: inline-block;
+  width: calc(100% - 34px);
+  user-select: none;
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  -o-user-select: none;
+  text-wrap: wrap;
+}
+
+.marketing-exclusion {
+  display: flex;
+  flex-direction: row;
+  margin-top: 10px;
+}
+
+.marketing-exclusion-column {
+  width: 50%;
+  padding-left: 30px;
+}
+
+@media screen and (min-width: 990px) and (max-width: 1399px) {
+  .edit-account-tab-wrapper {
+    display: block;
+    white-space: nowrap;
+    font-size: 0;
+  }
+
+  .edit-account-column {
+    margin: 0;
+  }
+
+  .edit-account-column:nth-child(1) {
+    width: calc(50% - 25px);
+    margin-right: 25px;
+    height: 580px;
+    display: inline-block;
+    vertical-align: top;
+    margin-bottom: 50px;
+  }
+
+  .edit-account-column:nth-child(2) {
+    width: calc(50% - 25px);
+    margin-left: 25px;
+    margin-right: 0;
+    margin-bottom: 50px;
+    height: 580px;
+    display: inline-block;
+  }
+
+  .edit-account-column:nth-child(3) {
+    width: 100%;
+    margin-left: 0;
+  }
+}
+
+@media screen and (min-width: 750px) and (max-width: 989px) {
+  .edit-account-tab-wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .edit-account-column {
+    margin: 0;
+  }
+
+  .edit-account-column:nth-child(1) {
+    width: 100%;
+    margin-bottom: 50px;
+    margin-right: 0;
+  }
+
+  .edit-account-column:nth-child(2) {
+    width: 100%;
+    margin-bottom: 50px;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .edit-account-column:nth-child(3) {
+    margin-left: 0;
+  }
+}
+
+@media screen and (max-width: 749px) {
+  .edit-account-column:nth-child(1) {
+    margin-left: 0;
+    margin-right: 0;
+    margin-bottom: 50px;
+  }
+
+  .edit-account-column:nth-child(2) {
+    margin-left: 0;
+    margin-right: 0;
+    margin-bottom: 50px;
+  }
+
+  .edit-account-column:nth-child(3) {
+    margin-left: 0;
+    margin-right: 0;
+    margin-bottom: 50px;
+  }
+  
+  .edit-account-header-right {
+    padding: 0 10px 10px 0;
+  }
+  
+  .edit-account-tab-wrapper {
+    flex-direction: column;
+  }    
+}

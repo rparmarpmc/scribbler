@@ -1,0 +1,87 @@
+<style type="text/css">
+.template-404 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 32px;  
+}
+ .template-404 .title + * {
+    margin-top: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+   .image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+  }
+
+  .title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-left: 8%;
+    padding-right: 8%;
+    text-align: center;
+  }
+
+  .button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #CBD81D;
+    border-radius: 25px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: 30%;
+    font-family: "BrandonRegular";
+    font-weight: 700;
+    margin-right: 25%;
+    margin-left: 25%;
+    text-decoration: none;
+    color: black;
+  }
+  
+  @media screen and (min-width: 551px) and (max-width: 1024px) {
+    .template-404 .title + * {
+      margin-top: 2rem;
+      
+    }
+    .image {
+    width: 75%;
+  }
+  }
+
+  @media screen and (max-width: 550px) {
+    .title {
+      font-size: medium;
+    }
+  
+    .button {
+      width: 75%;
+    }
+    .image {
+    width: 100%;
+    padding-bottom: 20px;
+  }
+
+}
+</style>
+
+<div class="template-404 page-width page-margin center">
+  <h1 class="title">
+    Ahh it's Colin the ghost! 
+  </h1>
+  <img class="image"src="https://cdn.shopify.com/s/files/1/0657/9637/4753/files/Icons_404_Error_1.png?v=1723727421" alt="{{ 'templates.404.title' | t }}"></img>
+  <h2 class="title">
+    Whoops! We looked EVERYWHERE but can’t seem to find the page you’re looking for.<br><br> 
+    Don’t worry, we’ll have you back on track in a jiffy…
+  </h2>
+  <a class="button" href="https://www.scribbler.com">
+    Continue Shopping
+  </a>
+</div>

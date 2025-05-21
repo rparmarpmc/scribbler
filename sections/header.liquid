@@ -1,0 +1,394 @@
+<script defer>
+    new Promise(async function(resolve, reject) {
+        while (!loadStatus.dom) {
+            consoleMsg("waiting for enable dom header 1", null, null);
+            await delay(500);
+        } 
+
+        {% comment %} loadJS("cart-drawer", "{{ 'cart-drawer.js' | asset_url }}", "cart_drawer_loaded", true); {% endcomment %}
+        loadJS("details-disclosure", "{{ 'details-disclosure.js' | asset_url }}", "details_disclosure_loaded", true);
+        loadJS("details-modal", "{{ 'details-modal.js' | asset_url }}", "details_modal_loaded", true);
+        loadJS("predictive-search", "{{ 'predictive-search.js' | asset_url }}", "predictive_search_loaded", true, false);
+        loadJS("menu-scroll", "{{ 'menu-scroll.js' | asset_url }}", "menu_scroll_loaded", true);
+
+        resolve(true);
+    });
+</script>
+
+<sticky-header class="header-wrapper">
+  <header class="header">
+    <div class="menu-logo-wrapper">
+      <div class="header-logo">
+        <h1 class="header-logo-tag">
+          <a href="{{ routes.root_url }}" class="header-logo-link">
+            <img class="header-logo-img" src="{{ 'scribbler-logo.svg' | asset_url }}" decoding="async"
+                srcset="{{ 'scribbler-logo.svg' | image_url: width: 95 }} 750w, {{ 'scribbler-logo.svg' | image_url: width: 230 }} 2000w"
+                sizes="(max-width: 749px) 95px, (max-width: 750px) 230px"
+                alt="{{section.settings.logo.alt | default: shop.name | escape }}" width="252" height="57" loading="eager" />
+          </a>
+        </h1>
+      </div>
+    </div>
+    <div class="header-search">
+      <predictive-search>
+        <form action="/" method="get" role="search" class="search">
+          <div class="search_field">
+            <input class="search_field__input" id="Search-In-Modal" type="search" name="q" value=""
+              placeholder="{{ 'general.search.search' | t }}" role="combobox" aria-expanded="false"
+              aria-owns="predictive-search-results-list" aria-controls="predictive-search-results-list"
+              aria-haspopup="listbox" aria-autocomplete="list" autocorrect="off" autocomplete="off" autocapitalize="off"
+              spellcheck="false">
+              <button class="search-submit" name="Search" type="submit" aria-label="Search submit">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 163.96 143.72">
+                  <circle fill="none" stroke="#666" stroke-linecap="round" stroke-linejoin="round" stroke-width="5.87px" cx="65.83" cy="65.16" r="57.62"/>
+                  <line fill="none" stroke="#666" stroke-linecap="round" stroke-linejoin="round" stroke-width="5.87px" x1="157.04" y1="136.79" x2="109.92" y2="102.22"/>
+                </svg>
+              </button>
+          </div>
+        </form>
+      </predictive-search>
+    </div>   
+    {% render 'header-icon-menu' %}
+  </header>
+  {%- if section.settings.menu_header.links -%}  
+    <menu-scroll class="menu-scroll">
+      <div class="header-menu">
+        <ul class="header-menu-ul">
+          {%- for link in section.settings.menu_header.links -%}
+            <li  class="header-menu-li">
+              <a href="{{ link.url }}" class="{% if link.active %} footer-block-menu-active{% endif %}" onclick="return false">
+                {{ link.title }}
+              </a>
+              {%- if link.links -%}
+                <div class="dropdown-container">
+                  <div class="dropdown-wrapper">
+                  <ul class="dropdown-menu">
+                    {%- for child_link in link.links -%}
+                      <li>
+                        <a href="{{ child_link.url }}" class="{% if child_link.active %} footer-block-menu-active{% endif %}" onclick="return false">
+                          {{ child_link.title }}
+                        </a>
+                        {%- if child_link.links -%}
+                          <ul class="dropdown-submenu">
+                            {%- for grandchild_link in child_link.links -%}
+                              <li>
+                                <a href="{{ grandchild_link.url }}" class="{% if grandchild_link.active %} footer-block-menu-active{% endif %}" onclick="return false">
+                                  {{ grandchild_link.title }}
+                                </a>
+                              </li>
+                            {%- endfor -%}
+                          </ul>
+                        {%- endif -%}
+                      </li>
+                    {%- endfor -%}
+                  </ul>
+                </div>
+              </div>
+            {%- endif -%}
+          </li>
+          {%- endfor -%}
+        </ul>
+      </div>            
+    </menu-scroll>
+  {%- endif -%}
+</sticky-header>
+
+<script defer>
+  let menu_cards = [
+    {%- for link in section.settings.menu_cards.links -%}
+    {
+      active: {{ link.active }},
+      handle: '{{ link.handle | escape }}',
+      child_active: {{ link.child_active }},
+      current: {{ link.current }},
+      child_current: {{ link.child_current }},
+      levels: {{ link.levels }},
+      title: "{{ link.title }}",
+      url: '{{ link.url }}',
+      {%- if link.links != blank -%}
+        links: [
+          {%- for childlink in link.links -%}
+            {
+              active: {{ childlink.active }},
+              handle: '{{ childlink.handle | escape }}',
+              child_active: {{ childlink.child_active }},
+              current: {{ childlink.current }},
+              child_current: {{ childlink.child_current }},
+              levels: {{ childlink.levels }},
+              title: "{{ childlink.title }}",
+              url: '{{ childlink.url }}',
+              {%- if childlink.links != blank -%}
+                links: [
+                  {%- for grandchildlink in childlink.links -%}
+                    {
+                      active: {{ grandchildlink.active }},
+                      handle: '{{ grandchildlink.handle | escape }}',
+                      child_active: {{ grandchildlink.child_active }},
+                      current: {{ grandchildlink.current }},
+                      child_current: {{ grandchildlink.child_current }},
+                      levels: {{ grandchildlink.levels }},
+                      title: "{{ grandchildlink.title }}",
+                      url: '{{ grandchildlink.url }}'
+                    },
+                  {%- endfor -%}
+                ]
+              {%- endif -%}
+            },
+          {%- endfor -%}
+        ]
+      {%- endif -%}
+    },
+    {%- endfor -%}
+  ]
+ 
+  let menu_gifts = [
+    {%- for link in section.settings.menu_gifts.links -%}
+    {
+      active: {{ link.active }},
+      handle: '{{ link.handle | escape }}',
+      child_active: {{ link.child_active }},
+      current: {{ link.current }},
+      child_current: {{ link.child_current }},
+      levels: {{ link.levels }},
+      title: "{{ link.title}}",
+      url: '{{ link.url }}',
+      {%- if link.links != blank -%}
+        links: [
+          {%- for childlink in link.links -%}
+            {
+              active: {{ childlink.active }},
+              handle: '{{ childlink.handle | escape }}',
+              child_active: {{ childlink.child_active }},
+              current: {{ childlink.current }},
+              child_current: {{ childlink.child_current }},
+              levels: {{ childlink.levels }},
+              title: "{{ childlink.title }}",
+              url: '{{ childlink.url }}',
+              {%- if childlink.links != blank -%}
+                links: [
+                  {%- for grandchildlink in childlink.links -%}
+                  {
+                    active: {{ grandchildlink.active }},
+                    handle: '{{ grandchildlink.handle | escape }}',
+                    child_active: {{ grandchildlink.child_active }},
+                    current: {{ grandchildlink.current }},
+                    child_current: {{ grandchildlink.child_current }},
+                    levels: {{ grandchildlink.levels }},
+                    title: "{{ grandchildlink.title  }}",
+                    url: '{{ grandchildlink.url }}'
+                  },
+                  {%- endfor -%}
+                ]
+              {%- endif -%}
+            },
+          {%- endfor -%}
+        ]
+      {%- endif -%}
+    },
+    {%- endfor -%}
+  ]
+
+ new Promise(async function(resolve, reject) {
+        while (!loadStatus.react_loaded) {
+            consoleMsg("waiting for enable react", null, null);
+            await delay(500);
+        }
+        window.eventBus.publish('ADD_WIDGET', { 'mounting_point': 'drawer-menu', 'widget_type': 'drawer-menu', 'menu_cards': menu_cards, 'menu_gifts': menu_gifts, 'endpoint': '{{ settings.endpoint }}' })
+        resolve(true)
+  });
+</script>
+
+{%- if customer -%}
+  <script type="text/javascript" defer>
+      new Promise(async function(resolve, reject) {
+          while (!loadStatus.react_loaded) {
+              consoleMsg("waiting for enable react", null, null);
+              await delay(500);
+          }
+
+          const getFavourites = () => {
+              {% comment %} fetch(`${window.shopUrl}/apps/scribblerApi/v1/shoppify/private/favourite`, { priority: 'low', method: 'GET', headers: { 'Content-Type': 'application/json' } }) {% endcomment %}
+              fetch(`/apps/scribblerApi/v1/shoppify/private/favourite`, { priority: 'low', method: 'GET', headers: { 'Content-Type': 'application/json' } })
+                  .then(response => response.json())
+                  .then(async function(response){
+                      window.eventBus.publish('FAVOURITES_ITEM', response)
+                  })
+                  .catch(e => {
+                      console.error(e)
+                  })
+          }
+
+          window.eventBus.subscribe('FAVOURITES_ITEM', favouritesList => {
+              const favCountBubble = document.querySelector('.favourites-count-bubble');
+              favCountBubble.innerHTML = favouritesList.length > 0 ? favouritesList.length : '';
+          })
+          getFavourites();
+
+          resolve(true);
+      });
+  </script>
+{%- endif -%}
+
+<script type="text/javascript" defer>
+    new Promise(async function(resolve, reject){
+        while (!loadStatus.dom) {
+            consoleMsg("waiting for enable dom header 3", null, null);
+            await delay(500);
+        }
+
+        class HeaderDrawer extends HTMLElement {
+            constructor() {
+                super()
+                this.querySelector('[class^="open-drawer-button"]').addEventListener('click', this.openDrawerMenu.bind(this, false))
+                const closeDrawer = document.querySelectorAll('.close-drawer-button')
+                this.querySelector('[class^="close-drawer-button"]').addEventListener('click', this.closeDrawerMenu.bind(this, false))
+                closeDrawer.forEach(firstItem => firstItem.addEventListener('click', this.closeDrawerMenu.bind(this)))
+                this.drawerContainer = this.drawerContainer || document.getElementById('menu-drawer-container')
+                const drawerOverlay = document.querySelectorAll('.drawerOverlay')[0]
+                drawerOverlay.addEventListener('click', this.closeDrawerMenu.bind(this))
+            }
+
+            openDrawerMenu = () => {
+                document.body.classList.add('no-scroll')
+                this.drawerContainer.classList.remove('drawer-closed')
+                this.drawerContainer.classList.add('drawer-open')
+            }
+
+            closeDrawerMenu = () => {
+                document.body.classList.remove('no-scroll')
+                this.drawerContainer.classList.remove('drawer-open')
+                this.drawerContainer.classList.add('drawer-closed')
+                const openedSecondLevelElements = document.querySelectorAll('.open-second-level')
+                openedSecondLevelElements.forEach(element => element.classList.remove('open-second-level'))
+                const openedThirdLevelElements = document.querySelectorAll('.open-third-level')
+                openedThirdLevelElements.forEach(element => element.classList.remove('open-third-level'))
+            }
+         }
+
+        customElements.define("header-drawer", HeaderDrawer);
+
+        class StickyHeader extends HTMLElement {
+            constructor() {
+                super();
+            }
+            connectedCallback() {
+                this.header = document.getElementById('shopify-section-header');
+                this.drawer = document.getElementById('menu-drawer-container');
+                this.headerHeight = this.header.clientHeight;
+                this.currentScrollTop = 0;
+                this.scrollingDirection = 'top'
+                this.onScrollHandler = this.onScroll.bind(this);
+                window.addEventListener('scroll', this.onScroll.bind(this), false);
+            }
+
+            onScroll() {
+                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+                if(this.currentScrollTop > scrollTop){
+                    this.scrollingDirection = 'top'
+                } else{
+                    this.scrollingDirection = 'bottom'
+                }
+
+                if(this.scrollingDirection === 'bottom'  ) {
+                    if(!this.checkPreventClose()) {
+                        this.hide()
+                    }
+                }
+
+                if(this.scrollingDirection === 'top'  ) {
+                    this.reveal()
+                }
+
+                if(scrollTop < this.header.clientHeight) {
+                    if(!this.checkPreventClose()) {
+                        this.reset()
+                    }
+                }
+                this.currentScrollTop=scrollTop;
+            }
+
+            checkPreventClose() {
+                return this.drawer.classList.contains('drawer-open') || document.body.classList.contains('no-scroll')
+            }
+
+            hide(){
+                this.header.classList.add('shopify-section-header-hidden', 'shopify-section-header-sticky' );
+            }
+
+            reveal() {
+                this.header.classList.add('shopify-section-header-sticky', 'animate' );
+                this.header.classList.remove('shopify-section-header-hidden');
+            }
+
+            reset() {
+                this.header.classList.remove('shopify-section-header-hidden', 'shopify-section-header-sticky' , 'animate' );
+            }
+        }
+
+        customElements.define('sticky-header', StickyHeader);
+
+        resolve(true);
+    });
+</script>
+  
+<script type="application/ld+json" defer>
+  {
+  "@context": "http://schema.org",
+  "@type": "Organization",
+  "name": {{ shop.name | json }},
+  {% if section.settings.logo %}
+  "logo": {{ section.settings.logo | image_url: width: section.settings.logo.width | prepend: "https:" | json }},
+  {% endif %}
+  "url": {{ request.origin | append: page.url | json }}
+  }
+</script>
+
+{%- if request.page_type == 'index' -%}
+  {% assign potential_action_target = request.origin | append: routes.search_url | append: "?q={search_term_string}" %}
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "WebSite",
+      "name": {{ shop.name | json }},
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {{ potential_action_target | json }},
+        "query-input": "required name=search_term_string"
+      },
+      "url": {{ request.origin | append: page.url | json }}
+    }
+  </script>
+{%- endif -%}
+
+{% schema %}
+{
+    "name": "t:sections.header.name",
+    "class": "section-header",
+    "settings": [
+        {
+            "type": "image_picker",
+            "id": "logo",
+            "label": "t:sections.header.settings.logo.label"
+        },
+        {
+            "type": "link_list",
+            "id": "menu_header",
+            "default": "main-menu",
+            "label": "t:sections.header.settings.menu_header.label"
+        },
+        {
+            "type": "link_list",
+            "id": "menu_cards",
+            "default": "main-menu",
+            "label": "t:sections.header.settings.menu_cards.label"
+        },
+        {
+            "type": "link_list",
+            "id": "menu_gifts",
+            "default": "main-menu",
+            "label": "t:sections.header.settings.menu_gifts.label"
+        }
+    ]
+}
+{% endschema %}

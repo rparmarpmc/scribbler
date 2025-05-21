@@ -1,0 +1,175 @@
+<div class="template-favourites" style="padding-top: {{ section.settings.padding_top }}px; padding-bottom: {{ section.settings.padding_bottom }}px;">
+    <h1 class="main-page-title">
+        {{ page.title | escape }}
+    </h1>
+    <div class="rte">
+        {{ page.content }}
+    </div>
+    <div class="no-product-loaded" id="empty"></div>
+    
+    <div class="product-grid-container" style="padding-top: {{ section.settings.padding_top }}px;">
+        <ul class="roundalls-section" role="list">
+            <li class="roundalls-section-list-item">
+                <a class="all-products fav-item">All</a>
+            </li>
+            <li class="roundalls-section-list-item">
+                <a class="card-products fav-item">Cards</a>
+            </li>
+            <li class="roundalls-section-list-item">
+                <a class="gift-products fav-item">Gifts</a>
+            </li>
+        </ul>
+        <div id="inner-container">
+            <div class="collection-slider-item">
+                <div class="collection-grid-item-product">
+                    <div class="product-grid-add-loader loading"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<script type="text/javascript" defer>
+    const container = document.querySelector('.product-grid-container');
+    const empty = document.querySelector('.no-product-loaded');
+   
+    function loadFavourites() {
+        const style = document.createElement('style');
+        style.innerHTML = `
+        a.fav-item {
+            border: 2px solid #53b7c0;
+        }
+        a.fav-item.active-tab {
+            border: 2px solid #000;
+        }
+        `;
+        document.head.appendChild(style);
+
+
+        const config = {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            }
+        };
+    
+        fetch(`/apps/scribblerApi/v1/shoppify/private/favourite/product_details`, config)
+            .then(response => response.json())
+            .then(response => {
+                const productGroups = {
+                    Gifts: [],
+                    Cards: [],
+                    All: []
+                };
+    
+                var params = {
+                    'isLoggedIn': {% if customer %}true{% else %}false{% endif %},
+                    'default_vendor_logo': '{{ 'scribbler-vendor-logo.png' | asset_url }}',
+                    'type': {% if section.settings.product_layout == 'gift' %}'gift'{% else %}'card'{% endif %}
+                };
+    
+                if (response.products.length > 0) {
+                    empty.innerHTML = '';
+
+                    response.products.forEach(product => {
+                        product.is_user_favorite = true;
+                        productGroups.All.push(product);
+                        if (productGroups[product.product_type]) {
+                            productGroups[product.product_type].push(product);
+                        }
+                    });
+    
+                    const productTypes = [
+                        { class: 'gift-products', type: 'Gifts', message: 'No gift products added to favourites.' },
+                        { class: 'card-products', type: 'Cards', message: 'No card products added to favourites.' },
+                        { class: 'all-products', type: 'All', message: 'No products added to favourites.' }
+                    ];
+    
+                    productTypes.forEach(({ class: className, type, message }) => {
+                        document.querySelectorAll(`.${className}`).forEach(element => {
+                            element.addEventListener('click', () => {
+                                document.querySelectorAll('.roundalls-section-list-item a').forEach(tab => {
+                                    tab.classList.remove('active-tab');
+                                });
+                                element.classList.add('active-tab');
+                                document.getElementById('inner-container').innerHTML = productGroups[type] && productGroups[type].length > 0
+                                    ? createCardSlide(productGroups[type], params)
+                                    : `<div class="no-favourites-added">${message}</div>`;
+                            });
+                        });
+                    });
+    
+                    document.getElementById('inner-container').innerHTML = createCardSlide(productGroups.All, params);
+                    document.querySelector('.all-products').classList.add('active-tab');
+                } else {
+                    container.innerHTML = '';
+                    empty.innerHTML = '<div class="no-favourites-added">No products added to favourites.</div>';
+                }
+            })
+            .catch(console.error);
+    }
+    
+    
+    document.addEventListener('DOMContentLoaded', loadFavourites);
+    
+    
+    new Promise(async function(resolve, reject){
+        while (!loadStatus.create_slider_loaded) {
+            await delay(100);
+        }
+
+        await delay(placeholderReplace);
+
+        loadFavourites()
+
+        resolve(true);
+    });
+
+    new Promise(async function(resolve, reject){
+        while (!loadStatus.react_loaded) {
+            await delay(50);
+        }
+
+        if(!loadStatus.create_slider_started){
+            loadStatus.create_slider_started = true;
+            loadJS("create_slider", "{{ 'create-slider.js' | asset_url }}", "create_slider_loaded", true);
+        }
+
+        resolve(true);
+    });
+   
+</script>
+</div>
+{% schema %}
+{
+    "name": "t:sections.main-page.name",
+    "tag": "section",
+    "class": "section",
+    "settings": [
+        {
+            "type": "header",
+            "content": "t:sections.all.padding.section_padding_heading"
+        },
+        {
+            "type": "range",
+            "id": "padding_top",
+            "min": 0,
+            "max": 100,
+            "step": 4,
+            "unit": "px",
+            "label": "t:sections.all.padding.padding_top",
+            "default": 36
+        },
+        {
+            "type": "range",
+            "id": "padding_bottom",
+            "min": 0,
+            "max": 100,
+            "step": 4,
+            "unit": "px",
+            "label": "t:sections.all.padding.padding_bottom",
+            "default": 36
+        }
+    ]
+}
+{% endschema %}

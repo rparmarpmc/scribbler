@@ -1,0 +1,47 @@
+<script defer>
+    new Promise(async function(resolve, reject) {
+        while (!loadStatus.dom) {
+            consoleMsg("waiting for enable dom", null, null);
+            await delay(500);
+        }
+
+        loadJS("account_prepay", "{{ 'account-prepay.js' | asset_url }}", "account_prepay_loaded", true);
+        resolve(true);
+    });
+</script>
+
+<div class="prepay-wrapper">
+    <div class="prepay-sidebar">
+        <div class="prepay-sidebar-title">PrePay Balance</div>
+        <div class="prepay-balance" id="prepay-balance">£0</div>
+    </div>
+    <div class="prepay-content-wrapper">
+        <div class="prepay-content-title">Why use PrePay?</div>
+        <div class="prepay-content">
+            PrePay offers you a faster way to checkout your favourite cards and attachable gifts! Making that special moment even more memorable and easy to use.
+            PrePay is unavailable for certain Gift products, please see product info for information on it's inclusion in the scheme.
+            FYI it can take up to 24hrs for the extra bonus % of Prepay credit to be added to your account balance, dont sweat, its on its way!
+        </div>
+    </div>
+</div>   
+<div class="prepay-product-wrapper" id="prepay-products">
+    <div class="no-prepay-product">No prepay products available</div>
+</div>
+
+<style>
+
+
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+    .prepay-product-badge, .prepay-add-to-basket {
+        color: #000000;
+    }
+}
+
+
+@media screen and (min-width: 1024px) and (max-width: 1366px) {
+    .prepay-product-badge, .prepay-add-to-basket {
+        color: #000000;
+    }
+}
+</style>

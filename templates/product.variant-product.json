@@ -1,0 +1,96 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "67471562-595c-40de-8fd6-5cc0980da3f7": {
+      "type": "product-message",
+      "settings": {
+        "padding_top": 8,
+        "padding_bottom": 8,
+        "image": "shopify:\/\/shop_images\/PDP_V2.webp",
+        "message": "Test PDP Message"
+      }
+    },
+    "main": {
+      "type": "main-product-variant",
+      "blocks": {
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button"
+          }
+        },
+        "quantity_selector": {
+          "type": "quantity_selector",
+          "settings": {
+          }
+        },
+        "price": {
+          "type": "price",
+          "settings": {
+          }
+        },
+        "b972b08a-a56c-4b6f-835d-098a39ee8d34": {
+          "type": "vendor",
+          "settings": {
+          }
+        },
+        "e12c9277-05ff-438c-9c5e-50be9aa79825": {
+          "type": "postage",
+          "settings": {
+          }
+        },
+        "8d23da6f-5b0c-4052-bdf2-b257f5a3e4d6": {
+          "type": "materials",
+          "settings": {
+          }
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": false
+          }
+        }
+      },
+      "block_order": [
+        "variant_picker",
+        "quantity_selector",
+        "price",
+        "b972b08a-a56c-4b6f-835d-098a39ee8d34",
+        "e12c9277-05ff-438c-9c5e-50be9aa79825",
+        "8d23da6f-5b0c-4052-bdf2-b257f5a3e4d6",
+        "buy_buttons"
+      ],
+      "settings": {
+      }
+    },
+    "feefo-on-page-reviews-section": {
+      "type": "apps",
+      "settings": {
+        "include_margins": true
+      }
+    },
+    "product-recommendations": {
+      "type": "product-recommendations",
+      "settings": {
+        "heading": "Related Products",
+        "products_to_show_slider": 22,
+        "padding_top": 20,
+        "padding_bottom": 20
+      }
+    }
+  },
+  "order": [
+    "67471562-595c-40de-8fd6-5cc0980da3f7",
+    "main",
+    "feefo-on-page-reviews-section",
+    "product-recommendations"
+  ]
+}

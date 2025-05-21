@@ -1,0 +1,215 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "infoslider_jaN3aL": {
+      "type": "infoslider",
+      "blocks": {
+        "column_mHVcML": {
+          "type": "column",
+          "settings": {
+            "link": "",
+            "text": "⚡OMG! Buy 3 get another free on all standard cards!⚡"
+          }
+        },
+        "column_XWDTw6": {
+          "type": "column",
+          "settings": {
+            "link": "",
+            "text": "🌍 Wow! One delivery price for as many cards as you like! 🌍"
+          }
+        }
+      },
+      "block_order": [
+        "column_mHVcML",
+        "column_XWDTw6"
+      ],
+      "settings": {
+        "padding_bottom": 20,
+        "fading_interval": 3
+      }
+    },
+    "roundalls_Gip3XR": {
+      "type": "roundalls",
+      "blocks": {
+        "column_dwGByn": {
+          "type": "column",
+          "settings": {
+            "name": "All Gifts",
+            "link": "shopify://collections/gifts-all"
+          }
+        },
+        "column_fU7WHj": {
+          "type": "column",
+          "settings": {
+            "name": "Top Picks",
+            "link": "shopify://collections/top-picks"
+          }
+        },
+        "column_77JyTn": {
+          "type": "column",
+          "settings": {
+            "name": "Sweet Treats",
+            "link": "shopify://collections/sweet-treats"
+          }
+        },
+        "column_KyBriX": {
+          "type": "column",
+          "settings": {
+            "name": "Games & Fun",
+            "link": "shopify://collections/games-fun"
+          }
+        },
+        "column_t8tykd": {
+          "type": "column",
+          "settings": {
+            "name": "Alcohol",
+            "link": "shopify://collections/alcohol-gifts"
+          }
+        },
+        "column_hRdt93": {
+          "type": "column",
+          "settings": {
+            "name": "Apparel",
+            "link": "shopify://collections/apparel-accessories"
+          }
+        }
+      },
+      "block_order": [
+        "column_dwGByn",
+        "column_fU7WHj",
+        "column_77JyTn",
+        "column_KyBriX",
+        "column_t8tykd",
+        "column_hRdt93"
+      ],
+      "settings": {
+        "title": "",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "slideshow_tDw4Wg": {
+      "type": "slideshow",
+      "blocks": {
+        "slide_8DwxWN": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/Simons_Cat_New_Packaging_Top_Banner_1_-_Disco_Cowgirl_3ac30cf5-7954-424c-961c-81203ff5d93d.png",
+            "image_alt": "Show our new range of gift bags & wrap!",
+            "mobile_image": "shopify://shop_images/Simons_Cat_New_Packaging_Top_Mobile_1_-_Disco_Cowgirl_720c8ce5-3490-4c61-b2cf-a0bea8796531.png",
+            "mobile_image_alt": "Show our new range of gift bags & wrap!",
+            "link": "shopify://collections/gift-wrap-bags"
+          }
+        }
+      },
+      "block_order": [
+        "slide_8DwxWN"
+      ],
+      "settings": {
+        "padding_top": 20,
+        "padding_bottom": 20,
+        "fading_interval": 3
+      }
+    },
+    "collection_gift_slider_gbw77K": {
+      "type": "collection-gift-slider",
+      "settings": {
+        "title": "Birthday Gifts",
+        "collection": "birthday-gifts",
+        "sort_order": "best-selling",
+        "filter": "Top Picks",
+        "filter1": "Jellycat",
+        "filter2": "Trending",
+        "filter3": "Sweet Treats",
+        "filter4": "Party",
+        "products_to_show_slider": 22,
+        "columns_desktop": 5,
+        "columns_small_desktop": 4,
+        "columns_tablet": 3,
+        "columns_mobile": 2,
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "product-grid": {
+      "type": "main-collection-product-grid",
+      "disabled": true,
+      "settings": {
+        "product_layout": "card",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "05692ecd-0d59-4a7d-9682-8da77e2c8ee6": {
+      "type": "featured-blog",
+      "settings": {
+        "heading": "From the Blog",
+        "blog": "gifts",
+        "post_limit": 2,
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "493effdb-f371-44c7-84da-f8f3f37b7be2": {
+      "type": "newsletter",
+      "blocks": {
+        "template--16827013333217__493effdb-f371-44c7-84da-f8f3f37b7be2-heading-1": {
+          "type": "heading",
+          "disabled": true,
+          "settings": {
+            "heading": "Subscribe to our emails",
+            "heading_size": "h1"
+          }
+        },
+        "template--16827013333217__493effdb-f371-44c7-84da-f8f3f37b7be2-paragraph-1": {
+          "type": "paragraph",
+          "settings": {
+            "text": "<p>Join over 800,000 card lovers and subscribe to Scribbler for the latest on designers, deals and snazzy new products!</p>"
+          }
+        },
+        "template--16827013333217__493effdb-f371-44c7-84da-f8f3f37b7be2-email_form-1": {
+          "type": "email_form",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "template--16827013333217__493effdb-f371-44c7-84da-f8f3f37b7be2-heading-1",
+        "template--16827013333217__493effdb-f371-44c7-84da-f8f3f37b7be2-paragraph-1",
+        "template--16827013333217__493effdb-f371-44c7-84da-f8f3f37b7be2-email_form-1"
+      ],
+      "settings": {
+        "padding_top": 36,
+        "padding_bottom": 0
+      }
+    },
+    "main_collection_banner_cUVUGi": {
+      "type": "main-collection-banner",
+      "custom_css": [
+        "{background-color: #cbd81d; text-align: center; padding: 10px; font-size: 20px;}"
+      ],
+      "settings": {
+        "show_collection_description": true,
+        "show_collection_image": false,
+        "color_scheme": "background-1"
+      }
+    }
+  },
+  "order": [
+    "infoslider_jaN3aL",
+    "roundalls_Gip3XR",
+    "slideshow_tDw4Wg",
+    "collection_gift_slider_gbw77K",
+    "product-grid",
+    "05692ecd-0d59-4a7d-9682-8da77e2c8ee6",
+    "493effdb-f371-44c7-84da-f8f3f37b7be2",
+    "main_collection_banner_cUVUGi"
+  ]
+}

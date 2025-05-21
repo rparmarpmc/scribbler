@@ -1,0 +1,111 @@
+.menu-drawer-container {
+  display: none;
+}
+
+// .close-drawer-button {
+//   display: none;
+// }
+
+// .menu-drawer-wrapper {
+//   display: none;
+// }
+
+@media screen and (max-width: 1049px) {
+  .drawer-closed {
+    display: block;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 100vh;
+    background-color: white;
+    transition: width .2s;
+  }
+
+  .no-scroll {
+    overflow: hidden;
+  }
+
+  // .drawer-closed .menu-drawer-wrapper {
+  //   display: none;
+  // }
+
+  .open-drawer-button {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+    background-color: transparent;    
+  }
+
+  .open-drawer-button svg {
+    width: 23px;
+  }
+
+  .drawer-open {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 420px;
+    height: 100%;
+    background-color: white;
+    transition: width .2s;
+    z-index: 200;
+    overflow: hidden;
+  }
+
+  .drawer-closed {
+    display: none;
+  }
+
+  .drawerOverlay {
+    content: ' ';
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 0;
+    z-index: 9;
+    background-color: rgba(0, 0, 0, .2);
+    transition: background-color .8s;
+  }
+
+  .drawer-open {
+    width: 100%;
+  }
+
+  .menu-drawer-wrapper {
+    // display: block;
+    border: 2px solid white;
+    height: 100%;
+    position: relative;
+  }
+
+  .close-drawer-button {
+    position: absolute;
+    right: 40px;
+    top: 20px;
+    width: 50px;
+    height: 50px;
+    border: none;
+    background-color: #CBD81D;
+    -webkit-border-radius: 25px;
+    -moz-border-radius: 25px;
+    border-radius: 25px;
+    z-index: 100;
+    background-image: url('icon-close-thin-white.webp');
+    background-size: 50% 50%;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  .close-drawer-button:hover {
+    background-image: url('icon-close-thin.webp');
+  }
+}

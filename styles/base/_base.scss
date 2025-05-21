@@ -1,0 +1,110 @@
+* {
+  font-family: "BrandonRegular";
+}
+
+body {
+  background-color: #ffffff;
+}
+
+body::-webkit-scrollbar {
+  overflow-y: scroll;
+  width: 11px;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: #CBD81D;
+}
+
+@media screen and (max-width: 749px) {
+  body::-webkit-scrollbar {
+      width: 0;
+  }
+
+  html, body {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+.hidden {
+  display: none !important;
+}
+
+.visually-hidden--inline {
+  margin: 0;
+  height: 1em;
+}
+
+.visually-hidden {
+  position: absolute !important;
+  overflow: hidden;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  clip: rect(0 0 0 0);
+  word-wrap: normal !important;
+}
+
+/* hide markers for summary */
+details summary::-webkit-details-marker {
+  display: none;
+}
+
+/* clears the ‘X’ from Internet Explorer */
+input[type=search]::-ms-clear {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
+input[type=search]::-ms-reveal {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
+/* clears the ‘X’ from Chrome */
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration {
+  display: none;
+}
+
+/* Remove Arrows/Spinners */
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  appearance: textfield;
+  -moz-appearance: textfield;
+}
+
+.feefo-carousel-wrapper {
+  margin: 0 auto;
+  max-width: 1150px;
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  background-color: white;
+}
+
+@media screen and (max-width: 771px) {
+  .feefo-black-bg:empty {
+      display: none;
+  }
+}
+
+.feefo-page-wrapper {
+  display: block;
+  margin: 0 auto;
+  max-width: 1150px;
+  z-index: 20;
+}

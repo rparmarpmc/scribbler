@@ -1,0 +1,118 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "ff278cb9-c195-4db2-888e-278f660be30d": {
+      "type": "slideshow",
+      "blocks": {
+        "template--16703141347553__ff278cb9-c195-4db2-888e-278f660be30d-1672948081f286f9b6-0": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/HomePageBanner.png",
+            "link": ""
+          }
+        },
+        "template--16703141347553__ff278cb9-c195-4db2-888e-278f660be30d-1672948081f286f9b6-1": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/29.08.22_Gift-Desktop-Banner-Top__2022099-114103.webp",
+            "link": ""
+          }
+        },
+        "8c34d538-2f38-4dcb-bc44-300922cfbede": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/HomePageBanner_bfcf9150-77a3-4506-994e-8000c9f1d9ea.png",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "template--16703141347553__ff278cb9-c195-4db2-888e-278f660be30d-1672948081f286f9b6-0",
+        "template--16703141347553__ff278cb9-c195-4db2-888e-278f660be30d-1672948081f286f9b6-1",
+        "8c34d538-2f38-4dcb-bc44-300922cfbede"
+      ],
+      "settings": {
+        "padding_top": 20,
+        "padding_bottom": 20,
+        "fading_interval": 3
+      }
+    },
+    "2b6c8f15-cca6-41a7-8858-645a1ca09f39": {
+      "type": "infoslider",
+      "blocks": {
+        "template--16703141347553__2b6c8f15-cca6-41a7-8858-645a1ca09f39-168329874540577b72-0": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/card-icon.png",
+            "link": "",
+            "text": "Get 20% bonus credit with any purchase of PrePay"
+          }
+        },
+        "template--16703141347553__2b6c8f15-cca6-41a7-8858-645a1ca09f39-168329874540577b72-1": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/pickled-post.jpg",
+            "link": "",
+            "text": "Get 20% bonus credit with any purchase of PrePay"
+          }
+        },
+        "template--16703141347553__2b6c8f15-cca6-41a7-8858-645a1ca09f39-168329874540577b72-2": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/teepee-creations.jpg",
+            "link": "",
+            "text": "Get 20% bonus credit with any purchase of PrePay"
+          }
+        }
+      },
+      "block_order": [
+        "template--16703141347553__2b6c8f15-cca6-41a7-8858-645a1ca09f39-168329874540577b72-0",
+        "template--16703141347553__2b6c8f15-cca6-41a7-8858-645a1ca09f39-168329874540577b72-1",
+        "template--16703141347553__2b6c8f15-cca6-41a7-8858-645a1ca09f39-168329874540577b72-2"
+      ],
+      "settings": {
+        "padding_bottom": 0,
+        "fading_interval": 3
+      }
+    },
+    "main": {
+      "type": "main-list-collections",
+      "settings": {}
+    },
+    "c060665a-0664-417f-a939-688f70fe0d39": {
+      "type": "slideshow",
+      "blocks": {
+        "template--16703141347553__c060665a-0664-417f-a939-688f70fe0d39-1683299089b02913f0-0": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/HomePageBanner.png",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "template--16703141347553__c060665a-0664-417f-a939-688f70fe0d39-1683299089b02913f0-0"
+      ],
+      "disabled": true,
+      "settings": {
+        "padding_top": 20,
+        "padding_bottom": 20,
+        "fading_interval": 3
+      }
+    }
+  },
+  "order": [
+    "ff278cb9-c195-4db2-888e-278f660be30d",
+    "2b6c8f15-cca6-41a7-8858-645a1ca09f39",
+    "main",
+    "c060665a-0664-417f-a939-688f70fe0d39"
+  ]
+}

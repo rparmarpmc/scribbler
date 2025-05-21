@@ -1,0 +1,121 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "ef451280-4d20-4b19-bbb2-9037c3951b3f": {
+      "type": "deliveryTimer",
+      "disabled": true,
+      "settings": {
+        "padding_top": 8,
+        "padding_bottom": 8,
+        "image": "shopify://shop_images/PDP_V2.webp"
+      }
+    },
+    "817ba0d4-43c4-4ef0-80cb-e4ccd14e1a22": {
+      "type": "collection-meta-slider",
+      "settings": {
+        "padding_top": 20,
+        "padding_bottom": 0
+      }
+    },
+    "product-grid": {
+      "type": "main-collection-product-grid",
+      "settings": {
+        "product_layout": "card",
+        "padding_top": 20,
+        "padding_bottom": 20
+      }
+    },
+    "dc6d40f4-c837-4d4a-8b7e-747bf8a691d5": {
+      "type": "collection-meta-info-slider",
+      "disabled": true,
+      "settings": {
+        "padding_bottom": 20,
+        "fading_interval": 3
+      }
+    },
+    "e77e9799-5af6-4dba-9d8d-f3c6eaf17c8d": {
+      "type": "collection-meta-circles",
+      "disabled": true,
+      "settings": {
+        "padding_top": 20,
+        "padding_bottom": 20
+      }
+    },
+    "4e0a63e3-1e9b-4e50-a5ff-2bc8b0f20ca5": {
+      "type": "collection-meta-single-slider",
+      "disabled": true,
+      "settings": {
+        "sort_order": "best-selling",
+        "products_to_show_slider": 22,
+        "columns_desktop": 6,
+        "columns_small_desktop": 4,
+        "columns_tablet": 3,
+        "columns_mobile": 2,
+        "padding_top": 20,
+        "padding_bottom": 20
+      }
+    },
+    "3a17b483-625c-4324-a796-080eed18ee83": {
+      "type": "collection-meta-double-slider",
+      "disabled": true,
+      "settings": {
+        "sort_order": "best-selling",
+        "products_to_show_slider": 22,
+        "columns_desktop": 6,
+        "columns_small_desktop": 4,
+        "columns_tablet": 3,
+        "columns_mobile": 2,
+        "padding_top": 20,
+        "padding_bottom": 20
+      }
+    },
+    "ff9452fc-e26d-46de-834c-f1621e9077cc": {
+      "type": "collection-meta-quadruple-slider",
+      "disabled": true,
+      "settings": {
+        "sort_order": "best-selling",
+        "products_to_show_slider": 22,
+        "columns_desktop": 3,
+        "columns_small_desktop": 2,
+        "columns_tablet": 3,
+        "columns_mobile": 2,
+        "padding_top": 20,
+        "padding_bottom": 0
+      }
+    },
+    "5f21a2b5-cb73-455a-b168-03e9fe4c102b": {
+      "type": "collection-meta-gift-slider",
+      "disabled": true,
+      "settings": {
+        "sort_order": "best-selling",
+        "title": "Collection slider",
+        "products_to_show_slider": 22,
+        "columns_desktop": 5,
+        "columns_small_desktop": 4,
+        "columns_tablet": 3,
+        "columns_mobile": 2,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    }
+  },
+  "order": [
+    "ef451280-4d20-4b19-bbb2-9037c3951b3f",
+    "817ba0d4-43c4-4ef0-80cb-e4ccd14e1a22",
+    "product-grid",
+    "dc6d40f4-c837-4d4a-8b7e-747bf8a691d5",
+    "e77e9799-5af6-4dba-9d8d-f3c6eaf17c8d",
+    "4e0a63e3-1e9b-4e50-a5ff-2bc8b0f20ca5",
+    "3a17b483-625c-4324-a796-080eed18ee83",
+    "ff9452fc-e26d-46de-834c-f1621e9077cc",
+    "5f21a2b5-cb73-455a-b168-03e9fe4c102b"
+  ]
+}

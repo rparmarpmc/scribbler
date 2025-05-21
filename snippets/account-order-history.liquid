@@ -1,0 +1,37 @@
+<script defer>
+    new Promise(async function(resolve, reject) {
+        while (!loadStatus.dom) {
+            consoleMsg("waiting for enable dom", null, null);
+            await delay(500);
+        }
+
+        loadJS("account_order_history", "{{ 'account-order-history.js' | asset_url }}", "account_order_history_loaded", true);
+        resolve(true);
+    });
+</script>
+
+<div id="order-preview" class="order-preview-backdrop" style="z-index: 12" onclick="closePreview()">
+    <div class="order-preview-modal" >
+        lkjlkjkl ljlkjkljkl kjklj
+    </div>
+</div>
+
+<div class="order-history-header">
+    View past and present orders
+</div>
+
+<div class="order-history-wrapper">
+    <div class="order-sidebar-list">
+        <div class="order-sidebar-list-title">Order History</div>
+        <ul id="order-list" class="order-history-list">
+            <li class="order-history-list-no-items">No orders</li>
+        </ul> 
+    </div>
+    <div class="order-content-wrapper">
+        <div id="order-content-details" class="order-content-details">
+            <span class="order-content-details-no-order">No previous orders</span>
+        </div>
+        <div id="order-container-grid" class="order-container-grid">
+        </div>
+    </div>
+</div>

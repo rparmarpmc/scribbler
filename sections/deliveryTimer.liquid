@@ -1,0 +1,143 @@
+<div class="delivery-timer-wrapper" style="height: 54px; padding-top: {{ section.settings.padding_top }}px; padding-bottom: {{ section.settings.padding_bottom }}px;">
+  <div class="delivery-timer" id="{{ section.id }}">
+    {%- if section.settings.image != blank -%}
+      <div class="delivery-timer-img">
+        <img
+            src="{{ section.settings.image | image_url: width: 42 }}"
+            alt="Info icon" 
+            width="42" 
+            height="30"
+            loading="lazy" decoding="async">
+      </div>
+    {%- endif -%}
+    <div class="delivery-timer-text">
+      <div>Time to catch the next post: &nbsp;</div> 
+      <div class="delivery-timer-display">
+        <span id="hours">0 Hours</span>,  <span id="mins">0 Minutes</span> and <span id="secs">0 Seconds</span>
+      </div>
+    </div>
+    {%- if section.settings.image != blank -%}
+      <div class="delivery-timer-img">
+        <img
+            src="{{ section.settings.image | image_url: width: 42 }}"
+            alt="Info icon" decoding="async"
+            width="42" 
+            height="30"
+            loading="lazy">
+      </div>
+    {%- endif -%}
+  </div>
+</div>
+
+<script defer>
+    new Promise(async function(resolve, reject){
+        while (!loadStatus.dom) {
+            consoleMsg("waiting for enable dom deliveryTimer", null, null);
+            await delay(500);
+        }
+
+        const getCountDownDate = () => {
+            const currentTime = new Date()
+            const todayShipment = new Date()
+            todayShipment.setUTCHours({{ settings.postage_hour }});
+            todayShipment.setUTCMinutes({{ settings.postage_minute }});
+            todayShipment.setUTCSeconds(00);
+
+            const tomorrowShipment = new Date();
+            tomorrowShipment.setUTCDate(tomorrowShipment.getDate() + 1);
+            tomorrowShipment.setUTCHours({{ settings.postage_hour }});
+            tomorrowShipment.setUTCMinutes({{ settings.postage_minute }});
+            tomorrowShipment.setUTCSeconds(00);
+
+            const dayAfterTomorrowShipment = new Date();
+            dayAfterTomorrowShipment.setUTCDate(dayAfterTomorrowShipment.getDate() + 2);
+            dayAfterTomorrowShipment.setUTCHours({{ settings.postage_hour }});
+            dayAfterTomorrowShipment.setUTCMinutes({{ settings.postage_minute }});
+            dayAfterTomorrowShipment.setUTCSeconds(00);
+
+            const timeleft = todayShipment.getTime() - currentTime.getTime();
+            const day = todayShipment.getDay();
+            const saturday = (day === 6);
+            const sunday = (day === 0);
+
+            if (timeleft === 0) {
+                return todayShipment
+            }
+
+            if (timeleft > 0 && !sunday) {
+                return todayShipment
+            }
+
+            if (timeleft > 0 && sunday) {
+                return tomorrowShipment
+            }
+
+            if (timeleft < 0 && saturday) {
+                return dayAfterTomorrowShipment
+            }
+
+            if (timeleft < 0 && !saturday) {
+                return tomorrowShipment
+            }
+        }
+
+        setInterval(function() {
+            const now = new Date().getTime();
+            const countDownDate = getCountDownDate()
+            const timeleft = countDownDate - now;
+
+            const hours = Math.floor((timeleft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeleft % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeleft % (1000 * 60)) / 1000);
+
+            document.getElementById("hours").innerHTML = hours + " Hours"
+            document.getElementById("mins").innerHTML = minutes + " Minutes"
+            document.getElementById("secs").innerHTML = seconds + " Seconds"
+        }, 1000);
+        resolve(true);
+    });
+</script>
+
+{% schema %}
+{
+    "name": "t:sections.deliverytimer.name",
+    "class": "section",
+    "tag": "section",
+    "settings": [
+        {
+            "type": "header",
+            "content": "t:sections.all.padding.section_padding_heading"
+        },
+        {
+            "type": "range",
+            "id": "padding_top",
+            "min": 0,
+            "max": 100,
+            "step": 4,
+            "unit": "px",
+            "label": "t:sections.all.padding.padding_top",
+            "default": 20
+        },
+        {
+            "type": "range",
+            "id": "padding_bottom",
+            "min": 0,
+            "max": 100,
+            "step": 4,
+            "unit": "px",
+            "label": "t:sections.all.padding.padding_bottom",
+            "default": 20
+        },
+        {
+            "type": "image_picker",
+            "id": "image",
+            "label": "t:sections.deliverytimer.image"
+        }
+    ],
+    "presets": [
+        {
+            "name": "t:sections.deliverytimer.presets.name"
+        }
+    ]
+}
+{% endschema %}

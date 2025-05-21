@@ -1,0 +1,48 @@
+.faq-collapsible-content__heading {
+  margin: 0;
+}
+
+.faq-accordion:first-child {
+  border-top: 1px solid #CBD81D;
+}
+
+.faq-accordion {
+  border-bottom: 1px solid #CBD81D;
+  padding-left: 200px; // Add the padding you want
+  padding-right: 200px; // Add the padding you want
+}
+
+.faq-accordion__title {
+  font-size: 18px;
+  display: inline-block;
+  margin: 10px 10px;
+  // padding-left: 200px; // Add the padding you want
+  // padding-right: 200px; // Add the padding you want
+}
+
+.faq-accordion details>summary {
+  border-left: 1px solid transparent;
+  border-right: 1px solid transparent;
+}
+
+.faq-accordion details:not([open])>summary:hover {
+  border-left: 1px solid #CBD81D;
+  border-right: 1px solid #CBD81D;
+}
+
+.faq-accordion details[open]>summary .icon-caret {
+  transform: rotate(180deg);
+}
+
+.faq-accordion summary .icon-caret { 
+  display: inline-block;
+  height: 14px;
+  color: #CBD81D;
+  position: absolute;
+  right: 1rem;
+  top: calc(50% - 0.6rem);
+}
+
+.faq-accordion__content {
+ padding: 10px;
+}

@@ -1,0 +1,58 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "2d2ad108-a3e6-449f-8d00-7321408c36fb": {
+      "type": "slideshow",
+      "blocks": {
+        "template--16785493819617__2d2ad108-a3e6-449f-8d00-7321408c36fb-168416269043de087a-0": {
+          "type": "slide",
+          "disabled": true,
+          "settings": {
+            "image": "shopify://shop_images/Favourite_Landing_ad4d26b2-23c2-4abd-a6d4-07af815c862a.webp",
+            "image_alt": "My favourites cards",
+            "mobile_image": "shopify://shop_images/Favourite_Mobile_NEW_6544a25c-4265-48fa-9627-6d5718ef9fd4.webp",
+            "mobile_image_alt": "My favourites cards",
+            "link": ""
+          }
+        },
+        "slide_DPArjr": {
+          "type": "slide",
+          "disabled": true,
+          "settings": {
+            "image_alt": "",
+            "mobile_image_alt": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "template--16785493819617__2d2ad108-a3e6-449f-8d00-7321408c36fb-168416269043de087a-0",
+        "slide_DPArjr"
+      ],
+      "settings": {
+        "padding_top": 20,
+        "padding_bottom": 20,
+        "fading_interval": 3
+      }
+    },
+    "main": {
+      "type": "favourites-page",
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    }
+  },
+  "order": [
+    "2d2ad108-a3e6-449f-8d00-7321408c36fb",
+    "main"
+  ]
+}

@@ -1,0 +1,41 @@
+.delivery-timer-wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+.delivery-timer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.delivery-timer-img img{
+    display: block;
+}
+
+.delivery-timer-text {
+    margin: 0 15px;
+    font-size: 15px;
+    line-height: 110%;
+    display: flex;
+}
+
+.delivery-timer-display {
+    font-weight: bold;
+}
+
+@media screen and (max-width: 749px) {
+    .delivery-timer-text span {
+        font-weight: bold;
+        font-size: 12px;
+    }
+
+    .delivery-timer-text {
+        font-weight: 100;
+        margin: 0 5px;
+        justify-content: center;
+        font-size: 13px;
+        flex-direction: column;
+        align-items: center;
+    }
+}

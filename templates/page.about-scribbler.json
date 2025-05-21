@@ -1,0 +1,48 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "6abe791f-1884-4ae5-b86a-69d80a5ebacf": {
+      "type": "newsletter",
+      "blocks": {
+        "template--16781431963873__6abe791f-1884-4ae5-b86a-69d80a5ebacf-16832763448105c9ed-1": {
+          "type": "paragraph",
+          "settings": {
+            "text": "<p>Join over 700,000 card lovers and subscribe to Scribbler for the latest on designers, deals and snazzy new products!<\/p>"
+          }
+        },
+        "template--16781431963873__6abe791f-1884-4ae5-b86a-69d80a5ebacf-16832763448105c9ed-2": {
+          "type": "email_form",
+          "settings": {
+          }
+        }
+      },
+      "block_order": [
+        "template--16781431963873__6abe791f-1884-4ae5-b86a-69d80a5ebacf-16832763448105c9ed-1",
+        "template--16781431963873__6abe791f-1884-4ae5-b86a-69d80a5ebacf-16832763448105c9ed-2"
+      ],
+      "settings": {
+        "padding_top": 36,
+        "padding_bottom": 0
+      }
+    }
+  },
+  "order": [
+    "main",
+    "6abe791f-1884-4ae5-b86a-69d80a5ebacf"
+  ]
+}

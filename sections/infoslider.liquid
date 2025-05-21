@@ -1,0 +1,134 @@
+<div class="info-slider-wrapper" style="margin-bottom: {{ section.settings.padding_bottom }}px;">
+    {%- for block in section.blocks -%}
+        <div class="info-slider {% if forloop.index == 1 %}active{% endif %}"> 
+            <a href="{{ block.settings.link }}{%- if block.settings.link == blank -%}#{%- endif -%}">
+                <div class="info-slider-slide">
+                    {%- if block.settings.image != blank -%}
+                        <div class="info-slider-img">
+                        <img
+                            src="{{ block.settings.image | image_url: width: 40 }}"
+                            alt="Info icon"
+                            decoding="async"
+                            height="30"
+                            width="40"
+                            {% if forloop.index != 1 %}loading="lazy"{% endif %}
+                        >
+                        </div>
+                    {%- endif -%}
+                    <div class="info-slide-text">
+                        {%- if block.settings.text != blank -%}{{block.settings.text}}{%- endif -%}
+                    </div>
+                    {%- if block.settings.image != blank -%}
+                        <div class="info-slider-img">
+                        <img
+                            src="{{ block.settings.image | image_url: width: 40 }}"
+                            alt="Info icon"
+                            decoding="async"
+                            height="30"
+                            width="40"
+                            {% if forloop.index != 1 %}loading="lazy"{% endif %}
+                        >
+                        </div>
+                    {%- endif -%}
+                </div>  
+            </a> 
+        </div>
+    {%- endfor -%}
+</div>
+
+<script type="text/javascript" defer>
+    function fade() {
+        var a = document.getElementsByClassName("info-slider active")[0];
+        var next = a.nextElementSibling;
+       
+        a.classList.remove("active");
+ 
+        if (next == null )
+            next = document.getElementsByClassName("info-slider")[0];
+ 
+        next.classList.add("active");
+    }
+
+    const items = document.getElementsByClassName("info-slider");
+    if (items && items.length > 1) {
+        nIntervId = setInterval(fade, 1000 * {{ section.settings.fading_interval }});
+    }
+</script>
+
+{% schema %}
+{
+    "name": "t:sections.infoslider.name",
+    "class": "section",
+    "tag": "section",
+    "settings": [
+        {
+            "type": "header",
+            "content": "t:sections.all.padding.section_padding_heading"
+        },
+        {
+            "type": "range",
+            "id": "padding_bottom",
+            "min": 0,
+            "max": 100,
+            "step": 4,
+            "unit": "px",
+            "label": "t:sections.all.padding.padding_bottom",
+            "default": 20
+        },
+        {
+            "type": "header",
+            "content": "t:sections.infoslider.speed"
+        },
+        {
+            "type": "range",
+            "id": "fading_interval",
+            "min": 1,
+            "max": 10,
+            "step": 1,
+            "unit": "sec",
+            "label": "t:sections.infoslider.interval",
+            "default": 3
+        }
+    ],
+    "blocks": [
+        {
+            "type": "column",
+            "name": "t:sections.infoslider.blocks.column.name",
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "image",
+                    "label": "t:sections.infoslider.blocks.column.settings.image.label"
+                },
+                {
+                    "type": "url",
+                    "id": "link",
+                    "label": "t:sections.infoslider.blocks.column.settings.link.label"
+                },
+                {
+                    "type": "text",
+                    "id": "text",
+                    "default": "Get 20% bonus credit with any purchase of PrePay",
+                    "label": "t:sections.announcement-bar.blocks.announcement.settings.text.label"
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "t:sections.infoslider.presets.name",
+            "blocks": [
+                {
+                    "type": "column"
+                },
+                {
+                    "type": "column"
+                },
+                {
+                    "type": "column"
+                }
+            ]
+        }
+    ]
+}
+{% endschema %}

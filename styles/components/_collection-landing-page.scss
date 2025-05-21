@@ -1,0 +1,39 @@
+.collection-slider-item-product {
+    position: relative;
+}
+
+
+.select-wrapper{
+  display: inline-flex;
+      gap: 20px;
+      height: 40px;
+      align-items: center;
+      
+   
+}
+.select-wrapper div, .select-wrapper select{
+  font-size: 20px;
+}
+.select-wrapper div{
+  padding-left: 12px;
+}
+.select-wrapper select{
+  background-color: #53b7c0;
+      border-radius: 20px;
+  border: none;
+  text-align: right;
+  padding: 2px 10px;
+}
+.facet-filters__sort option {
+  background-color: #54b7c0;
+  font-size: 20px;
+  text-align: left;
+}
+.sorting{
+  width:auto;
+} 
+#FacetFiltersForm{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}

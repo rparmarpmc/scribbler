@@ -1,0 +1,79 @@
+<div class="delivery-timer-wrapper" style="height: 54px;padding-top: {{ section.settings.padding_top }}px; padding-bottom: {{ section.settings.padding_bottom }}px;">
+  <div class="delivery-timer" id="{{ section.id }}">
+    {%- if section.settings.image != blank -%}
+      <div class="delivery-timer-img">
+        <img
+          src="{{ section.settings.image | image_url }}"
+          alt="{{ section.settings.image.alt }}" 
+          height="30"
+          width="42"
+          decoding="async"
+          loading="lazy">
+      </div>
+    {%- endif -%}
+    <div class="delivery-timer-text">
+      {{ section.settings.message }}
+    </div>
+    {%- if section.settings.image != blank -%}
+      <div class="delivery-timer-img">
+        <img
+          src="{{ section.settings.image | image_url }}"
+          alt="{{ section.settings.image.alt }}" 
+          height="30"
+          width="42"
+          decoding="async"
+          loading="lazy">
+      </div>
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+    "name": "t:sections.productmessage.name",
+    "class": "section",
+    "tag": "section",
+    "settings": [
+        {
+            "type": "header",
+            "content": "t:sections.all.padding.section_padding_heading"
+        },
+        {
+            "type": "range",
+            "id": "padding_top",
+            "min": 0,
+            "max": 100,
+            "step": 4,
+            "unit": "px",
+            "label": "t:sections.all.padding.padding_top",
+            "default": 20
+        },
+        {
+            "type": "range",
+            "id": "padding_bottom",
+            "min": 0,
+            "max": 100,
+            "step": 4,
+            "unit": "px",
+            "label": "t:sections.all.padding.padding_bottom",
+            "default": 20
+        },
+        {
+            "type": "image_picker",
+            "id": "image",
+            "label": "t:sections.productmessage.image"
+        },
+        {
+            "type": "text",
+            "id": "message",
+            "label": "t:sections.productmessage.message.label",
+            "info": "t:sections.productmessage.message.info"
+        }
+    ],
+    "presets": [
+        {
+            "name": "t:sections.productmessage.presets.name"
+        }
+    ]
+}
+{% endschema %}

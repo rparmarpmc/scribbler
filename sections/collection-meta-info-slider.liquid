@@ -1,0 +1,114 @@
+{%- if collection.metafields.custom.promo_urls.value != blank -%}
+  {% assign url_array = collection.metafields.custom.promo_urls.value | json | remove_first: '[' | remove_first: ']' | split: ',' %}
+{%- endif -%}
+{%- if collection.metafields.custom.promo_images.value != blank -%}
+  {%- assign image_array = collection.metafields.custom.promo_images.value | json | remove_first: '[' | remove_first: ']' | split: ',' -%}
+{%- endif -%}
+
+<div class="info-slider-wrapper" style="margin-bottom: {{ section.settings.padding_bottom }}px;">
+  {%- if collection.metafields.custom.promo_text != blank -%}
+    {%- for promo_text in collection.metafields.custom.promo_text.value -%}
+      <div class="info-slider {% if forloop.index == 1 %}active{% endif %}"> 
+        <a href="{{ url_array[forloop.index0] }}{%- if url_array[forloop.index0] != blank -%}#{%- endif -%}">
+          <div class="info-slider-slide">
+            {%- if image_array[forloop.index0] != blank  -%}
+              <div class="info-slider-img">
+              {% # theme-check-disable %}
+                <img src={{ image_array[forloop.index0] }} width="40" height="30" alt="Info icon"  {% if forloop.index != 1 %}loading="lazy"{% endif %}>
+              {% # theme-check-enable %} 
+              </div>
+            {%- endif -%}
+            <div class="info-slide-text">
+              {%- if promo_text != blank -%}{{ promo_text }}{%- endif -%}
+            </div>
+            {%- if image_array[forloop.index0] != blank  -%}
+              <div class="info-slider-img">
+                {% # theme-check-disable %}
+                  <img src={{ image_array[forloop.index0] }} width="40" height="30" alt="Info icon"  {% if forloop.index != 1 %}loading="lazy"{% endif %}>
+                {% # theme-check-enable %} 
+              </div>
+            {%- endif -%}
+          </div>  
+        </a> 
+      </div>
+    {%- endfor -%}
+  {%- endif -%}
+</div>
+
+<style>
+.info-slider.active {
+    opacity:1;
+    -webkit-transition: opacity 2s;
+    -moz-transition: opacity 2s;     
+    transition: opacity 2s; 
+}
+
+.info-slider {
+    opacity:0;
+    -webkit-transition: opacity 2s;
+    -moz-transition: opacity 2s;     
+    transition: opacity 2s; 
+}
+</style>
+
+<script type="text/javascript" defer>
+    function fade() {
+        var a = document.getElementsByClassName("info-slider active")[0];
+        var next = a.nextElementSibling;
+       
+        a.classList.remove("active");
+ 
+        if (next == null )
+            next = document.getElementsByClassName("info-slider")[0];
+ 
+        next.classList.add("active");
+    }
+
+    const items = document.getElementsByClassName("info-slider");
+    if (items && items.length > 1) {
+        nIntervId = setInterval(fade, 1000 * {{ section.settings.fading_interval }});
+    }
+</script>
+
+{% schema %}
+{
+    "name": "t:sections.collection-meta-info-slider.name",
+    "class": "section",
+    "tag": "section",
+    "settings": [
+        {
+            "type": "header",
+            "content": "t:sections.all.padding.section_padding_heading"
+        },
+        {
+            "type": "range",
+            "id": "padding_bottom",
+            "min": 0,
+            "max": 100,
+            "step": 4,
+            "unit": "px",
+            "label": "t:sections.all.padding.padding_bottom",
+            "default": 20
+        },
+        {
+            "type": "header",
+            "content": "t:sections.collection-meta-info-slider.speed"
+        },
+        {
+            "type": "range",
+            "id": "fading_interval",
+            "min": 1,
+            "max": 10,
+            "step": 1,
+            "unit": "sec",
+            "label": "t:sections.collection-meta-info-slider.interval",
+            "default": 3
+        }
+    ],
+    "presets": [
+        {
+            "name": "t:sections.collection-meta-info-slider.name"
+        }
+    ]
+}
+{% endschema %}

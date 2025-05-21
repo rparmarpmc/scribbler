@@ -1,0 +1,124 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "f857ea73-c84a-4aa7-8784-b04ce8456a63": {
+      "type": "rich-text",
+      "blocks": {
+        "template--16849009705185__f857ea73-c84a-4aa7-8784-b04ce8456a63-heading-1": {
+          "type": "heading",
+          "settings": {
+            "heading": "<p>Scribbler's Student Discount<\/p>",
+            "heading_size": "h1"
+          }
+        },
+        "template--16849009705185__f857ea73-c84a-4aa7-8784-b04ce8456a63-text-1": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "text": "<p>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.<\/p>"
+          }
+        },
+        "template--16849009705185__f857ea73-c84a-4aa7-8784-b04ce8456a63-button-1": {
+          "type": "button",
+          "disabled": true,
+          "settings": {
+            "button_label": "Button label",
+            "button_link": "",
+            "button_style_secondary": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "template--16849009705185__f857ea73-c84a-4aa7-8784-b04ce8456a63-heading-1",
+        "template--16849009705185__f857ea73-c84a-4aa7-8784-b04ce8456a63-text-1",
+        "template--16849009705185__f857ea73-c84a-4aa7-8784-b04ce8456a63-button-1"
+      ],
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "background-1",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 0
+      }
+    },
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "30abfc5e-7cbc-4d50-86bc-82962a5e3f1a": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "<div class=\"iframe-container\"><iframe height=\"725px\" width=\"100%\"\nframeborder=\"0\"\nseamless=\"seamless\"\nallow=\"clipboard-write\"\nsrc=\"https:\/\/connect.studentbeans.com\/v4\/scribbler\/uk?stb_offer_path=https%3A%2F%2Fwww.scribbler.com%2Fhelp%2Fstudent-discount%2F&validate_iframe=true\" height=\"100%\" width=\"100%\" title=\"Student Discount\"><\/iframe><\/div>",
+        "color_scheme": "background-1",
+        "padding_top": 40,
+        "padding_bottom": 0
+      }
+    },
+    "e89619ff-2134-4177-a87d-05ea601df2c7": {
+      "type": "rich-text",
+      "blocks": {
+        "template--16849009705185__e89619ff-2134-4177-a87d-05ea601df2c7-heading-1": {
+          "type": "heading",
+          "disabled": true,
+          "settings": {
+            "heading": "<p>Talk about your brand<\/p>",
+            "heading_size": "h1"
+          }
+        },
+        "template--16849009705185__e89619ff-2134-4177-a87d-05ea601df2c7-text-1": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Here at Scribbler we’re all about giving – not like that, get your mind out the gutter! We’re talking about that one small, thoughtful gesture that has the power to brighten someone’s day and instantly put a smile on their face. Students, we want to do that for you! Ok seriously, we know how this sounds but we’re talking about CARDS!<\/p><p>To use Scribbler’s Student Discount, simply click on the “Connect with Student Beans ID” button and follow the easy steps to verify your student status and receive your exclusive discount code. You can then head straight to our website and enter your one-off code at the basket stage – it’s that simple!<\/p><p>Don’t let being permanently skint stop you from celebrating the important occasions or sending a birthday card home to your mum - because you know she’ll never let you forget it! Scribbler can also help you to work hard and play hard with our offering of unique notebooks and stationary, as well as our range of card and party games, so you’re not just playing Ring of Fire every night. Enjoy!<\/p>"
+          }
+        },
+        "template--16849009705185__e89619ff-2134-4177-a87d-05ea601df2c7-button-1": {
+          "type": "button",
+          "disabled": true,
+          "settings": {
+            "button_label": "Button label",
+            "button_link": "",
+            "button_style_secondary": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "template--16849009705185__e89619ff-2134-4177-a87d-05ea601df2c7-heading-1",
+        "template--16849009705185__e89619ff-2134-4177-a87d-05ea601df2c7-text-1",
+        "template--16849009705185__e89619ff-2134-4177-a87d-05ea601df2c7-button-1"
+      ],
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "background-1",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    }
+  },
+  "order": [
+    "f857ea73-c84a-4aa7-8784-b04ce8456a63",
+    "main",
+    "30abfc5e-7cbc-4d50-86bc-82962a5e3f1a",
+    "e89619ff-2134-4177-a87d-05ea601df2c7"
+  ]
+}

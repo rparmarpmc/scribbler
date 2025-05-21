@@ -1,0 +1,7 @@
+.DS_Store
+
+/templates/index.json
+/config/settings_data.json
+templates/index.json
+config/settings_data.json
+package.json

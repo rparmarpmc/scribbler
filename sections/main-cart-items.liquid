@@ -1,0 +1,30 @@
+<div class="cart-page" id="cart-page"></div>
+<script type="text/javascript">
+ new Promise(async function(resolve, reject) {
+    while (!loadStatus.react_loaded) {
+      consoleMsg("waiting for enable react", null, null);
+      await delay(500);
+    }
+   
+    window.eventBus.publish('ADD_WIDGET', {
+      'mounting_point': 'cart-page',
+      'widget_type': 'cart-page',
+      'is_logged_in': {% if customer %}true{% else %}false{% endif %},
+      'customer_name': '{{ customer.first_name }} {{ customer.last_name }}'
+    });
+
+    resolve(true)
+  });
+</script>
+
+{% schema %}
+{
+  "name": "t:sections.main-cart-items.name",
+  "settings": [
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    }
+  ]
+}
+{% endschema %}

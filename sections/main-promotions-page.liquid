@@ -1,0 +1,129 @@
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<div class="page-background">
+  <div class="floating-box">
+    <h1 class="main-page-title page-title h0">
+      {{ page.title | escape }}
+    </h1>
+    <div class="description">
+      {{ page.content }}
+    </div>
+    <a href="https://scribbler-development.myshopify.com/discount/FREE" class="button">SCRIBBLERWEB</a>
+  </div>
+</div>
+<style>
+.page-background {
+  position: relative;
+  width: 100%;
+  height: 75vh; 
+  background-image: url('https://cdn.shopify.com/s/files/1/0657/9637/4753/files/Promotion_Free_Card_Promotion_Background_Desktop_1.png?v=1732022096'); /* Replace with your image URL */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.floating-box {
+  position: absolute;
+  width: 70%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgb(255 255 255 / 93%); /* Semi-transparent background */
+  padding: 10px 40px 28px 40px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+.main-page-title {
+  margin-bottom: 20px;
+  color: #CBD81D;
+  font-size: calc(44px * var(--zoom-factor));
+}
+
+.description {
+  margin-bottom: 20px;
+  font-size: calc(22px * var(--zoom-factor));
+}
+
+.button {
+  display: inline-block;
+  padding: 10px 67px;
+  font-size: calc(29px * var(--zoom-factor));
+  background-color: #CBD81D;
+  color: #0c0d03;
+  font-weight: 700;
+  text-decoration: none;
+  border-radius: 33px;
+  transition: background-color 0.3s ease;
+}
+
+.button:hover {
+  background-color: #0dc1b8;
+}
+
+@media screen and (max-width: 749px) {
+  .floating-box {
+    width: 85%;
+  }
+
+  .main-page-title {
+    font-size: calc(30px * var(--zoom-factor));
+  }
+
+  .description {
+    font-size: calc(14px * var(--zoom-factor));
+  }
+
+  .button {
+    padding: 10px 30px;
+    font-size: calc(21px * var(--zoom-factor));
+  }
+}
+</style>
+
+{% schema %}
+{
+    "name": "t:sections.main-page.name",
+    "tag": "section",
+    "class": "section",
+    "settings": [
+        {
+            "type": "header",
+            "content": "t:sections.all.padding.section_padding_heading"
+        },
+        {
+            "type": "range",
+            "id": "padding_top",
+            "min": 0,
+            "max": 100,
+            "step": 4,
+            "unit": "px",
+            "label": "t:sections.all.padding.padding_top",
+            "default": 36
+        },
+        {
+            "type": "range",
+            "id": "padding_bottom",
+            "min": 0,
+            "max": 100,
+            "step": 4,
+            "unit": "px",
+            "label": "t:sections.all.padding.padding_bottom",
+            "default": 36
+        }
+    ]
+}
+{% endschema %}

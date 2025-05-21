@@ -1,0 +1,142 @@
+{% comment %} Banner Image Slider {% endcomment %}
+{% liquid  
+  if collection.metafields.custom.banner_urls != blank 
+    assign url_array = collection.metafields.custom.banner_urls | remove_first: '[' | remove_first: ']' | split: ','
+  endif 
+%}
+
+<style>
+  .slider-placeholder,
+  .slider-wrapper {
+    border-radius: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    width: calc(100% - 40px);
+    overflow: hidden;
+  }
+  
+  .slick-slideshow-wrapper {
+    border-radius: 20px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .slider-placeholder,
+    .slider-wrapper {
+      margin-left: 50px;
+      margin-right: 50px;
+      width: calc(100% - 100px)
+    }
+  }
+</style>
+
+<div class="slider-wrapper" style="padding-top: {{ section.settings.padding_top }}px; padding-bottom: {{ section.settings.padding_bottom }}px;">
+  <div class="slick-slideshow-wrapper">
+    {%- if collection.metafields.custom.collection_slides != blank -%}
+      {%- for banner in collection.metafields.custom.collection_slides.value -%}
+        {% if forloop.index == 1 %}
+          {% assign banner_loop_index = forloop.index0 %}
+            <picture>
+                <source media="(min-width:750px)" srcset="{{ banner | image_url: width: 1816}}">
+                {% for image_mobile in collection.metafields.custom.banners_mobile_images.value %}
+                    {% if forloop.index0 == banner_loop_index %}
+                      <source media="(max-width:749px)" srcset="{{ image_mobile | image_url: width: 750 }}">
+                    {% endif %}
+                  {% endfor %}
+                <img src="{{ banner | image_url: width: 335}}" alt="Slider image" width="335" height="172" style="display: block; width: 100%; height: auto" decoding="async">
+            </picture>
+        {%- endif -%}
+      {%- endfor -%}
+    {%- endif -%}
+  </div> 
+</div> 
+
+<script type="text/javascript" defer>
+  new Promise(async function(resolve, reject){
+        while (!loadStatus.slick_loaded) {
+            consoleMsg("waiting for enable slick_loaded", null, null);
+            await delay(50);
+        }
+
+        setTimeout(() => {
+            document.getElementsByClassName('slick-slideshow-wrapper')[0].innerHTML = `
+              {%- if collection.metafields.custom.collection_slides != blank -%}
+                {%- for banner in collection.metafields.custom.collection_slides.value -%}
+                  <div class="slick-slideshow" id="{{ section.id }}">
+                    {% assign banner_loop_index = forloop.index0 %}
+                    {%- if url_array[banner_loop_index] != blank -%}<a href={{ url_array[banner_loop_index] }}>{%- endif -%}
+                      <picture>
+                        <source media="(min-width:750px)" srcset="{{ banner | image_url: width: 1816}}">
+                        {% for image_mobile in collection.metafields.custom.banners_mobile_images.value %}
+                        {% if forloop.index0 == banner_loop_index %}
+                          <source media="(max-width:749px)" srcset="{{ image_mobile | image_url: width: 750 }}">
+                        {% endif %}
+                        {% endfor %}
+                        <img src="{{ banner | image_url: width: 750 }}" alt="Slider image" width="750" height="386" defer style="display: block; width: 100%; height: auto">
+                      </picture>
+                    {%- if url_array[banner_loop_index] != blank -%}</a>{%- endif -%}
+                  </div>
+                {%- endfor -%}
+              {%- endif -%}
+            `
+            
+            var hero = tns({
+                container: '.slick-slideshow-wrapper',
+                items: 1,
+                mouseDrag: true,
+                lazyload: true,
+                slideBy: 'page',
+                autoplay: true,
+                autoHeight: true,
+                controls: false,
+                onInit: function(){
+                    document.querySelectorAll(".slider-placeholder").forEach(el => el.remove());
+                    document.getElementsByClassName('slider-wrapper')[0].style.display = 'block';
+                    document.getElementsByClassName('slick-slideshow-wrapper')[0].style.display = 'block';
+                },
+                nav: true,
+                navPosition: 'bottom',
+                autoplayButtonOutput: false,
+                speed: 1000
+            });
+        }, 6000); 
+  });
+</script>  
+
+{% schema %}
+{
+    "name": "t:sections.collection-meta-slider.name",
+    "class": "section",
+    "tag": "section",
+    "settings": [
+        {
+            "type": "paragraph",
+            "content": "t:sections.collection-meta-slider.settings.paragraph.content"
+        },
+        {
+            "type": "range",
+            "id": "padding_top",
+            "min": 0,
+            "max": 100,
+            "step": 4,
+            "unit": "px",
+            "label": "t:sections.all.padding.padding_top",
+            "default": 20
+        },
+        {
+            "type": "range",
+            "id": "padding_bottom",
+            "min": 0,
+            "max": 100,
+            "step": 4,
+            "unit": "px",
+            "label": "t:sections.all.padding.padding_bottom",
+            "default": 20
+        }
+    ],
+    "presets": [
+        {
+            "name": "t:sections.collection-meta-slider.name"
+        }
+    ]
+}
+{% endschema %}

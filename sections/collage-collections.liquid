@@ -1,0 +1,133 @@
+<div class="image-collage-wrapper" style="padding-top: {{ section.settings.padding_top }}px; padding-bottom: {{ section.settings.padding_bottom }}px;">
+  <div class="collage-grid-wrapper">
+    <div class="div1">
+      {%- if section.settings.link_1 != blank -%}<a href="{{ section.settings.link_1}}">{%- endif -%}
+        <picture>
+          <source media="(min-width:750px)" srcset="{{ section.settings.image_1 | image_url: width: 887}}" loading="lazy" defer="defer">
+          <source media="(max-width:749px)" srcset="{{ section.settings.image_1 | image_url: width: 335 }}" loading="lazy" defer="defer">
+          <img src="{{ section.settings.image_1 | image_url: width: 335}}" alt="Jellycat animals" width="335" height="277" loading="lazy" defer="defer" style="display: block; width: 100%; height: auto">
+        </picture>
+      {%- if section.settings.link_1 != blank -%}</a>{%- endif -%}
+    </div>
+    <div class="div2"> 
+      {%- if section.settings.link_2 != blank -%}<a href="{{ section.settings.link_2}}">{%- endif -%}
+        <picture>
+          <source media="(min-width:750px)" srcset="{{ section.settings.image_2 | image_url: width: 420}}" loading="lazy" defer="defer">
+          <source media="(max-width:749px)" srcset="{{ section.settings.image_2 | image_url: width: 346 }}" loading="lazy" defer="defer">
+          <img src="{{ section.settings.image_2 | image_url: width: 346}}" alt="Thinking of you cards" width="346" height="282" loading="lazy" defer="defer" style="display: block; width: 100%; height: auto">
+        </picture>
+      {%- if section.settings.link_2 != blank -%}</a>{%- endif -%}
+    </div>
+    <div class="div3">
+      {%- if section.settings.link_3 != blank -%}<a href="{{ section.settings.link_3}}">{%- endif -%}
+        <picture>
+          <source media="(min-width:750px)" srcset="{{ section.settings.image_3 | image_url: width: 420}}" loading="lazy" defer="defer">
+          <source media="(max-width:749px)" srcset="{{ section.settings.image_3 | image_url: width: 346 }}" loading="lazy" defer="defer">
+          <img src="{{ section.settings.image_3 | image_url: width: 346}}" alt="Anniversary cards" width="346" height="282" loading="lazy" defer="defer" style="display: block; width: 100%; height: auto">
+        </picture>
+      {%- if section.settings.link_3 != blank -%}</a>{%- endif -%}
+    </div>
+    <div class="div4">
+      {%- if section.settings.link_4 != blank -%}<a href="{{ section.settings.link_4}}">{%- endif -%}
+        <picture>
+          <source media="(min-width:750px)" srcset="{{ section.settings.image_4 | image_url: width: 887}}" loading="lazy" defer="defer">
+          <source media="(max-width:749px)" srcset="{{ section.settings.image_4 | image_url: width: 709 }}" loading="lazy" defer="defer">
+          <img src="{{ section.settings.image_4 | image_url: width: 709}}" alt="Jellycat spooky" width="709" height="274" loading="lazy" defer="defer" style="display: block; width: 100%; height: auto">
+        </picture>
+      {%- if section.settings.link_4 != blank -%}</a>{%- endif -%}
+    </div>
+  </div>
+</div>
+<style>
+  .image-collage-wrapper {
+    min-height: 560px;
+  }
+  @media screen and (min-width: 750px) {
+    .image-collage-wrapper {
+      min-height: 262px;
+    }
+  }
+</style>
+
+{% schema %}
+{
+    "name": "t:sections.collage-collections.name",
+    "tag": "section",
+    "class": "section",
+    "settings": [
+        {
+            "type": "header",
+            "content": "t:sections.collage-collections.settings.heading"
+        },
+        {
+            "type": "image_picker",
+            "id": "image_1",
+            "label": "t:sections.collage-collections.settings.image.label_1"
+        },
+        {
+            "type": "url",
+            "id": "link_1",
+            "label": "t:sections.collage-collections.settings.link.label_1"
+        },
+        {
+            "type": "image_picker",
+            "id": "image_2",
+            "label": "t:sections.collage-collections.settings.image.label_2"
+        },
+        {
+            "type": "url",
+            "id": "link_2",
+            "label": "t:sections.collage-collections.settings.link.label_2"
+        },
+        {
+            "type": "image_picker",
+            "id": "image_3",
+            "label": "t:sections.collage-collections.settings.image.label_3"
+        },
+        {
+            "type": "url",
+            "id": "link_3",
+            "label": "t:sections.collage-collections.settings.link.label_3"
+        },
+        {
+            "type": "image_picker",
+            "id": "image_4",
+            "label": "t:sections.collage-collections.settings.image.label_4"
+        },
+        {
+            "type": "url",
+            "id": "link_4",
+            "label": "t:sections.collage-collections.settings.link.label_4"
+        },
+        {
+            "type": "header",
+            "content": "t:sections.all.padding.section_padding_heading"
+        },
+        {
+            "type": "range",
+            "id": "padding_top",
+            "min": 0,
+            "max": 100,
+            "step": 4,
+            "unit": "px",
+            "label": "t:sections.all.padding.padding_top",
+            "default": 36
+        },
+        {
+            "type": "range",
+            "id": "padding_bottom",
+            "min": 0,
+            "max": 100,
+            "step": 4,
+            "unit": "px",
+            "label": "t:sections.all.padding.padding_bottom",
+            "default": 36
+        }
+    ],
+    "presets": [
+        {
+            "name": "t:sections.collage-collections.presets.name"
+        }
+    ]
+}
+{% endschema %}

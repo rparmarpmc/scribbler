@@ -1,0 +1,104 @@
+<div style="padding-top: {{ section.settings.padding_top }}px; padding-bottom: {{ section.settings.padding_bottom }}px;">
+  <div class="social-section-title">{{ 'sections.footer.social' | t | upcase }}</div>
+  <div class="social-section-icons">
+    {%- if section.settings.link_1 != blank -%}<a href="{{ section.settings.link_1}}" title="Scribbler on LinkedIn">{%- endif -%}
+        <img src="{{ 'icon-linkedin.png' | asset_url }}" alt="Scribbler on LinkedIn" width="90" height="90" loading="lazy" decoding="async"/>
+    {%- if section.settings.link_1 != blank -%}</a>{%- endif -%}
+    {%- if section.settings.link_2 != blank -%}<a href="{{ section.settings.link_2}}" title="Scribbler on Instagram">{%- endif -%}
+        <img src="{{ 'icon-instagram.png' | asset_url }}" alt="Scribbler on Instagram" width="90" height="90" loading="lazy" decoding="async"/>
+    {%- if section.settings.link_2 != blank -%}</a>{%- endif -%}
+    {%- if section.settings.link_3 != blank -%}<a href="{{ section.settings.link_3}}" title="Scribbler on Facebook">{%- endif -%}
+        <img src="{{ 'icon-facebook.png' | asset_url }}" alt="Scribbler on Facebook" width="90" height="90" loading="lazy" decoding="async"/>
+    {%- if section.settings.link_3 != blank -%}</a>{%- endif -%}
+    {%- if section.settings.link_4 != blank -%}<a href="{{ section.settings.link_4}}" title="Scribbler on TikTok">{%- endif -%}
+        <img src="{{ 'icon-tiktok.png' | asset_url }}" alt="Scribbler on TikTok" width="90" height="90" loading="lazy" decoding="async"/>
+    {%- if section.settings.link_4 != blank -%}</a>{%- endif -%}
+    {%- if section.settings.link_5 != blank -%}<a href="{{ section.settings.link_5}}" title="Contact to Scribbler">{%- endif -%}
+        <img src="{{ 'icon-mail.png' | asset_url }}" alt="Contact to Scribbler" width="90" height="90" loading="lazy" decoding="async"/>
+    {%- if section.settings.link_5 != blank -%}</a>{%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+    "name": "t:sections.social.name",
+    "tag": "section",
+    "class": "section",
+    "settings": [
+        {
+            "type": "header",
+            "content": "t:sections.social.settings.heading_1"
+        },
+        {
+            "type": "url",
+            "id": "link_1",
+            "label": "t:sections.social.settings.link_1"
+        },
+        {
+            "type": "header",
+            "content": "t:sections.social.settings.heading_2"
+        },
+        {
+            "type": "url",
+            "id": "link_2",
+            "label": "t:sections.social.settings.link_2"
+        },
+        {
+            "type": "header",
+            "content": "t:sections.social.settings.heading_3"
+        },
+        {
+            "type": "url",
+            "id": "link_3",
+            "label": "t:sections.social.settings.link_3"
+        },
+        {
+            "type": "header",
+            "content": "t:sections.social.settings.heading_4"
+        },
+        {
+            "type": "url",
+            "id": "link_4",
+            "label": "t:sections.social.settings.link_4"
+        },
+        {
+            "type": "header",
+            "content": "t:sections.social.settings.heading_5"
+        },
+        {
+            "type": "url",
+            "id": "link_5",
+            "label": "t:sections.social.settings.link_5"
+        },
+        {
+            "type": "header",
+            "content": "t:sections.all.padding.section_padding_heading"
+        },
+        {
+            "type": "range",
+            "id": "padding_top",
+            "min": 0,
+            "max": 100,
+            "step": 4,
+            "unit": "px",
+            "label": "t:sections.all.padding.padding_top",
+            "default": 36
+        },
+        {
+            "type": "range",
+            "id": "padding_bottom",
+            "min": 0,
+            "max": 100,
+            "step": 4,
+            "unit": "px",
+            "label": "t:sections.all.padding.padding_bottom",
+            "default": 36
+        }
+    ],
+    "presets": [
+        {
+            "name": "t:sections.social.presets.name"
+        }
+    ]
+}
+{% endschema %}

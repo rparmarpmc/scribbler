@@ -1,0 +1,87 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "e9f28807-8955-4385-b05b-15e21908a754": {
+      "type": "deliveryTimer",
+      "disabled": true,
+      "settings": {
+        "padding_top": 20,
+        "padding_bottom": 20
+      }
+    },
+    "main": {
+      "type": "printess-product",
+      "blocks": {
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button"
+          }
+        },
+        "quantity_selector": {
+          "type": "quantity_selector",
+          "settings": {}
+        },
+        "price": {
+          "type": "price",
+          "settings": {}
+        },
+        "b3ac857e-750c-4476-985a-aa4bf1fde2bc": {
+          "type": "vendor",
+          "settings": {}
+        },
+        "c46d2586-dae2-4120-99c0-fe3f80bd1676": {
+          "type": "postage",
+          "settings": {}
+        },
+        "191b18e7-586c-48fd-807e-50d172a6dd87": {
+          "type": "materials",
+          "settings": {}
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": false
+          }
+        }
+      },
+      "block_order": [
+        "variant_picker",
+        "quantity_selector",
+        "price",
+        "b3ac857e-750c-4476-985a-aa4bf1fde2bc",
+        "c46d2586-dae2-4120-99c0-fe3f80bd1676",
+        "191b18e7-586c-48fd-807e-50d172a6dd87",
+        "buy_buttons"
+      ],
+      "settings": {}
+    },
+    "product-recommendations": {
+      "type": "product-recommendations",
+      "settings": {
+        "heading": "You may also like",
+        "sort_order": "random",
+        "products_to_show_slider": 22,
+        "columns_desktop": 6,
+        "columns_small_desktop": 5,
+        "columns_tablet": 4,
+        "columns_mobile": 2,
+        "padding_top": 36,
+        "padding_bottom": 28
+      }
+    }
+  },
+  "order": [
+    "e9f28807-8955-4385-b05b-15e21908a754",
+    "main",
+    "product-recommendations"
+  ]
+}

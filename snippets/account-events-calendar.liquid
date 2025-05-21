@@ -1,0 +1,13 @@
+<script defer>
+    new Promise(async function(resolve, reject) {
+        while (!loadStatus.dom) {
+            consoleMsg("waiting for enable dom", null, null);
+            await delay(500);
+        }
+
+        loadJS("account_events_calendar", "{{ 'account-events-calendar.js' | asset_url }}", "account_events_calendar_loaded", true);
+        resolve(true);
+    });
+</script>
+
+Events Calendar

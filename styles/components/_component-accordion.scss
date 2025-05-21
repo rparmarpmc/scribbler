@@ -1,0 +1,51 @@
+.accordion + .accordion {
+  margin-top: 0;
+  border-top: none; 
+}
+
+.accordion summary {
+  display: flex;
+}
+
+.accordion summary .summary__title {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 40px;
+}
+ 
+.accordion summary .accordion__title {
+  display: block;
+  padding: 0;
+  margin: 0;
+  font-size: 18px;
+}
+
+.accordion summary .icon-caret {
+  width: 24px;
+  height: 18px;
+  right: 0;
+  color: #CBD81D;
+}
+
+.accordion .icon-accordion {
+  fill: #CBD81D;
+  position: absolute;
+  right: 0;
+  top: -12px;
+}
+
+.accordion details[open] > summary .icon-caret {
+  transform: rotate(180deg);
+}
+
+.accordion__content {
+  word-break: break-word;
+  overflow-x: auto;
+}
+
+.accordion__content img {
+  max-width: 100%;
+}

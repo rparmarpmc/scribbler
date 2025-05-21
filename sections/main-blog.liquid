@@ -1,0 +1,172 @@
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+{%- paginate blog.articles by 12 -%}
+  <div class="main-blog page-width section-{{ section.id }}-padding">
+    <h1 class="blog-title">{{ blog.title | escape }}</h1>
+    {% if blog.tags.size > 0 %}
+      <div class="facets-container">
+        <div class="filter-sort-wrapper">
+          <div class="filter-overlay" aria-overlay-expanded="false"></div>
+          <div class="filter-add-button" aria-label="Add Filter" role="button" aria-filter-expanded="false">
+            <div class="filter-blog-box">
+              <a href="{{ blog.url }}" class="filter-reset">{{ 'Reset' }}</a>
+              {% for tag in blog.all_tags %}
+              {%- if current_tags contains tag -%}
+                <div class="filter-option selected">
+                    {{ tag | link_to_remove_tag: tag }}
+                </div>
+              {%- else -%}
+                <div class="filter-option">
+                    {{ tag | link_to_add_tag: tag }}
+                </div>
+              {%- endif -%}
+              {% endfor %}
+            </div>
+            <span>Add Filter</span>
+            <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" role="presentation"
+              class="icon icon-plus" fill="none" viewBox="0 0 10 10">
+              <path fill-rule="evenodd" clip-rule="evenodd"
+                d="M1 4.51a.5.5 0 000 1h3.5l.01 3.5a.5.5 0 001-.01V5.5l3.5-.01a.5.5 0 00-.01-1H5.5L5.49.99a.5.5 0 00-1 .01v3.5l-3.5.01H1z"
+                fill="currentColor">
+              </path>
+            </svg>
+          </div>
+        </div>
+        <div class="active-filters">
+          {% for tag in blog.all_tags %}
+            {%- if current_tags contains tag -%}
+              <div class="active-filter-button">
+                {{ tag | link_to_remove_tag: tag }}
+              </div>
+            {%- endif -%}
+          {% endfor %}
+        </div>
+      </div>
+    {% endif %}
+    <script type="text/javascript">
+      document.addEventListener('DOMContentLoaded', () => {
+
+        const toogleFilterPopup = () => {
+        
+          if(document.querySelector('.filter-add-button').getAttribute('aria-filter-expanded') === "true") {
+            document.querySelector('.filter-add-button').setAttribute('aria-filter-expanded', "false")
+            document.querySelector('.filter-overlay').setAttribute('aria-overlay-expanded', "false")
+          } else {
+            document.querySelector('.filter-add-button').setAttribute('aria-filter-expanded', "true")
+            document.querySelector('.filter-overlay').setAttribute('aria-overlay-expanded', "true")
+          }
+        }
+
+        const toogleFilterPopup2 = () => {
+          document.querySelector('.filter-add-button').setAttribute("aria-filter-expanded", "false")
+          document.querySelector('.filter-overlay').setAttribute('aria-overlay-expanded', "false")
+        }
+     
+        document.querySelector('.filter-add-button').addEventListener('click', toogleFilterPopup);
+        document.querySelector('.filter-overlay').addEventListener('click', toogleFilterPopup2);
+
+      });
+    </script>
+    <div class="blog-wrapper">
+      <div class="blog-articles">
+        {%- for article in blog.articles -%}
+          {%- if article and article != empty -%}
+            <div class="blog-article">
+              <div class="blog-article-title">
+                <a href="{{ article.url }}">
+                  {{ article.title | truncate: 50 | escape }}
+                </a>
+              </div>
+              <div class="blog-article-image">
+                {%- if article.image -%}
+                  <a href="{{ article.url }}">
+                    <img srcset="{%- if article.image.src.width >= 165 -%}{{ article.image.src | image_url: width: 165 }} 165w,{%- endif -%}
+                                  {%- if article.image.src.width >= 360 -%}{{ article.image.src | image_url: width: 360 }} 360w,{%- endif -%}
+                                  {%- if article.image.src.width >= 533 -%}{{ article.image.src | image_url: width: 533 }} 533w,{%- endif -%}
+                                  {%- if article.image.src.width >= 720 -%}{{ article.image.src | image_url: width: 720 }} 720w,{%- endif -%}
+                                  {%- if article.image.src.width >= 1000 -%}{{ article.image.src | image_url: width: 1000 }} 1000w,{%- endif -%}
+                                  {%- if article.image.src.width >= 1500 -%}{{ article.image.src | image_url: width: 1500 }} 1500w,{%- endif -%}
+                                  {{ article.image.src | image_url }} {{ article.image.src.width }}w"
+                    src="{{ article.image.src | image_url: width: 533 }}"
+                    sizes="(min-width: 1200px) {{ 1200 | minus: 100 | divided_by: 2 }}px, (min-width: 750px) calc((100vw - 130px) / 2), calc((100vw - 50px) / 2)"
+                    alt="{{ article.image.src.alt | escape }}" 
+                    loading="lazy" 
+                    width="{{ article.image.width }}"
+                    height="{{ article.image.height }}">
+                  </a>
+                {%- endif -%}
+              </div>
+              <div class="blog-article-footer">
+                <div class="blog-article-date">Posted on {{ article.published_at | date: '%d.%m.%Y' }}</div>
+                <div class="blog-article-readme"><a href="{{ article.url }}">READ ME</a></div>
+              </div>
+            </div>
+          {%- endif -%}
+        {%- endfor -%}
+        {%- if paginate.pages > 1 -%}
+          {%- render 'pagination', paginate: paginate -%}
+        {%- endif -%}
+      </div>
+      <div class="category-filter">
+        <div class="category-filter-title">Blog Categories</div>
+        {% for link in linklists['blog'].links -%}
+          {%- if link.current -%}
+            <span>{{ link.title }}</span>
+          {%- else -%}
+            {{ link.title | link_to: link.url }}
+          {%- endif -%}
+        {%- endfor %}
+      </div>
+    </div>
+  </div>
+{%- endpaginate -%}
+
+{% schema %}
+{
+    "name": "t:sections.main-blog.name",
+    "tag": "section",
+    "class": "section",
+    "settings": [
+        {
+            "type": "header",
+            "content": "t:sections.main-blog.settings.header.content"
+        },
+        {
+            "type": "header",
+            "content": "t:sections.all.padding.section_padding_heading"
+        },
+        {
+            "type": "range",
+            "id": "padding_top",
+            "min": 0,
+            "max": 100,
+            "step": 4,
+            "unit": "px",
+            "label": "t:sections.all.padding.padding_top",
+            "default": 36
+        },
+        {
+            "type": "range",
+            "id": "padding_bottom",
+            "min": 0,
+            "max": 100,
+            "step": 4,
+            "unit": "px",
+            "label": "t:sections.all.padding.padding_bottom",
+            "default": 36
+        }
+    ]
+}
+{% endschema %}

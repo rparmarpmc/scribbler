@@ -1,0 +1,310 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "5a09e9a8-ad85-4958-83fc-b087ee31c255": {
+      "type": "deliveryTimer",
+      "disabled": true,
+      "settings": {
+        "padding_top": 20,
+        "padding_bottom": 20,
+        "image": "shopify://shop_images/PDP_V2.webp"
+      }
+    },
+    "dc6d40f4-c837-4d4a-8b7e-747bf8a691d5": {
+      "type": "collection-meta-info-slider",
+      "settings": {
+        "padding_bottom": 12,
+        "fading_interval": 3
+      }
+    },
+    "817ba0d4-43c4-4ef0-80cb-e4ccd14e1a22": {
+      "type": "collection-meta-slider",
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "e77e9799-5af6-4dba-9d8d-f3c6eaf17c8d": {
+      "type": "collection-meta-circles",
+      "settings": {
+        "padding_top": 20,
+        "padding_bottom": 20
+      }
+    },
+    "4e0a63e3-1e9b-4e50-a5ff-2bc8b0f20ca5": {
+      "type": "collection-meta-single-slider",
+      "settings": {
+        "sort_order": "best-selling",
+        "filter": "Trending",
+        "filter1": "Bestsellers",
+        "filter2": "New In",
+        "filter3": "",
+        "filter4": "",
+        "background_color": "#ffffff",
+        "products_to_show_slider": 22,
+        "columns_desktop": 6,
+        "columns_small_desktop": 4,
+        "columns_tablet": 3,
+        "columns_mobile": 2,
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "4dda3ecc-8852-496c-8de0-d2055ddb86f2": {
+      "type": "collection-meta-single-slider-2",
+      "settings": {
+        "sort_order": "best-selling",
+        "filter": "1st Anniversary",
+        "filter1": "10th Anniversary",
+        "filter2": "25th Anniversary",
+        "filter3": "30th Anniversary",
+        "filter4": "40th Anniversary",
+        "background_color": "#F6FBFC",
+        "products_to_show_slider": 22,
+        "columns_desktop": 6,
+        "columns_small_desktop": 4,
+        "columns_tablet": 3,
+        "columns_mobile": 2,
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "d83b8bd1-8ef0-48c2-a89f-38023416b367": {
+      "type": "collection-meta-circles-2",
+      "settings": {
+        "padding_top": 20,
+        "padding_bottom": 20
+      }
+    },
+    "48a69650-c5f3-4b3f-910d-db6fbbd046c1": {
+      "type": "collection-meta-single-slider-3",
+      "settings": {
+        "sort_order": "best-selling",
+        "filter": "Wife",
+        "filter1": "Husband",
+        "filter2": "Girlfriend",
+        "filter3": "Boyfriend",
+        "filter4": "Parents",
+        "background_color": "#ffffff",
+        "products_to_show_slider": 22,
+        "columns_desktop": 6,
+        "columns_small_desktop": 4,
+        "columns_tablet": 3,
+        "columns_mobile": 2,
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "f4906bf4-44c2-4db4-b2e1-179f53d62d8a": {
+      "type": "collection-meta-single-slider-4",
+      "disabled": true,
+      "settings": {
+        "sort_order": "best-selling",
+        "filter": "Rude",
+        "filter1": "Funny",
+        "filter2": "Bestseller",
+        "filter3": "New In",
+        "filter4": "Balance",
+        "background_color": "#ffffff",
+        "products_to_show_slider": 22,
+        "columns_desktop": 6,
+        "columns_small_desktop": 4,
+        "columns_tablet": 3,
+        "columns_mobile": 2,
+        "padding_top": 20,
+        "padding_bottom": 20
+      }
+    },
+    "679d6148-8d1f-419c-aaab-3e3619bc37f3": {
+      "type": "collection-meta-single-slider-5",
+      "disabled": true,
+      "settings": {
+        "sort_order": "best-selling",
+        "filter": "Rude",
+        "filter1": "Funny",
+        "filter2": "Bestseller",
+        "filter3": "New In",
+        "filter4": "Balance",
+        "background_color": "#ffffff",
+        "products_to_show_slider": 22,
+        "columns_desktop": 6,
+        "columns_small_desktop": 4,
+        "columns_tablet": 3,
+        "columns_mobile": 2,
+        "padding_top": 20,
+        "padding_bottom": 20
+      }
+    },
+    "3a17b483-625c-4324-a796-080eed18ee83": {
+      "type": "collection-meta-double-slider",
+      "disabled": true,
+      "settings": {
+        "sort_order": "random",
+        "products_to_show_slider": 22,
+        "columns_desktop": 5,
+        "columns_small_desktop": 4,
+        "columns_tablet": 3,
+        "columns_mobile": 2,
+        "padding_top": 20,
+        "padding_bottom": 20
+      }
+    },
+    "ff9452fc-e26d-46de-834c-f1621e9077cc": {
+      "type": "collection-meta-quadruple-slider",
+      "disabled": true,
+      "settings": {
+        "sort_order": "random",
+        "products_to_show_slider": 22,
+        "columns_desktop": 3,
+        "columns_small_desktop": 2,
+        "columns_tablet": 2,
+        "columns_mobile": 2,
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "7e5e4a92-bc01-49c3-898b-0887888fb113": {
+      "type": "collection-meta-gift-slider",
+      "settings": {
+        "sort_order": "best-selling",
+        "filter": "Top Picks",
+        "filter1": "Jellycat",
+        "filter2": "For Her",
+        "filter3": "For Him",
+        "filter4": "Sweet Treats",
+        "background_color": "#ffffff",
+        "title": "Gift Collection slider 1",
+        "products_to_show_slider": 22,
+        "columns_desktop": 6,
+        "columns_small_desktop": 4,
+        "columns_tablet": 3,
+        "columns_mobile": 2,
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "93f93d31-9568-4bbb-9927-0a18e5206f6e": {
+      "type": "collection-meta-gift-slider-2",
+      "disabled": true,
+      "settings": {
+        "sort_order": "best-selling",
+        "filter": "Rude",
+        "filter1": "Funny",
+        "filter2": "Bestseller",
+        "filter3": "New In",
+        "filter4": "Balance",
+        "background_color": "#ffffff",
+        "title": "Gift Collection slider 2",
+        "products_to_show_slider": 22,
+        "columns_desktop": 6,
+        "columns_small_desktop": 4,
+        "columns_tablet": 3,
+        "columns_mobile": 2,
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "e4ec6e71-4584-48d3-8251-e85ff941ddfa": {
+      "type": "collection-meta-gift-slider-3",
+      "disabled": true,
+      "settings": {
+        "sort_order": "best-selling",
+        "filter": "Rude",
+        "filter1": "Funny",
+        "filter2": "Bestseller",
+        "filter3": "New In",
+        "filter4": "Balance",
+        "background_color": "#ffffff",
+        "title": "Gift Collection slider 3",
+        "products_to_show_slider": 22,
+        "columns_desktop": 6,
+        "columns_small_desktop": 4,
+        "columns_tablet": 3,
+        "columns_mobile": 2,
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "product-grid": {
+      "type": "main-collection-product-grid",
+      "disabled": true,
+      "settings": {
+        "product_layout": "card",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "05692ecd-0d59-4a7d-9682-8da77e2c8ee6": {
+      "type": "featured-blog",
+      "disabled": true,
+      "settings": {
+        "heading": "From the Blog",
+        "blog": "greeting-cards",
+        "post_limit": 2,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "493effdb-f371-44c7-84da-f8f3f37b7be2": {
+      "type": "newsletter",
+      "blocks": {
+        "template--16827013333217__493effdb-f371-44c7-84da-f8f3f37b7be2-heading-1": {
+          "type": "heading",
+          "disabled": true,
+          "settings": {
+            "heading": "Subscribe to our emails",
+            "heading_size": "h1"
+          }
+        },
+        "template--16827013333217__493effdb-f371-44c7-84da-f8f3f37b7be2-paragraph-1": {
+          "type": "paragraph",
+          "settings": {
+            "text": "<p>Join over 800,000 card lovers and subscribe to Scribbler for the latest on designers, deals and snazzy new products!</p>"
+          }
+        },
+        "template--16827013333217__493effdb-f371-44c7-84da-f8f3f37b7be2-email_form-1": {
+          "type": "email_form",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "template--16827013333217__493effdb-f371-44c7-84da-f8f3f37b7be2-heading-1",
+        "template--16827013333217__493effdb-f371-44c7-84da-f8f3f37b7be2-paragraph-1",
+        "template--16827013333217__493effdb-f371-44c7-84da-f8f3f37b7be2-email_form-1"
+      ],
+      "disabled": true,
+      "settings": {
+        "padding_top": 36,
+        "padding_bottom": 0
+      }
+    }
+  },
+  "order": [
+    "5a09e9a8-ad85-4958-83fc-b087ee31c255",
+    "dc6d40f4-c837-4d4a-8b7e-747bf8a691d5",
+    "817ba0d4-43c4-4ef0-80cb-e4ccd14e1a22",
+    "e77e9799-5af6-4dba-9d8d-f3c6eaf17c8d",
+    "4e0a63e3-1e9b-4e50-a5ff-2bc8b0f20ca5",
+    "4dda3ecc-8852-496c-8de0-d2055ddb86f2",
+    "d83b8bd1-8ef0-48c2-a89f-38023416b367",
+    "48a69650-c5f3-4b3f-910d-db6fbbd046c1",
+    "f4906bf4-44c2-4db4-b2e1-179f53d62d8a",
+    "679d6148-8d1f-419c-aaab-3e3619bc37f3",
+    "3a17b483-625c-4324-a796-080eed18ee83",
+    "ff9452fc-e26d-46de-834c-f1621e9077cc",
+    "7e5e4a92-bc01-49c3-898b-0887888fb113",
+    "93f93d31-9568-4bbb-9927-0a18e5206f6e",
+    "e4ec6e71-4584-48d3-8251-e85ff941ddfa",
+    "product-grid",
+    "05692ecd-0d59-4a7d-9682-8da77e2c8ee6",
+    "493effdb-f371-44c7-84da-f8f3f37b7be2"
+  ]
+}

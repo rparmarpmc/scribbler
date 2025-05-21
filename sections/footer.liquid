@@ -1,0 +1,324 @@
+<footer class="footer section-{{ section.id }}-padding" style="padding-top: {{ section.settings.padding_top }}px; padding-bottom: {{ section.settings.padding_bottom }}px;">
+  <div class="top-info-line">Scribbler London is a UK based greetings card and gift company, known for our cheeky sense of humour and love of great design!</div>
+    <div class="footer__content-top">
+      {%- for block in section.blocks -%}
+        <div class="footer-block">
+          {%- case block.type -%}
+            {%- when 'link_list' -%}
+              <details class="footer_accordion">
+                <summary role="button" aria-expanded="false">
+                  <div class="summary__title">
+                    {%- if block.settings.heading != blank -%}
+                      <h2 class="footer-block__heading">{{- block.settings.heading | escape -}}</h2>
+                    {%- endif -%}
+                  </div>
+                </summary>
+                <div class="accordion__content">
+                  {%- if block.settings.menu != blank -%}
+                    <ul class="footer-block-menu">
+                      {%- for link in block.settings.menu.links -%}
+                        <li>
+                          <a href="{{ link.url }}" class="{% if link.active %} footer-block-menu-active{% endif %}">
+                            {{ link.title }}
+                          </a>
+                        </li>
+                      {%- endfor -%}
+                    </ul>
+                  {%- endif -%}
+                </div>
+              </details>
+          {%- endcase -%}
+        </div>
+      {%- endfor -%}
+  </div>
+  <div class="footer-payment-info">
+    <div class="footer-payment-info-title">
+      WE ACCEPT PAYMENTS FROM
+    </div>
+    <ul class="payment-list" role="list">
+      <li class="payment-list-item">
+        {%- render 'icon-visa' -%}  
+      </li>
+      <li class="payment-list-item">
+        {%- render 'icon-mastercard' -%}  
+      </li>
+      <li class="payment-list-item">
+        {%- render 'icon-paypal' -%}  
+      </li>
+      <li class="payment-list-item">
+        {%- render 'icon-american-express' -%}  
+      </li>
+      {% comment %} <li class="payment-list-item">
+        {%- render 'icon-apple-pay' -%}   {% endcomment %}
+      {% comment %} </li> {% endcomment %}
+    </ul>
+  </div>
+  <div class="footer-copyright">
+    <div class="copyright-content">{{ 'now' | date: "%Y" }} Scribbler | {{ 'now' | date: "%Y" }} Scribbler London | Scribbler Holdings Limited, 9 Harmsworth Street, London SE17 3TJ.</div>
+    <div class="copyright-content">Company registration number: 01863486. VAT number: 293612100</div>
+  </div>
+
+  {% if customer %}
+    <input type="hidden" id="default_shipping_address" name="default_shipping_address" value='{"firstName":"{{ customer.default_address.first_name }}","lastName":"{{ customer.default_address.last_name }}","address1":"{{ customer.default_address.address1 }}","address2":"{{ customer.default_address.address2 }}","city":"{{ customer.default_address.city }}","province":"{{ customer.default_address.province }}","country":"{{ customer.default_address.country }}","zip":"{{ customer.default_address.zip }}","phone":"{{ customer.default_address.phone }}","addressType":"Indirect"}'>
+  {% endif %}
+</footer>
+
+<style type="text/css">
+  .footer {
+    background-color: #CBD81D;
+  }
+
+  .top-info-line {
+    text-align: center;
+    font-weight: bold;
+    height: 50px;
+    font-size: 18px;
+  }
+ 
+  .footer_accordion summary {
+    cursor: pointer;
+    list-style: none;
+    position: relative;
+  }
+
+  .footer_accordion summary::-webkit-details-marker {
+    display: none;
+    width: auto;
+    height: auto;
+    margin-right: auto;
+  }
+
+  .footer__content-top { 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+    max-width: 1200px;
+    min-height: 300px;
+     padding: 0 50px;
+  }
+
+  .footer-block__heading {
+    font-size: 24px;
+    margin-bottom: 5px;
+  }
+
+  .footer-block-menu {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .footer-block-menu li {
+    text-align: center;
+  }
+
+  .footer-block-menu li a {
+    text-decoration: none;
+    font-size: 18px;
+    color: black;
+  }
+
+  .footer-block-menu li a:hover {
+    color: white;
+  }
+
+  .footer-block-menu-active {
+    color: white;
+  }
+
+  .footer-block {
+    text-align: center;
+  }
+
+  .footer-block__heading {
+    font-size: 24px;
+    margin-bottom: 5px;
+  }
+
+  .footer-block-menu {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .footer-block-menu li {
+    text-align: center;
+  }  
+
+  .footer-block-menu li a {
+    text-decoration: none;
+    font-size: 18px;
+    color: black;
+  }
+
+  .footer-block-menu li a:hover {
+    color: white;
+  }
+
+  .footer-block-menu-active {
+    color: white;
+  }
+
+  .footer-payment-info {
+    height: 76px;
+  }
+
+  .footer-payment-info-title {
+    text-align: center;
+    font-size: 16px;
+    font-weight: 700;
+    margin-top: 30px;
+    margin-bottom: 15px;
+  }
+
+  .payment-list {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    list-style-type: none;
+    padding: 0;
+    margin: 0 auto;
+    gap: 20px;
+  }
+
+  .payment-list-item:nth-child(1) {
+    width: 110px;
+  }
+
+  .payment-list-item:nth-child(1) svg path {
+    fill: black;
+  }
+
+  .payment-list-item:nth-child(2) {
+    width: 55px;
+  }
+
+  .payment-list-item:nth-child(2) svg path {
+    fill: black;
+    stroke: black;
+  }
+
+  .payment-list-item:nth-child(3) {
+    width: 35px;
+  }
+
+  .payment-list-item:nth-child(3) svg path {
+    fill: black;
+    stroke: black;
+  }
+
+  .payment-list-item:nth-child(4) {
+    width: 35px;
+  }
+
+  .payment-list-item:nth-child(4) svg {
+    background-color: black;
+  }
+
+  .payment-list-item:nth-child(5) {
+    width: 90px;
+  }
+
+  .payment-list-item svg {
+    width: 100%;
+  }
+
+  .footer-copyright {
+    min-height: 175px;
+    margin-top: 30px;
+    margin-bottom: 100px;
+    text-align: center;
+    font-size: 24px;
+  }
+
+  @media screen and (min-width: 980px) { 
+    .footer__content-top {
+      flex-direction: row;
+      align-items: flex-start;
+      min-height: 60px;
+    }
+ 
+    .footer-block {
+      width: 20%;
+    }
+
+    .payment-list-item:nth-child(1) {
+      width: 150px;
+    }
+
+    .payment-list-item:nth-child(2) {
+      width: 70px;
+    }
+  
+    .payment-list-item:nth-child(3) {
+      width: 45px;
+    }
+  
+    .payment-list-item:nth-child(4) {
+      width: 45px;
+    }
+  
+    .payment-list-item:nth-child(5) {
+      width: 105px;
+    }
+  }
+  @media screen and (max-width: 979px) {
+  .top-info-line {
+    margin-bottom: 20px;
+    }
+  }
+</style>
+
+{% schema %}
+{
+    "name": "t:sections.footer.name",
+    "blocks": [
+        {
+            "type": "link_list",
+            "name": "t:sections.footer.blocks.link_list.name",
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "heading",
+                    "default": "Quick links",
+                    "label": "t:sections.footer.blocks.link_list.settings.heading.label"
+                },
+                {
+                    "type": "link_list",
+                    "id": "menu",
+                    "default": "footer",
+                    "label": "t:sections.footer.blocks.link_list.settings.menu.label",
+                    "info": "t:sections.footer.blocks.link_list.settings.menu.info"
+                }
+            ]
+        }
+    ],
+    "settings": [
+        {
+            "type": "header",
+            "content": "t:sections.all.padding.section_padding_heading"
+        },
+        {
+            "type": "range",
+            "id": "padding_top",
+            "min": 0,
+            "max": 100,
+            "step": 4,
+            "unit": "px",
+            "label": "t:sections.all.padding.padding_top",
+            "default": 36
+        },
+        {
+            "type": "range",
+            "id": "padding_bottom",
+            "min": 0,
+            "max": 100,
+            "step": 4,
+            "unit": "px",
+            "label": "t:sections.all.padding.padding_bottom",
+            "default": 36
+        }
+    ]
+}
+{% endschema %}

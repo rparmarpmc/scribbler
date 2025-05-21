@@ -1,0 +1,46 @@
+{%- for block in section.blocks -%}
+  {%- case block.type -%}
+    {%- when 'cookie-bar' -%}
+      <div class="cookie-bar" role="region">
+        {%- if block.settings.text != blank -%}
+          {%- if block.settings.link != blank -%}
+            <a href="{{ block.settings.link }}">
+                {%- endif -%}
+                    <p class="cookie-bar-message">
+                        {{ block.settings.text | escape }}
+                    </p>
+                {%- if block.settings.link != blank -%}
+                <button id="close-cookie" class="close-cookie-bar" aria-label="Close cookie">
+                </button>
+            </a>
+          {%- endif -%}
+        {%- endif -%}
+      </div>
+  {%- endcase -%}
+{%- endfor -%}
+
+{% schema %}
+{
+    "name": "t:sections.cookie-bar.name",
+    "max_blocks": 1,
+    "blocks": [
+        {
+            "type": "cookie-bar",
+            "name": "t:sections.cookie-bar.blocks.announcement.name",
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "text",
+                    "default": "We use cookies on our website to enhance your experience. Click here to find out more about our usage.",
+                    "label": "t:sections.cookie-bar.blocks.announcement.settings.text.label"
+                },
+                {
+                    "type": "url",
+                    "id": "link",
+                    "label": "t:sections.cookie-bar.blocks.announcement.settings.link.label"
+                }
+            ]
+        }
+    ]
+}
+{% endschema %}

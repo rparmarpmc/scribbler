@@ -1,0 +1,61 @@
+.social-section-title {
+    color: #000000;
+    font-size: calc(38px * var(--zoom-factor));
+    text-align: center;
+    margin-bottom: calc(15px * var(--zoom-factor));
+}
+
+.social-section-icons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: calc(20px * var(--zoom-factor));
+}
+
+.social-section-icons a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: calc(90px * var(--zoom-factor));
+    height: calc(90px * var(--zoom-factor));
+    background-color: #CBD81D;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+}
+
+.social-section-icons a svg.icon-linkedin {
+    height: calc(65px * var(--zoom-factor));
+}
+
+.social-section-icons a svg.icon-instagram {
+    height: calc(52px * var(--zoom-factor));
+}
+
+.social-section-icons a svg.icon-facebook {
+    height: calc(54px * var(--zoom-factor));
+}
+
+.social-section-icons a svg.icon-twitter {
+    height: calc(46px * var(--zoom-factor));
+}
+
+.social-section-icons a svg.icon-mail {
+    height: calc(60px * var(--zoom-factor));
+}
+
+@media screen and (max-width: 750px) {
+    .social-section-title {
+        font-size: 30px;
+    }
+
+    .social-section-icons a {
+        width: 55px;
+        height: 55px;
+    }
+
+    .social-section-icons a img {
+        width: 100%;
+        height: 100%;
+    }
+}

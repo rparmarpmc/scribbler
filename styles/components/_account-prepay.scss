@@ -1,0 +1,183 @@
+.prepay-wrapper {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.prepay-sidebar {
+    width: 33.33%;
+    background-color: #f6f6f6;
+    border-radius: 20px;
+    margin-right: 25px;
+    padding: 20px 40px;
+    max-height: 580px;
+}
+
+.prepay-sidebar-title {
+    font-size: 20px;
+    text-align: center;
+}
+
+#PrePay {
+    flex-direction: column;
+}
+
+.prepay-balance {
+    font-size: 44px;
+    font-weight: bold;
+    text-align: center;
+    color: #CBD81D;
+}
+
+.prepay-content-wrapper {
+    width: 66.66%;
+    margin-left: 25px;
+    background-color: #f6f6f6;
+    border-radius: 20px;
+    padding: 20px 40px;
+}
+
+.prepay-content-title {
+    font-size: 20px;
+}
+
+.prepay-product-wrapper {
+    display: flex;
+    flex-direction: row;
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.no-prepay-product {
+    width: 100%;
+    background-color: #f6f6f6;
+    border-radius: 20px;
+    padding: 20px 40px;
+    font-size: 20px;
+    text-align: center;
+}
+
+.prepay-product {
+    flex: 1 1 calc(33.33% - 20px);
+    padding: 20px;
+    max-width: calc(33.33% - 10px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.prepay-product-image-wrapper {
+    position: relative;
+}
+
+.prepay-product-image {
+    width: 100%;
+    max-width: 350px;
+}
+
+.prepay-product-badge {
+    position: absolute;
+    top:-20px;
+    right: -20px;
+    border-radius: 30px;
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 22px;
+    font-weight: bold;
+    background-color: #CBD81D;
+    color: white;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.prepay-add-to-basket {
+    background-color: #CBD81D;
+    border-radius: 10px;
+    border: none; 
+    width: 70%; 
+    height: 50px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    font-size: 18px;
+    font-weight: bold;
+    max-width: 250px;
+    &:active {
+        color: white;
+    }
+}
+
+.prepay-product-add-loader {
+    position: absolute;
+    border-radius: 50%;
+    display: none;
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
+    border: 5px solid black;
+    border-bottom-color: transparent;
+    width: 25px;
+    height: 25px;
+    right: 5px;
+}
+
+@keyframes rotation {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@media screen and (min-width: 750px) and (max-width: 1399px) {
+    .prepay-wrapper {
+        flex-direction: column;
+    }
+
+    .prepay-sidebar {
+        width: 100%;
+        margin-bottom: 50px;
+    }
+
+    .prepay-content-wrapper {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .prepay-product-badge {
+        border-radius: 25px;
+        height: 50px;
+        font-size: 18px;
+        text-align: center;
+        max-width: 90%;
+    }
+}
+
+@media screen and (max-width: 749px) {
+    .prepay-wrapper {
+        flex-direction: column;
+    }
+
+    .prepay-sidebar {
+        width: 100%;
+        margin-bottom: 50px;
+    }
+
+    .prepay-content-wrapper {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .prepay-product {
+        flex: auto;
+        max-width: none;
+    }
+}

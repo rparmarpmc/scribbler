@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="87"
+   height="106"
+   viewBox="0 0 87 106"
+   fill="none"
+   version="1.1"
+   id="svg849"
+   sodipodi:docname="Slider Right Button.svg"
+   inkscape:version="1.1.2 (b8e25be8, 2022-02-05)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview851"
+     pagecolor="#ffffff"
+     bordercolor="#111111"
+     borderopacity="1"
+     inkscape:pageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="1"
+     showgrid="false"
+     inkscape:zoom="6.7830189"
+     inkscape:cx="5.4547983"
+     inkscape:cy="54.769124"
+     inkscape:window-width="1920"
+     inkscape:window-height="1027"
+     inkscape:window-x="0"
+     inkscape:window-y="25"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg849" />
+  <g
+     filter="url(#filter0_d_5_118)"
+     id="g826">
+    <path
+       d="M8 0H72C80.2843 0 87 6.71573 87 15V83C87 91.2843 80.2843 98 72 98H8V0Z"
+       fill="#C8DA2C"
+       id="path824" />
+  </g>
+  <defs
+     id="defs845">
+    <filter
+       id="filter0_d_5_118"
+       x="0"
+       y="0"
+       width="87"
+       height="106"
+       filterUnits="userSpaceOnUse"
+       color-interpolation-filters="sRGB">
+      <feFlood
+         flood-opacity="0"
+         result="BackgroundImageFix"
+         id="feFlood828" />
+      <feColorMatrix
+         in="SourceAlpha"
+         type="matrix"
+         values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+         result="hardAlpha"
+         id="feColorMatrix830" />
+      <feOffset
+         dx="-4"
+         dy="4"
+         id="feOffset832" />
+      <feGaussianBlur
+         stdDeviation="2"
+         id="feGaussianBlur834" />
+      <feComposite
+         in2="hardAlpha"
+         operator="out"
+         id="feComposite836" />
+      <feColorMatrix
+         type="matrix"
+         values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
+         id="feColorMatrix838" />
+      <feBlend
+         mode="normal"
+         in2="BackgroundImageFix"
+         result="effect1_dropShadow_5_118"
+         id="feBlend840" />
+      <feBlend
+         mode="normal"
+         in="SourceGraphic"
+         in2="effect1_dropShadow_5_118"
+         result="shape"
+         id="feBlend842" />
+    </filter>
+  </defs>
+  <path
+     d="M 56.63545,47.568182 25.23412,21.856262 c -2.32236,-1.90309 -2.32236,-4.98043 0,-6.86327 2.32237,-1.882842 6.07773,-1.882844 8.40003,0 l 35.5767,29.13349 c 2.2482,1.8423 2.2976,4.7982 0.1729,6.7013 l -35.7249,29.3359 c -1.1612,0.9515 -2.6929,1.4172 -4.19999,1.4172 -1.50707,0 -3.03884,-0.4657 -4.20003,-1.4172 -2.32236,-1.9031 -2.32236,-4.9804 0,-6.8633 z"
+     fill="#ffffff"
+     id="path847" />
+</svg>

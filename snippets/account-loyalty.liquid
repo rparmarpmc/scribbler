@@ -1,0 +1,14 @@
+<script defer>
+    new Promise(async function(resolve, reject) {
+        while (!loadStatus.dom) {
+            consoleMsg("waiting for enable dom", null, null);
+            await delay(500);
+        }
+
+        loadJS("account_loyalty", "{{ 'account-loyalty.js' | asset_url }}", "account_loyalty_loaded", true);
+        resolve(true);
+    });
+</script>
+
+
+Loyalty
