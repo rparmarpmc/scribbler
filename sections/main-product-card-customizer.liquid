@@ -1,0 +1,526 @@
+<link href="{{ 'card-flipper.css' | asset_url }}" rel="stylesheet" type="text/css">
+
+<script defer>
+  new Promise(async function(resolve, reject) {
+      while (!loadStatus.dom) {
+          consoleMsg("waiting for enable dom", null, null);
+          await delay(500);
+      }
+
+      if(!loadStatus.product_form_custom_started){
+          loadStatus.product_form_custom_started = true;
+          loadJS("product-form-custom", "{{ 'product-form-custom.js' | asset_url }}", "product_form_custom_loaded", true);
+      }
+
+      if(!loadStatus.card_flipper_started){
+          loadStatus.card_flipper_started = true;
+          loadJS("card-flipper", "{{ 'card-flipper.js' | asset_url }}", "card_flipper_loaded", true);
+      }
+
+
+      resolve(true);
+  });
+
+  if (sessionStorage.getItem("editor_item_key") !== null) {
+    navigation.addEventListener("navigate", e => {
+      if(e.destination.url.split('=')[0] !== window.location.href.split('=')[0]){
+          sessionStorage.removeItem("editor_item_key");
+          sessionStorage.removeItem("editor_variant_id");
+          sessionStorage.removeItem('editor_state')
+          sessionStorage.removeItem('editor_properties')
+          sessionStorage.removeItem('editor_quantity')
+      }
+    });
+  }
+</script>
+
+<section id="MainProduct-{{ section.id }}" data-section="{{ section.id }}">
+  {%- assign product_form_id = 'product-form-' | append: section.id -%}
+  <div class="product">
+    <div class="product-side-column-left"></div>
+    <div class="product-media">
+      <div id="card-editor" style="aspect-ratio: {{ product.media[0].aspect_ratio }}; margin: 0 auto 0;">
+        <img
+          src="{{ product.media[0].src | image_url: width: 440 }}"
+          alt="Card editor placeholder"
+          decoding="async"
+          width="440"
+          height="610"
+          loading="eager"
+          style="width: 100%; height: auto; border: 1px solid #bfbfbf; box-shadow: 0 2px 4px 0 #bfbfbf;"
+        >
+      </div>
+    </div>
+
+    <div class="product-side-column-right">
+      <div class="product-form-quantity box-shadow">
+        <label class="product-form-label" for="Quantity-{{ section.id }}">
+          {{- 'products.product.quantity.label' | t -}}
+        </label>
+        <div class="quantity">
+          <button
+            class="quantity__button no-js-hidden"
+            name="minus"
+            type="button"
+            aria-label="Increment quantity"
+            onclick="document.getElementById('Quantity-{{ section.id }}').stepDown()"
+          >
+            {% render 'icon-minus' %}
+          </button>
+          <input
+            class="quantity__input"
+            type="number"
+            name="quantity"
+            id="Quantity-{{ section.id }}"
+            min="1"
+            value="1"
+            form="{{ product_form_id }}"
+          >
+          <button
+            class="quantity__button no-js-hidden"
+            name="plus"
+            type="button"
+            aria-label="Decrement quantity"
+            onclick="document.getElementById('Quantity-{{ section.id }}').stepUp()"
+          >
+            {% render 'icon-plus' %}
+          </button>
+        </div>
+      </div>
+
+      <div class="box-shadow">
+        <variant-radios class="no-js-hidden" data-section="{{ section.id }}" data-url="{{ product.url }}">
+          {%- for option in product.options_with_values -%}
+            <fieldset class="js product-form__input">
+              <legend class="form__label">{{ option.name }}</legend>
+              {%- for value in option.values -%}
+                <input
+                  type="radio"
+                  id="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}"
+                  name="{{ option.name }}"
+                  value="{{ value | escape }}"
+                  form="{{ product_form_id }}"
+                  {% if option.selected_value == value %}
+                    checked
+                  {% endif %}
+                >
+                <label for="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}">{{ value }}</label>
+              {%- endfor -%}
+            </fieldset>
+          {%- endfor -%}
+          <script type="application/json">
+            {{ product.variants | json }}
+          </script>
+        </variant-radios>
+      </div>
+
+      <product-form-custom-card class="product-form">
+        <div class="product-form__error-message-wrapper" role="alert" hidden>
+          <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-error" viewBox="0 0 13 13">
+            <circle cx="6.5" cy="6.50049" r="5.5" stroke="white" stroke-width="2"></circle>
+            <circle cx="6.5" cy="6.5" r="5.5" fill="#EB001B" stroke="#EB001B" stroke-width="0.7"></circle>
+            <path d="M5.87413 3.52832L5.97439 7.57216H7.02713L7.12739 3.52832H5.87413ZM6.50076 9.66091C6.88091 9.66091 7.18169 9.37267 7.18169 9.00504C7.18169 8.63742 6.88091 8.34917 6.50076 8.34917C6.12061 8.34917 5.81982 8.63742 5.81982 9.00504C5.81982 9.37267 6.12061 9.66091 6.50076 9.66091Z" fill="white"></path>
+            <path d="M5.87413 3.17832H5.51535L5.52424 3.537L5.6245 7.58083L5.63296 7.92216H5.97439H7.02713H7.36856L7.37702 7.58083L7.47728 3.537L7.48617 3.17832H7.12739H5.87413ZM6.50076 10.0109C7.06121 10.0109 7.5317 9.57872 7.5317 9.00504C7.5317 8.43137 7.06121 7.99918 6.50076 7.99918C5.94031 7.99918 5.46982 8.43137 5.46982 9.00504C5.46982 9.57872 5.94031 10.0109 6.50076 10.0109Z" fill="white" stroke="#EB001B" stroke-width="0.7"></path>
+          </svg>
+          <span class="product-form__error-message"></span>
+        </div>
+        {%- form 'product',
+          product,
+          id: product_form_id,
+          class: 'form',
+          novalidate: 'novalidate',
+          data-type: 'add-to-cart-form'
+        -%}
+          <div class="product-form__buttons">
+            <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+            <input type="hidden" name="product_type" form="{{ product_form_id }}" value="{{ product.type }}">
+            <input
+              type="hidden"
+              name="properties[_shipping_address]"
+              form="{{ product_form_id }}"
+              value="{% if customer %}{"firstName":"{{ customer.default_address.first_name }}","lastName":"{{ customer.default_address.last_name }}","address1":"{{ customer.default_address.address1 }}","address2":"{{ customer.default_address.address2 }}","city":"{{ customer.default_address.city }}","province":"{{ customer.default_address.province }}","country":"{{ customer.default_address.country }}","zip":"{{ customer.default_address.zip }}","phone":"{{ customer.default_address.phone }}","addressType":"Indirect"}{% endif %}"
+            >
+
+            <button
+              type="submit"
+              name="add"
+              id="KlaviyoAddToCart"
+              aria-label="Add customized card to cart"
+              class="product-form__submit button--add-to-cart"
+              {% if product.selected_or_first_available_variant.available == false %}
+                disabled
+              {% endif %}
+            >
+              <span>
+                {%- if product.selected_or_first_available_variant.available -%}
+                  {{ 'products.product.add_to_cart' | t }}
+                {%- else -%}
+                  {{ 'products.product.sold_out' | t }}
+                {%- endif -%}
+              </span>
+              <div class="loading-overlay__spinner hidden">
+                <svg
+                  aria-hidden="true"
+                  focusable="false"
+                  role="presentation"
+                  class="spinner"
+                  viewBox="0 0 66 66"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
+                </svg>
+              </div>
+            </button>
+            {% render 'printess-add-to-basket',
+              product: product,
+              buttonLabel: 'Design now',
+              buttonClasses: 'product-form__submit button--add-to-cart',
+              shopToken: 'eyJhbGciOiJSUzI1NiIsImtpZCI6InByaW50ZXNzLXNhYXMtYWxwaGEiLCJ0eXAiOiJKV1QifQ.eyJzdWIiOiJOZVRUcGtubUI0UWdWWjc1cjQ5TExPOVV1d3cxIiwianRpIjoiY2lCZ0FEUmF1VmZpdkFTR3lxU3Q0SWhPc0NqZ2R2emoiLCJyb2xlIjoic2hvcCIsIm5iZiI6MTcyMjMzMzQ2OSwiZXhwIjoyMDM3NjkzNDY5LCJpYXQiOjE3MjIzMzM0NjksImlzcyI6IlByaW50ZXNzIEdtYkggJiBDby5LRyIsImF1ZCI6InByaW50ZXNzLXNhYXMifQ.QQvTEojs7ZRkepAIqfSqMb82aq8YXSdFsNuMcHzHIFqBclQj8lqNRNFk9kYDD7U-F38zMLbah0C2JREowKPFMmvNtL_5Ptqq0c66N0ZE3YEZhDJCOFILg9JxRw9gIe25nJokZkR2soKVdmT507YaD1s8K1HNcyz49mGXvKKrS8BMv9Z7Z8WXjEYricotwBdt4YwkJNFnBaICoibdNoGD4hZYWzkHVvlF7ZvwgXBQsZ2EaYFWC_DSCZvHRiiP8ndtMynR9c241ceiu3c8dvlrxugqYomAhzshXdF89LrT1d_2c9yf46QxgpaNrZdD9WbSIp-k5VgnqKSSh2W5DNXKYiLxYh7F0IdTllKg3bmTD1YCvCm1rzTazB-CB4PuDxRpOi-MLoHIDFZwp4lUqLf9lB7NyXPZ9Ie-DVOmgS-uxPqdAEbj_SVBpwyo13xfC1VvJm46UESY0Ojr38lHfJRZOwhQpaT_gxv42aUXAqldcjkqB6eWmN-x11xiucA-5dbVLDXKtq7oA2guN-alRkKTLFl4iVY4ca7PkC32FB3wtJ_eb1UOjECPbvjPavkYeF82qjrDcZT9wHxzlD-JM8NcqQnBFAI8TDhMEWTz1BfLrfIDc0czrad86Bzm50nlPqHTJioAh5oFtyZBNHLZXIM98-EuPYMisYmVVPNFYQS62bY',
+              startupLogoUrl: '',
+              showStartupAnimation: false,
+              hidePricesInEditor: true,
+              editorVersion: '',
+              legalText: 'incl. tax, excl. shipping',
+              theme: '',
+              showProductName: false,
+              showAlertOnTabClose: false,
+              startupBackgroundColor: '',
+              additionalAttachParams: ''
+            %}
+          </div>
+        {%- endform -%}
+      </product-form-custom-card>
+      <script defer type="module">
+        if (sessionStorage.getItem("editor_item_key") !== null) {
+          document.querySelector('[name="id"]').value = sessionStorage.getItem("editor_variant_id")
+          document.querySelector('input[name="quantity"]').value = sessionStorage.getItem("editor_quantity")
+          document.getElementById("KlaviyoAddToCart").getElementsByTagName('span')[0].innerText = 'Save Changes'
+        }
+      </script>
+
+      <div class="box-shadow product-form-price">
+        {%- liquid
+          assign target = product.selected_or_first_available_variant
+          assign compare_at_price = target.compare_at_price
+          assign price = target.price | default: 1999
+          assign available = target.available | default: false
+          assign money_price = price | money
+          if target == product and product.price_varies
+            assign money_price = 'products.product.price.from_price_html' | t: price: money_price
+          endif
+        -%}
+        <div class="product-form-price-label">Price</div>
+        <div class="product-form-price-value" id="price-container">
+          {%- if available == false %}
+            <div class="product-form-price-sold-out">Sold out!</div>
+          {%- else -%}
+            {%- unless product.price_varies == false and product.compare_at_price_varies %}
+              <div class="product-form-price-old">
+                {{ compare_at_price | money }}
+              </div>
+            {%- endunless -%}
+            <div class="product-form-price-current">
+              {{ money_price }}
+            </div>
+          {% endif -%}
+        </div>
+        <script
+          defer
+          type="module"
+        >
+          const updatePrice = () => {
+            const selectedTitle = document.querySelector('input[name="Size"]:checked').value;
+            const variants = {{ product.variants | json }}
+            const selectedVariant = variants.filter(variant => variant.title == selectedTitle);
+            const priceContainer = document.getElementById('price-container')
+
+            if (!selectedVariant[0].available) {
+              priceContainer.innerHTML = '<div class="product-form-price-sold-out" >Sold out!</div>'
+            } else if (selectedVariant[0].compare_at_price) {
+              priceContainer.innerHTML = `<div class="product-form-price-old">${selectedVariant[0].compare_at_price}</div><div class="product-form-price-current">${selectedVariant[0].price}</div>`
+            } else {
+              priceContainer.innerHTML = `<div class="product-form-price-current">${selectedVariant[0].price ? Intl.NumberFormat(window.Shopify.currency.countryCode, { style: 'currency', currency: window.Shopify.currency.active }).format(selectedVariant[0].price / 100) : null}</div>`
+            }
+          }
+          document.querySelectorAll("input[name='Size']").forEach((input) => {
+            input.addEventListener('change', updatePrice);
+          });
+        </script>
+      </div>
+
+      <div class="box-shadow product-form__vendor">
+        <label class="form__label">More by {{ product.vendor }}</label>
+        <div class="vendor_logo">
+          <a href="{{ "Scribbler" | url_for_vendor }}">
+            <img
+              class="vendor_logo_image"
+              src="{{ shop.brand.square_logo | image_url }}"
+              alt="{{ product.vendor | json }}"
+              width="60"
+              height="60"
+              loading="lazy"
+            >
+          </a>
+        </div>
+        <script
+          defer
+          type="module"
+        >
+          fetch(`/apps/scribblerApi/v1/shoppify/public/products/{{ product.id | json }}`, { method: 'GET', priority: 'low', headers: { 'Content-Type': 'application/json' } })
+            .then(response => response.json())
+            .then(response => {
+              if(response?.products[0]?.vendor_image_path?.length > 0 ) {
+                document.getElementsByClassName('vendor_logo')[0].innerHTML = `
+                  <a href="{{ product.vendor | url_for_vendor }}">
+                    <img class="vendor_logo_image" src="${response.products[0].vendor_image_path}" alt="${response.products[0].vendor}" width="60" height="60" loading="lazy">
+                  </a>
+                `
+              }
+            })
+            .catch(e => {
+              console.error(e)
+            })
+        </script>
+      </div>
+
+      <div class="box-shadow accordion">
+        <details>
+          <summary>
+            <div class="summary__title">
+              <div class="accordion__title">Postage Information</div>
+              <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-caret" viewBox="0 0 10 6">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M9.354.646a.5.5 0 00-.708 0L5 4.293 1.354.646a.5.5 0 00-.708.708l4 4a.5.5 0 00.708 0l4-4a.5.5 0 000-.708z" fill="currentColor"></path>
+              </svg>
+            </div>
+          </summary>
+          <div
+            class="accordion__content rte"
+            id="ProductAccordion-9bf8938c-390d-4cfe-8658-fcec6e9e92e1-template--18273605714145__main"
+          >
+            <div id="shipping-estimation"></div>
+            <script
+              defer
+              type="module"
+            >
+              const convertFormatShippingCurrency = (price) => {
+                return Intl.NumberFormat(window.Shopify.currency.countryCode, { style: 'currency', currency: window.Shopify.currency.active }).format(price / 100)        
+              }
+
+              const getShipping = () => {
+                const option = document.querySelector('input[name="Size"]:checked') ? document.querySelector('input[name="Size"]:checked').value  : 'Standard';
+                const requestData = { 
+                  product_type: "Card", 
+                  product_size: option.includes("Standard") ? "Standard" : "Large"
+                }
+                      
+                fetch(`https://livewholesale.scribbler.com/v1/shoppify/private/cart/shipping_rate_info`,  { method: 'POST', headers: { 'Content-Type': 'application/json', Accept: `application/json` }, body: JSON.stringify(requestData) })
+                  .then(response => {
+                    if (!response.ok) {
+                      var error = new Error(response.status)
+                      throw error
+                    }
+                    return response.json()
+                  })
+                  .then(data => {
+                    let estimationHTML = '';
+
+                    if (data.length > 0) {
+                      const ukShipping = []
+                      const euShipping = []
+                      const rowShipping = []
+
+                      data.map(shipping => {
+                        if(shipping.delivery_id === 1 || shipping.delivery_id === 2 || shipping.delivery_id === 3) {
+                          ukShipping.push(shipping)
+                        }
+                        if (shipping.delivery_id === 4 ) {
+                          euShipping.push(shipping)
+                        }
+                        if (shipping.delivery_id === 5 ) {
+                          rowShipping.push(shipping)
+                        }
+                      })
+
+                      if(ukShipping.length > 0) {
+                        estimationHTML += '<div class="shipping_zone">UK Shipping</div>';
+
+                        ukShipping.map( shipping => {
+                          estimationHTML += '<div class="shipping_rate"><div class="shipping_rate_name">'+ shipping.DeliveryName +'</div><div class="shipping_rate_price">' + convertFormatShippingCurrency(shipping.initial_price * 100) + '</div></div>';
+                        })
+                      }
+
+                      if (euShipping.length > 0) {
+                        estimationHTML += '<div class="shipping_zone">EU Shipping</div>';
+
+                        euShipping.map(shipping => {
+                          estimationHTML += '<div class="shipping_rate"><div class="shipping_rate_name">' + shipping.DeliveryName + '</div><div class="shipping_rate_price">' + convertFormatShippingCurrency(shipping.initial_price * 100) + '</div></div>';
+                        })
+                      }
+
+                      if (rowShipping.length > 0) {
+                        estimationHTML += '<div class="shipping_zone">Rest of World</div>';
+
+                        rowShipping.map(shipping => {
+                          estimationHTML += '<div class="shipping_rate"><div class="shipping_rate_name">' + shipping.DeliveryName + '</div><div class="shipping_rate_price">' + convertFormatShippingCurrency(shipping.initial_price * 100) + '</div></div>';
+                        })
+                      }
+                    }
+                    document.querySelector("#shipping-estimation").innerHTML = estimationHTML;
+                  })
+                  .catch(error => {
+                    throw error
+                  })
+              }
+
+              getShipping()
+
+              document.querySelectorAll("input[name='Size']").forEach((input) => {
+                input.addEventListener('change', getShipping);
+              });
+            </script>
+          </div>
+        </details>
+      </div>
+
+      <div class="box-shadow accordion">
+        <details>
+          <summary>
+            <div class="summary__title">
+              <div class="accordion__title">Materials</div>
+              <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-caret" viewBox="0 0 10 6">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M9.354.646a.5.5 0 00-.708 0L5 4.293 1.354.646a.5.5 0 00-.708.708l4 4a.5.5 0 00.708 0l4-4a.5.5 0 000-.708z" fill="currentColor"></path>
+              </svg>
+            </div>
+          </summary>
+          <div class="accordion__content rte">
+            <p>{{ product.metafields.custom.card_materials }}</p>
+          </div>
+        </details>
+      </div>
+    </div>
+  </div>
+
+  {%- liquid
+    if product.selected_or_first_available_variant.featured_media
+      assign seo_media = product.selected_or_first_available_variant.featured_media
+    else
+      assign seo_media = product.featured_media
+    endif
+  -%}
+
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org/",
+      "@type": "Product",
+      "name": {{ product.title | json }},
+      "url": {{ request.origin | append: product.url | json }},{% if seo_media -%}
+        "image" : [{{ seo_media | image_url: width: seo_media.preview_image.width | prepend: "https:" | json }}],{%- endif %}
+      "description": {{ product.description | strip_html | json }},{% if product.selected_or_first_available_variant.sku != blank -%}
+        "sku" : {{ product.selected_or_first_available_variant.sku | json }},{%- endif %}
+      "brand": {
+        "@type": "Brand",
+        "name": {{ product.vendor | json }}
+      },
+      "offers": [{%- for variant in product.variants -%}
+          {
+            "@type": "Offer",
+            {%- if variant.sku != blank -%}
+              "sku" : {{ variant.sku | json }},
+            {%- endif -%}
+            {%- if variant.barcode.size == 12 -%}
+              "gtin12" : {{ variant.barcode }},
+            {%- endif -%}
+            {%- if variant.barcode.size == 13 -%}
+              "gtin13" : {{ variant.barcode }},
+            {%- endif -%}
+            {%- if variant.barcode.size == 14 -%}
+              "gtin14" : {{ variant.barcode }},
+            {%- endif -%}
+            "availability": "http://schema.org/ {% if variant.available %}InStock
+            {% else %}
+              OutOfStock{% endif %}",
+            "price": {{ variant.price | divided_by: 100.00 | json }},
+            "priceCurrency": {{ cart.currency.iso_code | json }},
+            "url": {{ request.origin | append: variant.url | json }}
+          }
+          {% unless forloop.last %},{% endunless %}{%- endfor -%}]
+    }
+  </script>
+</section>
+
+{% schema %}
+{
+    "name": "pmc-card",
+    "tag": "section",
+    "class": "section",
+    "blocks": [
+        {
+            "type": "price",
+            "name": "t:sections.main-product.blocks.price.name",
+            "limit": 1
+        },
+        {
+            "type": "quantity_selector",
+            "name": "t:sections.main-product.blocks.quantity_selector.name",
+            "limit": 1
+        },
+        {
+            "type": "variant_picker",
+            "name": "t:sections.main-product.blocks.variant_picker.name",
+            "limit": 1,
+            "settings": [
+                {
+                    "type": "select",
+                    "id": "picker_type",
+                    "options": [
+                        {
+                            "value": "dropdown",
+                            "label": "t:sections.main-product.blocks.variant_picker.settings.picker_type.options__1.label"
+                        },
+                        {
+                            "value": "button",
+                            "label": "t:sections.main-product.blocks.variant_picker.settings.picker_type.options__2.label"
+                        }
+                    ],
+                    "default": "button",
+                    "label": "t:sections.main-product.blocks.variant_picker.settings.picker_type.label"
+                }
+            ]
+        },
+        {
+            "type": "buy_buttons",
+            "name": "t:sections.main-product.blocks.buy_buttons.name",
+            "limit": 1,
+            "settings": [
+                {
+                    "type": "checkbox",
+                    "id": "show_dynamic_checkout",
+                    "default": true,
+                    "label": "t:sections.main-product.blocks.buy_buttons.settings.show_dynamic_checkout.label",
+                    "info": "t:sections.main-product.blocks.buy_buttons.settings.show_dynamic_checkout.info"
+                }
+            ]
+        },
+        {
+            "type": "vendor",
+            "name": "Vendor",
+            "limit": 1
+        },
+        {
+            "type": "postage",
+            "name": "Postage",
+            "limit": 1
+        },
+        {
+            "type": "materials",
+            "name": "Materials",
+            "limit": 1
+        },
+        {
+            "type": "alcohol_consent",
+            "name": "Alcohol Consent",
+            "limit": 1
+        }
+    ]
+}
+{% endschema %}
