@@ -103,8 +103,7 @@
 
 <script>
   function executeTestCall() {
-      window["printessShowEditorForItem"] = function() {
-{
+      window["printessShowEditorForItem"]({
             "id": 55170782724471,
             "properties": {
                 "_printessSaveToken": "st:_3cFafZh5yF07G5BlardKzjqC18m3lI-sp1xi6NFIRbEyOy-b1Ov_hSd5_ftfjjcccAZlKbzgnQi6UYPZ18egw",
@@ -166,12 +165,11 @@
                 "increment": 1
             },
             "has_components": false
-        }        
-      }
+        });
   }
 <script>
 
-<button>Printess Test</button>
+<button onclick="executeTestCall()">Printess Test</button>
         
 <script>
   document.addEventListener('DOMContentLoaded', function() {
