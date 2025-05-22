@@ -61,6 +61,8 @@
 
   if(!window["printessShowEditorForItem"]) {
       window["printessShowEditorForItem"] = function(basketItem) {
+          console.log("Your basket item: " + JSON.stringify(basketItem));
+        
           const basketItemProperties = basketItem.properties ? JSON.parse(JSON.stringify(basketItem.properties)) : {};
 
          
