@@ -24,7 +24,7 @@
     startupLogoUrl: "",
     showStartupAnimation: true,
     hidePricesInEditor: false,
-    editorVersion: "/v/nightly",
+    editorVersion: "",
     legalText: "incl. tax, excl. shipping",
     theme: "theme01",
     showProductName: true,
@@ -63,16 +63,7 @@
       window["printessShowEditorForItem"] = function(basketItem) {
           const basketItemProperties = basketItem.properties ? JSON.parse(JSON.stringify(basketItem.properties)) : {};
 
-          //if(basketItemProperties) {
-              //basketItem.properties = {};
-              // basketItemProperties.forEach((prop) => {
-              //     if(prop.length > 1) {
-              //         basketItem.properties[prop[0]] = prop[1];
-              //     } else {
-              //         basketItem.properties[prop[0]] = "";
-              //     }
-              // });
-          //}
+         
 
           if(basketItem.options_with_values) {
               basketItem.options_with_values.forEach((x) => {
