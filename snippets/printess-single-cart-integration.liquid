@@ -65,6 +65,10 @@
         
           const basketItemProperties = basketItem.properties ? JSON.parse(JSON.stringify(basketItem.properties)) : {};
 
+        if(!basketItem.properties || !basketItem.properties["_printessSaveToken"]) {
+          console.log("Printess Save Token not found!");
+        }
+
          
 
           if(basketItem.options_with_values) {
