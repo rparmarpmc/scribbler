@@ -63,7 +63,7 @@
       window["printessShowEditorForItem"] = function(basketItem) {
           const basketItemProperties = basketItem.properties ? JSON.parse(JSON.stringify(basketItem.properties)) : {};
 
-          if(basketItemProperties) {
+          //if(basketItemProperties) {
               //basketItem.properties = {};
               // basketItemProperties.forEach((prop) => {
               //     if(prop.length > 1) {
@@ -72,7 +72,7 @@
               //         basketItem.properties[prop[0]] = "";
               //     }
               // });
-          }
+          //}
 
           if(basketItem.options_with_values) {
               basketItem.options_with_values.forEach((x) => {
