@@ -4,11 +4,11 @@ import { Provider } from 'react-redux'
 import store from './store'
 import eventBus from './event-bus'
 
-// import DrawerMenu from './containers/DrawerMenu/DrawerMenu'
-// import CartPage from './containers/CartPage/CartPage'
+import DrawerMenu from './containers/DrawerMenu/DrawerMenu'
+import CartPage from './containers/CartPage/CartPage'
 
-const DrawerMenu = React.lazy(() => import('./containers/DrawerMenu/DrawerMenu'))
-const CartPage = React.lazy(() => import('./containers/CartPage/CartPage'))
+// const DrawerMenu = React.lazy(() => import('./containers/DrawerMenu/DrawerMenu'))
+// const CartPage = React.lazy(() => import('./containers/CartPage/CartPage'))
 
 window.eventBus = eventBus
 
