@@ -168,7 +168,7 @@ const CartItems = ({ groups, customerName, isLoggedIn, cartContent }) => {
                                             </button>
                                         </>) : null
                                     }
-                                    {item.product_type === 'Cards' ? (
+                                    {!(item.properties && item.properties["_printessSaveToken"]) && item.product_type === 'Cards' ? (
                                         <>
                                             <button
                                             className='cart-item-preview-button'
