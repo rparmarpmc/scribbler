@@ -1,0 +1,444 @@
+{%- assign min = 0 -%}
+{%- assign max = 9999 -%}
+{%- assign diff = max | minus: min -%}
+{%- assign random_number = "now" | date: "%N" | modulo: diff | plus: min -%}
+
+<div style="background-color: {{section.settings.background_color }}; ">
+    {%- if section.settings.title != blank -%}
+        <h2 class="card-collection-slider-title">{{ section.settings.title | escape }}</h2>
+    {%- endif -%}
+    <div class="card-collection-slider-filter-wrapper">
+        {%- if section.settings.filter_1 != blank -%}
+            <button class="card-collection-slider-filter-button" onclick="addFlterToSlider{{random_number}}(event,'{{ section.settings.filter_1 }}')">{{ section.settings.filter_1 }}</button>
+        {%- endif -%}
+        {%- if section.settings.filter_2 != blank -%}
+            <button class="card-collection-slider-filter-button" onclick="addFlterToSlider{{random_number}}(event,'{{ section.settings.filter_2 }}')">{{ section.settings.filter_2 }}</button>
+        {%- endif -%}
+        {%- if section.settings.filter_3 != blank -%}
+            <button class="card-collection-slider-filter-button" onclick="addFlterToSlider{{random_number}}(event,'{{ section.settings.filter_3 }}')">{{ section.settings.filter_3 }}</button>
+        {%- endif -%}
+        {%- if section.settings.filter_4 != blank -%}
+            <button class="card-collection-slider-filter-button" onclick="addFlterToSlider{{random_number}}(event,'{{ section.settings.filter_4 }}')">{{ section.settings.filter_4 }}</button>
+        {%- endif -%}
+        {%- if section.settings.filter_5 != blank -%}
+            <button class="card-collection-slider-filter-button" onclick="addFlterToSlider{{random_number}}(event,'{{ section.settings.filter_5 }}')">{{ section.settings.filter_5 }}</button>
+        {%- endif -%}
+    </div>
+    <ul class="card-collection-slider" role="list" id="{{ section.id }}">
+        <li class="card-collection-slider-item">
+            <div class="card-collection-slider-item-wrapper">
+                <div class="card-collection-slider-image-placeholder">
+                  <div class="product-add-loader loading"></div>
+                </div>    
+                <div class="card-collection-slider-actions">
+                    <div class="card-collection-slider-actions-favourites card-collection-slider-actions-favourites-placeholder">
+                        <svg width="35" height="33" viewBox="0 0 35 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path opacity="0.4" d="M17.1252 32.2173C26.4744 32.2173 34.0534 25.0052 34.0534 16.1087C34.0534 7.21209 26.4744 0 17.1252 0C7.77604 0 0.197021 7.21209 0.197021 16.1087C0.197021 25.0052 7.77604 32.2173 17.1252 32.2173Z" fill="#E6E6E6"></path>
+                            <path d="M24.4161 11.0845C23.4943 10.0478 22.3211 9.56934 21.1478 9.56934C19.9746 9.56934 18.8013 10.0478 17.8795 11.0845L17.1253 11.9617L16.371 11.0845C15.4492 10.0478 14.276 9.56934 13.1027 9.56934C11.9295 9.56934 10.7562 10.0478 9.83441 11.0845C7.99074 13.1579 7.99074 16.5072 9.83441 18.5806L10.5886 19.4578L16.2872 25.997C16.7063 26.4754 17.4605 26.4754 17.8795 25.997L23.5781 19.4578L24.3323 18.5806C26.176 16.5072 26.176 13.1579 24.3323 11.0845H24.4161Z" stroke="#ffffff" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </svg>
+                    </div>
+                    <div class="card-collection-slider-actions-vendor">
+                        <img class="card-collection-slider-actions-vendor-img" src="{{ 'webpeditor_scribbler_s.webp' | asset_url }}" alt="Scribbler Vendor Logo" width="60" height="60" decoding="async">
+                    </div>
+                    <div class="card-collection-slider-actions-buy card-collection-slider-actions-buy-placeholder">
+                        <svg width="35" height="35" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path opacity="0.4" d="M17.9143 34.5332C27.2635 34.5332 34.8425 26.9542 34.8425 17.605C34.8425 8.25577 27.2635 0.676758 17.9143 0.676758C8.5651 0.676758 0.986084 8.25577 0.986084 17.605C0.986084 26.9542 8.5651 34.5332 17.9143 34.5332Z" fill="#E6E6E6"></path>
+                            <path d="M27.8029 11.7388C28.641 11.7388 29.2276 12.4092 29.1438 13.2472L26.9649 23.8064C26.7973 25.3987 25.7079 26.6557 24.367 26.6557H11.4614C10.1205 26.6557 9.03108 25.4825 8.86347 23.8064L6.68459 13.2472C6.60079 12.4092 7.27121 11.7388 8.02544 11.7388H27.8029Z" stroke="white" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"></path>
+                            <path d="M13.8916 11.2357C13.8916 7.71599 17.9141 7.88359 17.9141 7.88359C17.9141 7.88359 21.9367 7.71599 21.9367 11.2357" stroke="white" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"></path>
+                            <path d="M7.77393 16.5991H28.2219" stroke="white" stroke-width="1.3" stroke-miterlimit="10"></path>
+                            <path d="M8.86353 21.6274H26.965" stroke="white" stroke-width="1.3" stroke-miterlimit="10"></path>
+                            <path d="M13.9753 26.6557V11.7388" stroke="white" stroke-width="1.3" stroke-miterlimit="10"></path>
+                            <path d="M21.9368 26.6557V11.7388" stroke="white" stroke-width="1.3" stroke-miterlimit="10"></path>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </li>
+        <li class="card-collection-slider-item">
+            <div class="card-collection-slider-item-wrapper">
+                <div class="card-collection-slider-image-placeholder">
+                  <div class="product-add-loader loading"></div>
+                </div>    
+                <div class="card-collection-slider-actions">
+                    <div class="card-collection-slider-actions-favourites card-collection-slider-actions-favourites-placeholder">
+                        <svg width="35" height="33" viewBox="0 0 35 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path opacity="0.4" d="M17.1252 32.2173C26.4744 32.2173 34.0534 25.0052 34.0534 16.1087C34.0534 7.21209 26.4744 0 17.1252 0C7.77604 0 0.197021 7.21209 0.197021 16.1087C0.197021 25.0052 7.77604 32.2173 17.1252 32.2173Z" fill="#E6E6E6"></path>
+                            <path d="M24.4161 11.0845C23.4943 10.0478 22.3211 9.56934 21.1478 9.56934C19.9746 9.56934 18.8013 10.0478 17.8795 11.0845L17.1253 11.9617L16.371 11.0845C15.4492 10.0478 14.276 9.56934 13.1027 9.56934C11.9295 9.56934 10.7562 10.0478 9.83441 11.0845C7.99074 13.1579 7.99074 16.5072 9.83441 18.5806L10.5886 19.4578L16.2872 25.997C16.7063 26.4754 17.4605 26.4754 17.8795 25.997L23.5781 19.4578L24.3323 18.5806C26.176 16.5072 26.176 13.1579 24.3323 11.0845H24.4161Z" stroke="#ffffff" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </svg>
+                    </div>
+                    <div class="card-collection-slider-actions-vendor">
+                        <img class="card-collection-slider-actions-vendor-img" src="{{ 'webpeditor_scribbler_s.webp' | asset_url }}" alt="Scribbler Vendor Logo" width="60" height="60" decoding="async">
+                    </div>
+                    <div class="card-collection-slider-actions-buy card-collection-slider-actions-buy-placeholder">
+                        <svg width="35" height="35" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path opacity="0.4" d="M17.9143 34.5332C27.2635 34.5332 34.8425 26.9542 34.8425 17.605C34.8425 8.25577 27.2635 0.676758 17.9143 0.676758C8.5651 0.676758 0.986084 8.25577 0.986084 17.605C0.986084 26.9542 8.5651 34.5332 17.9143 34.5332Z" fill="#E6E6E6"></path>
+                            <path d="M27.8029 11.7388C28.641 11.7388 29.2276 12.4092 29.1438 13.2472L26.9649 23.8064C26.7973 25.3987 25.7079 26.6557 24.367 26.6557H11.4614C10.1205 26.6557 9.03108 25.4825 8.86347 23.8064L6.68459 13.2472C6.60079 12.4092 7.27121 11.7388 8.02544 11.7388H27.8029Z" stroke="white" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"></path>
+                            <path d="M13.8916 11.2357C13.8916 7.71599 17.9141 7.88359 17.9141 7.88359C17.9141 7.88359 21.9367 7.71599 21.9367 11.2357" stroke="white" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"></path>
+                            <path d="M7.77393 16.5991H28.2219" stroke="white" stroke-width="1.3" stroke-miterlimit="10"></path>
+                            <path d="M8.86353 21.6274H26.965" stroke="white" stroke-width="1.3" stroke-miterlimit="10"></path>
+                            <path d="M13.9753 26.6557V11.7388" stroke="white" stroke-width="1.3" stroke-miterlimit="10"></path>
+                            <path d="M21.9368 26.6557V11.7388" stroke="white" stroke-width="1.3" stroke-miterlimit="10"></path>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </li>
+        <li class="card-collection-slider-item">
+            <div class="card-collection-slider-item-wrapper">
+                <div class="card-collection-slider-image-placeholder">
+                  <div class="product-add-loader loading"></div>
+                </div>    
+                <div class="card-collection-slider-actions">
+                    <div class="card-collection-slider-actions-favourites card-collection-slider-actions-favourites-placeholder">
+                        <svg width="35" height="33" viewBox="0 0 35 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path opacity="0.4" d="M17.1252 32.2173C26.4744 32.2173 34.0534 25.0052 34.0534 16.1087C34.0534 7.21209 26.4744 0 17.1252 0C7.77604 0 0.197021 7.21209 0.197021 16.1087C0.197021 25.0052 7.77604 32.2173 17.1252 32.2173Z" fill="#E6E6E6"></path>
+                            <path d="M24.4161 11.0845C23.4943 10.0478 22.3211 9.56934 21.1478 9.56934C19.9746 9.56934 18.8013 10.0478 17.8795 11.0845L17.1253 11.9617L16.371 11.0845C15.4492 10.0478 14.276 9.56934 13.1027 9.56934C11.9295 9.56934 10.7562 10.0478 9.83441 11.0845C7.99074 13.1579 7.99074 16.5072 9.83441 18.5806L10.5886 19.4578L16.2872 25.997C16.7063 26.4754 17.4605 26.4754 17.8795 25.997L23.5781 19.4578L24.3323 18.5806C26.176 16.5072 26.176 13.1579 24.3323 11.0845H24.4161Z" stroke="#ffffff" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </svg>
+                    </div>
+                    <div class="card-collection-slider-actions-vendor">
+                        <img class="card-collection-slider-actions-vendor-img" src="{{ 'webpeditor_scribbler_s.webp' | asset_url }}" alt="Scribbler Vendor Logo" width="60" height="60" decoding="async">
+                    </div>
+                    <div class="card-collection-slider-actions-buy card-collection-slider-actions-buy-placeholder">
+                        <svg width="35" height="35" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path opacity="0.4" d="M17.9143 34.5332C27.2635 34.5332 34.8425 26.9542 34.8425 17.605C34.8425 8.25577 27.2635 0.676758 17.9143 0.676758C8.5651 0.676758 0.986084 8.25577 0.986084 17.605C0.986084 26.9542 8.5651 34.5332 17.9143 34.5332Z" fill="#E6E6E6"></path>
+                            <path d="M27.8029 11.7388C28.641 11.7388 29.2276 12.4092 29.1438 13.2472L26.9649 23.8064C26.7973 25.3987 25.7079 26.6557 24.367 26.6557H11.4614C10.1205 26.6557 9.03108 25.4825 8.86347 23.8064L6.68459 13.2472C6.60079 12.4092 7.27121 11.7388 8.02544 11.7388H27.8029Z" stroke="white" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"></path>
+                            <path d="M13.8916 11.2357C13.8916 7.71599 17.9141 7.88359 17.9141 7.88359C17.9141 7.88359 21.9367 7.71599 21.9367 11.2357" stroke="white" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"></path>
+                            <path d="M7.77393 16.5991H28.2219" stroke="white" stroke-width="1.3" stroke-miterlimit="10"></path>
+                            <path d="M8.86353 21.6274H26.965" stroke="white" stroke-width="1.3" stroke-miterlimit="10"></path>
+                            <path d="M13.9753 26.6557V11.7388" stroke="white" stroke-width="1.3" stroke-miterlimit="10"></path>
+                            <path d="M21.9368 26.6557V11.7388" stroke="white" stroke-width="1.3" stroke-miterlimit="10"></path>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </li>
+        <li class="card-collection-slider-item">
+            <div class="card-collection-slider-item-wrapper">
+                <div class="card-collection-slider-image-placeholder">
+                  <div class="product-add-loader loading"></div>
+                </div>    
+                <div class="card-collection-slider-actions">
+                    <div class="card-collection-slider-actions-favourites card-collection-slider-actions-favourites-placeholder">
+                        <svg width="35" height="33" viewBox="0 0 35 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path opacity="0.4" d="M17.1252 32.2173C26.4744 32.2173 34.0534 25.0052 34.0534 16.1087C34.0534 7.21209 26.4744 0 17.1252 0C7.77604 0 0.197021 7.21209 0.197021 16.1087C0.197021 25.0052 7.77604 32.2173 17.1252 32.2173Z" fill="#E6E6E6"></path>
+                            <path d="M24.4161 11.0845C23.4943 10.0478 22.3211 9.56934 21.1478 9.56934C19.9746 9.56934 18.8013 10.0478 17.8795 11.0845L17.1253 11.9617L16.371 11.0845C15.4492 10.0478 14.276 9.56934 13.1027 9.56934C11.9295 9.56934 10.7562 10.0478 9.83441 11.0845C7.99074 13.1579 7.99074 16.5072 9.83441 18.5806L10.5886 19.4578L16.2872 25.997C16.7063 26.4754 17.4605 26.4754 17.8795 25.997L23.5781 19.4578L24.3323 18.5806C26.176 16.5072 26.176 13.1579 24.3323 11.0845H24.4161Z" stroke="#ffffff" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </svg>
+                    </div>
+                    <div class="card-collection-slider-actions-vendor">
+                        <img class="card-collection-slider-actions-vendor-img" src="{{ 'webpeditor_scribbler_s.webp' | asset_url }}" alt="Scribbler Vendor Logo" width="60" height="60" decoding="async">
+                    </div>
+                    <div class="card-collection-slider-actions-buy card-collection-slider-actions-buy-placeholder">
+                        <svg width="35" height="35" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path opacity="0.4" d="M17.9143 34.5332C27.2635 34.5332 34.8425 26.9542 34.8425 17.605C34.8425 8.25577 27.2635 0.676758 17.9143 0.676758C8.5651 0.676758 0.986084 8.25577 0.986084 17.605C0.986084 26.9542 8.5651 34.5332 17.9143 34.5332Z" fill="#E6E6E6"></path>
+                            <path d="M27.8029 11.7388C28.641 11.7388 29.2276 12.4092 29.1438 13.2472L26.9649 23.8064C26.7973 25.3987 25.7079 26.6557 24.367 26.6557H11.4614C10.1205 26.6557 9.03108 25.4825 8.86347 23.8064L6.68459 13.2472C6.60079 12.4092 7.27121 11.7388 8.02544 11.7388H27.8029Z" stroke="white" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"></path>
+                            <path d="M13.8916 11.2357C13.8916 7.71599 17.9141 7.88359 17.9141 7.88359C17.9141 7.88359 21.9367 7.71599 21.9367 11.2357" stroke="white" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"></path>
+                            <path d="M7.77393 16.5991H28.2219" stroke="white" stroke-width="1.3" stroke-miterlimit="10"></path>
+                            <path d="M8.86353 21.6274H26.965" stroke="white" stroke-width="1.3" stroke-miterlimit="10"></path>
+                            <path d="M13.9753 26.6557V11.7388" stroke="white" stroke-width="1.3" stroke-miterlimit="10"></path>
+                            <path d="M21.9368 26.6557V11.7388" stroke="white" stroke-width="1.3" stroke-miterlimit="10"></path>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </li>
+        <li class="card-collection-slider-item">
+            <div class="card-collection-slider-item-wrapper">
+                <div class="card-collection-slider-image-placeholder">
+                  <div class="product-add-loader loading"></div>
+                </div>    
+                <div class="card-collection-slider-actions">
+                    <div class="card-collection-slider-actions-favourites card-collection-slider-actions-favourites-placeholder">
+                        <svg width="35" height="33" viewBox="0 0 35 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path opacity="0.4" d="M17.1252 32.2173C26.4744 32.2173 34.0534 25.0052 34.0534 16.1087C34.0534 7.21209 26.4744 0 17.1252 0C7.77604 0 0.197021 7.21209 0.197021 16.1087C0.197021 25.0052 7.77604 32.2173 17.1252 32.2173Z" fill="#E6E6E6"></path>
+                            <path d="M24.4161 11.0845C23.4943 10.0478 22.3211 9.56934 21.1478 9.56934C19.9746 9.56934 18.8013 10.0478 17.8795 11.0845L17.1253 11.9617L16.371 11.0845C15.4492 10.0478 14.276 9.56934 13.1027 9.56934C11.9295 9.56934 10.7562 10.0478 9.83441 11.0845C7.99074 13.1579 7.99074 16.5072 9.83441 18.5806L10.5886 19.4578L16.2872 25.997C16.7063 26.4754 17.4605 26.4754 17.8795 25.997L23.5781 19.4578L24.3323 18.5806C26.176 16.5072 26.176 13.1579 24.3323 11.0845H24.4161Z" stroke="#ffffff" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </svg>
+                    </div>
+                    <div class="card-collection-slider-actions-vendor">
+                        <img class="card-collection-slider-actions-vendor-img" src="{{ 'webpeditor_scribbler_s.webp' | asset_url }}" alt="Scribbler Vendor Logo" width="60" height="60" decoding="async">
+                    </div>
+                    <div class="card-collection-slider-actions-buy card-collection-slider-actions-buy-placeholder">
+                        <svg width="35" height="35" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path opacity="0.4" d="M17.9143 34.5332C27.2635 34.5332 34.8425 26.9542 34.8425 17.605C34.8425 8.25577 27.2635 0.676758 17.9143 0.676758C8.5651 0.676758 0.986084 8.25577 0.986084 17.605C0.986084 26.9542 8.5651 34.5332 17.9143 34.5332Z" fill="#E6E6E6"></path>
+                            <path d="M27.8029 11.7388C28.641 11.7388 29.2276 12.4092 29.1438 13.2472L26.9649 23.8064C26.7973 25.3987 25.7079 26.6557 24.367 26.6557H11.4614C10.1205 26.6557 9.03108 25.4825 8.86347 23.8064L6.68459 13.2472C6.60079 12.4092 7.27121 11.7388 8.02544 11.7388H27.8029Z" stroke="white" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"></path>
+                            <path d="M13.8916 11.2357C13.8916 7.71599 17.9141 7.88359 17.9141 7.88359C17.9141 7.88359 21.9367 7.71599 21.9367 11.2357" stroke="white" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"></path>
+                            <path d="M7.77393 16.5991H28.2219" stroke="white" stroke-width="1.3" stroke-miterlimit="10"></path>
+                            <path d="M8.86353 21.6274H26.965" stroke="white" stroke-width="1.3" stroke-miterlimit="10"></path>
+                            <path d="M13.9753 26.6557V11.7388" stroke="white" stroke-width="1.3" stroke-miterlimit="10"></path>
+                            <path d="M21.9368 26.6557V11.7388" stroke="white" stroke-width="1.3" stroke-miterlimit="10"></path>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </li>
+        <li class="card-collection-slider-item">
+            <div class="card-collection-slider-item-wrapper">
+                <div class="card-collection-slider-image-placeholder">
+                  <div class="product-add-loader loading"></div>
+                </div>    
+                <div class="card-collection-slider-actions">
+                    <div class="card-collection-slider-actions-favourites card-collection-slider-actions-favourites-placeholder">
+                        <svg width="35" height="33" viewBox="0 0 35 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path opacity="0.4" d="M17.1252 32.2173C26.4744 32.2173 34.0534 25.0052 34.0534 16.1087C34.0534 7.21209 26.4744 0 17.1252 0C7.77604 0 0.197021 7.21209 0.197021 16.1087C0.197021 25.0052 7.77604 32.2173 17.1252 32.2173Z" fill="#E6E6E6"></path>
+                            <path d="M24.4161 11.0845C23.4943 10.0478 22.3211 9.56934 21.1478 9.56934C19.9746 9.56934 18.8013 10.0478 17.8795 11.0845L17.1253 11.9617L16.371 11.0845C15.4492 10.0478 14.276 9.56934 13.1027 9.56934C11.9295 9.56934 10.7562 10.0478 9.83441 11.0845C7.99074 13.1579 7.99074 16.5072 9.83441 18.5806L10.5886 19.4578L16.2872 25.997C16.7063 26.4754 17.4605 26.4754 17.8795 25.997L23.5781 19.4578L24.3323 18.5806C26.176 16.5072 26.176 13.1579 24.3323 11.0845H24.4161Z" stroke="#ffffff" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </svg>
+                    </div>
+                    <div class="card-collection-slider-actions-vendor">
+                        <img class="card-collection-slider-actions-vendor-img" src="{{ 'webpeditor_scribbler_s.webp' | asset_url }}" alt="Scribbler Vendor Logo" width="60" height="60" decoding="async">
+                    </div>
+                    <div class="card-collection-slider-actions-buy card-collection-slider-actions-buy-placeholder">
+                        <svg width="35" height="35" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path opacity="0.4" d="M17.9143 34.5332C27.2635 34.5332 34.8425 26.9542 34.8425 17.605C34.8425 8.25577 27.2635 0.676758 17.9143 0.676758C8.5651 0.676758 0.986084 8.25577 0.986084 17.605C0.986084 26.9542 8.5651 34.5332 17.9143 34.5332Z" fill="#E6E6E6"></path>
+                            <path d="M27.8029 11.7388C28.641 11.7388 29.2276 12.4092 29.1438 13.2472L26.9649 23.8064C26.7973 25.3987 25.7079 26.6557 24.367 26.6557H11.4614C10.1205 26.6557 9.03108 25.4825 8.86347 23.8064L6.68459 13.2472C6.60079 12.4092 7.27121 11.7388 8.02544 11.7388H27.8029Z" stroke="white" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"></path>
+                            <path d="M13.8916 11.2357C13.8916 7.71599 17.9141 7.88359 17.9141 7.88359C17.9141 7.88359 21.9367 7.71599 21.9367 11.2357" stroke="white" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"></path>
+                            <path d="M7.77393 16.5991H28.2219" stroke="white" stroke-width="1.3" stroke-miterlimit="10"></path>
+                            <path d="M8.86353 21.6274H26.965" stroke="white" stroke-width="1.3" stroke-miterlimit="10"></path>
+                            <path d="M13.9753 26.6557V11.7388" stroke="white" stroke-width="1.3" stroke-miterlimit="10"></path>
+                            <path d="M21.9368 26.6557V11.7388" stroke="white" stroke-width="1.3" stroke-miterlimit="10"></path>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </li>
+    </ul>
+    <a href="{{ section.settings.collection.url }}" class="card-collection-slider-view-all">View All</a>
+</div>
+
+{% comment %} <div class="custom-controls">
+    <button type="button" aria-label="Preview slide" id="prev-{{ section.id }}" data-controls="prev">
+                     <svg width="15" height="26" viewBox="0 0 15 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M13.7776 0.592285L1.41989 12.95L13.7776 25.3077" stroke="black" stroke-linecap="round"/>
+                    </svg>
+    </button>
+    <button type="button" aria-label="Next slide" id="next-{{ section.id }}" data-controls="next">
+                    <svg width="15" height="26" viewBox="0 0 15 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M1.44727 25.3569L13.8224 12.9818L1.44727 0.606711" stroke="black" stroke-linecap="round"/>
+                    </svg>
+    </button>
+</div> {% endcomment %}
+            
+ <script defer type="module">
+    let tag = []
+    let mouseDown = false;
+    let startX, scrollLeft;
+    const slider = document.getElementById("{{ section.id }}");
+
+    const sliderPlaceholder = slider.innerHTML
+
+    const startDragging = (e) => {
+        e.preventDefault();
+        mouseDown = true;
+        startX = e.pageX - slider.offsetLeft;
+        scrollLeft = slider.scrollLeft;
+    }
+
+    const stopDragging = (e) => {
+        e.preventDefault();
+        mouseDown = false;
+    }
+
+    const move = (e) => {
+        e.preventDefault();
+        if(!mouseDown) { return; }
+        const x = e.pageX - slider.offsetLeft;
+        const scroll = x - startX;
+        slider.scrollLeft = scrollLeft - scroll;
+    }
+
+    slider.addEventListener('mousemove', move, false);
+    slider.addEventListener('mousedown', startDragging, false);
+    slider.addEventListener('mouseup', stopDragging, false);
+    slider.addEventListener('mouseleave', stopDragging, false);  
+
+    const getProducts = async (tag = []) => {
+        var response = await fetch(`/apps/scribblerApi/v1/shoppify/public/products/filter`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', Accept: `application/json` },
+            body: JSON.stringify({
+                collection_id: {{ section.settings.collection.title | json }},
+                rude: true,
+                sort_order: '{{ section.settings.sort_order }}',
+                filter_tags: tag,
+                limit: {{ section.settings.products_to_show_slider }},
+            })
+        })
+        
+        if (!response.ok) {
+            throw new Error(`Response status: ${response.status}`);
+        }
+
+        const products = await response.json();
+        
+        if(products?.products?.length > 0 ){ 
+            slider.innerHTML = ''
+            products.products.map((product)=>{
+                slider.innerHTML += `
+                   <li class="card-collection-slider-item">
+                        <div class="card-collection-slider-item-wrapper">
+                            <a class="card-collection-slider-item-link" href="/products/boyfriend-lemon-squeezer-card-scr3380">
+                                <img class="card-collection-slider-item-img" src="${product.image.src}" alt="Boyfriend Lemon Squeezer Card" width="309" decoding="async" height="auto">
+                            </a>    
+                            <div class="card-collection-slider-actions">
+                                <div class="card-collection-slider-actions-favourites">
+                                    <button class="card-collection-slider-actions-favourites-button" type="button" aria-label="Add to Favourites" name="Add to Favourites">
+                                        <svg width="35" height="33" viewBox="0 0 35 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path opacity="0.9" d="M17.1252 32.2173C26.4744 32.2173 34.0534 25.0052 34.0534 16.1087C34.0534 7.21209 26.4744 0 17.1252 0C7.77604 0 0.197021 7.21209 0.197021 16.1087C0.197021 25.0052 7.77604 32.2173 17.1252 32.2173Z" fill="#E6E6E6"></path>
+                                            <path d="M24.4161 11.0845C23.4943 10.0478 22.3211 9.56934 21.1478 9.56934C19.9746 9.56934 18.8013 10.0478 17.8795 11.0845L17.1253 11.9617L16.371 11.0845C15.4492 10.0478 14.276 9.56934 13.1027 9.56934C11.9295 9.56934 10.7562 10.0478 9.83441 11.0845C7.99074 13.1579 7.99074 16.5072 9.83441 18.5806L10.5886 19.4578L16.2872 25.997C16.7063 26.4754 17.4605 26.4754 17.8795 25.997L23.5781 19.4578L24.3323 18.5806C26.176 16.5072 26.176 13.1579 24.3323 11.0845H24.4161Z" stroke="#333333" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                        </svg>
+                                    </button>
+                                </div>
+                                <div class="card-collection-slider-actions-vendor">
+                                    <img class="card-collection-slider-actions-vendor-img" src="${product.vendor_image_path}" alt="${product.vendor}" width="60" height="60" decoding="async">
+                                </div>
+                                <div class="card-collection-slider-actions-buy">
+                                    <button class="card-collection-slider-actions-buy-button" type="button" aria-label="Add to Basket" name="Add to Basket" onclick="addToBasket(this,44073742827745, 'Cards', 'Standard (120mm x 170mm)')">
+                                        <svg width="35" height="35" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path opacity="0.9" d="M17.9143 34.5332C27.2635 34.5332 34.8425 26.9542 34.8425 17.605C34.8425 8.25577 27.2635 0.676758 17.9143 0.676758C8.5651 0.676758 0.986084 8.25577 0.986084 17.605C0.986084 26.9542 8.5651 34.5332 17.9143 34.5332Z" fill="#E6E6E6"></path>
+                                            <path d="M27.8029 11.7388C28.641 11.7388 29.2276 12.4092 29.1438 13.2472L26.9649 23.8064C26.7973 25.3987 25.7079 26.6557 24.367 26.6557H11.4614C10.1205 26.6557 9.03108 25.4825 8.86347 23.8064L6.68459 13.2472C6.60079 12.4092 7.27121 11.7388 8.02544 11.7388H27.8029Z" stroke="black" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"></path>
+                                            <path d="M13.8916 11.2357C13.8916 7.71599 17.9141 7.88359 17.9141 7.88359C17.9141 7.88359 21.9367 7.71599 21.9367 11.2357" stroke="black" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"></path>
+                                            <path d="M7.77393 16.5991H28.2219" stroke="black" stroke-width="1.3" stroke-miterlimit="10"></path>
+                                            <path d="M8.86353 21.6274H26.965" stroke="black" stroke-width="1.3" stroke-miterlimit="10"></path>
+                                            <path d="M13.9753 26.6557V11.7388" stroke="black" stroke-width="1.3" stroke-miterlimit="10"></path>
+                                            <path d="M21.9368 26.6557V11.7388" stroke="black" stroke-width="1.3" stroke-miterlimit="10"></path>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </li>`
+            })
+        } else {
+            slider.innerHTML = '<div class="no-product">Oops! No matches found. Try refining your search or discover something new in our collections below.</div>'
+        }
+    }
+
+    getProducts();
+
+    window.addFlterToSlider{{random_number}} = (ev,tag) =>  {
+        slider.innerHTML = sliderPlaceholder
+        const parentElement = ev.target.parentElement;
+        for (const child of parentElement.children) {
+            child.classList.remove("active-filter-button");
+        }
+        ev.target.classList.add("active-filter-button");
+        getProducts([tag])
+    }
+
+    {% comment %} if(!window.addFavourite){
+        window.addFavourite = addFavourite;
+        window.removeFavourite = removeFavourite;
+        window.addToBasket = addToBasket;
+    } {% endcomment %}
+</script> 
+
+{% schema %}
+{
+    "name": "t:sections.card-slider-home-page.name",
+    "tag": "section",
+    "class": "section",
+    "settings": [
+        {
+            "type": "text",
+            "id": "title",
+            "default": "Collection Slider",
+            "label": "t:sections.card-slider-home-page.settings.title.label"
+        },
+        {
+            "type": "collection",
+            "id": "collection",
+            "label": "t:sections.card-slider-home-page.settings.collection.label"
+        },
+        {
+            "label": "t:sections.card-slider-home-page.settings.sort-order.label",
+            "id": "sort_order",
+            "type": "select",
+            "options": [
+                {
+                    "label": "Random",
+                    "value": "random"
+                },
+                {
+                    "label": "New In",
+                    "value": "created-descending"
+                },
+                {
+                    "label": "Bestsellers",
+                    "value": "best-selling"
+                },
+                {
+                    "label": "Prime Tag",
+                    "value": "manual"
+                },
+                {
+                    "label": "Bestsellers/Prime Tag Mix",
+                    "value": "manual-best-selling"
+                }
+            ],
+            "default": "random"
+        },
+        {
+            "type": "text",
+            "id": "filter_1",
+            "default": "Rude",
+            "label": "t:sections.card-slider-home-page.settings.filters.label-1"
+        },
+        {
+            "type": "text",
+            "id": "filter_2",
+            "default": "Funny",
+            "label": "t:sections.card-slider-home-page.settings.filters.label-2"
+        },
+        {
+            "type": "text",
+            "id": "filter_3",
+            "default": "Bestseller",
+            "label": "t:sections.card-slider-home-page.settings.filters.label-3"
+        },
+        {
+            "type": "text",
+            "id": "filter_4",
+            "default": "New In",
+            "label": "t:sections.card-slider-home-page.settings.filters.label-4"
+        },
+        {
+            "type": "text",
+            "id": "filter_5",
+            "default": "Balance",
+            "label": "t:sections.card-slider-home-page.settings.filters.label-5"
+        },
+        {
+            "id": "background_color",
+            "type": "select",
+            "options": [
+                {
+                    "label": "White",
+                    "value": "#ffffff"
+                },
+                {
+                    "label": "Blue",
+                    "value": "#F6FBFC"
+                },
+            ],
+            "label": "t:sections.card-slider-home-page.settings.background-color.label"
+        },
+        {
+            "type": "range",
+            "id": "products_to_show_slider",
+            "min": 2,
+            "max": 100,
+            "step": 1,
+            "default": 90,
+            "label": "t:sections.card-slider-home-page.settings.products-to-show-slider.label"
+        }, 
+        {
+            "type": "header",
+            "content": "t:sections.all.padding.section_padding_heading"
+        },
+       
+    ],
+    "presets": [
+        {
+            "name": "t:sections.card-slider-home-page.presets.name"
+        }
+    ]
+}
+{% endschema %}
