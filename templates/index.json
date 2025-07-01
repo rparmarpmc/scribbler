@@ -9,6 +9,34 @@
  */
 {
   "sections": {
+    "infoslider_jRjUtj": {
+      "type": "infoslider",
+      "blocks": {
+        "column_hXgzgJ": {
+          "type": "column",
+          "settings": {
+            "link": "",
+            "text": "Get 20% bonus credit with any purchase of PrePay"
+          }
+        },
+        "column_wicfgm": {
+          "type": "column",
+          "settings": {
+            "link": "",
+            "text": "Get 20% bonus credit with any purchase of PrePay"
+          }
+        }
+      },
+      "block_order": [
+        "column_hXgzgJ",
+        "column_wicfgm"
+      ],
+      "name": "t:sections.infoslider.presets.name",
+      "settings": {
+        "padding_bottom": 20,
+        "fading_interval": 3
+      }
+    },
     "c1b76f2b-f46e-4142-9934-23779e218e16": {
       "type": "slideshow",
       "blocks": {
@@ -43,54 +71,6 @@
         "fading_interval": 3
       }
     },
-    "multicolumn": {
-      "type": "multicolumn",
-      "blocks": {
-        "column1": {
-          "type": "column",
-          "settings": {
-            "name": "Birthday",
-            "image": "shopify://shop_images/Birthday_Cake_1_d6cd7fef-66d8-459d-9eaa-3939fccba523.webp",
-            "link": "shopify://collections/birthday-all"
-          }
-        },
-        "column2": {
-          "type": "column",
-          "settings": {
-            "name": "Anniversary",
-            "image": "shopify://shop_images/Love_Hearts_1_2f5023b9-9898-4b0c-922a-ae431c1aa9a6_1.webp",
-            "link": "shopify://collections/anniversary-all"
-          }
-        },
-        "column3": {
-          "type": "column",
-          "settings": {
-            "name": "Jellycat",
-            "image": "shopify://shop_images/Jellycat_811fd2d4-1a67-42aa-b77f-a61886864ab0.webp",
-            "link": "shopify://collections/jellycat-all"
-          }
-        },
-        "column4": {
-          "type": "column",
-          "settings": {
-            "name": "Gifts",
-            "image": "shopify://shop_images/Present_bb5127a0-9736-4f91-a4a6-24b25e985462.webp",
-            "link": "shopify://collections/gifts"
-          }
-        }
-      },
-      "block_order": [
-        "column1",
-        "column2",
-        "column3",
-        "column4"
-      ],
-      "settings": {
-        "title": "Shop",
-        "padding_top": 24,
-        "padding_bottom": 24
-      }
-    },
     "683f41eb-75ce-4e85-804c-6452d60af58c": {
       "type": "collection-slider",
       "settings": {
@@ -110,21 +90,6 @@
         "columns_mobile": 2,
         "padding_top": 0,
         "padding_bottom": 24
-      }
-    },
-    "f15f3d7c-9ace-4a49-bbf9-239324be3116": {
-      "type": "collage-collections",
-      "settings": {
-        "image_1": "shopify://shop_images/April_Banners_Homepage-Lower-Large__SHOPIFY.png",
-        "link_1": "shopify://collections/stationery",
-        "image_2": "shopify://shop_images/April_Banners_Homepage-Lower-Small_2__SHOPIFY.png",
-        "link_2": "shopify://collections",
-        "image_3": "shopify://shop_images/April_Banners_SHOPIFY.png",
-        "link_3": "shopify://collections/birthday-all",
-        "image_4": "shopify://shop_images/April_Banners_Homepage-Lower-Long__SHOPIFY.png",
-        "link_4": "shopify://collections/jellycat-all",
-        "padding_top": 0,
-        "padding_bottom": 0
       }
     },
     "7dca659a-8c44-4030-b3cd-f37355ee7e9e": {
@@ -276,10 +241,9 @@
     }
   },
   "order": [
+    "infoslider_jRjUtj",
     "c1b76f2b-f46e-4142-9934-23779e218e16",
-    "multicolumn",
     "683f41eb-75ce-4e85-804c-6452d60af58c",
-    "f15f3d7c-9ace-4a49-bbf9-239324be3116",
     "7dca659a-8c44-4030-b3cd-f37355ee7e9e",
     "0586179d-2078-4469-b213-3f9da748234b",
     "60dc6887-7afe-4c65-b4e2-f622df3bf41e",
