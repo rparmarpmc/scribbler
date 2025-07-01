@@ -375,7 +375,7 @@ h1:empty {
                                               name='add'
                                               id='KlaviyoAddToCart'
                                               style='width: 100%'
-                                              class='unmodified-main-product-button product-form__submit button--add-to-cart {% if block.settings.show_dynamic_checkout and product.selling_plan_groups == empty %}button--secondary{% else %}button--primary{% endif %}'   
+                                              class='printess-add-to-basket product-form__submit button--add-to-cart {% if block.settings.show_dynamic_checkout and product.selling_plan_groups == empty %}button--secondary{% else %}button--primary{% endif %}'   
                                           >
                                                 <span>
                                                    
@@ -384,19 +384,23 @@ h1:empty {
                                                 </span>
                                                 <div class='loader hidden'></div>
                                           </button>
-                                          {%- render 'printess-add-to-basket',
-product: product,
-buttonLabel: "Design now",
-buttonClasses: "product-form__submit button button--full-width button--primary",
-shopToken: 'eyJhbGciOiJSUzI1NiIsImtpZCI6InByaW50ZXNzLXNhYXMtYWxwaGEiLCJ0eXAiOiJKV1QifQ.eyJzdWIiOiJOZVRUcGtubUI0UWdWWjc1cjQ5TExPOVV1d3cxIiwianRpIjoiY2lCZ0FEUmF1VmZpdkFTR3lxU3Q0SWhPc0NqZ2R2emoiLCJyb2xlIjoic2hvcCIsIm5iZiI6MTcyMjMzMzQ2OSwiZXhwIjoyMDM3NjkzNDY5LCJpYXQiOjE3MjIzMzM0NjksImlzcyI6IlByaW50ZXNzIEdtYkggJiBDby5LRyIsImF1ZCI6InByaW50ZXNzLXNhYXMifQ.QQvTEojs7ZRkepAIqfSqMb82aq8YXSdFsNuMcHzHIFqBclQj8lqNRNFk9kYDD7U-F38zMLbah0C2JREowKPFMmvNtL_5Ptqq0c66N0ZE3YEZhDJCOFILg9JxRw9gIe25nJokZkR2soKVdmT507YaD1s8K1HNcyz49mGXvKKrS8BMv9Z7Z8WXjEYricotwBdt4YwkJNFnBaICoibdNoGD4hZYWzkHVvlF7ZvwgXBQsZ2EaYFWC_DSCZvHRiiP8ndtMynR9c241ceiu3c8dvlrxugqYomAhzshXdF89LrT1d_2c9yf46QxgpaNrZdD9WbSIp-k5VgnqKSSh2W5DNXKYiLxYh7F0IdTllKg3bmTD1YCvCm1rzTazB-CB4PuDxRpOi-MLoHIDFZwp4lUqLf9lB7NyXPZ9Ie-DVOmgS-uxPqdAEbj_SVBpwyo13xfC1VvJm46UESY0Ojr38lHfJRZOwhQpaT_gxv42aUXAqldcjkqB6eWmN-x11xiucA-5dbVLDXKtq7oA2guN-alRkKTLFl4iVY4ca7PkC32FB3wtJ_eb1UOjECPbvjPavkYeF82qjrDcZT9wHxzlD-JM8NcqQnBFAI8TDhMEWTz1BfLrfIDc0czrad86Bzm50nlPqHTJioAh5oFtyZBNHLZXIM98-EuPYMisYmVVPNFYQS62bY',
-startupLogoUrl: "",
-showStartupAnimation: true,
-hidePricesInEditor: false,
-editorVersion: "",
-legalText: "",
-legacyAddToBasket: true
--%}
-                                          {%- if block.settings.show_dynamic_checkout -%}
+{% render 'printess-add-to-basket',
+      product: product,
+      buttonLabel: "Design now",
+      buttonClasses: "product-form__submit button--add-to-cart",
+      shopToken: "eyJhbGciOiJSUzI1NiIsImtpZCI6InByaW50ZXNzLXNhYXMtYWxwaGEiLCJ0eXAiOiJKV1QifQ.eyJzdWIiOiJOZVRUcGtubUI0UWdWWjc1cjQ5TExPOVV1d3cxIiwianRpIjoiY2lCZ0FEUmF1VmZpdkFTR3lxU3Q0SWhPc0NqZ2R2emoiLCJyb2xlIjoic2hvcCIsIm5iZiI6MTcyMjMzMzQ2OSwiZXhwIjoyMDM3NjkzNDY5LCJpYXQiOjE3MjIzMzM0NjksImlzcyI6IlByaW50ZXNzIEdtYkggJiBDby5LRyIsImF1ZCI6InByaW50ZXNzLXNhYXMifQ.QQvTEojs7ZRkepAIqfSqMb82aq8YXSdFsNuMcHzHIFqBclQj8lqNRNFk9kYDD7U-F38zMLbah0C2JREowKPFMmvNtL_5Ptqq0c66N0ZE3YEZhDJCOFILg9JxRw9gIe25nJokZkR2soKVdmT507YaD1s8K1HNcyz49mGXvKKrS8BMv9Z7Z8WXjEYricotwBdt4YwkJNFnBaICoibdNoGD4hZYWzkHVvlF7ZvwgXBQsZ2EaYFWC_DSCZvHRiiP8ndtMynR9c241ceiu3c8dvlrxugqYomAhzshXdF89LrT1d_2c9yf46QxgpaNrZdD9WbSIp-k5VgnqKSSh2W5DNXKYiLxYh7F0IdTllKg3bmTD1YCvCm1rzTazB-CB4PuDxRpOi-MLoHIDFZwp4lUqLf9lB7NyXPZ9Ie-DVOmgS-uxPqdAEbj_SVBpwyo13xfC1VvJm46UESY0Ojr38lHfJRZOwhQpaT_gxv42aUXAqldcjkqB6eWmN-x11xiucA-5dbVLDXKtq7oA2guN-alRkKTLFl4iVY4ca7PkC32FB3wtJ_eb1UOjECPbvjPavkYeF82qjrDcZT9wHxzlD-JM8NcqQnBFAI8TDhMEWTz1BfLrfIDc0czrad86Bzm50nlPqHTJioAh5oFtyZBNHLZXIM98-EuPYMisYmVVPNFYQS62bY",
+      startupLogoUrl: "",
+      showStartupAnimation: false,
+      hidePricesInEditor: true,
+      editorVersion: "",
+      legalText: "incl. tax, excl. shipping",
+      theme: "",
+      showProductName: false,
+      showAlertOnTabClose: false,
+      startupBackgroundColor: "",
+      additionalAttachParams: '',
+      legacyAddToBasket: false
+    %}{%- if block.settings.show_dynamic_checkout -%}
                                             {{ form | payment_button }}
                                           {%- endif -%}
                                             
@@ -515,118 +519,117 @@ legacyAddToBasket: true
       }
   </script>
 </section>
-
 {% schema %}
 {
-  "name": "t:sections.main-product.name",
-  "tag": "section",
-  "class": "section",
-  "blocks": [
-      {
-          "type": "text",
-          "name": "t:sections.main-product.blocks.text.name",
-          "settings": [
-              {
-                  "type": "text",
-                  "id": "text",
-                  "default": "Text block",
-                  "label": "t:sections.main-product.blocks.text.settings.text.label"
-              },
-              {
-                  "type": "select",
-                  "id": "text_style",
-                  "options": [
-                      {
-                          "value": "body",
-                          "label": "t:sections.main-product.blocks.text.settings.text_style.options__1.label"
-                      },
-                      {
-                          "value": "subtitle",
-                          "label": "t:sections.main-product.blocks.text.settings.text_style.options__2.label"
-                      },
-                      {
-                          "value": "uppercase",
-                          "label": "t:sections.main-product.blocks.text.settings.text_style.options__3.label"
-                      }
-                  ],
-                  "default": "body",
-                  "label": "t:sections.main-product.blocks.text.settings.text_style.label"
-              }
-          ]
-      },
-      {
-          "type": "title",
-          "name": "t:sections.main-product.blocks.title.name",
-          "limit": 1
-      },
-      {
-          "type": "price",
-          "name": "t:sections.main-product.blocks.price.name",
-          "limit": 1
-      },
-      {
-          "type": "quantity_selector",
-          "name": "t:sections.main-product.blocks.quantity_selector.name",
-          "limit": 1
-      },
-      {
-          "type": "variant_picker",
-          "name": "t:sections.main-product.blocks.variant_picker.name",
-          "limit": 1,
-          "settings": [
-              {
-                  "type": "select",
-                  "id": "picker_type",
-                  "options": [
-                      {
-                          "value": "dropdown",
-                          "label": "t:sections.main-product.blocks.variant_picker.settings.picker_type.options__1.label"
-                      },
-                      {
-                          "value": "button",
-                          "label": "t:sections.main-product.blocks.variant_picker.settings.picker_type.options__2.label"
-                      }
-                  ],
-                  "default": "button",
-                  "label": "t:sections.main-product.blocks.variant_picker.settings.picker_type.label"
-              }
-          ]
-      },
-      {
-          "type": "buy_buttons",
-          "name": "t:sections.main-product.blocks.buy_buttons.name",
-          "limit": 1,
-          "settings": [
-              {
-                  "type": "checkbox",
-                  "id": "show_dynamic_checkout",
-                  "default": true,
-                  "label": "t:sections.main-product.blocks.buy_buttons.settings.show_dynamic_checkout.label",
-                  "info": "t:sections.main-product.blocks.buy_buttons.settings.show_dynamic_checkout.info"
-              }
-          ]
-      },
-      {
-          "type": "vendor",
-          "name": "Vendor",
-          "limit": 1
-      },
-      {
-          "type": "description",
-          "name": "t:sections.main-product.blocks.description.name",
-          "limit": 1
-      },
-      {
-          "type": "postage",
-          "name": "Postage",
-          "limit": 1
-      },
-      {
-          "type": "materials",
-          "name": "Materials",
-          "limit": 1
-      }
-  ]
+    "name": "printess-product",
+    "tag": "section",
+    "class": "section",
+    "blocks": [
+        {
+            "type": "text",
+            "name": "t:sections.printess-product.blocks.text.name",
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "text",
+                    "default": "Text block",
+                    "label": "t:sections.printess-product.blocks.text.settings.text.label"
+                },
+                {
+                    "type": "select",
+                    "id": "text_style",
+                    "options": [
+                        {
+                            "value": "body",
+                            "label": "t:sections.printess-product.blocks.text.settings.text_style.options__1.label"
+                        },
+                        {
+                            "value": "subtitle",
+                            "label": "t:sections.printess-product.blocks.text.settings.text_style.options__2.label"
+                        },
+                        {
+                            "value": "uppercase",
+                            "label": "t:sections.printess-product.blocks.text.settings.text_style.options__3.label"
+                        }
+                    ],
+                    "default": "body",
+                    "label": "t:sections.printess-product.blocks.text.settings.text_style.label"
+                }
+            ]
+        },
+        {
+            "type": "title",
+            "name": "t:sections.printess-product.blocks.title.name",
+            "limit": 1
+        },
+        {
+            "type": "price",
+            "name": "t:sections.printess-product.blocks.price.name",
+            "limit": 1
+        },
+        {
+            "type": "quantity_selector",
+            "name": "t:sections.printess-product.blocks.quantity_selector.name",
+            "limit": 1
+        },
+        {
+            "type": "variant_picker",
+            "name": "t:sections.printess-product.blocks.variant_picker.name",
+            "limit": 1,
+            "settings": [
+                {
+                    "type": "select",
+                    "id": "picker_type",
+                    "options": [
+                        {
+                            "value": "dropdown",
+                            "label": "t:sections.printess-product.blocks.variant_picker.settings.picker_type.options__1.label"
+                        },
+                        {
+                            "value": "button",
+                            "label": "t:sections.printess-product.blocks.variant_picker.settings.picker_type.options__2.label"
+                        }
+                    ],
+                    "default": "button",
+                    "label": "t:sections.printess-product.blocks.variant_picker.settings.picker_type.label"
+                }
+            ]
+        },
+        {
+            "type": "buy_buttons",
+            "name": "t:sections.printess-product.blocks.buy_buttons.name",
+            "limit": 1,
+            "settings": [
+                {
+                    "type": "checkbox",
+                    "id": "show_dynamic_checkout",
+                    "default": true,
+                    "label": "t:sections.printess-product.blocks.buy_buttons.settings.show_dynamic_checkout.label",
+                    "info": "t:sections.printess-product.blocks.buy_buttons.settings.show_dynamic_checkout.info"
+                }
+            ]
+        },
+        {
+            "type": "vendor",
+            "name": "Vendor",
+            "limit": 1
+        },
+        {
+            "type": "description",
+            "name": "t:sections.printess-product.blocks.description.name",
+            "limit": 1
+        },
+        {
+            "type": "postage",
+            "name": "Postage",
+            "limit": 1
+        },
+        {
+            "type": "materials",
+            "name": "Materials",
+            "limit": 1
+        }
+    ]
 }
 {% endschema %}
 {% if product.type == 'Gifts' -%}
@@ -924,55 +927,4 @@ legacyAddToBasket: true
       background-color: #cbd81d;
   }
 </style>
-<script type='module'defer>
-document.getElementById('notify-me-button').addEventListener('click', function (event) {
-    event.preventDefault() // Prevent default behavior
 
-        var email = document.getElementById('email').value
-
-        var variantId = document.getElementById('variant_id').value
-
-        if (!email || !email.includes('@')) {
-            document.getElementById('error-message').style.display = 'block'
-
-            return
-        }
-
-        var requestBody = {
-            email_id: email,
-
-            variant_id: variantId
-        }
-
-        fetch('/apps/scribblerApi/v1/shoppify/public/products/notifyme', {
-            method: 'POST',
-
-            headers: {
-                'Content-Type': 'application/json',
-
-                Accept: 'application/json'
-            },
-
-            body: JSON.stringify(requestBody)
-        })
-            .then(response => response.json())
-
-            .then(data => {
-                if (data.success) {
-                    document.getElementById('success-message').style.display = 'block'
-                    document.getElementById('error-message').style.display = 'none'
-                } else {
-                    document.getElementById('error-message').style.display = 'block'
-                  document.getElementById('error-message').innerHTML = '<p>Failed to send notification request.</p>';
-
-                }
-            })
-
-            .catch(error => {
-                console.error('Error:', error)
-                document.getElementById('error-message').innerHTML = '<p>An error occurred while sending the notification request.</p>';
-                document.getElementById('error-message').style.display = 'block'
-            })
-    
-  });
-</script>
