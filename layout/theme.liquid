@@ -1,0 +1,632 @@
+<!doctype html>
+<html class="no-js" lang="{{ request.locale.iso_code }}">
+
+<head>
+<!-- BEAE-GLOBAL-FONT --> 
+{% capture the_snippet_global_font %}{% include 'beae-global-font' %}{% endcapture %} {% unless the_snippet_global_font contains 'Liquid error' %} {{ the_snippet_global_font }} {% endunless %} 
+ <!-- END BEAE-GLOBAL-FONT -->
+<!-- BEAE-HEADER --> 
+{%- render 'beae_header' -%}
+<!-- END BEAE-HEADER -->
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="theme-color" content="">
+  <link rel="canonical" href="{{ canonical_url }}">
+  <link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
+ 
+
+  <link rel="dns-prefetch" href="https://dhjv92ya2onds.cloudfront.net" >
+  <link rel="dns-prefetch" href="https://use.typekit.net" >
+  <link rel="dns-prefetch" href="https://livewholesale.scribbler.com" >
+  <!--
+  <link rel="dns-prefetch" href="https://api.feefo.com" >
+  <link rel="dns-prefetch" href="https://shop.app" >
+  -->
+  <link rel="preconnect" crossOrigin="use-credentials" href="https://dhjv92ya2onds.cloudfront.net" >
+  <link rel="preconnect" crossOrigin="use-credentials" href="https://use.typekit.net" >
+  <link rel="preconnect" crossOrigin="use-credentials" href="https://livewholesale.scribbler.com" >
+  <!--
+  <link rel="preconnect" crossOrigin="use-credentials" href="https://shop.app" >
+  <link rel="preconnect" crossOrigin="use-credentials" href="https://api.feefo.com" >
+  -->
+ {% # theme-check-disable %}
+  <link rel="preload" href="{{ 'base.css' | asset_url }}" as="style"/>
+  <link rel="preload" href="{{ 'tiny-slider.js' | asset_url }}" as="script" />
+ {% # theme-check-enable %}
+  <script src="https://cdn.debugbear.com/raMTL1XaXqPx.js" async defer fetchpriority="low"></script>
+
+  <script defer>
+    var asset_file = "{{ 'base.css' | asset_url }}";
+    var CDN_FOLDER = asset_file.substring(asset_file.indexOf('.com')+5).split('/base')[0];
+    console.log(CDN_FOLDER);
+
+    var placeholderReplace = 2000;
+    var delay_analytics = 2700;
+
+    var init_performance = performance.now();
+    var dom_performance = performance.now();
+
+    var loadStatus = {};
+    loadStatus.debug = true;
+    loadStatus.jquery = false;
+    loadStatus.dom = false;
+    loadStatus.sticky = false;
+    loadStatus.global = false;
+    loadStatus.run_analytics = false;
+
+    loadStatus.react_started = false;
+    loadStatus.react_loaded = false;
+
+    loadStatus.slick_started = false;
+    loadStatus.slick_loaded = false;
+
+    loadStatus.product_form_custom_started = false;
+    loadStatus.product_form_custom_loaded = false;
+
+    loadStatus.quick_add_started = false;
+    loadStatus.quick_add_loaded = false;
+
+    loadStatus.product_form_started = false;
+    loadStatus.product_form_loaded = false;
+
+    loadStatus.create_slider_started = false;
+    loadStatus.create_slider_loaded = false;
+
+    loadStatus.search_form_loaded = false;
+    loadStatus.main_search_loaded = false;
+
+    let env_list = ["local", "dev", "staging", "beta"];
+    let env = "";
+    function whatEnv(){
+      if(window.location.href.indexOf("127.0.0.1") != -1){
+        env = env_list[0];
+      } else if(window.location.href.indexOf("scribbler.com") != -1){
+        env = env_list[3];
+      } else if(window.location.href.indexOf("scribbler-staging.myshopify.com") != -1){
+        env = env_list[2];
+      } else{
+        env = env_list[1];
+      }
+    }
+    whatEnv();
+
+    function delay(delayInms){
+      return new Promise(resolve => setTimeout(resolve, delayInms));
+    }
+
+    function consoleMsg(infoMsg, errorMsg, payload){
+      if(env === env_list[3] || env === env_list[2] || env === env_list[1] || env === env_list[0]){
+
+      } else {
+        var datetimehigh = new Date();
+        var sDate = datetimehigh.toISOString().slice(11, -1);
+        if(loadStatus.debug){
+          if(infoMsg){
+            console.log("[INFO][", sDate, "] ", infoMsg, " ", payload ? JSON.stringify(payload) : "");
+          }
+          if(errorMsg){
+            console.log("[ERROR][", sDate, "] ", errorMsg, " ", payload ? JSON.stringify(payload) : "");
+          }
+        } else {
+          if(errorMsg){
+            console.log("[ERROR][", sDate, "] ", errorMsg, " ", payload ? JSON.stringify(payload) : "");
+          }
+        }
+      }
+    }
+
+    function detectMob() {
+      let is_mobile = false;
+      if(navigator.userAgent.indexOf("Android") !== -1){
+        is_mobile = true;
+      } else if(navigator.userAgent.indexOf("webOS") !== -1){
+        is_mobile = true;
+      } else if(navigator.userAgent.indexOf("iPhone") !== -1){
+        is_mobile = true;
+      } else if(navigator.userAgent.indexOf("iPad") !== -1){
+        is_mobile = true;
+      } else if(navigator.userAgent.indexOf("iPod") !== -1){
+        is_mobile = true;
+      } else if(navigator.userAgent.indexOf("BlackBerry") !== -1){
+        is_mobile = true;
+      } else if(navigator.userAgent.indexOf("Windows Phone") !== -1){
+        is_mobile = true;
+      }
+      return is_mobile;
+    }
+
+    function loadJS(script_id, script_path, load_value, async_value, apply_to_head, extra_attributes, script_to_eval){
+      consoleMsg("loadJS - " + script_id, null, null);
+        new Promise(async function(resolve, reject){
+          consoleMsg("loadJS promise - " + script_id, null, null);
+            while(!loadStatus.dom){
+                consoleMsg("waiting for enable analytics", null, null);
+                await delay(50);
+            }
+            consoleMsg("loadJS Load script from file " + script_id, null, null);
+
+            var el = document.createElement('script');
+            el.setAttribute('id', script_id);
+            el.setAttribute('src', script_path);
+            el.setAttribute('fetchpriority', "low");
+            el.setAttribute('async', async_value);
+            el.onload= function() {
+              consoleMsg("loadJS script loaded, you can use it now. " + script_id);
+              if(script_to_eval){
+                eval(script_to_eval);
+              }
+              loadStatus[load_value] = true;
+            };
+            for (var k in extra_attributes){
+                if (extra_attributes.hasOwnProperty(k)) {
+                    el.setAttribute(k, extra_attributes[k]);
+                }
+            }
+            if(apply_to_head){
+                document.head.appendChild(el);
+            } else {
+                document.body.appendChild(el);
+            }
+            consoleMsg("loadJS script added " + script_id, null, null);
+            resolve(true);
+        });
+    }
+
+    function setupWindow(){
+        new Promise(function(resolve, reject){
+            var root = document.querySelector(':root');
+            const minmax = (value, min, max) => Math.min(Math.max(value, min), max);
+            const getZoom = () => {
+                let zoomFactor = 1
+
+                if (window.innerHeight >= 800) {
+                    zoomFactor = 1
+                } else if (window.innerHeight < 800 && window.innerHeight >= 600) {
+                    zoomFactor = 0.8
+                } else if (window.innerHeight < 600) {
+                    zoomFactor = 0.6
+                }
+
+                root.style.setProperty('--zoom-factor', minmax(zoomFactor, 0.6, 1));
+            }
+
+            getZoom();
+
+            window.onresize = function () {
+                getZoom();
+            }
+
+            window.shopUrl = '{{ request.origin }}';
+            window.routes = {
+                cart_add_url: '{{ routes.cart_add_url }}',
+                cart_change_url: '{{ routes.cart_change_url }}',
+                cart_update_url: '{{ routes.cart_update_url }}',
+                cart_url: '{{ routes.cart_url }}',
+                predictive_search_url: '{{ routes.predictive_search_url }}'
+            };
+
+            window.cartStrings = {
+                error: `{{ 'sections.cart.cart_error' | t }}`,
+                quantityError: `{{ 'sections.cart.cart_quantity_error_html' | t: quantity: '[quantity]' }}`
+            }
+
+            window.environment = '{{ settings.environment }}'
+
+            window.variantStrings = {
+                addToCart: `{{ 'products.product.add_to_cart' | t }}`,
+                soldOut: `{{ 'products.product.sold_out' | t }}`,
+                unavailable: `{{ 'products.product.unavailable' | t }}`,
+            }
+
+            window.accessibilityStrings = {
+                imageAvailable: `{{ 'products.product.media.image_available' | t: index: '[index]' }}`,
+                shareSuccess: `{{ 'general.share.success_message' | t }}`,
+                pauseSlideshow: `{{ 'sections.slideshow.pause_slideshow' | t }}`,
+                playSlideshow: `{{ 'sections.slideshow.play_slideshow' | t }}`,
+            }
+            // windows specific functions end
+        });
+    }
+    function initJSstates(){
+      new Promise(async function(resolve, reject){
+          setupWindow();
+        document.addEventListener("DOMContentLoaded", function(){
+          consoleMsg("DOM loaded!", null, null);
+          dom_performance = performance.now();
+          var diff_performance = dom_performance - init_performance;
+          consoleMsg("DOM performance: " + diff_performance , null, null);
+
+          if(env === env_list[0] || env === env_list[3] ){
+            consoleMsg("testing is mobile", null, null);
+            if(detectMob()){
+              consoleMsg("mobile", null, null);
+              if(diff_performance <= 50){
+                placeholderReplace = 60;
+                delay_analytics = 75;
+                consoleMsg("stupidfast", null, null);
+              } if(diff_performance >= 50 && diff_performance <= 75){
+                placeholderReplace = 85;
+                delay_analytics = 100;
+                consoleMsg("extremelyfast", null, null);
+              } if(diff_performance >= 75 && diff_performance <= 150){
+                placeholderReplace = 150;
+                delay_analytics = 350;
+                consoleMsg("veryfast", null, null);
+              } if(diff_performance >= 150 && diff_performance <= 300){
+                placeholderReplace = 300;
+                delay_analytics = 500;
+                console.log("fast");
+              } if(diff_performance >= 300 && diff_performance <= 500){
+                placeholderReplace = 500;
+                delay_analytics = 750;
+                console.log("kinda fast");
+              } if(diff_performance >= 500 && diff_performance <= 750){
+                placeholderReplace = 750;
+                delay_analytics = 110;
+                console.log("almost fast");
+              } if(diff_performance >= 750 && diff_performance <= 1000){
+                placeholderReplace = 1200;
+                delay_analytics = 1400;
+                console.log("getting fast");
+              } if(diff_performance >= 1000 && diff_performance <= 1500){
+                placeholderReplace = 1750;
+                delay_analytics = 2000;
+                console.log("medium");
+              } if(diff_performance >= 1500 && diff_performance <= 3000){
+                placeholderReplace = 2000;
+                delay_analytics = 3000;
+                console.log("slow");
+              }
+            } else {
+              console.log("not mobile");
+              if(diff_performance <= 50){
+                placeholderReplace = 60;
+                delay_analytics = 75;
+                console.log("stupidfast");
+              } if(diff_performance >= 50 && diff_performance <= 75){
+                placeholderReplace = 85;
+                delay_analytics = 100;
+                console.log("extremelyfast");
+              } if(diff_performance >= 75 && diff_performance <= 150){
+                placeholderReplace = 150;
+                delay_analytics = 350;
+                console.log("veryfast");
+              } if(diff_performance >= 150 && diff_performance <= 300){
+                placeholderReplace = 300;
+                delay_analytics = 500;
+                console.log("fast");
+              } if(diff_performance >= 300 && diff_performance <= 500){
+                placeholderReplace = 500;
+                delay_analytics = 750;
+                console.log("kinda fast");
+              } if(diff_performance >= 500 && diff_performance <= 750){
+                placeholderReplace = 750;
+                delay_analytics = 110;
+                console.log("almost fast");
+              } if(diff_performance >= 750 && diff_performance <= 1000){
+                placeholderReplace = 1200;
+                delay_analytics = 1400;
+                console.log("getting fast");
+              } if(diff_performance >= 1000 && diff_performance <= 1500){
+                placeholderReplace = 3700;
+                delay_analytics = 1400;
+                console.log("medium");
+              } if(diff_performance >= 1500 && diff_performance <= 2000){
+                placeholderReplace = 2000;
+                delay_analytics = 3000;
+                console.log("slow");
+              } if(diff_performance >= 2000 && diff_performance <= 3000){
+                placeholderReplace = 3000;
+                delay_analytics = 4000;
+                console.log("very slow");
+              } if(diff_performance >= 3000 && diff_performance <= 4000){
+                placeholderReplace = 4000;
+                delay_analytics = 5000;
+                console.log("extremely slow");
+              } if(diff_performance >= 4000 && diff_performance <= 5000){
+                placeholderReplace = 5000;
+                delay_analytics = 6000;
+                console.log("amazingly slow");
+              } if(diff_performance >= 6000){
+                placeholderReplace = 7000;
+                delay_analytics = 8000;
+                console.log("so so so slow");
+              }
+            }
+          }
+
+          loadStatus.dom = true;
+        });
+        resolve(true);
+      });
+    }
+    initJSstates();
+
+    loadJS("tiny-slider", "{{ 'tiny-slider.js' | asset_url }}", "slick_loaded", true);
+    loadJS("global", "{{ 'global.js' | asset_url }}", "global_loaded", true);
+    loadJS("search-form", "{{ 'search-form.js' | asset_url }}", "search_form_loaded", true);
+    
+
+    if (loadStatus.search_form_loaded) {
+      loadJS("main-search", "{{ 'main-search.js' | asset_url }}", "main_search_loaded", true);
+    }
+    function startAnalyticsScripts() {
+        new Promise(async function (resolve, reject) {
+            while (!loadStatus.run_analytics) {
+                //consoleMsg("waiting for enable analytics", null, null);
+                await delay(500);
+            }
+
+            loadJS("feefo", "https://api.feefo.com/api/javascript/scribbler-online", "feefo_loaded", true);
+
+            // BOT detection
+            try {
+                new Promise(function (resolve, reject) {
+                    const botdPromise = import('https://openfpcdn.io/botd/v1').then((Botd) => Botd.load())
+                    // Get detection results when you need them.
+                    botdPromise
+                        .then((botd) => botd.detect())
+                        .then(async function (result) {
+                            consoleMsg('bot_detect', null, result);
+                            resolve(true);
+                        })
+                        .catch(async function (error) {
+                            consoleMsg(null, "botd detect catch err", error);
+                            reject(error);
+                        });
+                });
+            } catch (err) {
+                consoleMsg(null, "bot detect err", err);
+            }
+
+            // microsoft clarity
+            (function (c, l, a, r, i, t, y) {
+                c[a] = c[a] || function () {
+                    (c[a].q = c[a].q || []).push(arguments)
+                };
+                t = l.createElement(r);
+                t.async = 1;
+                t.fetchpriority="low";
+                t.src = "https://www.clarity.ms/tag/" + i;
+                y = l.getElementsByTagName(r)[0];
+                y.parentNode.insertBefore(t, y);
+            })(window, document, "clarity", "script", "kquiliql0p");
+
+
+            // var gtag_script = `
+            // window.dataLayer = window.dataLayer || [];
+            // function gtag(){dataLayer.push(arguments);}
+            // gtag('js', new Date());
+            // gtag('config', 'G-NS12NFHWVC');
+            // `;
+            // loadJS("gtag", "https://www.googletagmanager.com/gtag/js?id=G-NS12NFHWVC", "gtag_loaded", true, true, null, gtag_script);
+
+
+
+            // end on analytics logic
+            resolve(true);
+        });
+    }
+
+    function runAnalytics(){
+      new Promise(async function(resolve, reject){
+        while (!loadStatus.dom) {
+          //consoleMsg("waiting for enable dom", null, null);
+          await delay(50);
+        }
+        await delay(delay_analytics);
+        loadStatus.run_analytics = true;
+        startAnalyticsScripts();
+
+      });
+    }
+
+    function runIntercom(){
+      new Promise(async function(resolve, reject){
+        while (!loadStatus.dom) {
+          //consoleMsg("waiting for enable dom", null, null);
+          await delay(50);
+        }
+        {% comment %} await delay(5000); {% endcomment %}
+
+        window.intercomSettings = {
+          api_base: "https://api-iam.intercom.io",
+          app_id: "srvapzsm",
+          hide_default_launcher: false
+        };
+        // We pre-filled your app ID in the widget URL: 'https://widget.intercom.io/widget/srvapzsm'
+        (function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',w.intercomSettings);}else{var d=document;var i=function(){i.c(arguments);};i.q=[];i.c=function(args){i.q.push(args);};w.Intercom=i;var l=function(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.fetchpriority="low";s.src='https://widget.intercom.io/widget/srvapzsm';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);};if(document.readyState==='complete'){l();}else if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})();
+
+        {% comment %} loadJS("intercom-facade", "{{ 'intercom-facade.min.js' | asset_url }}", "intercom_facade_loaded", true); {% endcomment %}
+        resolve(true);
+      });
+    }
+
+    runAnalytics();
+    runIntercom();
+  </script>
+
+  {%- if settings.favicon != blank -%}
+  <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32, height: 32 }}" fetchpriority="low">
+  {%- endif -%}
+
+  <title>
+    {{ page_title }}
+    {%- if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif -%}
+    {%- if current_page != 1 %} &ndash; Page {{ current_page }}{% endif -%}
+    {%- unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless -%}
+  </title>
+
+  {% if page_description %}
+    <meta name="description" content="{{ page_description | escape }}">
+  {% endif %}
+  {% render 'meta-tags' %}
+
+  {{ 'base.css' | asset_url | stylesheet_tag }}
+  {{ 'wishlist.css' | asset_url | stylesheet_tag }}
+
+  <link rel="stylesheet" href="{{ 'fonts.css' | asset_url }}" media="print" onload="this.media='all'; this.onload = null">
+
+  {% if template == 'index' %}{{ 'home.css' | asset_url | stylesheet_tag }}{% endif %}
+  {% if template == 'index.alternative' %}{{ 'home.css' | asset_url | stylesheet_tag }}{% endif %}
+  {% if template == 'collection' %}{{ 'collection.css' | asset_url | stylesheet_tag }}{% endif %}
+  {% if template == 'collection.landing-page' %}{{ 'collection-landing-page.css' | asset_url | stylesheet_tag }}{% endif %}
+  {%- if template == 'collection.christmas-landing-page' -%}{{ 'collection-landing-page.css' | asset_url | stylesheet_tag }}{%- endif -%}
+  {% if template == 'collection.gift-landing-page' %}{{ 'collection-landing-page.css' | asset_url | stylesheet_tag }}{% endif %}
+  {% if template == 'collection.jellycat-landing-page' %}{{ 'collection-landing-page.css' | asset_url | stylesheet_tag }}{% endif %}
+  {% if template == 'collection.mother-s-day-lp' %}{{ 'collection-landing-page.css' | asset_url | stylesheet_tag }}{% endif %}
+  {% if template == 'collection.banner-grid' %}{{ 'collection.css' | asset_url | stylesheet_tag }}{% endif %}
+  {% if template == 'collection.gift-collection' %}{{ 'collection.css' | asset_url | stylesheet_tag }}{% endif %}
+  {%- if template == 'product.card-customizer' -%}{{ 'product.css' | asset_url | stylesheet_tag }}{%- endif -%}
+  {%- if template == 'product' -%}{{ 'default-product.css' | asset_url | stylesheet_tag }}{%- endif -%}
+  {%- if template == 'product.alcohol' -%}{{ 'default-product.css' | asset_url | stylesheet_tag }}{%- endif -%}
+  {%- if template == 'search' -%}{{ 'search-page.css' | asset_url | stylesheet_tag }}{%- endif -%}
+  {%- if template == 'page.favourites' -%}{{ 'favourites-page.css' | asset_url | stylesheet_tag }}{%- endif -%}
+  {%- if template == 'page.contact' -%}{{ 'contact.css' | asset_url | stylesheet_tag }}{%- endif -%}
+  {%- if template == 'customers/login' -%}{{ 'login.css' | asset_url | stylesheet_tag }}{%- endif -%}
+  {%- if template == 'page' -%}{{ 'mainpage.css' | asset_url | stylesheet_tag }}{%- endif -%}
+  {%- if template == 'customers/account' -%}{{ 'account-page.css' | asset_url | stylesheet_tag }}{%- endif -%}
+  {%- if template == 'page.about-scribbler' -%}{{ 'about.css' | asset_url | stylesheet_tag }}{%- endif -%}
+  {%- if template == 'blog' -%}{{ 'blog.css' | asset_url | stylesheet_tag }}{%- endif -%}
+  {%- if template == 'article' -%}{{ 'blog-article.css' | asset_url | stylesheet_tag }}{%- endif -%}
+  {%- if template == 'page.store-locator' -%}{{ 'store-locator.css' | asset_url | stylesheet_tag }}{%- endif -%}
+  {%- if template == 'customers/register' -%}{{ 'password-reset.css' | asset_url | stylesheet_tag }}{%- endif -%}
+  {%- if template == 'page.password-reset' -%}{{ 'password-reset-confirm.css' | asset_url | stylesheet_tag }}{%- endif -%}
+  {%- if template == 'page.sitemap' -%}{{ 'sitemap.css' | asset_url | stylesheet_tag }}{%- endif -%}
+  {%- if template == 'page.faq-s' -%}{{ 'mainpage.css' | asset_url | stylesheet_tag }}{%- endif -%}
+  {%- if template == 'cart' -%}{{ 'cart-page.css' | asset_url | stylesheet_tag }}{%- endif -%}
+  {%- if template == 'customers/account.reminder' -%}{{ 'event-reminder.css' | asset_url | stylesheet_tag }}{%- endif -%}
+ 
+  
+  {% comment %} {{ template }} {% endcomment %}
+
+{% comment %} {{ content_for_header }} {% endcomment %}
+ {% # theme-check-disable %}
+{% capture custom_content_for_header %}
+  {{ content_for_header | replace: '<script', '<script defer '  | replace: 's.async = true', 's.async = true; s.fetchpriority="low" '  | replace: 'async="async"', 'async="async" fetchpriority="low"  ' | replace: 'defer="defer"', 'defer="defer" fetchpriority="low"  ' }}
+{% endcapture %}
+ {% # theme-check-enable %}
+
+{{ custom_content_for_header }}
+
+<script defer>
+  new Promise(function(resolve, reject){
+    document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
+    if (Shopify.designMode) {
+      document.documentElement.classList.add('shopify-design-mode');
+    }
+    resolve(true);
+  });
+</script>
+  
+
+{% comment %} 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/paho-mqtt/1.0.1/mqttws31.min.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+  document.addEventListener('DOMContentLoaded', function() {
+
+    var wsbroker = location.hostname;  // mqtt websocket enabled broker
+    var wsport = 15675; // port for above
+    var client = new Paho.MQTT.Client(wsbroker, wsport, "/ws","hello");
+    client.onConnectionLost = function (responseObject) {
+        console.log("CONNECTION LOST - " + responseObject.errorMessage);
+    };
+    client.onMessageArrived = function (message) {
+        console.log("RECEIVE ON " + message.destinationName + " PAYLOAD " + message.payloadString);
+        console.log(message.payloadString);
+    };
+
+    var options = {
+        timeout: 3,
+        keepAliveInterval: 30,
+        onSuccess: function () {
+            console.log("CONNECTION SUCCESS");
+            client.subscribe('/hello', {qos: 1});
+        },
+        onFailure: function (message) {
+            console.log("CONNECTION FAILURE - " + message.errorMessage);
+        }
+    };
+
+    if (location.protocol == "https:") {
+        options.useSSL = true;
+    }
+
+    console.log("CONNECT TO " + wsbroker + ":" + wsport);
+    client.connect(options);
+
+  });
+</script> {% endcomment %}
+
+<style type="text/css">
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    box-sizing: border-box;
+    height: 100%;
+  }
+
+  body {
+    margin: 0;
+  }
+
+  .collection-slider-item-product {
+    position: relative;
+  }
+
+  .sold-out-badge {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background-color: black;
+      color: white;
+      padding: 5px 10px;
+      font-size: 14px;
+      font-weight: bold;
+      border-radius: 5px;
+  }
+
+</style>
+
+<script>
+  (function(s) {
+    if(env === env_list[2] || env === env_list[1] || env === env_list[0]){
+      s=document.createElement('script'); s.async=true;
+      s.dataset.clientKey="sdk-W5Xh0Em4bLc9te3u";
+      s.dataset.decryptionKey="FGuPBQs4km+V5XW6PrxzjQ==";
+      s.src="https://cdn.jsdelivr.net/npm/@growthbook/growthbook/dist/bundles/auto.min.js";
+      document.head.appendChild(s);
+    } else {
+      s=document.createElement('script'); s.async=true;
+      s.dataset.clientKey="sdk-5sHYuZ5ZjsjOOj3";
+      s.dataset.decryptionKey="1x676qiMTDlv36sC0I9bWg==";
+      s.src="https://cdn.jsdelivr.net/npm/@growthbook/growthbook/dist/bundles/auto.min.js";
+      document.head.appendChild(s);
+    }
+  })();
+</script>
+
+</head>
+<body>
+  {%- render 'cart-drawer' -%}
+  {% comment %} {% section 'announcement-bar' %} {% endcomment %}
+  {% section 'header' %}
+  <main>
+    {{ content_for_layout }}
+  </main>
+  {% section 'footer' %}
+  {% section 'cookie-bar' %}
+
+<!-- BEAE-FOOTER --> 
+{%- render 'beae_footer' -%}
+<!-- END BEAE-FOOTER -->
+<!-- BEAE-AB-SNIPPET --> 
+{%- render 'beae_ab_snippet' -%}
+<!-- BEAE-AB-SNIPPET --></body>
+</html>

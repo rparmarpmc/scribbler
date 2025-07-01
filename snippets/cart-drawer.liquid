@@ -1,0 +1,45 @@
+<script defer>
+    new Promise(async function(resolve, reject) {
+        while (!loadStatus.dom) {
+            //consoleMsg("waiting for enable dom", null, null);
+            await delay(50);
+        }
+
+        if(!loadStatus.react_started) {
+            loadStatus.react_started = true;
+            consoleMsg("react-admin.js loading cart", null, null);
+            if(window.location.href.indexOf("127.0.0.1") != -1){
+
+                var xhr = new XMLHttpRequest();
+
+                xhr.addEventListener("load", function () {
+                    loadJS("react_admin", "{{ 'http://localhost:3000/assets_replace/static/js/bundle.js' }}", "react_loaded", true); 
+                    consoleMsg("Serving live local react-admin ", null, null);
+                });
+                xhr.onerror = function () {      
+                    loadJS("react_admin", "{{ 'react-admin.js' | asset_url }}", "react_loaded", true);
+                    consoleMsg("Serving local build of react-admin ", null, null);
+                };
+
+                xhr.open("GET", "http://localhost:3000/assets_replace/static/js/bundle.js");
+                xhr.send();
+
+            } else {
+                loadJS("react_admin", "{{ 'react-admin.js' | asset_url }}", "react_loaded", true);
+            }
+        }
+        resolve(true);
+    });
+</script>
+
+{% comment %} <cart-drawer class="drawer">
+    <div id="cart-drawer"></div>
+</cart-drawer>  {% endcomment %}
+
+<script type="module" defer>
+    window.Shopify.currency.currencySymbol = '{{ cart.currency.symbol }}'
+    window.Shopify.currency.countryCode = '{{ localization.country.iso_code }}'
+    window.Shopify.ssoEndPoint = '{{ settings.sso-endpoint }}'
+
+</script>
+

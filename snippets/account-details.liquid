@@ -1,0 +1,130 @@
+<script defer>
+    new Promise(async function(resolve, reject) {
+        while (!loadStatus.dom) {
+            consoleMsg("waiting for enable dom", null, null);
+            await delay(500);
+        }
+
+        loadJS("account_details", "{{ 'account-details.js' | asset_url }}", "account_details_loaded", true);
+        resolve(true);
+    });
+</script>
+
+<form name="edit-customer-form" onsubmit="updateAccountDetails(event)" method="post">
+  <div class="edit-account-header">
+    <div class="edit-account-header-left">
+      <div class="edit-account-header-title">
+        {{ 'customer.account.details' | t }}
+      </div>
+      <div class="edit-account-header-subtitle">
+        View and update your account information
+      </div>
+    </div>
+    <div class="edit-account-header-right">
+      <button type="submit" class="edit-account-save-button">Save</button>
+    </div>
+  </div>
+  <div class="edit-account-tab-wrapper">
+    <div class="edit-account-column">
+      <div class="edit-account-column-header">Editable Information</div>
+      <div class="edit-customer-field">
+        <div class="edit-customer-field-error edit-customer-first-name-error"></div>
+        <label for="first-name">First Name</label>
+        <input type="text" id="first-name" name="firstName" autocorrect="off" value="{{ customer.first_name }}">
+      </div>
+      <div class="edit-customer-field">
+        <div class="edit-customer-field-error edit-customer-last-name-error"></div>
+        <label for="last-name">Last Name</label>
+        <input type="text" id="last-name" name="lastName" autocorrect="off" value="{{ customer.last_name }}">
+      </div>
+     <div class="edit-customer-field">
+  <div class="edit-customer-field-error edit-customer-email-error"></div>
+  <label for="email">Email</label>
+  <input type="text" id="email" name="email" autocorrect="off" autocomplete="off" value="{{ customer.email }}">
+
+  <script>
+    window.originalCustomerEmail = {{ customer.email | json }};
+    window.customerId = {{ customer.id | json }};
+  </script>
+</div>
+
+      <div class="edit-customer-field">
+        <div class="edit-customer-field-error edit-customer-phone-error"></div>
+        <label for="phone">Phone Number</label>
+        <input type="text" id="phone" name="phone" autocorrect="off" value="{{ customer.phone }}">
+      </div>
+      <div class="edit-customer-field">
+        <div class="edit-customer-field-error edit-customer-password-error"></div>
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" autocorrect="off" placeholder="**********" autocomplete="off" value="">
+      </div>
+    </div>
+<div class="edit-account-column">
+ <div class="edit-account-column-header">Default Address</div>
+ {{ customer.default_address | format_address }}
+ <div class="edit-account-default-address-notice">You can update your address in the address book</div>
+</div>
+
+
+    <div class="edit-account-column">
+      <div class="edit-account-column-header">Marketing Preferences</div>
+        <div class="marketing-checkbox-field marketing-signup">
+          <input type="checkbox" id="emailSubscribe" name="emailSubscribe" {%- if customer.accepts_marketing == true -%}checked{%- endif -%} >
+          <label for="emailSubscribe" class="round-label"></label>
+          <label for="emailSubscribe" class="second-checkbox-label">Send me your offers and news. I understand you will use my personal data to improve services and send me marketing communications</label>
+        </div>
+        <div class="email-segments-notice">Please do not send me communications related to the following</div>
+        <div class="marketing-exclusion">
+          <div class="marketing-exclusion-column">
+            <div class="marketing-checkbox-field">
+              <input type="checkbox" id="marketingAlcoholContent" name="marketingAlcoholContent" {%- if customer.metafields.custom.marketing_alcohol_content == true -%}checked{%- endif -%} >
+              <label for="marketingAlcoholContent" class="round-label"></label>
+              <label for="marketingAlcoholContent" class="second-checkbox-label">Alcohol Content</label>
+            </div>
+            <div class="marketing-checkbox-field">
+              <input type="checkbox" id="marketingChristmas" name="marketingChristmas" {%- if customer.metafields.custom.marketing_christmas == true -%}checked{%- endif -%} >
+              <label for="marketingChristmas" class="round-label"></label>
+              <label for="marketingChristmas" class="second-checkbox-label">Christmas</label>
+            </div>
+            <div class="marketing-checkbox-field">
+              <input type="checkbox" id="marketingEaster" name="marketingEaster" {%- if customer.metafields.custom.marketing_easter == true -%}checked{%- endif -%} >
+              <label for="marketingEaster" class="round-label"></label>
+              <label for="marketingEaster" class="second-checkbox-label">Easter</label>
+            </div>
+            <div class="marketing-checkbox-field">
+              <input type="checkbox" id="marketingFathersDay" name="marketingFathersDay" {%- if customer.metafields.custom.marketing_father_s_day == true -%}checked{%- endif -%} >
+              <label for="marketingFathersDay" class="round-label"></label>
+              <label for="marketingFathersDay" class="second-checkbox-label">Father's Day</label>
+            </div>
+            <div class="marketing-checkbox-field">
+              <input type="checkbox" id="marketingMothersDay" name="marketingMothersDay" {%- if customer.metafields.custom.marketing_mother_s_day == true -%}checked{%- endif -%} >
+              <label for="marketingMothersDay" class="round-label"></label>
+              <label for="marketingMothersDay" class="second-checkbox-label">Mother's Day</label>
+            </div>
+          </div>
+          <div class="marketing-exclusion-column">
+            <div class="marketing-checkbox-field">
+              <input type="checkbox" id="marketingValentinesDay" name="marketingValentinesDay" {%- if customer.metafields.custom.marketing_valentine_s_day == true -%}checked{%- endif -%} >
+              <label for="marketingValentinesDay" class="round-label"></label>
+              <label for="marketingValentinesDay" class="second-checkbox-label">Valentine's Day</label>
+            </div>
+            <div class="marketing-checkbox-field">
+              <input type="checkbox" id="marketingHalloween" name="marketingHalloween" {%- if customer.metafields.custom.marketing_halloween == true -%}checked{%- endif -%} >
+              <label for="marketingHalloween" class="round-label"></label>
+              <label for="marketingHalloween" class="second-checkbox-label">Halloween</label>
+            </div>
+            <div class="marketing-checkbox-field">
+              <input type="checkbox" id="marketingRudeContent" name="marketingRudeContent" {%- if customer.metafields.custom.marketing_rude_content == true -%}checked{%- endif -%} >
+              <label for="marketingRudeContent" class="round-label"></label>
+              <label for="marketingRudeContent" class="second-checkbox-label">Rude Content</label>
+            </div>
+            <div class="marketing-checkbox-field">
+              <input type="checkbox" id="marketingNonSeasonal" name="marketingNonSeasonal" {%- if customer.metafields.custom.marketing_non_seasonal == true -%}checked{%- endif -%} >
+              <label for="marketingNonSeasonal" class="round-label"></label>
+              <label for="marketingNonSeasonal" class="second-checkbox-label">Non-Seasonal</label>
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+</form>
