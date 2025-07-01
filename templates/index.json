@@ -15,21 +15,21 @@
         "0ffeaf0f-ae24-47ab-be2d-4fb313020db8": {
           "type": "slide",
           "settings": {
-            "image": "shopify:\/\/shop_images\/April_Banners_Landing_Page__SHOPIFY.png",
+            "image": "shopify://shop_images/April_Banners_Landing_Page__SHOPIFY.png",
             "image_alt": "Cute as a button! Shop Trending!",
-            "mobile_image": "shopify:\/\/shop_images\/April_Banners_Mobile-Top__SHOPIFY.png",
+            "mobile_image": "shopify://shop_images/April_Banners_Mobile-Top__SHOPIFY.png",
             "mobile_image_alt": "Cute as a button! Shop Trending!",
-            "link": "shopify:\/\/collections\/trending-birthday"
+            "link": "shopify://collections/trending-birthday"
           }
         },
         "4ea5530d-b9c2-4f16-abf5-4554e07f18e2": {
           "type": "slide",
           "settings": {
-            "image": "shopify:\/\/shop_images\/April_Banners_Homepage-Top-Cards_SHOPIFY.png",
+            "image": "shopify://shop_images/April_Banners_Homepage-Top-Cards_SHOPIFY.png",
             "image_alt": "Say goodbye to boring cards! Shop Cards!",
-            "mobile_image": "shopify:\/\/shop_images\/April_Banners_Mobile-Top-Gift__SHOPIFY.png",
+            "mobile_image": "shopify://shop_images/April_Banners_Mobile-Top-Gift__SHOPIFY.png",
             "mobile_image_alt": "Say goodbye to boring cards! Shop Cards!",
-            "link": "shopify:\/\/collections\/birthday"
+            "link": "shopify://collections/birthday"
           }
         }
       },
@@ -50,32 +50,32 @@
           "type": "column",
           "settings": {
             "name": "Birthday",
-            "image": "shopify:\/\/shop_images\/Birthday_Cake_1_d6cd7fef-66d8-459d-9eaa-3939fccba523.webp",
-            "link": "shopify:\/\/collections\/birthday-all"
+            "image": "shopify://shop_images/Birthday_Cake_1_d6cd7fef-66d8-459d-9eaa-3939fccba523.webp",
+            "link": "shopify://collections/birthday-all"
           }
         },
         "column2": {
           "type": "column",
           "settings": {
             "name": "Anniversary",
-            "image": "shopify:\/\/shop_images\/Love_Hearts_1_2f5023b9-9898-4b0c-922a-ae431c1aa9a6_1.webp",
-            "link": "shopify:\/\/collections\/anniversary-all"
+            "image": "shopify://shop_images/Love_Hearts_1_2f5023b9-9898-4b0c-922a-ae431c1aa9a6_1.webp",
+            "link": "shopify://collections/anniversary-all"
           }
         },
         "column3": {
           "type": "column",
           "settings": {
             "name": "Jellycat",
-            "image": "shopify:\/\/shop_images\/Jellycat_811fd2d4-1a67-42aa-b77f-a61886864ab0.webp",
-            "link": "shopify:\/\/collections\/jellycat-all"
+            "image": "shopify://shop_images/Jellycat_811fd2d4-1a67-42aa-b77f-a61886864ab0.webp",
+            "link": "shopify://collections/jellycat-all"
           }
         },
         "column4": {
           "type": "column",
           "settings": {
             "name": "Gifts",
-            "image": "shopify:\/\/shop_images\/Present_bb5127a0-9736-4f91-a4a6-24b25e985462.webp",
-            "link": "shopify:\/\/collections\/gifts"
+            "image": "shopify://shop_images/Present_bb5127a0-9736-4f91-a4a6-24b25e985462.webp",
+            "link": "shopify://collections/gifts"
           }
         }
       },
@@ -96,7 +96,13 @@
       "settings": {
         "title": "Birthday Cards",
         "collection": "birthday-all",
-        "sort_order": "best-selling",
+        "sort_order": "manual",
+        "filter": "Rude",
+        "filter1": "Funny",
+        "filter2": "Bestseller",
+        "filter3": "New In",
+        "filter4": "Balance",
+        "background_color": "#ffffff",
         "products_to_show_slider": 22,
         "columns_desktop": 6,
         "columns_small_desktop": 5,
@@ -109,14 +115,14 @@
     "f15f3d7c-9ace-4a49-bbf9-239324be3116": {
       "type": "collage-collections",
       "settings": {
-        "image_1": "shopify:\/\/shop_images\/April_Banners_Homepage-Lower-Large__SHOPIFY.png",
-        "link_1": "shopify:\/\/collections\/stationery",
-        "image_2": "shopify:\/\/shop_images\/April_Banners_Homepage-Lower-Small_2__SHOPIFY.png",
-        "link_2": "shopify:\/\/collections",
-        "image_3": "shopify:\/\/shop_images\/April_Banners_SHOPIFY.png",
-        "link_3": "shopify:\/\/collections\/birthday-all",
-        "image_4": "shopify:\/\/shop_images\/April_Banners_Homepage-Lower-Long__SHOPIFY.png",
-        "link_4": "shopify:\/\/collections\/jellycat-all",
+        "image_1": "shopify://shop_images/April_Banners_Homepage-Lower-Large__SHOPIFY.png",
+        "link_1": "shopify://collections/stationery",
+        "image_2": "shopify://shop_images/April_Banners_Homepage-Lower-Small_2__SHOPIFY.png",
+        "link_2": "shopify://collections",
+        "image_3": "shopify://shop_images/April_Banners_SHOPIFY.png",
+        "link_3": "shopify://collections/birthday-all",
+        "image_4": "shopify://shop_images/April_Banners_Homepage-Lower-Long__SHOPIFY.png",
+        "link_4": "shopify://collections/jellycat-all",
         "padding_top": 0,
         "padding_bottom": 0
       }
@@ -127,6 +133,12 @@
         "title": "Anniversary Cards",
         "collection": "anniversary-all",
         "sort_order": "best-selling",
+        "filter": "Rude",
+        "filter1": "Funny",
+        "filter2": "Bestseller",
+        "filter3": "New In",
+        "filter4": "Balance",
+        "background_color": "#ffffff",
         "products_to_show_slider": 22,
         "columns_desktop": 6,
         "columns_small_desktop": 5,
@@ -142,6 +154,11 @@
         "title": "Jellycat",
         "collection": "jellycat-all",
         "sort_order": "random",
+        "filter": "Rude",
+        "filter1": "Funny",
+        "filter2": "Bestseller",
+        "filter3": "New In",
+        "filter4": "Balance",
         "products_to_show_slider": 22,
         "columns_desktop": 6,
         "columns_small_desktop": 5,
@@ -158,24 +175,24 @@
           "type": "column",
           "settings": {
             "name": "Recyclable",
-            "image": "shopify:\/\/shop_images\/New_Recycle_6056a662-7240-48fe-a083-357a5404c843.png",
-            "link": "shopify:\/\/pages\/going-green"
+            "image": "shopify://shop_images/New_Recycle_6056a662-7240-48fe-a083-357a5404c843.png",
+            "link": "shopify://pages/going-green"
           }
         },
         "c012c653-9eb2-4265-b2ee-d6033dae6856": {
           "type": "column",
           "settings": {
             "name": "Planet-Friendly",
-            "image": "shopify:\/\/shop_images\/New_Planet_2283c5eb-9157-40c6-8530-1ae6232fa09d.png",
-            "link": "shopify:\/\/pages\/going-green"
+            "image": "shopify://shop_images/New_Planet_2283c5eb-9157-40c6-8530-1ae6232fa09d.png",
+            "link": "shopify://pages/going-green"
           }
         },
         "efc058d5-c143-461a-882c-7ffa7d37fe3c": {
           "type": "column",
           "settings": {
             "name": "UK Designed",
-            "image": "shopify:\/\/shop_images\/New_Uk_085b4625-2cfc-4b86-ad86-08b8f27c99c4.png",
-            "link": "shopify:\/\/pages\/going-green"
+            "image": "shopify://shop_images/New_Uk_085b4625-2cfc-4b86-ad86-08b8f27c99c4.png",
+            "link": "shopify://pages/going-green"
           }
         }
       },
@@ -193,7 +210,7 @@
     "1657117329eebede9c": {
       "type": "custom-liquid",
       "settings": {
-        "custom_liquid": "<div class=\"feefo-carousel-wrapper\">\n<div class=\"feefo-black-bg\"><\/div><div  class=\"feefo-white-bg\"><\/div>\n<div id=\"feefo-service-review-carousel-widgetId\" class=\"feefo-review-carousel-widget-service\">\n<\/div>\n<\/div>",
+        "custom_liquid": "<div class=\"feefo-carousel-wrapper\">\n<div class=\"feefo-black-bg\"></div><div  class=\"feefo-white-bg\"></div>\n<div id=\"feefo-service-review-carousel-widgetId\" class=\"feefo-review-carousel-widget-service\">\n</div>\n</div>",
         "color_scheme": "background-1",
         "padding_top": 0,
         "padding_bottom": 0
@@ -202,11 +219,11 @@
     "a46aa564-94ce-4da6-aa18-e1c4959bbf32": {
       "type": "social",
       "settings": {
-        "link_1": "https:\/\/www.linkedin.com\/company\/scribbler-holdings-ltd\/",
-        "link_2": "https:\/\/www.instagram.com\/scribblercards\/https:\/\/www.instagram.com\/scribblercards\/",
-        "link_3": "https:\/\/www.facebook.com\/messages\/t\/scribblercardsUK",
-        "link_4": "https:\/\/www.tiktok.com\/@scribblercards",
-        "link_5": "shopify:\/\/pages\/contact",
+        "link_1": "https://www.linkedin.com/company/scribbler-holdings-ltd/",
+        "link_2": "https://www.instagram.com/scribblercards/https://www.instagram.com/scribblercards/",
+        "link_3": "https://www.facebook.com/messages/t/scribblercardsUK",
+        "link_4": "https://www.tiktok.com/@scribblercards",
+        "link_5": "shopify://pages/contact",
         "padding_top": 0,
         "padding_bottom": 32
       }
@@ -217,13 +234,12 @@
         "template--16703141314785__652b511c-b81b-45a6-b9cd-6fc01f70cc70-16832192250e51dd74-1": {
           "type": "paragraph",
           "settings": {
-            "text": "<p>Join over 800,000 card lovers and subscribe to Scribbler for the latest on designers, deals and snazzy new products!<\/p>"
+            "text": "<p>Join over 800,000 card lovers and subscribe to Scribbler for the latest on designers, deals and snazzy new products!</p>"
           }
         },
         "template--16703141314785__652b511c-b81b-45a6-b9cd-6fc01f70cc70-16832192250e51dd74-2": {
           "type": "email_form",
-          "settings": {
-          }
+          "settings": {}
         }
       },
       "block_order": [
@@ -241,7 +257,7 @@
         "template--16299700846809__c1fd7319-6b01-4edd-9c4c-619f99a4ce17-1671571568c3cf7a38-0": {
           "type": "slide",
           "settings": {
-            "image": "shopify:\/\/shop_images\/HomePageBanner.png",
+            "image": "shopify://shop_images/HomePageBanner.png",
             "image_alt": "",
             "mobile_image_alt": "",
             "link": ""
