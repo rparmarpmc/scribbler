@@ -1,4 +1,4 @@
-<script defer>
+ <script defer>
     new Promise(async function(resolve, reject) {
         while (!loadStatus.dom) {
             consoleMsg("waiting for enable dom", null, null);
@@ -37,17 +37,11 @@
         <label for="last-name">Last Name</label>
         <input type="text" id="last-name" name="lastName" autocorrect="off" value="{{ customer.last_name }}">
       </div>
-     <div class="edit-customer-field">
-  <div class="edit-customer-field-error edit-customer-email-error"></div>
-  <label for="email">Email</label>
-  <input type="text" id="email" name="email" autocorrect="off" autocomplete="off" value="{{ customer.email }}">
-
-  <script>
-    window.originalCustomerEmail = {{ customer.email | json }};
-    window.customerId = {{ customer.id | json }};
-  </script>
-</div>
-
+      <div class="edit-customer-field">
+        <div class="edit-customer-field-error edit-customer-email-error"></div>
+        <label for="email">Email</label>
+        <input type="text" id="email" name="email" autocorrect="off" autocomplete="off" value="{{ customer.email }}">
+      </div>
       <div class="edit-customer-field">
         <div class="edit-customer-field-error edit-customer-phone-error"></div>
         <label for="phone">Phone Number</label>
@@ -59,13 +53,11 @@
         <input type="password" id="password" name="password" autocorrect="off" placeholder="**********" autocomplete="off" value="">
       </div>
     </div>
-<div class="edit-account-column">
- <div class="edit-account-column-header">Default Address</div>
- {{ customer.default_address | format_address }}
- <div class="edit-account-default-address-notice">You can update your address in the address book</div>
-</div>
-
-
+    <div class="edit-account-column">
+      <div class="edit-account-column-header">Default Address</div>
+        {{ customer.default_address | format_address }}
+      <div class="edit-account-default-address-notice">You can update your address in the address book</div>
+    </div>
     <div class="edit-account-column">
       <div class="edit-account-column-header">Marketing Preferences</div>
         <div class="marketing-checkbox-field marketing-signup">

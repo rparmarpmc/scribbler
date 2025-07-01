@@ -1,7 +1,7 @@
 {% comment %}
   Renders the printess printess integration code for non single item implementations
   Version 2.6
-  
+
   Accepts:
   - shopToken: {String} Your printess shop token.
   - startupLogoUrl: {String} Url for the startup logo of the editor that should be displayed on load (requires premium account),
@@ -24,7 +24,7 @@
     startupLogoUrl: "",
     showStartupAnimation: true,
     hidePricesInEditor: false,
-    editorVersion: "/v/nightly",
+    editorVersion: "",
     legalText: "incl. tax, excl. shipping",
     theme: "theme01",
     showProductName: true,
@@ -39,71 +39,60 @@
 {% endcomment %}
 
 <script id="printess_single_cart_script">
-    if(!window["getPrintessEditor"]) {
-        window["getPrintessEditor"] = function() {
-            if(!getPrintessEditor.editor) {
-                getPrintessEditor.editor = new PrintessShopifyCart({ displayProductName: !({{showProductName | json}} === false),
-                                                                                                                shopToken: "{{ shopToken }}",
-                                                                                                                "startupLogoUrl": "{{ startupLogoUrl }}",
-                                                                                                                "showStartupAnimation": {{ showStartupAnimation }},
-                                                                                                                "hidePricesInEditor": {{ hidePricesInEditor }},
-                                                                                                                shopMoneyFormat: "{{ shop.money_format }}",
-                                                                                                                "editorVersion": {{ editorVersion | json }},
-                                                                                                                "showAlertOnTabClose": {{showAlertOnTabClose | json}} === true,
-                                                                                                                "startupBackgroundColor": "{{startupBackgroundColor}}" || "#000000",
-                                                                                                                "graphQlToken": {{graphQlToken | json}} || ""
-                                                                                                              });
-            }
+  if(!window["getPrintessEditor"]) {
+      window["getPrintessEditor"] = function() {
+          if(!getPrintessEditor.editor) {
+              getPrintessEditor.editor = new PrintessShopifyCart({ displayProductName: !({{showProductName | json}} === false),
+                                                                                                              shopToken: "{{ shopToken }}",
+                                                                                                              "startupLogoUrl": "{{ startupLogoUrl }}",
+                                                                                                              "showStartupAnimation": true,
+                                                                                                              "hidePricesInEditor": false,
+                                                                                                              shopMoneyFormat: "{{ shop.money_format }}",
+                                                                                                              "editorVersion": {{ editorVersion | json }},
+                                                                                                              "showAlertOnTabClose": {{showAlertOnTabClose | json}} === true,
+                                                                                                              "startupBackgroundColor": "{{startupBackgroundColor}}" || "#000000",
+                                                                                                              "graphQlToken": {{graphQlToken | json}} || ""
+                                                                                                            });
+          }
 
-            return getPrintessEditor.editor;
-        }
-    }
+          return getPrintessEditor.editor;
+      }
+  }
 
-    if(!window["printessShowEditorForItem"]) {
-        window["printessShowEditorForItem"] = function(basketItem) {
-            const basketItemProperties = basketItem.properties ? JSON.parse(JSON.stringify(basketItem.properties)) : {};
+  if(!window["printessShowEditorForItem"]) {
+      window["printessShowEditorForItem"] = function(basketItem) {
+          const basketItemProperties = basketItem.properties ? JSON.parse(JSON.stringify(basketItem.properties)) : {};
 
-            if(basketItemProperties) {
-                basketItem.properties = {};
-                basketItemProperties.forEach((prop) => {
-                    if(prop.length > 1) {
-                        basketItem.properties[prop[0]] = prop[1];
-                    } else {
-                        basketItem.properties[prop[0]] = "";
-                    }
-                });
-            }
+         
 
-            if(basketItem.options_with_values) {
-                basketItem.options_with_values.forEach((x) => {
-                    basketItem.properties[x.name] = x.value;
-                });
-            }
+          if(basketItem.options_with_values) {
+              basketItem.options_with_values.forEach((x) => {
+                  basketItem.properties[x.name] = x.value;
+              });
+          }
 
-            const editor = window["getPrintessEditor"]();
+          const editor = window["getPrintessEditor"]();
 
-            if(!editor) {
-                return;
-            }
+          if(!editor) {
+              return;
+          }
 
-            let attachParams = null;
+          let attachParams = null;
 
-            try {attachParams = JSON.parse({{ additionalAttachParams | json }});}catch(e){}
-    
-            const settings = {
-                basketItemId: basketItem.key,
-                basketItemOptions: basketItem.properties,
-                productId: basketItem.product_id,
-                quantity: basketItem.quantity,
-                legalText: {% if legalText != blank %}{{ legalText | json }}{% else %}""{% endif %},
-                theme: {% if theme != blank %}"{{ theme }}"{% else %}""{%endif%},
-                additionalAttachParams: attachParams,
-                displayProductName: !({{showProductName | json}} === false),
-            };
+          try {attachParams = JSON.parse({{ additionalAttachParams | json }});}catch(e){}
 
-            {% if showSplitterGridSizeButton != null %}settings["showSplitterGridSizeButton"] = {{showSplitterGridSizeButton | json}};{% endif %}
-    
-            editor.show(settings);
-        };
-    }
+          const settings = {
+              basketItemId: basketItem.key,
+              basketItemOptions: basketItem.properties,
+              productId: basketItem.product_id,
+              quantity: basketItem.quantity,
+              legalText: {% if legalText != blank %}{{ legalText | json }}{% else %}""{% endif %},
+              theme: {% if theme != blank %}"{{ theme }}"{% else %}""{%endif%},
+              additionalAttachParams: attachParams,
+              displayProductName: !({{showProductName | json}} === false),
+          };
+
+          editor.show(settings);
+      };
+  }
 </script>
