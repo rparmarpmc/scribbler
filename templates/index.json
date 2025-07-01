@@ -144,27 +144,6 @@
         "padding_bottom": 36
       }
     },
-    "c1b76f2b-f46e-4142-9934-23779e218e16": {
-      "type": "slideshow",
-      "blocks": {
-        "slide1": {
-          "type": "slide",
-          "settings": {
-            "image_alt": "Jelly Girl Summer! Shop the latest from Jellycat!",
-            "mobile_image_alt": "Jelly Girl Summer! Shop the latest from Jellycat!",
-            "link": "shopify://collections/jellycat-all"
-          }
-        }
-      },
-      "block_order": [
-        "slide1"
-      ],
-      "settings": {
-        "padding_top": 0,
-        "padding_bottom": 0,
-        "fading_interval": 3
-      }
-    },
     "collection_slider_ajax_KebDJx": {
       "type": "collection-slider-ajax",
       "name": "Collection Slider Ajax",
@@ -185,24 +164,6 @@
         "columns_mobile": 2,
         "padding_top": 36,
         "padding_bottom": 36
-      }
-    },
-    "0586179d-2078-4469-b213-3f9da748234b": {
-      "type": "collection-gift-slider",
-      "settings": {
-        "title": "Gifts",
-        "collection": "gifts-all",
-        "sort_order": "manual",
-        "filter": "Trending",
-        "filter1": "Jellycat",
-        "filter2": "Birthday",
-        "filter3": "Top Picks",
-        "filter4": "New In",
-        "products_to_show_slider": 22,
-        "columns_desktop": 6,
-        "columns_small_desktop": 5,
-        "columns_tablet": 5,
-        "columns_mobile": 2
       }
     },
     "1657117329eebede9c": {
@@ -254,9 +215,7 @@
     "collection_home_page_slider_RcpFr3",
     "8a4d5318-f6be-451b-87fa-2b4370ba8bb0",
     "roundalls_aM8Vmt",
-    "c1b76f2b-f46e-4142-9934-23779e218e16",
     "collection_slider_ajax_KebDJx",
-    "0586179d-2078-4469-b213-3f9da748234b",
     "1657117329eebede9c",
     "a46aa564-94ce-4da6-aa18-e1c4959bbf32",
     "652b511c-b81b-45a6-b9cd-6fc01f70cc70"
