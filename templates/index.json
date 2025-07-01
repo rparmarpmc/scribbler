@@ -76,7 +76,7 @@
       "name": "Collection Slider Ajax",
       "settings": {
         "title": "Birthday Cards",
-        "collection": "birthday-cards-view-all",
+        "collection": "birthday-all",
         "sort_order": "manual",
         "product_limit": 10,
         "filter_tag_1": "Rude",
