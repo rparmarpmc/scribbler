@@ -1,7 +1,6 @@
 import React, { useState , useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import PropTypes from 'prop-types'
-
 import { calculateShippingTotal,getDeliveryOptions } from '../../../middlewares/api'
 import { apiChangeCartItemQuantity,apiGetAddresses } from '../../../store/actions'
 import { countryToCode } from '../../../helpers/countryToCode'
@@ -13,7 +12,6 @@ import AddressModalContent from '../CartModal/AddressModalContent/AddressModalCo
 import PostageModalContent from '../CartModal/PostageModalContent/PostageModalContent'
 import GiftModalContent from '../CartModal/GiftModalContent/GiftModalContent'
 import { formatCurrency } from '../../../helpers/formatCurrency'
-import { apiChangeCartItemQuantity } from '../../../store/actions'
 
 const CartItems = ({ groups, customerName, isLoggedIn, cartContent }) => {
     const [isModalOpen, setIsModalOpen] = useState(false)
