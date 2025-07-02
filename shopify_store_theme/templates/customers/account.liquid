@@ -86,6 +86,10 @@
     document.getElementById('customer-account-error').innerHTML = ''
     document.getElementById('customer-account-success').innerHTML = ''
 
+    if (tabName === 'Account') {      
+      location.reload();
+      return;
+    }
     var i, tabcontent, tablinks
 
     tabcontent = document.getElementsByClassName('account-tab-content')

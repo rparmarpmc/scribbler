@@ -92,14 +92,35 @@
           },
           {
             "label": "Staging",
-            "value": "https:\/\/stagingwholesale.scribbler.com"
+            "value": "https:\/\/scribbler-staging.myshopify.com\/apps\/scribblerApi"
           },
           {
             "label": "Production",
-            "value": "https:\/\/livewholesale.scribbler.com"
+            "value": "https:\/\/www.scribbler.com\/apps\/scribblerApi"
           }
         ],
         "default": "https:\/\/localhost:4000"
+        
+      },
+      {
+        "label": "API-Access-Token",
+        "id": "api-access-token",
+        "type": "select",
+        "options": [
+          {
+            "label": "Development",
+            "value": "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"
+          },
+          {
+            "label": "Staging",
+            "value": "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"
+          },
+          {
+            "label": "Production",
+            "value": "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"
+          }
+        ],
+        "default": "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"
         
       }
     ]

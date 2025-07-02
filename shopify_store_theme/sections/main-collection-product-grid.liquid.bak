@@ -1,0 +1,612 @@
+{%- liquid
+  assign total_active_values = 0
+-%}
+
+<div style="padding-top: {{ section.settings.padding_top }}px; padding-bottom: {{ section.settings.padding_bottom }}px; min-height: calc(100vh - 46px - 564px - 95px)">
+  <h1 class="collection-page-title">
+    {{ collection.title | escape }} 
+  </h1>
+  <p style="text-align: center;font-size: 20px; font-weight: bold; margin: 0px auto 15px auto;">({{ collection.products_count }})</p>
+  <div class="collection-page-description rte">
+    {%- if collection.metafields.custom.show_description -%}
+      {{ collection.description }}
+    {%- endif -%}
+  </div>
+  <div class="facets-container">
+    <div class="filter-sort-wrapper">
+      <div class="filters">
+        {%- for filter in collection.filters -%}
+          {%- assign total_active_values = total_active_values | plus: filter.active_values.size -%}
+          {% case filter.type %}
+            {% when 'boolean' or 'list' %}
+              <details class="filter-section" id="Details-{{ forloop.index }}-{{ section.id }}" data-index="{{ forloop.index }}" closed>
+                <summary class="filter-add-button" aria-label="{{ filter.label }} ({{ 'products.facets.filters_selected.one' | t: count: filter.active_values.size }})">
+                  <div class="filter-overlay"></div>
+                  <span>{{ filter.label | escape }}</span>
+                  {% render 'icon-plus' %}
+                </summary>
+                <div id="Facet-{{ forloop.index }}-{{ section.id }}" class="filter-add-wrapper">        
+                  <div class="filter-header">
+                    <span class="facets__selected no-js-hidden">{{ 'products.facets.filters_selected' | t: count: filter.active_values.size }}</span>
+                      <button id="clear_filters" href="{{ filter.url_to_remove }}" class="clear_filters">{{ 'products.facets.reset' | t }}</button>
+                  </div>
+                  <div class="filter-options-wrapper">
+                    {%- for value in filter.values -%}
+                      {%- unless value.label == 'Attachable' or value.label == '1' or value.label == '30' or value.label == '21' -%}
+                      <div class="filter-option">
+                        <input type="checkbox" name="{{ value.param_name }}" value="{{ value.value }}" id="Filter-{{ filter.label | escape }}-{{ forloop.index }}">
+                        <label for="Filter-{{ filter.label | escape }}-{{ forloop.index }}" class="checkbox{% if value.count == 0 and value.active == false %} checkbox--disabled{% endif %}">
+                            {{ value.label | escape }} ({{ value.count }})
+                        </label>       
+                      </div>
+                    {%- endunless -%}
+                    {%- endfor -%}
+                  </div>
+                </div>
+              </details>
+          {% endcase %}
+        {%- endfor -%}
+      </div>
+      <div class="sorting">
+        {%- if collection.metafields.custom.collection_sort_order == blank -%}
+          <details class="sorting-section" id="Details-{{ section.id }}">
+            <summary class="sorting-add-button" aria-label="({{ 'products.facets.filters_selected.one' }})">
+              <div class="sorting-overlay"></div>
+              <span>{{ 'products.facets.sort_by_label' | t }}</span>
+              <div  class="sorting-results">
+                <div class="sorting-selected">
+                  Featured
+                </div>
+                {% render 'icon-caret' %}
+              </div>
+            </summary>
+            <div class="sorting-add-wrapper">
+              <div class="sorting-option">
+                <input type="radio" id="manual-best-selling" name="sort" value="manual-best-selling" data-label="Featured Products" checked>
+                <label for="manual-best-selling">Featured</label>
+              </div>
+              <div class="sorting-option">
+                <input type="radio" id="best-selling" name="sort" value="best-selling" data-label="Bestsellers">
+                <label for="best-selling">Bestsellers</label>
+              </div>
+              {%- if collection.template_suffix == "gift-collection" or collection.template_suffix == "gift-landing-page" -%}
+                <div class="sorting-option">
+                  <input type="radio" id="price-ascending" name="sort" value="price-ascending" data-label="Date, new to old">
+                  <label for="price-ascending">Price Low-High</label>
+                </div>
+                <div class="sorting-option">
+                  <input type="radio" id="price-descending" name="sort" value="price-descending" data-label="Date, new to old">
+                  <label for="price-descending">Price High-Low</label>
+                </div>
+              {%- endif -%}
+              <div class="sorting-option">
+                <input type="radio" id="created-descending" name="sort" value="created-descending" data-label="Date, old to new">
+                <label for="created-descending">New In</label>
+              </div>
+              <div class="sorting-option">
+                <input type="radio" id="created-ascending" name="sort" value="created-ascending" data-label="Date, new to old">
+                <label for="created-ascending">Classics</label>
+              </div>
+            </div>
+          </details>
+        {%- else -%}
+          <details class="sorting-section" id="Details-{{ section.id }}">
+            <summary class="sorting-add-button" aria-label="({{ 'products.facets.filters_selected.one' }})">
+              <div class="sorting-overlay"></div>
+              <span>{{ 'products.facets.sort_by_label' | t }}</span>
+              <div  class="sorting-results">
+                <div class="sorting-selected">
+                  {% for sortOrder in collection.metafields.custom.collection_sort_order.value %}
+                    {%- if sortOrder.default_sort_option == true -%}
+                      {{ sortOrder.sort_field_label }}
+                    {%- endif -%}
+                  {% endfor %}
+                </div>
+                {% render 'icon-caret' %}
+              </div>
+            </summary>
+            <div class="sorting-add-wrapper">
+              {% for sortOrder in collection.metafields.custom.collection_sort_order.value %}
+                <div class="sorting-option">
+                  <input type="radio" id="{{ sortOrder.sort_order_filter_value }}" name="sort" value="{{ sortOrder.sort_order_filter_value }}" data-label="{{ sortOrder.sort_field_label }}" {%- if sortOrder.default_sort_option == true -%}checked{%- endif -%}>
+                  <label for="{{ sortOrder.sort_order_filter_value }}">{{ sortOrder.sort_field_label }}</label>
+                </div>
+              {% endfor %}
+            </div>
+          </details>
+        {%- endif -%}
+      </div>
+    </div>
+    <div class="active-filters"></div>
+  </div>
+  <div class="no-product-loaded"></div>
+  <div class="product-grid-container">
+    <div class="collection-slider-item">  
+      <div class="collection-grid-item-product">
+        <div class="product-grid-add-loader loading"></div>
+      </div>
+    </div>
+    <div class="collection-slider-item">  
+      <div class="collection-grid-item-product">
+        <div class="product-grid-add-loader loading"></div>
+      </div>
+    </div>
+    <div class="collection-slider-item">  
+      <div class="collection-grid-item-product">
+        <div class="product-grid-add-loader loading"></div>
+      </div>
+    </div>
+    <div class="collection-slider-item">  
+      <div class="collection-grid-item-product">
+        <div class="product-grid-add-loader loading"></div>
+      </div>
+    </div>
+    <div class="collection-slider-item">  
+      <div class="collection-grid-item-product">
+        <div class="product-grid-add-loader loading"></div>
+      </div>
+    </div>
+    <div class="collection-slider-item">  
+      <div class="collection-grid-item-product">
+        <div class="product-grid-add-loader loading"></div>
+      </div>
+    </div>
+    <div class="collection-slider-item">  
+      <div class="collection-grid-item-product">
+        <div class="product-grid-add-loader loading"></div>
+      </div>
+    </div>
+    <div class="collection-slider-item">  
+      <div class="collection-grid-item-product">
+        <div class="product-grid-add-loader loading"></div>
+      </div>
+    </div>
+    <div class="collection-slider-item">  
+      <div class="collection-grid-item-product">
+        <div class="product-grid-add-loader loading"></div>
+      </div>
+    </div>
+    <div class="collection-slider-item">  
+      <div class="collection-grid-item-product">
+        <div class="product-grid-add-loader loading"></div>
+      </div>
+    </div>
+    <div class="collection-slider-item">  
+      <div class="collection-grid-item-product">
+        <div class="product-grid-add-loader loading"></div>
+      </div>
+    </div>
+    <div class="collection-slider-item">  
+      <div class="collection-grid-item-product">
+        <div class="product-grid-add-loader loading"></div>
+      </div>
+    </div>
+    <div class="collection-slider-item">  
+      <div class="collection-grid-item-product">
+        <div class="product-grid-add-loader loading"></div>
+      </div>
+    </div>
+    <div class="collection-slider-item">  
+      <div class="collection-grid-item-product">
+        <div class="product-grid-add-loader loading"></div>
+      </div>
+    </div>
+    <div class="collection-slider-item">  
+      <div class="collection-grid-item-product">
+        <div class="product-grid-add-loader loading"></div>
+      </div>
+    </div>
+    <div class="collection-slider-item">  
+      <div class="collection-grid-item-product">
+        <div class="product-grid-add-loader loading"></div>
+      </div>
+    </div>
+    <div class="collection-slider-item">  
+      <div class="collection-grid-item-product">
+        <div class="product-grid-add-loader loading"></div>
+      </div>
+    </div>
+    <div class="collection-slider-item">  
+      <div class="collection-grid-item-product">
+        <div class="product-grid-add-loader loading"></div>
+      </div>
+    </div>
+    <div class="collection-slider-item">  
+      <div class="collection-grid-item-product">
+        <div class="product-grid-add-loader loading"></div>
+      </div>
+    </div>
+    <div class="collection-slider-item">  
+      <div class="collection-grid-item-product">
+        <div class="product-grid-add-loader loading"></div>
+      </div>
+    </div>
+    <div class="collection-slider-item">  
+      <div class="collection-grid-item-product">
+        <div class="product-grid-add-loader loading"></div>
+      </div>
+    </div>
+    <div class="collection-slider-item">  
+      <div class="collection-grid-item-product">
+        <div class="product-grid-add-loader loading"></div>
+      </div>
+    </div>
+    <div class="collection-slider-item">  
+      <div class="collection-grid-item-product">
+        <div class="product-grid-add-loader loading"></div>
+      </div>
+    </div>
+    <div class="collection-slider-item">  
+      <div class="collection-grid-item-product">
+        <div class="product-grid-add-loader loading"></div>
+      </div>
+    </div>
+    <div class="collection-slider-item">  
+      <div class="collection-grid-item-product">
+        <div class="product-grid-add-loader loading"></div>
+      </div>
+    </div>
+    <div class="collection-slider-item">  
+      <div class="collection-grid-item-product">
+        <div class="product-grid-add-loader loading"></div>
+      </div>
+    </div>
+    <div class="collection-slider-item">  
+      <div class="collection-grid-item-product">
+        <div class="product-grid-add-loader loading"></div>
+      </div>
+    </div>
+    <div class="collection-slider-item">  
+      <div class="collection-grid-item-product">
+        <div class="product-grid-add-loader loading"></div>
+      </div>
+    </div>
+    <div class="collection-slider-item">  
+      <div class="collection-grid-item-product">
+        <div class="product-grid-add-loader loading"></div>
+      </div>
+    </div>
+    <div class="collection-slider-item">  
+      <div class="collection-grid-item-product">
+        <div class="product-grid-add-loader loading"></div>
+      </div>
+    </div>
+  </div>
+  <div class="product-loader hiddenLoader">
+    <svg aria-hidden="true" focusable="false" width="50" role="presentation" class="spinner" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+      <circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
+    </svg>
+  </div>
+</div>
+
+<script type="text/javascript" defer>
+  const container = document.querySelector('.product-grid-container');
+  const loader = document.querySelector('.product-loader');
+  const empty = document.querySelector('.no-product-loaded');
+  const sortingOptions = document.querySelectorAll('input[type=radio][name="sort"]');
+  const filterOptions = document.querySelectorAll('input[type=checkbox][name="filter.p.tag"]');
+  const selectedCount = document.querySelector('.facets__selected');
+  const activeFiltersContainer = document.querySelector('.active-filters');
+  
+  let page = 0
+  let initial_limit = 50
+  let numberOfProducts = 50
+  let filter_tags = []
+
+  window.removeFilter = (event, filterId, _this) => {
+    document.getElementById(filterId).checked = false;
+    _this.remove();
+    changeFilterOptions(event) 
+  }
+
+  const clearFilters = (event) => {
+    activeFiltersContainer.innerHTML = ''
+
+    const checkedFilters = Array.from(filterOptions).map(checkbox => {
+      document.getElementById(checkbox.id).checked = false;
+    });
+
+    changeFilterOptions(event)
+  }
+
+  if(document.getElementById('clear_filters')) {
+    document.getElementById('clear_filters').addEventListener('click', clearFilters);
+  }
+  
+  const changeFilterOptions = (event) => {
+    const checkedFilters = Array.from(filterOptions).filter(checkbox => checkbox.checked);
+    selectedCount.innerHTML = checkedFilters.length + ' selected'
+    page = 0
+    filter_tags = []
+    container.innerHTML = ''
+    activeFiltersContainer.innerHTML = ''
+
+    checkedFilters.map(filter => {
+      filter_tags.push(filter.value)
+      activeFiltersContainer.innerHTML += `<button class="active-filter-button" onclick="window.removeFilter(event, '${filter.id}', this)" data-filter-id="${filter.id}">${filter.value}{% render 'icon-close-small' %}</button>`
+    })
+
+    loadProducts('initial')
+    
+  }
+
+  Array.prototype.forEach.call(filterOptions, function(checkbox) {
+    checkbox.addEventListener('change', changeFilterOptions);
+  });
+
+  const changeSorting = (event) => {
+    container.innerHTML = ''
+    document.querySelector('.sorting-selected').innerHTML = event.srcElement.getAttribute("data-label");
+
+    loadProducts('initial')
+  }
+
+  Array.prototype.forEach.call(sortingOptions, function(radio) {
+    radio.addEventListener('change', changeSorting);
+  });
+
+  const getSortOption = () => {
+    const selectedSort = Array.from(sortingOptions).find(radio => radio.checked);
+    return selectedSort.value
+  }
+
+  const loadProducts = (mode) => {
+
+    if(mode === 'more'){
+      loader.classList.remove('hiddenLoader')
+    }
+
+    const data = {
+      rude: true,
+      sort_order : getSortOption(),
+      filter_tags: filter_tags,
+      limit: numberOfProducts,
+      initial_limit: initial_limit,
+      page: page
+    }
+
+    const urlParams = new URLSearchParams(window.location.search);
+
+    if (urlParams.has('q')) {
+      data.vendor_name = urlParams.get('q')
+    } else {
+      data.collection_id = "{{ collection.title | escape }}"   
+    }
+    
+    fetch(`/apps/scribblerApi/v1/shoppify/public/products/filter`, { method: 'POST', headers: { 'Content-Type': 'application/json', Accept: `application/json` }, body: JSON.stringify(data) })
+      .then(response => response.json())
+      .then(response => {
+        if (response.products.length > 0) {
+          var params = {
+            'isLoggedIn': {% if customer %}true{% else %}false{% endif %},
+            'default_vendor_logo': '{{ 'scribbler-vendor-logo.png' | asset_url }}',
+            'type': {% if section.settings.product_layout == 'gift' %}'gift'{% else %}'card'{% endif %}, 
+          }
+          
+          if(mode === 'initial'){
+            container.innerHTML = createCardSlide(response.products, params)
+          } else {
+            container.innerHTML += createCardSlide(response.products, params)
+          }
+        } else {
+          if(mode === 'initial'){
+            container.innerHTML = ''
+            empty.innerHTML = 'Oops! No matches found. Try refining your search or discover something new in our collections below.'
+          }
+        }
+        loader.classList.add('hiddenLoader')
+      })
+      .catch(e => {
+        console.error(e);
+      })
+  }
+
+  let throttleTimer;
+  const throttle = (callback, time) => {
+    if (throttleTimer) return;
+    throttleTimer = true;
+    setTimeout(() => {
+      callback();
+      throttleTimer = false;
+    }, time);
+  }
+ 
+  const onscrollend = (event) => { 
+    let footerHeight = document.querySelector(".footer").clientHeight;
+
+    if (window.scrollY + window.innerHeight + footerHeight >= document.documentElement.scrollHeight) {
+      page++
+      if (window.innerWidth < 750) {
+        numberOfProducts = 14
+      } else if (window.innerWidth < 990) {
+        numberOfProducts = 15
+      } else if (window.innerWidth < 1200) {
+        numberOfProducts = 20
+      } else if (window.innerWidth < 1500) {
+        numberOfProducts = 25
+      } else if (window.innerWidth < 1922) {
+        numberOfProducts = 24
+      } else if (window.innerWidth < 2200) {
+        numberOfProducts = 21
+      } else if (window.innerWidth < 2500) {
+        numberOfProducts = 32
+      } else if (window.innerWidth < 3000) {
+        numberOfProducts = 36
+      } else if (window.innerWidth < 3200) {
+        numberOfProducts = 40
+      } else if (window.innerWidth < 3500) {
+        numberOfProducts = 44
+      } else {
+        numberOfProducts = 48
+      }
+
+      // Find the last element with the class 'collection-slider-item'
+      const collectionItems = document.querySelectorAll('.collection-slider-item');
+      const lastItem = collectionItems[collectionItems.length - 1];
+
+      // Get the position of the last item
+      if (lastItem) {
+        const lastItemPosition = lastItem.getBoundingClientRect().top + window.pageYOffset;
+
+        // Scroll the page to the last item's position
+        window.scrollTo({
+          top: lastItemPosition,
+          behavior: 'smooth' // Smooth scroll
+        });
+
+        // Set focus to the last item
+        lastItem.focus();
+      }
+      return loadProducts('more');
+    }
+  };
+
+  window.addEventListener("scroll", () => {
+    throttle(onscrollend, 1000);
+  }, { passive: true });
+
+  const mediaQuery2 = window.matchMedia('(max-width: 749px)')
+  const mediaQuery3 = window.matchMedia('(min-width: 750px) and (max-width: 989px)')
+  const mediaQuery4 = window.matchMedia('(min-width: 990px) and (max-width: 1199px)')
+  const mediaQuery5 = window.matchMedia('(min-width: 1200px) and (max-width: 1499px)')
+  const mediaQuery6 = window.matchMedia('(min-width: 1500px) and (max-width: 1921px)')
+  const mediaQuery7 = window.matchMedia('(min-width: 1922px) and (max-width: 2199px)')
+  const mediaQuery8 = window.matchMedia('(min-width: 2200px) and (max-width: 2499px)')
+  const mediaQuery9 = window.matchMedia('(min-width: 2500px) and (max-width: 2999px)')
+  const mediaQuery10 = window.matchMedia('(min-width: 3000px) and (max-width: 3199px)')
+  const mediaQuery11 = window.matchMedia('(min-width: 3200px) and (max-width: 3499px)')
+  const mediaQuery12 = window.matchMedia('(min-width: 3500px)')
+
+  const handleMGChange = (e, products) => {
+    if (e.matches) {
+
+      var temp_products =''
+
+      for (let i = 0; i < products; i++) {
+        temp_products += `
+          <div class="collection-slider-item">  
+            <div class="collection-grid-item-product">
+              <div class="product-grid-add-loader loading"></div>
+            </div>
+          </div>
+        `
+      }
+
+      container.innerHTML = temp_products
+
+      window.scrollTo({ top: 0, behavior: 'instant' });
+      page = 0
+      initial_limit = products
+      numberOfProducts = products
+ 
+      loadProducts('initial');
+    }
+  }
+
+  mediaQuery2.addEventListener('change', e => { handleMGChange(e, 30) })
+  mediaQuery3.addEventListener('change', e => { handleMGChange(e, 33) })
+  mediaQuery4.addEventListener('change', e => { handleMGChange(e, 40) })
+  mediaQuery5.addEventListener('change', e => { handleMGChange(e, 50) })
+  mediaQuery6.addEventListener('change', e => { handleMGChange(e, 54) })
+  mediaQuery7.addEventListener('change', e => { handleMGChange(e, 56) })
+  mediaQuery8.addEventListener('change', e => { handleMGChange(e, 64) })
+  mediaQuery9.addEventListener('change', e => { handleMGChange(e, 72) })
+  mediaQuery10.addEventListener('change', e => { handleMGChange(e, 90) })
+  mediaQuery11.addEventListener('change', e => { handleMGChange(e, 99) })
+  mediaQuery12.addEventListener('change', e => { handleMGChange(e, 120) })
+
+  new Promise(async function(resolve, reject){
+    while (!loadStatus.create_slider_loaded) {
+        await delay(100);
+    }
+
+    await delay(placeholderReplace);
+
+    // Initial check
+    handleMGChange(mediaQuery2, 30)
+    handleMGChange(mediaQuery3, 33)
+    handleMGChange(mediaQuery4, 40)
+    handleMGChange(mediaQuery5, 50)
+    handleMGChange(mediaQuery6, 54)
+    handleMGChange(mediaQuery7, 56)
+    handleMGChange(mediaQuery8, 64)
+    handleMGChange(mediaQuery9, 72)
+    handleMGChange(mediaQuery10, 90)
+    handleMGChange(mediaQuery11, 99)
+    handleMGChange(mediaQuery12, 120)
+
+    resolve(true);
+  });
+
+  new Promise(async function(resolve, reject){
+    while (!loadStatus.react_loaded) {
+      await delay(50);
+    }
+
+    if(!loadStatus.create_slider_started){
+        loadStatus.create_slider_started = true;
+        loadJS("create_slider", "{{ 'create-slider.js' | asset_url }}", "create_slider_loaded", true);
+    }
+
+    window.eventBus.subscribe('FILTER_CHANGED', () => {
+        container.innerHTML = ''
+        window.scrollTo({ top: 0, behavior: 'instant' });
+        page = 0
+        loadProducts('initial');
+    })
+    resolve(true);
+  });
+</script>
+
+{% schema %}
+{
+    "name": "t:sections.main-collection-product-grid.name",
+    "class": "section",
+    "settings": [
+        {
+            "type": "header",
+            "content": "t:sections.main-collection-product-grid.settings.header__3.content"
+        },
+        {
+            "type": "select",
+            "id": "product_layout",
+            "default": "card",
+            "label": "t:sections.main-collection-product-grid.settings.product_layout.label",
+            "options": [
+                {
+                    "value": "card",
+                    "label": "t:sections.main-collection-product-grid.settings.product_layout.options__1.label"
+                },
+                {
+                    "value": "gift",
+                    "label": "t:sections.main-collection-product-grid.settings.product_layout.options__2.label"
+                }
+            ]
+        },
+        {
+            "type": "header",
+            "content": "t:sections.all.padding.section_padding_heading"
+        },
+        {
+            "type": "range",
+            "id": "padding_top",
+            "min": 0,
+            "max": 100,
+            "step": 4,
+            "unit": "px",
+            "label": "t:sections.all.padding.padding_top",
+            "default": 36
+        },
+        {
+            "type": "range",
+            "id": "padding_bottom",
+            "min": 0,
+            "max": 100,
+            "step": 4,
+            "unit": "px",
+            "label": "t:sections.all.padding.padding_bottom",
+            "default": 36
+        }
+    ]
+}
+{% endschema %}

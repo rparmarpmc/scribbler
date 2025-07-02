@@ -348,6 +348,8 @@ h1:empty {
                       {%- when 'buy_buttons' -%}
                           <div {{ block.shopify_attributes }}>
                               <product-form class='product-form'>
+                              
+
                                   <div class='product-form__error-message-wrapper box-shadow' role='alert' hidden>
                                       <svg aria-hidden='true' focusable='false' role='presentation' class='icon icon-error' viewBox='0 0 13 13'>
                                           <circle cx="6.5" cy="6.50049" r="5.5" stroke="white" stroke-width="2"/>
@@ -631,44 +633,8 @@ h1:empty {
 {% endschema %}
 {% if product.type == 'Gifts' -%}
 
-  <style>
-      /* Mobile layout */
-      @media (max-width: 767px) {
-          .product__info-container {
-              display: flex;
-              flex-direction: column; /* Reverse the order on mobile */
-          }
+  
 
-          .product-form__buy-now,
-          .product-form__buttons button#KlaviyoAddToCart {
-              order: 1;
-          }
-
-          .product-form__price {
-              order: 2;
-          }
-
-          .product-form-quantity {
-              order: 0;
-          }
-
-          .product-form__vendor {
-              order: 4;
-          }
-
-          .accordion {
-              order: 5;
-          }
-
-          .scroll-wrapper {
-              max-height: 29vh;
-          }
-
-          .product-information {
-              order: 3;
-          }
-      }
-  </style>
   <script>
       // Wait until the page is loaded
       window.addEventListener('load', function () {
@@ -705,52 +671,6 @@ h1:empty {
       })
   </script>
 
-<style>
-  /* Mobile layout adjustments */
-  @media (max-width: 767px) {
-    .product__info-container {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-    }
-
-    .product-form__buy-now, 
-    .product-form__buttons button#KlaviyoAddToCart {
-      order: 1;
-    }
-
-    .product-form__price {
-      order: 2;
-    }
-
-    .product-form-quantity {
-      order: 0;
-    }
-
-    .product-form__vendor {
-      order: 4;
-    }
-
-    .accordion {
-      order: 5;
-    }
-
-    .scroll-wrapper {
-      max-height: 29vh;
-    }
-
-    .product-information {
-      order: 3;
-      width: 100%;
-      position: relative;
-      z-index: 1;
-      background: white;
-      padding: 10px;
-      box-sizing: border-box;
-      clear: both;
-    }
-  }
-</style>
 
 <script>
   document.addEventListener('DOMContentLoaded', function () {

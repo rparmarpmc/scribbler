@@ -112,7 +112,7 @@
                             'type': products.products[0].product_type === "Gifts" ? "gift" : 'card'
                         }
 
-                        document.getElementById("{{ section.id }}").innerHTML = createCardSlide(products.products, params)
+                        document.getElementById("{{ section.id }}").innerHTML = createCardRecommendationSlide(products.products, params)
                         tns({
                             container: '#{{ section.id }}',
                             items: 2,
@@ -232,9 +232,9 @@
             "type": "range",
             "id": "products_to_show_slider",
             "min": 2,
-            "max": 22,
+            "max": 100,
             "step": 1,
-            "default": 22,
+            "default": 90,
             "label": "t:sections.collection-slider.settings.products_to_show_slider.label"
         },
                 {

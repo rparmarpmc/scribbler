@@ -1,0 +1,256 @@
+#customer-reminder-error:empty {
+    display: none;
+}
+
+#customer-reminder-error {
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+    padding: 5px;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+    text-align: center;
+    margin-top: 10px;
+    font-size: 18px;
+}
+.customer-reminder {
+    padding: 20px 50px;
+    background-color: #fff;
+}
+h1 {
+    margin-bottom: 1rem;
+    text-align: center;
+}
+.info-box-reminder {
+    background-color: #eeeeee;      
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.info-box-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.info-icon {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.info-text {
+    flex: 1;
+    text-align: center;
+}
+
+.info-text h4 {
+    margin-bottom: 0.5rem;
+    margin-top:0rem;
+}
+
+.info-text ul {
+    margin: 0;
+    padding-inline-start: 0px;
+}
+
+.info-text li {
+    margin-bottom: 0.5rem;
+    list-style: none;
+}
+
+.info-action {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.create-btn {
+    padding: 0.5rem 1.25rem;
+    background-color: #cbd81d;
+    color: black !important;
+    border-radius: 999px !important; 
+    border: none;
+    border-radius: 4px;
+    font-weight: 600;
+    cursor: pointer;
+    width: 100%;
+    font-size: x-large;
+}    
+
+.shop-btn, .create-btn {
+    padding: 0.5rem 1rem;
+    background-color:#cbd81d;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.reminders-section {
+    margin-bottom: 2rem;
+}
+.reminders-section h2 {
+    margin-bottom: 1rem;
+}
+
+.reminders-grid-ui {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 16px;
+}
+
+.reminder-card-ui {
+    background-color: #eeeeee;
+    border-radius: 12px;
+    padding: 8px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    width: 100%;
+    position: relative;
+}
+
+.reminders-grid-ui {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 16px;
+}
+@media (min-width: 1024px) {
+    .reminders-grid-ui {
+    grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+.share-icon {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    z-index: 2;
+}
+
+.share-icon img {
+    width: 25px;
+    height: auto;
+    z-index:10;
+}
+
+.reminder-text {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    font-family: 'Arial', sans-serif;
+}
+
+.reminder-title {
+    font-weight: bold;
+    font-size: 1.05rem;
+    color: #000;
+}
+
+.reminder-countdown {
+    font-size: 0.9rem;
+}
+
+.reminder-button .shop-btn {
+    background-color: #cbd81d;
+    color: black;
+    padding: 6px 16px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-decoration: none;
+}
+
+.reminder-content {
+    position: relative; 
+    display: flex;
+    padding: 8px;
+    background-color: #eeeeee;
+    border-radius: 12px;
+    gap: 16px;
+    z-index: 1;
+    width: 100%;
+    align-items: center;
+}
+
+
+.reminder-icon img {
+    width: 40px;
+    height: 40px;
+}
+
+.reminder-icon {
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+}
+
+.reminder-text {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.reminder-date {
+    font-size: 0.85rem;      
+}
+
+.reminder-button {
+    position: absolute;
+    bottom: 5px;
+    right: 0px;
+}
+
+.shop-btn {
+    background-color: #cbd81d;
+    color: black;
+    padding: 6px 16px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+
+@media (min-width: 768px) {
+    .info-box-content {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    }
+
+    .info-icon {
+    width: 60px;
+    }
+
+    .info-action {
+    justify-content: flex-end;
+    }
+    .create-btn {        
+    text-align: center;
+    display: block;
+    }                   
+}
+
+@media (min-width: 1024px) {
+    .reminders-grid {
+    grid-template-columns: repeat(4, 1fr);
+    }
+    .info-text {
+    text-align: left;
+    }
+    .reminder-card-ui {
+    border-radius: 12px;
+    }
+    .shop-btn {
+    border-radius: 4px;
+    }
+}

@@ -93,10 +93,15 @@
                                 });
                                 element.classList.add('active-tab');
                                 document.getElementById('inner-container').innerHTML = productGroups[type] && productGroups[type].length > 0
-                                    ? createCardSlide(productGroups[type], params)
-                                    : `<div class="no-favourites-added">${message}</div>`;
+                                ? createCardSlide(productGroups[type], params).then(html => { 
+                                    document.getElementById('inner-container').innerHTML = html;
+                                }) : `<div class="no-favourites-added">${message}</div>`;
                             });
                         });
+                    });
+
+                    createCardSlide(productGroups.All, params).then(html => { 
+                        document.getElementById('inner-container').innerHTML = html;
                     });
     
                     document.getElementById('inner-container').innerHTML = createCardSlide(productGroups.All, params);
@@ -173,3 +178,31 @@
     ]
 }
 {% endschema %}
+<div id="wishlist-items" class="wishlist-container" style="display: flex; flex-wrap: wrap; gap: 20px; margin-top: 30px;">
+</div>
+
+<script>
+function addFavourite(button, productId) {
+    let favourite = button.getAttribute("favourite");
+
+    if (favourite === "false") {
+        button.setAttribute("favourite", "true");
+
+        const productDetails = {
+            id: productId,
+            title: button.getAttribute("data-product-title"),
+            url: button.getAttribute("data-product-url"),
+            image: button.getAttribute("data-product-image")
+        };
+        localStorage.setItem(`wishlist_product_${productId}`, JSON.stringify(productDetails));
+
+        button.querySelector('svg').setAttribute('fill', '#ffcc00');
+
+        window.location.href = '/wishlist';
+    } else {
+        localStorage.removeItem(`wishlist_product_${productId}`);
+        button.setAttribute("favourite", "false");
+        button.querySelector('svg').setAttribute('fill', '#E6E6E6');
+    }
+}
+</script>

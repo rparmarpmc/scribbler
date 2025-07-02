@@ -3,7 +3,6 @@
 {%- assign diff = max | minus: min -%}
 {%- assign random_number = "now" | date: "%N" | modulo: diff | plus: min -%}
 
-<div style="min-height: 280px; padding-top: {{ section.settings.padding_top }}px; padding-bottom: {{ section.settings.padding_bottom }}px;">
     <div class="collection-sliders"> 
         <div class="collection-slider-wrapper">
             {%- if section.settings.title != blank -%}
@@ -72,17 +71,16 @@
                     </div>
                 </div>
             </div>
-             <div class="button-style">
+            <div class="button-style">
                 <a href="{{ section.settings.collection.url }}" class="collection-slider-view-all">View All</a>
             </div>
         </div>
     </div>
-</div>
+
 
  <script defer type="module">
     new Promise(async function(resolve, reject) {
         while (!loadStatus.dom) {
-            //consoleMsg("waiting for enable dom", null, null);
             await delay(50);
         }
 
@@ -119,66 +117,91 @@
         
         var sliderHandle = null
 
-        const getProducts = (tag = []) => {
-            new Promise(async function(resolve, reject){
+        
+        const getProducts = (tagdata = []) => {
+            new Promise(async function(resolve, reject) {
                 while (!loadStatus.create_slider_loaded) {
                     consoleMsg("waiting for enable slick_loaded", null, null);
                     await delay(50);
                 }
-
+    
                 var params = {
                     'isLoggedIn': {% if customer %}true{% else %}false{% endif %},
                     'default_vendor_logo': '{{ 'scribbler-vendor-logo.png' | asset_url }}',
-                    'type': 'gift'    
-                }
-
+                    'type': 'gift'
+                };
+    
                 getFilteredProducts({
                     collection_title: {{ section.settings.collection.title | json }},
                     sort_order: '{{ section.settings.sort_order }}',
                     limit: {{ section.settings.products_to_show_slider }},
-                    filter_tag: tag
-                }).then(products => {
-                    if(products?.products?.length > 0 ){
-                        if(sliderHandle && typeof sliderHandle.destroy === 'function' ) sliderHandle.destroy()
-
-                        document.getElementById("{{ section.id }}").innerHTML = createCardSlide(products.products, params)
+                    filter_tag: tagdata,
+                    shopify_token: '{{ settings.api-access-token }}'
+                }).then(data => {
+    
+                    if (data.data.collection.products.edges.length > 0) {
+                        const products = data.data.collection.products.edges.map(edge => edge.node);
                         
-                        sliderHandle = tns({
-                            container: '#{{ section.id }}',
-                            items: 2,
-                            mouseDrag: true,
-                            lazyload: true,
-                            slideBy: 'page',
-                            autoplay: false,
-                            controls: true,
-                            controlsText: ["",""],
-                            prevButton: '#prev-{{ section.id }}',
-                            nextButton: '#next-{{ section.id }}',
-                            nav: false,
-                            responsive: {
-                                200: {
-                                    items: {{ section.settings.columns_mobile }}, 
-                                },
-                                750: {
-                                    items: {{ section.settings.columns_tablet }}, 
-                                },
-                                990: {
-                                    items: {{ section.settings.columns_small_desktop }},
-                                },
-                                1250: {
-                                    items: {{ section.settings.columns_desktop }},
-                                }
-                            }
-                        });   
-                    } else {
-                        if(sliderHandle && typeof sliderHandle.destroy === 'function' ) sliderHandle.destroy()
-                        document.getElementById("{{ section.id }}").innerHTML = '<div class="no-product">Oops! No matches found. Try refining your search or discover something new in our collections below.</div>'
-                    }
-                })
+                        const filteredProducts = products.filter(product => 
+                            tagdata.some(tag => product.tags.includes(tag))
+                        );
 
+                        if (sliderHandle && typeof sliderHandle.destroy === 'function') {
+                            sliderHandle.destroy();
+                        }
+                        
+                        if(filteredProducts.length > 0){
+                            document.getElementById("{{ section.id }}").innerHTML = '<div class="product-grid-add-loader loading"></div>';
+                            createCardSlide(filteredProducts, params).then(html => {
+                                document.getElementById("{{ section.id }}").innerHTML = html;
+                                sliderHandle = tns({
+                                    container: '#{{ section.id }}',
+                                    items: 2,
+                                    mouseDrag: true,
+                                    lazyload: true,
+                                    slideBy: 'page',
+                                    autoplay: false,
+                                    controls: true,
+                                    controlsText: ["", ""],
+                                    prevButton: '#prev-{{ section.id }}',
+                                    nextButton: '#next-{{ section.id }}',
+                                    nav: false,
+                                    responsive: {
+                                        200: {
+                                            items: {{ section.settings.columns_mobile }},
+                                        },
+                                        750: {
+                                            items: {{ section.settings.columns_tablet }},
+                                        },
+                                        990: {
+                                            items: {{ section.settings.columns_small_desktop }},
+                                        },
+                                        1250: {
+                                            items: {{ section.settings.columns_desktop }},
+                                        }
+                                    }
+                                });
+                            }).catch(error => {
+                                console.error('Failed to create card slide:', error);
+                                document.getElementById("{{ section.id }}").innerHTML =
+                                    '<div class="no-product">Oops! Something went wrong while loading products.</div>';
+                            });
+                        }else{
+                            document.getElementById("{{ section.id }}").innerHTML = '<div class="no-product">Oops! No matches found for '+ tagdata +' products.</div>';
+                        }
+                    } else {
+                        if (sliderHandle && typeof sliderHandle.destroy === 'function') {
+                            sliderHandle.destroy();
+                        }
+                        document.getElementById("{{ section.id }}").innerHTML = '<div class="no-product">Oops! No matches found. Try refining your search or discover something new in our collections below.</div>';
+                    }
+                }).catch(error => {
+                    console.error('Error fetching products:', error);
+                });
+    
                 resolve(true);
             });
-        }
+        };
 
         window.addFlterToSlider{{random_number}} = (ev,tag) =>  {
 
@@ -220,7 +243,6 @@
             window.removeFavourite = removeFavourite;
             window.addToBasket = addToBasket;
         }
-
         resolve(true);
     });
 </script>
@@ -248,10 +270,6 @@
             "type": "select",
             "options": [
                 {
-                    "label": "Random",
-                    "value": "random"
-                },
-                {
                     "label": "New In",
                     "value": "created-descending"
                 },
@@ -262,13 +280,9 @@
                 {
                     "label": "Prime Tag",
                     "value": "manual"
-                },
-                {
-                    "label": "Bestsellers/Prime Tag Mix",
-                    "value": "manual-best-selling"
                 }
             ],
-            "default": "random"
+            "default": "manual"
         },
         {
             "type": "text",
@@ -304,9 +318,9 @@
             "type": "range",
             "id": "products_to_show_slider",
             "min": 2,
-            "max": 22,
+            "max": 100,
             "step": 1,
-            "default": 22,
+            "default": 90,
             "label": "t:sections.collection-gift-slider.settings.products_to_show_slider.label"
         },
         {
@@ -365,26 +379,7 @@
             "type": "header",
             "content": "t:sections.all.padding.section_padding_heading"
         },
-        {
-            "type": "range",
-            "id": "padding_top",
-            "min": 0,
-            "max": 100,
-            "step": 4,
-            "unit": "px",
-            "label": "t:sections.all.padding.padding_top",
-            "default": 36
-        },
-        {
-            "type": "range",
-            "id": "padding_bottom",
-            "min": 0,
-            "max": 100,
-            "step": 4,
-            "unit": "px",
-            "label": "t:sections.all.padding.padding_bottom",
-            "default": 36
-        }
+       
     ],
     "presets": [
         {

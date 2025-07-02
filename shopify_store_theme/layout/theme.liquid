@@ -2,6 +2,12 @@
 <html class="no-js" lang="{{ request.locale.iso_code }}">
 
 <head>
+<!-- BEAE-GLOBAL-FONT --> 
+{% capture the_snippet_global_font %}{% include 'beae-global-font' %}{% endcapture %} {% unless the_snippet_global_font contains 'Liquid error' %} {{ the_snippet_global_font }} {% endunless %} 
+ <!-- END BEAE-GLOBAL-FONT -->
+<!-- BEAE-HEADER --> 
+{%- render 'beae_header' -%}
+<!-- END BEAE-HEADER -->
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -66,6 +72,9 @@
 
     loadStatus.create_slider_started = false;
     loadStatus.create_slider_loaded = false;
+
+    loadStatus.search_form_loaded = false;
+    loadStatus.main_search_loaded = false;
 
     let env_list = ["local", "dev", "staging", "beta"];
     let env = "";
@@ -336,7 +345,12 @@
 
     loadJS("tiny-slider", "{{ 'tiny-slider.js' | asset_url }}", "slick_loaded", true);
     loadJS("global", "{{ 'global.js' | asset_url }}", "global_loaded", true);
+    loadJS("search-form", "{{ 'search-form.js' | asset_url }}", "search_form_loaded", true);
+    
 
+    if (loadStatus.search_form_loaded) {
+      loadJS("main-search", "{{ 'main-search.js' | asset_url }}", "main_search_loaded", true);
+    }
     function startAnalyticsScripts() {
         new Promise(async function (resolve, reject) {
             while (!loadStatus.run_analytics) {
@@ -450,6 +464,7 @@
   {% render 'meta-tags' %}
 
   {{ 'base.css' | asset_url | stylesheet_tag }}
+  {{ 'wishlist.css' | asset_url | stylesheet_tag }}
 
   <link rel="stylesheet" href="{{ 'fonts.css' | asset_url }}" media="print" onload="this.media='all'; this.onload = null">
 
@@ -482,6 +497,7 @@
   {%- if template == 'page.sitemap' -%}{{ 'sitemap.css' | asset_url | stylesheet_tag }}{%- endif -%}
   {%- if template == 'page.faq-s' -%}{{ 'mainpage.css' | asset_url | stylesheet_tag }}{%- endif -%}
   {%- if template == 'cart' -%}{{ 'cart-page.css' | asset_url | stylesheet_tag }}{%- endif -%}
+  {%- if template == 'customers/account.reminder' -%}{{ 'event-reminder.css' | asset_url | stylesheet_tag }}{%- endif -%}
  
   
   {% comment %} {{ template }} {% endcomment %}

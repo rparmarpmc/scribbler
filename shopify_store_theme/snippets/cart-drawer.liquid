@@ -32,9 +32,9 @@
     });
 </script>
 
-<cart-drawer class="drawer">
+{% comment %} <cart-drawer class="drawer">
     <div id="cart-drawer"></div>
-</cart-drawer> 
+</cart-drawer>  {% endcomment %}
 
 <script type="module" defer>
     window.Shopify.currency.currencySymbol = '{{ cart.currency.symbol }}'

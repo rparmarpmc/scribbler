@@ -3,11 +3,14 @@
 {%- assign diff = max | minus: min -%}
 {%- assign random_number = "now" | date: "%N" | modulo: diff | plus: min -%}
 
-<div style="min-height: 280px; background-color: {{section.settings.background_color }}; padding-top: {{ section.settings.padding_top }}px; padding-bottom: {{ section.settings.padding_bottom }}px;">
+{%- if collection.metafields.custom.single_collection_slider_3.value.id != blank -%}
+<div style="background-color: {{ section.settings.background_color }}; min-height: 280px; padding-top: {{ section.settings.padding_top }}px; padding-bottom: {{ section.settings.padding_bottom }}px;">
     <div class="collection-sliders"> 
         <div class="collection-slider-wrapper">
-            {%- if section.settings.title != blank -%}
-                <h2 class="collection-slider-title">{{ section.settings.title | escape }}</h2>
+            {%- if collection.metafields.custom.single_collection_slider_name_3.value != blank -%}
+                <h2 class="collection-slider-title">{{ collection.metafields.custom.single_collection_slider_name_3.value | escape }}</h2>
+            {%- else -%}
+                <h2 class="collection-slider-title">{{ collection.metafields.custom.single_collection_slider_3.value.title | escape }}</h2>
             {%- endif -%}
             <div class="collection-filter">
                 {%- if section.settings.filter != blank -%}
@@ -69,11 +72,11 @@
                         <div class="collection-slider-item-product-temp-item">
                             <div class="product-add-loader loading"></div>
                         </div>
-                    </div>
+                    </div> 
                 </div>
             </div>
-            <div class="button-style">
-                <a href="{{ section.settings.collection.url }}" class="collection-slider-view-all">View All</a>
+             <div class="button-style">
+                <a href="{{ collection.metafields.custom.single_collection_slider_3.value.handle }}" class="collection-slider-view-all">View All</a>
             </div>
         </div>
     </div>
@@ -101,18 +104,17 @@
                 }
 
                 getFilteredProducts({
-                    collection_title: {{ section.settings.collection.title | json }},
+                    collection_title: '{{ collection.metafields.custom.single_collection_slider_3.value.title | escape }}',
                     sort_order: '{{ section.settings.sort_order }}',
                     limit: {{ section.settings.products_to_show_slider }},
                     filter_tag: tag
                 }).then(products => {
 
                     if(products?.products?.length > 0 ){ 
-                        
                         if(sliderHandle && typeof sliderHandle.destroy === 'function' ) sliderHandle.destroy()
-                        
-                        document.getElementById("{{ section.id }}").innerHTML = createCardSlide(products.products, params)
 
+                        document.getElementById("{{ section.id }}").innerHTML = createCardSlide(products.products, params)
+                        
                         sliderHandle = tns({
                             container: '#{{ section.id }}',
                             items: 2,
@@ -184,7 +186,6 @@
         while (!loadStatus.create_slider_loaded) {
             await delay(50);
         }
-
         if(!window.addFavourite){
             window.addFavourite = addFavourite;
             window.removeFavourite = removeFavourite;
@@ -193,25 +194,15 @@
 
         resolve(true);
     });
-</script> 
+</script>
+{%- endif -%}
 
 {% schema %}
 {
-    "name": "t:sections.collection-slider.name",
+    "name": "t:sections.collection-meta-single-slider-3.name",
     "tag": "section",
     "class": "section",
     "settings": [
-        {
-            "type": "text",
-            "id": "title",
-            "default": "Collection slider",
-            "label": "t:sections.collection-slider.settings.title.label"
-        },
-        {
-            "type": "collection",
-            "id": "collection",
-            "label": "t:sections.collection-slider.settings.collection.label"
-        },
         {
             "label": "Sort Order",
             "id": "sort_order",
@@ -292,11 +283,11 @@
             "max": 22,
             "step": 1,
             "default": 22,
-            "label": "t:sections.collection-slider.settings.products_to_show_slider.label"
+            "label": "t:sections.collection-meta-single-slider-3.settings.products_to_show_slider.label"
         },
         {
             "type": "header",
-            "content": "t:sections.collection-slider.settings.header_desktop.content"
+            "content": "t:sections.collection-meta-single-slider-3.settings.header_desktop.content"
         },
         {
             "type": "range",
@@ -305,11 +296,11 @@
             "max": 6,
             "step": 1,
             "default": 5,
-            "label": "t:sections.collection-slider.settings.header_desktop.label"
+            "label": "t:sections.collection-meta-single-slider-3.settings.header_desktop.label"
         },
         {
             "type": "header",
-            "content": "t:sections.collection-slider.settings.header_small_desktop.content"
+            "content": "t:sections.collection-meta-single-slider-3.settings.header_small_desktop.content"
         },
         {
             "type": "range",
@@ -318,11 +309,11 @@
             "max": 6,
             "step": 1,
             "default": 4,
-            "label": "t:sections.collection-slider.settings.header_small_desktop.label"
+            "label": "t:sections.collection-meta-single-slider-3.settings.header_small_desktop.label"
         },
         {
             "type": "header",
-            "content": "t:sections.collection-slider.settings.header_tablet.content"
+            "content": "t:sections.collection-meta-single-slider-3.settings.header_tablet.content"
         },
         {
             "type": "range",
@@ -331,11 +322,11 @@
             "max": 5,
             "step": 1,
             "default": 3,
-            "label": "t:sections.collection-slider.settings.header_tablet.label"
+            "label": "t:sections.collection-meta-single-slider-3.settings.header_tablet.label"
         },
         {
             "type": "header",
-            "content": "t:sections.collection-slider.settings.header_mobile.content"
+            "content": "t:sections.collection-meta-single-slider-3.settings.header_mobile.content"
         },
         {
             "type": "range",
@@ -344,7 +335,7 @@
             "max": 3,
             "step": 1,
             "default": 2,
-            "label": "t:sections.collection-slider.settings.header_mobile.label"
+            "label": "t:sections.collection-meta-single-slider-3.settings.header_mobile.label"
         },
         {
             "type": "header",
@@ -358,7 +349,7 @@
             "step": 4,
             "unit": "px",
             "label": "t:sections.all.padding.padding_top",
-            "default": 36
+            "default": 20
         },
         {
             "type": "range",
@@ -368,12 +359,12 @@
             "step": 4,
             "unit": "px",
             "label": "t:sections.all.padding.padding_bottom",
-            "default": 36
+            "default": 20
         }
     ],
     "presets": [
         {
-            "name": "t:sections.collection-slider.presets.name"
+            "name": "t:sections.collection-meta-single-slider-3.presets.name"
         }
     ]
 }

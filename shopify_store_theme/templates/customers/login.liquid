@@ -23,8 +23,7 @@
 <div id="errors"></div>
 <div class="login-wrapper">
   <div id="login" class="login-title" tabindex="-1">{{ 'customer.login_page.title' | t }}</div>
-  <div class="login-info">Welcome to Scribbler.com!</div>
-  <div class="login-info">The UK's no.1 in British Humour</div>
+  <div class="login-info">Welcome to Scribbler – the UK’s ultimate destination for wonderfully wicked cards and gifts!</div>
   <div class="login-subtitle">Existing Members</div>
   <form method="post" action="#" id="customer_login" accept-charset="UTF-8" novalidate="novalidate">
     <input
@@ -72,7 +71,7 @@
           Continue with Google
         </span>
       </a>
-      
+        {% if false %}
         <a class="auth-button auth-button--facebook" href="{{ settings.sso-endpoint }}/v1/shoppify/private/facebook_auth?returnUrl=account">
         <span class="auth-button__content">
           <span class="auth-button__icon">
@@ -80,7 +79,8 @@
           </span>
           Continue with Facebook
         </span>
-      </a>
+        </a>
+        {% endif %}
     </div>
     
   </form>

@@ -1,3 +1,38 @@
+<link href="{{ 'card-flipper.css' | asset_url }}" rel="stylesheet" type="text/css">
+
+<script defer>
+  new Promise(async function(resolve, reject) {
+      while (!loadStatus.dom) {
+          consoleMsg("waiting for enable dom", null, null);
+          await delay(500);
+      }
+
+      if(!loadStatus.product_form_custom_started){
+          loadStatus.product_form_custom_started = true;
+          loadJS("product-form-custom", "{{ 'product-form-custom.js' | asset_url }}", "product_form_custom_loaded", true);
+      }
+
+      if(!loadStatus.card_flipper_started){
+          loadStatus.card_flipper_started = true;
+          loadJS("card-flipper", "{{ 'card-flipper.js' | asset_url }}", "card_flipper_loaded", true);
+      }
+
+
+      resolve(true);
+  });
+
+  if (sessionStorage.getItem("editor_item_key") !== null) {
+    navigation.addEventListener("navigate", e => {
+      if(e.destination.url.split('=')[0] !== window.location.href.split('=')[0]){
+          sessionStorage.removeItem("editor_item_key");
+          sessionStorage.removeItem("editor_variant_id");
+          sessionStorage.removeItem('editor_state')
+          sessionStorage.removeItem('editor_properties')
+          sessionStorage.removeItem('editor_quantity')
+      }
+    });
+  }
+</script>
 <section id="MainProduct-{{ section.id }}" data-section="{{ section.id }}">
   {%- assign product_form_id = 'product-form-' | append: section.id -%}
   <div class="product__title">
@@ -266,6 +301,7 @@
                         <input type="hidden" name="properties[_shipping_address]" form="{{ product_form_id }}" value='{"firstName":"{{ customer.default_address.first_name }}","lastName":"{{ customer.default_address.last_name }}","address1":"{{ customer.default_address.address1 }}","address2":"{{ customer.default_address.address2 }}","city":"{{ customer.default_address.city }}","province":"{{ customer.default_address.province }}","country":"{{ customer.default_address.country }}","zip":"{{ customer.default_address.zip }}","phone":"{{ customer.default_address.phone }}","addressType":"Indirect"}'>
                         <input type="hidden" name="product_type" form="{{ product_form_id }}" value='{{ product.type }}'>
                       {% endif %}
+
                       <button type="submit" name="add" id="KlaviyoAddToCart" style="width: 100%" class="product-form__submit button--add-to-cart {% if block.settings.show_dynamic_checkout and product.selling_plan_groups == empty %}button--secondary{% else %}button--primary{% endif %}" {% if product.selected_or_first_available_variant.available == false %}disabled{% endif %}>
                         <span>
                           {%- if product.selected_or_first_available_variant.available -%}

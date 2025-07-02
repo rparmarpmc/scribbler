@@ -1,0 +1,235 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "current": {
+    "postage_hour": 15,
+    "postage_minute": 0,
+    "environment": "development",
+    "endpoint": "https:\/\/devwholesale.scribbler.com",
+    "sso-endpoint": "https://scribbler-development.myshopify.com/apps/scribblerApi",
+    "favicon": "shopify://shop_images/scribbler2.png",
+    "show_vendor": false,
+    "checkout_body_background_color": "#ffffff",
+    "checkout_logo_position": "center",
+    "checkout_logo_image": "shopify://shop_images/Scribbler_London.jpg",
+    "sections": {
+      "announcement-bar": {
+        "type": "announcement-bar",
+        "blocks": {
+          "announcement_qyEwmy": {
+            "type": "announcement",
+            "settings": {
+              "text": "Click here to return to old website",
+              "link": "http://scribbler.com"
+            }
+          }
+        },
+        "block_order": [
+          "announcement_qyEwmy"
+        ],
+        "settings": {}
+      },
+      "cookie-bar": {
+        "type": "cookie-bar",
+        "blocks": {
+          "cca42e75-4345-4900-a01a-207af91689ff": {
+            "type": "cookie-bar",
+            "settings": {
+              "text": "We use cookies on our website to enhance your experience. Click here to find out more about our usage.",
+              "link": "shopify://pages/privacy-policy"
+            }
+          }
+        },
+        "block_order": [
+          "cca42e75-4345-4900-a01a-207af91689ff"
+        ],
+        "settings": {}
+      },
+      "footer": {
+        "type": "footer",
+        "blocks": {
+          "d77a3bc3-a4ae-4e83-8d15-5269391965f2": {
+            "type": "link_list",
+            "settings": {
+              "heading": "SHOP",
+              "menu": "shop"
+            }
+          },
+          "0392a47d-1998-439e-a25c-d99963f20849": {
+            "type": "link_list",
+            "settings": {
+              "heading": "GET IN TOUCH",
+              "menu": "get-in-touch"
+            }
+          },
+          "cc7df773-4bd1-4b8b-b54a-96dd36fd212f": {
+            "type": "link_list",
+            "settings": {
+              "heading": "COOL STUFF",
+              "menu": "cool-stuff"
+            }
+          },
+          "be8dc19b-8615-482a-8272-dac538bceb91": {
+            "type": "link_list",
+            "settings": {
+              "heading": "USEFUL STUFF",
+              "menu": "useful-stuff"
+            }
+          },
+          "fd6b6ca0-d8f7-4f6b-bbb6-6ba77e3bed75": {
+            "type": "link_list",
+            "settings": {
+              "heading": "SERIOUS STUFF",
+              "menu": "serious-stuff"
+            }
+          }
+        },
+        "block_order": [
+          "d77a3bc3-a4ae-4e83-8d15-5269391965f2",
+          "0392a47d-1998-439e-a25c-d99963f20849",
+          "cc7df773-4bd1-4b8b-b54a-96dd36fd212f",
+          "be8dc19b-8615-482a-8272-dac538bceb91",
+          "fd6b6ca0-d8f7-4f6b-bbb6-6ba77e3bed75"
+        ],
+        "settings": {
+          "padding_top": 20,
+          "padding_bottom": 20
+        }
+      },
+      "main-password-footer": {
+        "type": "main-password-footer",
+        "settings": {
+          "color_scheme": "background-1"
+        }
+      },
+      "header": {
+        "type": "header",
+        "settings": {
+          "logo": "shopify://shop_images/scribbler-header-logo.png",
+          "menu_header": "header-menu",
+          "menu_cards": "cards-menu",
+          "menu_gifts": "gifts-menu"
+        }
+      },
+      "main-password-header": {
+        "type": "main-password-header",
+        "settings": {
+          "logo": "{{ shop.brand.logo }}",
+          "logo_max_width": 100,
+          "color_scheme": "background-1"
+        }
+      }
+    },
+    "content_for_index": [],
+    "blocks": {
+      "855628211100114053": {
+        "type": "shopify://apps/klaviyo-email-marketing-sms/blocks/klaviyo-onsite-embed/2632fe16-c075-4321-a88b-50b567f42507",
+        "disabled": false,
+        "settings": {}
+      },
+      "15588394620387169604": {
+        "type": "shopify://apps/subi-ex-subify/blocks/app-embed-block/bc0dba25-cd46-4841-bea4-6bdfe9ac815f",
+        "disabled": false,
+        "settings": {}
+      }
+    }
+  },
+  "presets": {
+    "Default": {
+      "show_vendor": false,
+      "sections": {
+        "announcement-bar": {
+          "type": "announcement-bar",
+          "blocks": {
+            "announcement-bar-0": {
+              "type": "announcement",
+              "settings": {
+                "text": "Welcome to our store",
+                "link": ""
+              }
+            }
+          },
+          "block_order": [
+            "announcement-bar-0"
+          ],
+          "settings": {}
+        },
+        "cookie-bar": {
+          "type": "cookie-bar",
+          "blocks": {
+            "cookie-bar-0": {
+              "type": "cookie-bar",
+              "settings": {
+                "text": "Our store uses cookie",
+                "link": ""
+              }
+            }
+          },
+          "block_order": [
+            "cookie-bar-0"
+          ],
+          "settings": {}
+        },
+        "footer": {
+          "type": "footer",
+          "blocks": {
+            "footer-1": {
+              "type": "link_list",
+              "settings": {
+                "heading": "Info",
+                "menu": "footer"
+              }
+            },
+            "footer-0": {
+              "type": "link_list",
+              "settings": {
+                "heading": "Quick links",
+                "menu": "footer"
+              }
+            }
+          },
+          "block_order": [
+            "footer-0",
+            "footer-1"
+          ],
+          "settings": {
+            "padding_top": 36,
+            "padding_bottom": 36
+          }
+        },
+        "main-password-footer": {
+          "type": "main-password-footer",
+          "settings": {
+            "color_scheme": "background-1"
+          }
+        },
+        "header": {
+          "type": "header",
+          "settings": {
+            "logo": "{{ shop.brand.logo }}"
+          }
+        },
+        "main-password-header": {
+          "type": "main-password-header",
+          "settings": {
+            "logo": "{{ shop.brand.logo }}",
+            "logo_max_width": 100,
+            "color_scheme": "background-1"
+          }
+        }
+      }
+    }
+  },
+  "platform_customizations": {
+    "custom_css": [
+      ".main-collection-banner {background-color: #cbd81d; text-align: center; padding: 5px;}"
+    ]
+  }
+}

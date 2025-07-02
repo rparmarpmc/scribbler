@@ -1,0 +1,84 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "collection_meta_circles_gFeQDk": {
+      "type": "collection-meta-circles",
+      "settings": {
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "infoslider_tPwwCd": {
+      "type": "infoslider",
+      "blocks": {
+        "column_cpcyYY": {
+          "type": "column",
+          "settings": {
+            "link": "",
+            "text": "Get 20% bonus credit with any purchase of PrePay"
+          }
+        },
+        "column_YUABUp": {
+          "type": "column",
+          "settings": {
+            "link": "",
+            "text": "Get 20% bonus credit with any purchase of PrePay"
+          }
+        },
+        "column_ddTQ6y": {
+          "type": "column",
+          "settings": {
+            "link": "",
+            "text": "Get 20% bonus credit with any purchase of PrePay"
+          }
+        },
+        "column_qbXPX6": {
+          "type": "column",
+          "settings": {
+            "link": "",
+            "text": "Get 20% bonus credit with any purchase of PrePay"
+          }
+        }
+      },
+      "block_order": [
+        "column_cpcyYY",
+        "column_YUABUp",
+        "column_ddTQ6y",
+        "column_qbXPX6"
+      ],
+      "settings": {
+        "padding_bottom": 20,
+        "fading_interval": 3
+      }
+    },
+    "product-grid": {
+      "type": "main-collection-product-grid",
+      "settings": {}
+    },
+    "main_collection_banner_JJKVTB": {
+      "type": "main-collection-banner",
+      "custom_css": [
+        "{background-color: #cbd81d; text-align: center; padding: 10px; font-size: 20px;}"
+      ],
+      "settings": {
+        "show_collection_description": true,
+        "show_collection_image": false,
+        "color_scheme": "background-1"
+      }
+    }
+  },
+  "order": [
+    "collection_meta_circles_gFeQDk",
+    "infoslider_tPwwCd",
+    "product-grid",
+    "main_collection_banner_JJKVTB"
+  ]
+}

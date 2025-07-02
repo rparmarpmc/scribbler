@@ -1,0 +1,63 @@
+
+  {% layout 'theme' %}
+  <script defer>
+    window.themeAssets = {
+      reminderIcon: "{{ 'icon-reminder-tiles.png' | asset_url }}",
+      shareIcon: "{{ 'icon-share.png' | asset_url }}"
+    };
+    new Promise(async function(resolve, reject) {
+        while (!loadStatus.dom) {
+            consoleMsg("waiting for enable dom", null, null);
+            await delay(500);
+        }
+
+        loadJS("account_details", "{{ 'account-reminders.js' | asset_url }}", "account_details_loaded", true);
+        resolve(true);
+    });
+        
+
+  </script>
+  
+  <main>
+
+    <div class="customer-reminder">
+      <h1>My Reminders</h1>
+
+      <section class="info-box-reminder">
+        <div class="info-box-content">
+          
+          <!-- Column 1: Icon -->
+          <div class="info-icon">
+            <img src="{{ 'icon-reminder.png' | asset_url }}" alt="Reminder Icon" width="70" height="auto" />
+          </div>
+
+          <!-- Column 2: Heading + Reasons -->
+          <div class="info-text">
+            <h4>Why should you set a reminder:</h4>
+            <ul>
+              <li><b>1.</b> We’ll remind you, so you’ll <b>never miss an occasion.</b></li>
+              <li><b>2.</b> Plan ahead with ease and <b>order early.</b></li>
+            </ul>
+          </div>
+
+          <!-- Column 3: Button -->
+          <div class="info-action">
+            <button class="create-btn">Create Reminder</button>
+          </div>
+
+        </div>
+      </section>
+
+      <div id="customer-reminder-error"></div>
+      <section class="reminders-section hidden" id="section-upcoming">
+        <h2>Upcoming</h2>
+        <div class="reminders-grid-ui" id="upcoming-reminders"></div>
+      </section>
+
+      <section class="reminders-section hidden" id="section-later">
+        <h2>Later</h2>
+         <div class="reminders-grid-ui" id="later-reminders"></div>
+      </section>
+    </div>
+  </main>
+

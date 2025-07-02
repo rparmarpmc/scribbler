@@ -96,32 +96,11 @@
         "padding_top": 12,
         "padding_bottom": 12
       }
-    },
-    "befc1cc1-b619-43b8-8c37-d2eff091a2df": {
-      "type": "collection-gift-slider",
-      "settings": {
-        "title": "Jellycat Gifts",
-        "collection": "jellycat-all",
-        "sort_order": "best-selling",
-        "filter": "Rude",
-        "filter1": "Funny",
-        "filter2": "Bestseller",
-        "filter3": "New In",
-        "filter4": "Balance",
-        "products_to_show_slider": 22,
-        "columns_desktop": 6,
-        "columns_small_desktop": 5,
-        "columns_tablet": 3,
-        "columns_mobile": 2,
-        "padding_top": 12,
-        "padding_bottom": 12
-      }
     }
   },
   "order": [
     "infoslider_tq98RV",
     "main",
-    "858b4f32-f027-45a7-90dd-329ea1cf7af3",
-    "befc1cc1-b619-43b8-8c37-d2eff091a2df"
+    "858b4f32-f027-45a7-90dd-329ea1cf7af3"
   ]
 }

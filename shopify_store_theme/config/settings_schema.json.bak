@@ -1,0 +1,118 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "Scribbler",
+    "theme_version": "1.0.0",
+    "theme_author": "Scribbler",
+    "theme_documentation_url": "https:\/\/help.shopify.com\/manual\/online-store\/themes",
+    "theme_support_email": "pawelcich3@gmail.com"
+  },
+  {
+    "name": "t:settings_schema.postage_time.name",
+    "settings": [
+      {
+        "type": "range",
+        "id": "postage_hour",
+        "min": 0,
+        "max": 23,
+        "step": 1,
+        "info": "t:settings_schema.postage_time.settings.hour.info",
+        "unit": "H",
+        "label": "t:settings_schema.postage_time.settings.hour.label",
+        "default": 15
+      },
+      {
+        "type": "range",
+        "id": "postage_minute",
+        "min": 0,
+        "max": 59,
+        "step": 1,
+        "info": "t:settings_schema.postage_time.settings.minute.info",
+        "unit": "M",
+        "label": "t:settings_schema.postage_time.settings.minute.label",
+        "default": 0
+      }
+    ]
+  },
+  {
+    "name": "Environment Settings",
+    "settings": [
+      {
+        "type": "select",
+        "label": "Environment",
+        "id": "environment",
+        "options": [
+          {
+            "label": "Development",
+            "value": "development"
+          },
+          {
+            "label": "Staging",
+            "value": "staging"
+          },
+          {
+            "label": "Production",
+            "value": "production"
+          }
+        ],
+        "default": "production"
+      },
+      {
+        "label": "Endpoint",
+        "id": "endpoint",
+        "type": "select",
+        "options": [
+          {
+            "label": "Development",
+            "value": "https:\/\/devwholesale.scribbler.com"
+          },
+          {
+            "label": "Staging",
+            "value": "https:\/\/stagingwholesale.scribbler.com"
+          },
+          {
+            "label": "Production",
+            "value": "https:\/\/livewholesale.scribbler.com"
+          }
+        ],
+        "default": "https:\/\/livewholesale.scribbler.com"
+      },
+      {
+        "label": "SSO-Endpoint",
+        "id": "sso-endpoint",
+        "type": "select",
+        "options": [
+          {
+            "label": "Local",
+            "value": "https:\/\/localhost:4000"
+          },
+          {
+            "label": "Development",
+            "value": "https:\/\/scribbler-development.myshopify.com\/apps\/scribblerApi"
+          },
+          {
+            "label": "Staging",
+            "value": "https:\/\/stagingwholesale.scribbler.com"
+          },
+          {
+            "label": "Production",
+            "value": "https:\/\/livewholesale.scribbler.com"
+          }
+        ],
+        "default": "https:\/\/localhost:4000"
+        
+      }
+    ]
+  },
+  {
+    "name": "t:settings_schema.favicon.name",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "favicon",
+        "label": "t:settings_schema.favicon.settings.favicon.label",
+        "info": "t:settings_schema.favicon.settings.favicon.info"
+      }
+    ]
+  }
+]

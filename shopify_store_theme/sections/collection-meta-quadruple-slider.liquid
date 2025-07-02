@@ -75,7 +75,8 @@
               'show_mobile': {{ section.settings.columns_mobile }},
               'default_vendor_logo': '{{ 'scribbler-vendor-logo.png' | asset_url }}',
               'rows': 1,
-              'gift': false
+              'gift': false,
+              'shopify_token': {{ settings.api-access-token }}
             })
         })
 
@@ -92,7 +93,8 @@
           'show_mobile': {{ section.settings.columns_mobile }},
           'default_vendor_logo': '{{ 'scribbler-vendor-logo.png' | asset_url }}',
           'rows': 1,
-          'gift': false
+          'gift': false,
+          'shopify_token': {{ settings.api-access-token }}
         })
       }); 
     </script>
@@ -137,9 +139,9 @@
             "type": "range",
             "id": "products_to_show_slider",
             "min": 2,
-            "max": 22,
+            "max": 100,
             "step": 1,
-            "default": 22,
+            "default": 90,
             "label": "t:sections.collection-meta-quadruple-slider.settings.products_to_show_slider.label"
         },
         {

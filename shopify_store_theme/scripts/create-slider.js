@@ -264,14 +264,22 @@ function addFavourite(_this, id) {
         })
     }
 
+ 
     _this.children[0].classList.add('loading')
 
-    _this.children[1].children[1].style.fill = '#cbd81d'
+    _this.children[1].children[1].style.fill = 'none'
+
+    _this.children[1].children[1].style.stroke = '#cbd81d'
+
     
+
 
     fetch(`/apps/scribblerApi/v1/shoppify/private/favourite`, config)
         .then(response => response.json())
         .then(response => {
+            const favs = JSON.parse(localStorage.getItem('favorites') || '[]');
+            if (!favs.includes(id)) favs.push(id);
+            localStorage.setItem('favorites', JSON.stringify(favs));
             window.eventBus.publish('FAVOURITES_ITEM', response)
         })
         .catch(e => {
@@ -295,8 +303,11 @@ function removeFavourite(_this, id) {
 
     _this.children[0].classList.add('loading')
 
-    _this.children[1].children[1].style.fill = '#6e6d6d'
 
+    _this.children[1].children[1].style.stroke = '#6e6d6d'
+   
+    _this.children[1].children[1].style.fill = '#6e6d6d'
+  
     fetch(`/apps/scribblerApi/v1/shoppify/private/favourite/${id}`, config)
         .then(response => response.json())
         .then(response => {
@@ -442,7 +453,7 @@ function generateFavIconHTML(isLoggedIn, product) {
     if (product.products[0].is_user_favorite) {
         button = `<button type="button" name="Add to Favourites" favourite="true" onclick="removeFavourite(this,${product.products[0].id})" class="add-to-favourites-button">
                 <div class="product-add-loader"></div>
-                <svg width="35" height="33" viewBox="0 0 35 33" fill="#cbd81d" xmlns="http://www.w3.org/2000/svg">
+                <svg width="35" height="33" viewBox="0 0 35 33" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path opacity="0.9" d="M17.1252 32.2173C26.4744 32.2173 34.0534 25.0052 34.0534 16.1087C34.0534 7.21209 26.4744 0 17.1252 0C7.77604 0 0.197021 7.21209 0.197021 16.1087C0.197021 25.0052 7.77604 32.2173 17.1252 32.2173Z" fill="#E6E6E6"/>
                     <path d="M24.4161 11.0845C23.4943 10.0478 22.3211 9.56934 21.1478 9.56934C19.9746 9.56934 18.8013 10.0478 17.8795 11.0845L17.1253 11.9617L16.371 11.0845C15.4492 10.0478 14.276 9.56934 13.1027 9.56934C11.9295 9.56934 10.7562 10.0478 9.83441 11.0845C7.99074 13.1579 7.99074 16.5072 9.83441 18.5806L10.5886 19.4578L16.2872 25.997C16.7063 26.4754 17.4605 26.4754 17.8795 25.997L23.5781 19.4578L24.3323 18.5806C26.176 16.5072 26.176 13.1579 24.3323 11.0845H24.4161Z" stroke="#cbd81d" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
@@ -450,7 +461,7 @@ function generateFavIconHTML(isLoggedIn, product) {
     } else {
         button = `<button type="button" name="Add to Favourites" favourite="false" onclick="addFavourite(this,${product.products[0].id})" class="add-to-favourites-button">
                 <div class="product-add-loader"></div>
-                <svg width="35" height="33" viewBox="0 0 35 33" fill="#6e6d6d" xmlns="http://www.w3.org/2000/svg">
+                <svg width="35" height="33" viewBox="0 0 35 33" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path opacity="0.9" d="M17.1252 32.2173C26.4744 32.2173 34.0534 25.0052 34.0534 16.1087C34.0534 7.21209 26.4744 0 17.1252 0C7.77604 0 0.197021 7.21209 0.197021 16.1087C0.197021 25.0052 7.77604 32.2173 17.1252 32.2173Z" fill="#E6E6E6"/>
                     <path d="M24.4161 11.0845C23.4943 10.0478 22.3211 9.56934 21.1478 9.56934C19.9746 9.56934 18.8013 10.0478 17.8795 11.0845L17.1253 11.9617L16.371 11.0845C15.4492 10.0478 14.276 9.56934 13.1027 9.56934C11.9295 9.56934 10.7562 10.0478 9.83441 11.0845C7.99074 13.1579 7.99074 16.5072 9.83441 18.5806L10.5886 19.4578L16.2872 25.997C16.7063 26.4754 17.4605 26.4754 17.8795 25.997L23.5781 19.4578L24.3323 18.5806C26.176 16.5072 26.176 13.1579 24.3323 11.0845H24.4161Z" stroke="#333333" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
@@ -461,7 +472,7 @@ function generateFavIconHTML(isLoggedIn, product) {
     return isLoggedIn
         ? button
         : `<button type="button" aria-label="Add to Favourites" name="Add to Favourites" class="add-to-favourites-button" onclick="window.location='/account/login'">  
-                <svg width="35" height="33" viewBox="0 0 35 33" fill="#6e6d6d" xmlns="http://www.w3.org/2000/svg">
+                <svg width="35" height="33" viewBox="0 0 35 33" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path opacity="0.9" d="M17.1252 32.2173C26.4744 32.2173 34.0534 25.0052 34.0534 16.1087C34.0534 7.21209 26.4744 0 17.1252 0C7.77604 0 0.197021 7.21209 0.197021 16.1087C0.197021 25.0052 7.77604 32.2173 17.1252 32.2173Z" fill="#E6E6E6"/>
                     <path d="M24.4161 11.0845C23.4943 10.0478 22.3211 9.56934 21.1478 9.56934C19.9746 9.56934 18.8013 10.0478 17.8795 11.0845L17.1253 11.9617L16.371 11.0845C15.4492 10.0478 14.276 9.56934 13.1027 9.56934C11.9295 9.56934 10.7562 10.0478 9.83441 11.0845C7.99074 13.1579 7.99074 16.5072 9.83441 18.5806L10.5886 19.4578L16.2872 25.997C16.7063 26.4754 17.4605 26.4754 17.8795 25.997L23.5781 19.4578L24.3323 18.5806C26.176 16.5072 26.176 13.1579 24.3323 11.0845H24.4161Z" stroke="#333333" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
@@ -616,11 +627,11 @@ async function getFilteredProducts(params) {
 
 
     try {
-        var response = await fetch('https://scribbler-development.myshopify.com/admin/api/2024-07/graphql.json', {
+        var response = await fetch('/admin/api/2024-07/graphql.json', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'X-Shopify-Access-Token': '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',
+                'X-Shopify-Access-Token': params.shopify_token,
                 'Accept': 'application/json'
             },
             body: JSON.stringify({
@@ -639,17 +650,19 @@ async function getFilteredProducts(params) {
         if(params.sort_order == "manual"){
             params.sort_order = "MANUAL"
         }else if (params.sort_order == "best-selling"){
-            params.sort_order == "BEST_SELLING"
+            params.sort_order = "BEST_SELLING"
         }else if (params.sort_order == "created-descending"){
-            params.sort_order == "CREATED reverse: true"
+            params.sort_order = "CREATED reverse: true"
         }else if (params.sort_order == "random"){
-            params.sort_order == "MANUAL"
+            params.sort_order = "MANUAL"
         }else if (params.sort_order == "price-descending"){
-            params.sort_order == "PRICE reverse: true"
+            params.sort_order = "PRICE reverse: true"
         }else if (params.sort_order == "price-ascending"){
-            params.sort_order == "PRICE"
+            params.sort_order = "PRICE"
         }else if (params.sort_order == "created-ascending"){
-            params.sort_order == "CREATED"
+            params.sort_order = "CREATED"
+        }else if (params.sort_order == "manual-best-selling"){
+            params.sort_order = "MANUAL"
         }
 
         const query1 = `
@@ -696,11 +709,11 @@ async function getFilteredProducts(params) {
 
 
         try {
-            var response1 = await fetch('https://scribbler-development.myshopify.com/admin//api/2024-07/graphql.json', {
+            var response1 = await fetch('/admin/api/2024-07/graphql.json', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'X-Shopify-Access-Token': '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',
+                    'X-Shopify-Access-Token': params.shopify_token,
                     'Accept': 'application/json'
                 },
                 body: JSON.stringify({
@@ -778,8 +791,8 @@ function createCardRecommendationSlide(products, params) {
             } else {
                 favIconHtml = `<button type="button" name="Add to Favourites" favourite="false" onclick="addFavourite(this,${product.id})" class="add-to-favourites-button">
                                 <div class="product-add-loader"></div>
-                                <svg width="35" height="33" viewBox="0 0 35 33" fill="#6e6d6d" xmlns="http://www.w3.org/2000/svg">
-                                    <path opacity="0.9" d="M17.1252 32.2173C26.4744 32.2173 34.0534 25.0052 34.0534 16.1087C34.0534 7.21209 26.4744 0 17.1252 0C7.77604 0 0.197021 7.21209 0.197021 16.1087C0.197021 25.0052 7.77604 32.2173 17.1252 32.2173Z" fill="#E6E6E6"/>
+                                <svg width="35" height="33" viewBox="0 0 35 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path opacity="0.9" d="M17.1252 32.2173C26.4744 32.2173 34.0534 25.0052 34.0534 16.1087C34.0534 7.21209 26.4744 0 17.1252 0C7.77604 0 0.197021 7.21209 0.197021 16.1087C0.197021 25.0052 7.77604 32.2173 17.1252 32.2173Z" fill="none"/>
                                     <path d="M24.4161 11.0845C23.4943 10.0478 22.3211 9.56934 21.1478 9.56934C19.9746 9.56934 18.8013 10.0478 17.8795 11.0845L17.1253 11.9617L16.371 11.0845C15.4492 10.0478 14.276 9.56934 13.1027 9.56934C11.9295 9.56934 10.7562 10.0478 9.83441 11.0845C7.99074 13.1579 7.99074 16.5072 9.83441 18.5806L10.5886 19.4578L16.2872 25.997C16.7063 26.4754 17.4605 26.4754 17.8795 25.997L23.5781 19.4578L24.3323 18.5806C26.176 16.5072 26.176 13.1579 24.3323 11.0845H24.4161Z" stroke="#333333" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
                                 </svg>
                             </button>`;

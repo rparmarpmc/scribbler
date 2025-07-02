@@ -4,7 +4,6 @@
 {%- assign diff = max | minus: min -%}
 {%- assign random_number = "now" | date: "%N" | modulo: diff | plus: min -%}
 
-<div style="background-color: {{ section.settings.background_color }}; min-height: 280px; padding-top: {{ section.settings.padding_top }}px; padding-bottom: {{ section.settings.padding_bottom }}px;">
     <div class="collection-sliders"> 
         <div class="collection-slider-wrapper">
             {%- if collection.metafields.custom.gift_collection_slider_name_2.value != blank -%}
@@ -80,7 +79,6 @@
             </div>
         </div>
     </div>
-</div>
 
  <script defer type="module">
     new Promise(async function(resolve, reject) {
@@ -139,7 +137,8 @@
                     collection_title: '{{ collection.metafields.custom.gift_collection_slider_2.value.title | escape }}',
                     sort_order: '{{ section.settings.sort_order }}',
                     limit: {{ section.settings.products_to_show_slider }},
-                    filter_tag: tag
+                    filter_tag: tag,
+                    shopify_token: '{{ settings.api-access-token }}'
                 }).then(products => {
                     if(products?.products?.length > 0 ){
                         if(sliderHandle && typeof sliderHandle.destroy === 'function' ) sliderHandle.destroy()
@@ -318,9 +317,9 @@
             "type": "range",
             "id": "products_to_show_slider",
             "min": 2,
-            "max": 22,
+            "max": 100,
             "step": 1,
-            "default": 22,
+            "default": 90,
             "label": "t:sections.collection-meta-gift-slider2.settings.products_to_show_slider.label"
         },
         {
@@ -379,26 +378,7 @@
             "type": "header",
             "content": "t:sections.all.padding.section_padding_heading"
         },
-        {
-            "type": "range",
-            "id": "padding_top",
-            "min": 0,
-            "max": 100,
-            "step": 4,
-            "unit": "px",
-            "label": "t:sections.all.padding.padding_top",
-            "default": 36
-        },
-        {
-            "type": "range",
-            "id": "padding_bottom",
-            "min": 0,
-            "max": 100,
-            "step": 4,
-            "unit": "px",
-            "label": "t:sections.all.padding.padding_bottom",
-            "default": 36
-        }
+       
     ],
     "presets": [
         {

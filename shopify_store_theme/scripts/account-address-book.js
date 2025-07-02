@@ -2,7 +2,7 @@ let type = 'Direct'
 let addressesList = []
 let filter = null
 // let requestURL = '/apps/scribblerApi/v1/shoppify/private/addresses/?logged_in_customer_id=5708817891535&shop=scribbler-development.myshopify.com'
-// if (location.hostname === '127.0.0.1' || location.hostname === '127.0.0.1' || location.hostname === '') alert("It's a local server!")
+// if (location.hostname === 'localhost' || location.hostname === '127.0.0.1' || location.hostname === '') alert("It's a local server!")
 
 
 fetch(`/apps/scribblerApi/v1/shoppify/private/addresses`, { method: 'GET', headers: { 'Content-Type': 'application/json', Accept: `application/json` } })
@@ -21,7 +21,7 @@ fetch(`/apps/scribblerApi/v1/shoppify/private/addresses`, { method: 'GET', heade
             //clear errors
             document.getElementById('customer-account-error').innerHTML = ''
 
-            displayResults()
+            displayResults();
             return
         } else {
             document.getElementById('customer-account-error').innerHTML = "You don't have saved addresses"
@@ -41,7 +41,7 @@ const showAddresses = (event, newType) => {
 
     if (type === 'Indirect') {
         document.getElementsByClassName('address-list-notice')[0].innerHTML = 'BTM or Back To Me are your addresses... Products ordered with BTM address are shipped with an extra envelope'
-        document.getElementsByClassName('address-book-sidebar-title')[0].innerHTML = 'Add a BTM address'
+        document.getElementsByClassName('address-book-sidebar-title')[0].innerHTML = 'Add a Back To Me address'
     } else {
         document.getElementsByClassName('address-list-notice')[0].innerHTML = 'Direct addresses are sent without an extra envelope to the recipient.'
         document.getElementsByClassName('address-book-sidebar-title')[0].innerHTML = 'Add a Direct address'
@@ -370,10 +370,13 @@ const apiAddAddress = (firstName, lastName, firstLine, secondLine, townCity, cou
                 document.forms['add-new-address-form']['address[phone]'].value = ''
                 document.forms['add-new-address-form']['address[defaultAddress]'].checked = false
 
-                //clear errors
+                
                 document.getElementById('customer-account-error').innerHTML = ''
                 document.getElementById('customer-account-success').innerHTML = 'Address Added'
-                displayResults()
+               
+               
+displayResults()       
+
                 return
             } else {
               document.getElementById('customer-account-error').innerHTML = "You don't have saved addresses"
