@@ -115,22 +115,26 @@
         "padding_bottom": 36
       }
     },
-    "0586179d-2078-4469-b213-3f9da748234b": {
-      "type": "collection-gift-slider",
+    "collection_slider_ajax_Attn6n": {
+      "type": "collection-slider-ajax",
+      "name": "Collection Slider Ajax",
       "settings": {
         "title": "Jellycat",
         "collection": "jellycat-all",
-        "sort_order": "random",
-        "filter": "Rude",
-        "filter1": "Funny",
-        "filter2": "Bestseller",
-        "filter3": "New In",
-        "filter4": "Balance",
-        "products_to_show_slider": 22,
-        "columns_desktop": 6,
-        "columns_small_desktop": 5,
-        "columns_tablet": 5,
-        "columns_mobile": 2
+        "sort_order": "manual",
+        "product_limit": 10,
+        "filter_tag_1": "Rude",
+        "filter_tag_2": "Funny",
+        "filter_tag_3": "Bestseller",
+        "filter_tag_4": "New In",
+        "filter_tag_5": "Balance",
+        "background_color": "#ffffff",
+        "columns_desktop": 5,
+        "columns_small_desktop": 4,
+        "columns_tablet": 3,
+        "columns_mobile": 2,
+        "padding_top": 36,
+        "padding_bottom": 36
       }
     },
     "60dc6887-7afe-4c65-b4e2-f622df3bf41e": {
@@ -245,7 +249,7 @@
     "c1b76f2b-f46e-4142-9934-23779e218e16",
     "collection_slider_ajax_XJkMXQ",
     "collection_slider_ajax_cjD48r",
-    "0586179d-2078-4469-b213-3f9da748234b",
+    "collection_slider_ajax_Attn6n",
     "60dc6887-7afe-4c65-b4e2-f622df3bf41e",
     "1657117329eebede9c",
     "a46aa564-94ce-4da6-aa18-e1c4959bbf32",
