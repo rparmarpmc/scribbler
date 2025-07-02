@@ -93,25 +93,26 @@
         "padding_bottom": 36
       }
     },
-    "7dca659a-8c44-4030-b3cd-f37355ee7e9e": {
-      "type": "collection-slider",
+    "collection_slider_ajax_cjD48r": {
+      "type": "collection-slider-ajax",
+      "name": "Collection Slider Ajax",
       "settings": {
         "title": "Anniversary Cards",
         "collection": "anniversary-all",
-        "sort_order": "best-selling",
-        "filter": "Rude",
-        "filter1": "Funny",
-        "filter2": "Bestseller",
-        "filter3": "New In",
-        "filter4": "Balance",
+        "sort_order": "manual",
+        "product_limit": 10,
+        "filter_tag_1": "Rude",
+        "filter_tag_2": "Funny",
+        "filter_tag_3": "Bestseller",
+        "filter_tag_4": "New In",
+        "filter_tag_5": "Balance",
         "background_color": "#ffffff",
-        "products_to_show_slider": 22,
-        "columns_desktop": 6,
-        "columns_small_desktop": 5,
-        "columns_tablet": 4,
+        "columns_desktop": 5,
+        "columns_small_desktop": 4,
+        "columns_tablet": 3,
         "columns_mobile": 2,
-        "padding_top": 24,
-        "padding_bottom": 0
+        "padding_top": 36,
+        "padding_bottom": 36
       }
     },
     "0586179d-2078-4469-b213-3f9da748234b": {
@@ -243,7 +244,7 @@
     "infoslider_jRjUtj",
     "c1b76f2b-f46e-4142-9934-23779e218e16",
     "collection_slider_ajax_XJkMXQ",
-    "7dca659a-8c44-4030-b3cd-f37355ee7e9e",
+    "collection_slider_ajax_cjD48r",
     "0586179d-2078-4469-b213-3f9da748234b",
     "60dc6887-7afe-4c65-b4e2-f622df3bf41e",
     "1657117329eebede9c",
