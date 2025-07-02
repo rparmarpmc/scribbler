@@ -98,7 +98,7 @@
       "name": "Collection Slider Ajax",
       "settings": {
         "title": "Anniversary Cards",
-        "collection": "anniversary-all",
+        "collection": "anniversary-cards",
         "sort_order": "manual",
         "product_limit": 10,
         "filter_tag_1": "Rude",
