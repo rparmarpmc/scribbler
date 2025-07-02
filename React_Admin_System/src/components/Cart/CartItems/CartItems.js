@@ -1,7 +1,10 @@
-import React, { useState } from 'react'
+import React, { useState , useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import PropTypes from 'prop-types'
 
+import { calculateShippingTotal,getDeliveryOptions } from '../../../middlewares/api'
+import { apiChangeCartItemQuantity,apiGetAddresses } from '../../../store/actions'
+import { countryToCode } from '../../../helpers/countryToCode'
 import './CartItems.css'
 import addGift from '../../../svg/add_gift.jpg'
 import IconRemove from '../../../svg/IconRemove'
@@ -95,17 +98,9 @@ const CartItems = ({ groups, customerName, isLoggedIn, cartContent }) => {
 
         if (item.product_type === 'Cards' && !item.gift && (addressObject === null || addressObject.country === 'United Kingdom')) {
             banner = (
-                <button className="gift-modal-button" onClick={() => showGiftsModal(item)}>
-                    <div className="gift-modal-button__container">
-                        <div className="gift-modal-button__content">
-                            <span className="gift-modal-button__text">Looking for a perfect gift?</span>
-                            <img
-                                    src="https://img.icons8.com/ios-filled/50/000000/gift.png"
-                                    alt="Gift Icon"
-                                    className="gift-modal-button__icon"
-                                />
-                        </div>
-                    </div>
+                  <button className="cart-add-gift-button" onClick={() => showGiftsModal(item)}>
+
+                    <img src={addGift} alt='Logo' />
                 </button>
                 
             )
@@ -113,6 +108,82 @@ const CartItems = ({ groups, customerName, isLoggedIn, cartContent }) => {
 
         return banner
     }
+
+     let defaultShippingAddress,defaultPostage,defaultDeliveryFrom,defaultDeliveryTo = null;
+
+    // First pass to find the default shipping address
+
+    groups.forEach(group => {
+
+        group.forEach(item => {
+
+            if (Object.hasOwn(item.properties, "_shipping_address") && !defaultShippingAddress) {
+
+                defaultShippingAddress = item.properties._shipping_address;
+
+            }
+
+            if (Object.hasOwn(item.properties, "_shipping_name") && !defaultPostage) {
+
+                defaultPostage = item.properties._shipping_name;
+
+            }
+
+            if (Object.hasOwn(item.properties, "Delivery from") && !defaultDeliveryFrom) {
+
+                defaultDeliveryFrom = item.properties["Delivery from"];
+
+            }
+
+            if (Object.hasOwn(item.properties, "Delivery to") && !defaultDeliveryTo) {
+
+                defaultDeliveryTo = item.properties["Delivery to"];
+
+            }
+
+        });
+
+    });
+
+
+
+    // Second pass to assign the default shipping address if not present
+
+    groups.forEach(group => {
+
+        group.forEach(item => {           
+
+            if (!Object.hasOwn(item.properties, "_shipping_address") && defaultShippingAddress) {
+
+                item.properties._shipping_address = defaultShippingAddress;
+
+            }
+
+            if (!Object.hasOwn(item.properties, "_shipping_name") && defaultPostage) {
+
+                item.properties._shipping_name = defaultPostage;
+
+            }
+
+            if (!Object.hasOwn(item.properties, "Delivery from") && defaultDeliveryFrom) {
+
+                item.properties["Delivery from"] = defaultDeliveryFrom;
+
+            }
+
+            if (!Object.hasOwn(item.properties, "Delivery to") && defaultDeliveryTo) {
+
+                item.properties["Delivery to"] = defaultDeliveryTo;
+
+            }
+
+            
+
+        });
+
+    });
+
+
 
     return (
         <div className='cart-items-wrapper'>
