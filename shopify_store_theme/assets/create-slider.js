@@ -129,7 +129,7 @@ const countryToCode=e=>{var t=new Map;return t.set("United Kingdom","GB"),t.set(
                                 </svg>
                             </button>`;var s=`<button type="button" aria-label="Add to Basket" name="Add to Basket" onclick="addToBasket(this,${e?.variants[0]?.id}, '${e?.product_type}', '${e?.variants[0]?.title}')" class="add-to-basket-button">
                                     <div class="product-add-loader"></div>
-                                    <svg width="35" height="35" viewBox="0 0 35 35" fill="#6e6d6d" xmlns="http://www.w3.org/2000/svg">
+                                    <svg width="35" height="35" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path opacity="0.9" d="M17.9143 34.5332C27.2635 34.5332 34.8425 26.9542 34.8425 17.605C34.8425 8.25577 27.2635 0.676758 17.9143 0.676758C8.5651 0.676758 0.986084 8.25577 0.986084 17.605C0.986084 26.9542 8.5651 34.5332 17.9143 34.5332Z" fill="#E6E6E6"/>
                                         <path d="M27.8029 11.7388C28.641 11.7388 29.2276 12.4092 29.1438 13.2472L26.9649 23.8064C26.7973 25.3987 25.7079 26.6557 24.367 26.6557H11.4614C10.1205 26.6557 9.03108 25.4825 8.86347 23.8064L6.68459 13.2472C6.60079 12.4092 7.27121 11.7388 8.02544 11.7388H27.8029Z" stroke="black" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
                                         <path d="M13.8916 11.2357C13.8916 7.71599 17.9141 7.88359 17.9141 7.88359C17.9141 7.88359 21.9367 7.71599 21.9367 11.2357" stroke="black" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
