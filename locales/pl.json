@@ -240,6 +240,10 @@
         "error_heading": "Dostosuj następujące dane:",
         "title": "Formularz kontaktowy"
       }
+    },
+    "404": {
+      "title": "Nie znaleziono strony",
+      "subtext": "404"
     }
   },
   "sections": {

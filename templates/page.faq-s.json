@@ -419,87 +419,94 @@
         "padding_bottom": 20
       }
     },
-    "collapsible_content_faq_ARhRk3": {
+    "collapsible_content_faq_fBVddj": {
       "type": "collapsible-content-faq",
       "blocks": {
-        "collapsible_row_FaXaTV": {
+        "collapsible_row_hjpJxi": {
           "type": "collapsible_row",
           "settings": {
             "heading": "How do I sign up?",
             "row_content": "<p>If you have an account on the website, you can register through the \"My Rewards\" area of your Scribbler account. If you haven't created an account yet, you can sign up during the registration process. Just make sure the \"I want to be part of Scribbler rewards\" checkbox during registration is ticked. You can also register for Scribbler Rewards instore at the till - just speak to a staff member.</p>"
           }
         },
-        "collapsible_row_rPdhTN": {
+        "collapsible_row_43UddE": {
           "type": "collapsible_row",
           "settings": {
             "heading": "How does it work?",
             "row_content": "<p>If you are signed up to Scribbler Rewards, you will accumulate points with every purchase you make. On the website, points will be accumulated by the account associated with the email address you used to sign in and complete your purchase with. Your email address will also be associated with a barcode which you will receive via email, and which will also be in the \"My Rewards\" area of your Scribbler account. To get and redeem points in a Scribbler store, you just need to ask the staff at the till to scan your loyalty barcode. They should ask you whether you are registered with Scribbler Rewards every time you make an instore purchase.<br/><br/></p>"
           }
         },
-        "collapsible_row_zUkLXM": {
+        "collapsible_row_pEiK6f": {
           "type": "collapsible_row",
           "settings": {
             "heading": "Where can I see how many points I have?",
             "row_content": "<p>You can view your point balance and how much your points are worth in the \"My Rewards\" area of your Scribbler account. You will also receive emails about your point balance.</p>"
           }
         },
-        "collapsible_row_4yJMxc": {
+        "collapsible_row_QaiAiR": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "How much are my points worth?",
+            "row_content": "<p>How much your points are worth is shown in the \"My Rewards\" area of your Scribbler account, and you will also receive notifications regarding your point balance via email. The standard value of 1 loyalty point is 10p.</p>"
+          }
+        },
+        "collapsible_row_PWxyQ9": {
           "type": "collapsible_row",
           "settings": {
             "heading": "Can I use my points online?",
             "row_content": "<p>Yes</p>"
           }
         },
-        "collapsible_row_dMCJxz": {
+        "collapsible_row_Vmewp4": {
           "type": "collapsible_row",
           "settings": {
             "heading": "Can I use my points instore?",
             "row_content": "<p>Yes</p>"
           }
         },
-        "collapsible_row_mNR78P": {
+        "collapsible_row_Qgi7h7": {
           "type": "collapsible_row",
           "settings": {
             "heading": "Can I use my points anywhere else?",
             "row_content": "<p>Loyalty points can only currently be used towards transactions made in a Scribbler store or on the Scribbler website.</p>"
           }
         },
-        "collapsible_row_jFqECt": {
+        "collapsible_row_hjY4wa": {
           "type": "collapsible_row",
           "settings": {
             "heading": "Can i use my points wtih Prepay?",
             "row_content": "<p>If you have prepay, you need to use all your prepay before you can use your loyalty points. You will earn points for cash you spend towards the products bought, however.</p>"
           }
         },
-        "collapsible_row_zinyae": {
+        "collapsible_row_NQXXr3": {
           "type": "collapsible_row",
           "settings": {
             "heading": "Can I use my points with other discounts?",
             "row_content": "<p>No, points cannot be used at the same time as discount codes - you must use one or the other. However, you will earn points for transactions using discounts if you pay some cash towards the products bought.</p>"
           }
         },
-        "collapsible_row_aqPKGg": {
+        "collapsible_row_UrrGyP": {
           "type": "collapsible_row",
           "settings": {
             "heading": "What products can I use my points towards?",
             "row_content": "<p>You can use your loyalty points towards any product we sell (TBC)</p>"
           }
         },
-        "collapsible_row_Pf6HTP": {
+        "collapsible_row_7d8UnL": {
           "type": "collapsible_row",
           "settings": {
             "heading": "Do I have to use my points towards every purchase?",
-            "row_content": "<p>Do I have to use my points towards every purchase?</p>"
+            "row_content": "<p>No, you can choose to either ues your points to reduce the cost of your purchase, or continue to accumulate your loyalty points.</p>"
           }
         },
-        "collapsible_row_ewWfA7": {
+        "collapsible_row_tJNbQy": {
           "type": "collapsible_row",
           "settings": {
             "heading": "Can I have an account on the Scribbler website without being a member of Scribbler Rewards?",
             "row_content": "<p>You can, yes. There is an ability to unenrol from Scribbler Rewards in the \"My Rewards\" area of your Scribbler account. Alternatively you can get in touch with our customer support staff, who will remove you from Scribbler Rewards. Please be aware that removal from Scribbler Rewards is permanent, and that to re-enrol, you will have to do so via creating a new Scribbler account using a different email address.</p>"
           }
         },
-        "collapsible_row_imk6La": {
+        "collapsible_row_YHFiDa": {
           "type": "collapsible_row",
           "settings": {
             "heading": "How do I remove myself/opt out from Scribbler Rewards?",
@@ -508,19 +515,21 @@
         }
       },
       "block_order": [
-        "collapsible_row_FaXaTV",
-        "collapsible_row_rPdhTN",
-        "collapsible_row_zUkLXM",
-        "collapsible_row_4yJMxc",
-        "collapsible_row_dMCJxz",
-        "collapsible_row_mNR78P",
-        "collapsible_row_jFqECt",
-        "collapsible_row_zinyae",
-        "collapsible_row_aqPKGg",
-        "collapsible_row_Pf6HTP",
-        "collapsible_row_ewWfA7",
-        "collapsible_row_imk6La"
+        "collapsible_row_hjpJxi",
+        "collapsible_row_43UddE",
+        "collapsible_row_pEiK6f",
+        "collapsible_row_QaiAiR",
+        "collapsible_row_PWxyQ9",
+        "collapsible_row_Vmewp4",
+        "collapsible_row_Qgi7h7",
+        "collapsible_row_hjY4wa",
+        "collapsible_row_NQXXr3",
+        "collapsible_row_UrrGyP",
+        "collapsible_row_7d8UnL",
+        "collapsible_row_tJNbQy",
+        "collapsible_row_YHFiDa"
       ],
+      "name": "t:sections.faq_collapsible_content.presets.name",
       "settings": {
         "heading": "Scribbler Rewards",
         "open_first_collapsible_row": false,
@@ -538,6 +547,6 @@
     "collapsible_content_faq_FiJnmp",
     "collapsible_content_faq_TFKtUQ",
     "collapsible_content_faq_p863aY",
-    "collapsible_content_faq_ARhRk3"
+    "collapsible_content_faq_fBVddj"
   ]
 }
