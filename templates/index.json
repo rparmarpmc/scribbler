@@ -9,61 +9,149 @@
  */
 {
   "sections": {
-    "infoslider_jRjUtj": {
+    "collection_home_page_slider_RcpFr3": {
+      "type": "collection-home-page-slider",
+      "disabled": true,
+      "settings": {
+        "title": "New Card Collection Slider",
+        "collection": "10th-anniversary-for-her",
+        "sort_order": "random",
+        "filter_1": "Rude",
+        "filter_2": "Funny",
+        "filter_3": "Bestseller",
+        "filter_4": "New In",
+        "filter_5": "Balance",
+        "background_color": "#ffffff",
+        "products_to_show_slider": 22
+      }
+    },
+    "8a4d5318-f6be-451b-87fa-2b4370ba8bb0": {
       "type": "infoslider",
       "blocks": {
-        "column_hXgzgJ": {
+        "94e80866-6110-479d-87f9-114e58a5f429": {
           "type": "column",
           "settings": {
             "link": "",
-            "text": "Get 20% bonus credit with any purchase of PrePay"
+            "text": "⚡OMG! Buy 3 get another free on all standard cards!⚡"
           }
         },
-        "column_wicfgm": {
+        "template--16703141314785__8a4d5318-f6be-451b-87fa-2b4370ba8bb0-1684771012135c1168-1": {
           "type": "column",
           "settings": {
             "link": "",
-            "text": "Get 20% bonus credit with any purchase of PrePay"
+            "text": "🌍 Wow! One delivery price for as many cards as you like! 🌍"
           }
         }
       },
       "block_order": [
-        "column_hXgzgJ",
-        "column_wicfgm"
+        "94e80866-6110-479d-87f9-114e58a5f429",
+        "template--16703141314785__8a4d5318-f6be-451b-87fa-2b4370ba8bb0-1684771012135c1168-1"
       ],
-      "name": "t:sections.infoslider.presets.name",
       "settings": {
-        "padding_bottom": 20,
-        "fading_interval": 3
+        "padding_bottom": 12,
+        "fading_interval": 6
+      }
+    },
+    "roundalls_aM8Vmt": {
+      "type": "roundalls",
+      "blocks": {
+        "column_yFHQbN": {
+          "type": "column",
+          "settings": {
+            "name": "Birthday",
+            "link": "shopify://collections/birthday-all"
+          }
+        },
+        "column_jiK8wr": {
+          "type": "column",
+          "settings": {
+            "name": "Jellycat",
+            "link": "shopify://collections/jellycat-all"
+          }
+        },
+        "column_TQPhdw": {
+          "type": "column",
+          "settings": {
+            "name": "Anniversary",
+            "link": "shopify://collections/anniversary-all"
+          }
+        },
+        "column_4B6D6B": {
+          "type": "column",
+          "settings": {
+            "name": "Wedding",
+            "link": "shopify://collections/wedding-cards"
+          }
+        },
+        "column_kEkHyB": {
+          "type": "column",
+          "settings": {
+            "name": "Thank You",
+            "link": "shopify://collections/thank-you"
+          }
+        },
+        "column_GULzLE": {
+          "type": "column",
+          "settings": {
+            "name": "Retirement",
+            "link": "shopify://collections/retirement-cards"
+          }
+        },
+        "column_DM78EW": {
+          "type": "column",
+          "settings": {
+            "name": "Leaving",
+            "link": "shopify://collections/leaving-cards"
+          }
+        },
+        "column_TWRmJd": {
+          "type": "column",
+          "settings": {
+            "name": "Good Luck",
+            "link": "shopify://collections/good-luck-cards"
+          }
+        },
+        "column_UTRFDW": {
+          "type": "column",
+          "settings": {
+            "name": "New Home",
+            "link": "shopify://collections/new-home-cards"
+          }
+        }
+      },
+      "block_order": [
+        "column_yFHQbN",
+        "column_jiK8wr",
+        "column_TQPhdw",
+        "column_4B6D6B",
+        "column_kEkHyB",
+        "column_GULzLE",
+        "column_DM78EW",
+        "column_TWRmJd",
+        "column_UTRFDW"
+      ],
+      "settings": {
+        "title": "Shop Our Range",
+        "padding_top": 36,
+        "padding_bottom": 36
       }
     },
     "c1b76f2b-f46e-4142-9934-23779e218e16": {
       "type": "slideshow",
       "blocks": {
-        "0ffeaf0f-ae24-47ab-be2d-4fb313020db8": {
+        "slide1": {
           "type": "slide",
           "settings": {
-            "image": "shopify://shop_images/April_Banners_Landing_Page__SHOPIFY.png",
-            "image_alt": "Cute as a button! Shop Trending!",
-            "mobile_image": "shopify://shop_images/April_Banners_Mobile-Top__SHOPIFY.png",
-            "mobile_image_alt": "Cute as a button! Shop Trending!",
-            "link": "shopify://collections/trending-birthday"
-          }
-        },
-        "4ea5530d-b9c2-4f16-abf5-4554e07f18e2": {
-          "type": "slide",
-          "settings": {
-            "image": "shopify://shop_images/April_Banners_Homepage-Top-Cards_SHOPIFY.png",
-            "image_alt": "Say goodbye to boring cards! Shop Cards!",
-            "mobile_image": "shopify://shop_images/April_Banners_Mobile-Top-Gift__SHOPIFY.png",
-            "mobile_image_alt": "Say goodbye to boring cards! Shop Cards!",
-            "link": "shopify://collections/birthday"
+            "image": "shopify://shop_images/Fathers_Day_Gifts_Super_Daddio_Desktop_Banner.png",
+            "image_alt": "Treat your Super Daddio and shop our Father's Day gifts!",
+            "mobile_image": "shopify://shop_images/Father_s_Day_Gifts_Super_Daddio_Mobile_Banner.png",
+            "mobile_image_alt": "Treat your Super Daddio and shop our Father's Day gifts!",
+            "link": "shopify://collections/all-fathers-day-gifts"
           }
         }
       },
       "block_order": [
-        "0ffeaf0f-ae24-47ab-be2d-4fb313020db8",
-        "4ea5530d-b9c2-4f16-abf5-4554e07f18e2"
+        "slide1"
       ],
       "settings": {
         "padding_top": 0,
@@ -71,19 +159,112 @@
         "fading_interval": 3
       }
     },
-    "collection_slider_ajax_XJkMXQ": {
+    "multicolumn": {
+      "type": "multicolumn",
+      "blocks": {
+        "column1": {
+          "type": "column",
+          "settings": {
+            "name": "Birthday",
+            "image": "shopify://shop_images/Birthday_Cake_1_d6cd7fef-66d8-459d-9eaa-3939fccba523.webp",
+            "link": "shopify://collections/birthday-all"
+          }
+        },
+        "column2": {
+          "type": "column",
+          "settings": {
+            "name": "Anniversary",
+            "image": "shopify://shop_images/Love_Hearts_1_2f5023b9-9898-4b0c-922a-ae431c1aa9a6_1.webp",
+            "link": "shopify://collections/anniversary-all"
+          }
+        },
+        "column3": {
+          "type": "column",
+          "settings": {
+            "name": "Jellycat",
+            "image": "shopify://shop_images/Jellycat_811fd2d4-1a67-42aa-b77f-a61886864ab0.webp",
+            "link": "shopify://collections/jellycat-all"
+          }
+        },
+        "column4": {
+          "type": "column",
+          "settings": {
+            "name": "Gifts",
+            "image": "shopify://shop_images/Present_bb5127a0-9736-4f91-a4a6-24b25e985462.webp",
+            "link": "shopify://collections/gifts"
+          }
+        }
+      },
+      "block_order": [
+        "column1",
+        "column2",
+        "column3",
+        "column4"
+      ],
+      "disabled": true,
+      "settings": {
+        "title": "",
+        "padding_top": 24,
+        "padding_bottom": 24
+      }
+    },
+    "collection_slider_ajax_RnGQLc": {
       "type": "collection-slider-ajax",
       "name": "Collection Slider Ajax",
       "settings": {
         "title": "Birthday Cards",
+        "collection": "birthday-cards-view-all",
+        "sort_order": "manual",
+        "product_limit": 10,
+        "filter_tag_1": "Funny",
+        "filter_tag_2": "Rude",
+        "filter_tag_3": "Trending",
+        "filter_tag_4": "Bestsellers",
+        "filter_tag_5": "New In",
+        "background_color": "#ffffff",
+        "columns_desktop": 6,
+        "columns_small_desktop": 5,
+        "columns_tablet": 4,
+        "columns_mobile": 2,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "collection_slider_ajax_qHfcX8": {
+      "type": "collection-slider-ajax",
+      "name": "Collection Slider Ajax",
+      "settings": {
+        "title": "All Cards",
         "collection": "cards-all",
         "sort_order": "manual",
         "product_limit": 50,
         "filter_tag_1": "Rude",
         "filter_tag_2": "Funny",
-        "filter_tag_3": "Bestseller",
-        "filter_tag_4": "New In",
-        "filter_tag_5": "Balance",
+        "filter_tag_3": "Trending",
+        "filter_tag_4": "Bestsellers",
+        "filter_tag_5": "New In",
+        "background_color": "#eef9fb",
+        "columns_desktop": 6,
+        "columns_small_desktop": 4,
+        "columns_tablet": 3,
+        "columns_mobile": 2,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "collection_slider_ajax_fAJRfc": {
+      "type": "collection-slider-ajax",
+      "name": "Collection Slider Ajax",
+      "settings": {
+        "title": "All Gifts",
+        "collection": "gifts-view-all",
+        "sort_order": "manual",
+        "product_limit": 50,
+        "filter_tag_1": "Trending",
+        "filter_tag_2": "Jellycat",
+        "filter_tag_3": "Birthday",
+        "filter_tag_4": "Top Picks",
+        "filter_tag_5": "New In",
         "background_color": "#ffffff",
         "columns_desktop": 5,
         "columns_small_desktop": 4,
@@ -93,48 +274,20 @@
         "padding_bottom": 36
       }
     },
-    "collection_slider_ajax_cjD48r": {
-      "type": "collection-slider-ajax",
-      "name": "Collection Slider Ajax",
+    "f15f3d7c-9ace-4a49-bbf9-239324be3116": {
+      "type": "collage-collections",
+      "disabled": true,
       "settings": {
-        "title": "Anniversary Cards",
-        "collection": "anniversary-cards",
-        "sort_order": "manual",
-        "product_limit": 10,
-        "filter_tag_1": "Rude",
-        "filter_tag_2": "Funny",
-        "filter_tag_3": "Bestseller",
-        "filter_tag_4": "New In",
-        "filter_tag_5": "Balance",
-        "background_color": "#ffffff",
-        "columns_desktop": 5,
-        "columns_small_desktop": 4,
-        "columns_tablet": 3,
-        "columns_mobile": 2,
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
-    },
-    "collection_slider_ajax_Attn6n": {
-      "type": "collection-slider-ajax",
-      "name": "Collection Slider Ajax",
-      "settings": {
-        "title": "Jellycat",
-        "collection": "jellycat-all",
-        "sort_order": "manual",
-        "product_limit": 20,
-        "filter_tag_1": "Bestseller",
-        "filter_tag_2": "Funny",
-        "filter_tag_3": "Rude",
-        "filter_tag_4": "New In",
-        "filter_tag_5": "Balance",
-        "background_color": "#ffffff",
-        "columns_desktop": 5,
-        "columns_small_desktop": 4,
-        "columns_tablet": 3,
-        "columns_mobile": 2,
-        "padding_top": 36,
-        "padding_bottom": 36
+        "image_1": "shopify://shop_images/Xmas_Banners_week_1-2_Lower_Large_-_Fun_and_Games.webp",
+        "link_1": "https://www.scribbler.com/collections/games-fun",
+        "image_2": "shopify://shop_images/Halloween2024-Shopify_Banner_Lower_Small_2_-_Anniversary.png",
+        "link_2": "shopify://collections/anniversary-cards-view-all",
+        "image_3": "shopify://shop_images/Halloween2024-Shopify_Banner_Lower_Small_1_-_Artist_Spotlight.png",
+        "link_3": "https://www.scribbler.com/collections/vendors?q=Laura%20Lonsdale%20Designs",
+        "image_4": "shopify://shop_images/Xmas_Banners_week_3-4_Lower_Long_Jellycat_1.png",
+        "link_4": "shopify://collections/jellycat-all",
+        "padding_top": 0,
+        "padding_bottom": 0
       }
     },
     "60dc6887-7afe-4c65-b4e2-f622df3bf41e": {
@@ -189,7 +342,7 @@
       "type": "social",
       "settings": {
         "link_1": "https://www.linkedin.com/company/scribbler-holdings-ltd/",
-        "link_2": "https://www.instagram.com/scribblercards/https://www.instagram.com/scribblercards/",
+        "link_2": "https://www.instagram.com/scribblercards/",
         "link_3": "https://www.facebook.com/messages/t/scribblercardsUK",
         "link_4": "https://www.tiktok.com/@scribblercards",
         "link_5": "shopify://pages/contact",
@@ -227,6 +380,25 @@
           "type": "slide",
           "settings": {
             "image": "shopify://shop_images/HomePageBanner.png",
+            "image_alt": "desktop",
+            "mobile_image": "shopify://shop_images/mobile_slide_2_468ba964-fdcc-4aec-9b56-5bbb03aebcfe.png",
+            "mobile_image_alt": "mobile alt image",
+            "link": ""
+          }
+        },
+        "slide_xWDrHW": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/desktop_slide_3_bd185492-24e6-49ef-9f6b-2ad8c00611bb.png",
+            "image_alt": "",
+            "mobile_image_alt": "kk",
+            "link": ""
+          }
+        },
+        "slide_jeqy7e": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/HomePageBanner.png",
             "image_alt": "",
             "mobile_image_alt": "",
             "link": ""
@@ -234,26 +406,76 @@
         }
       },
       "block_order": [
-        "template--16299700846809__c1fd7319-6b01-4edd-9c4c-619f99a4ce17-1671571568c3cf7a38-0"
+        "template--16299700846809__c1fd7319-6b01-4edd-9c4c-619f99a4ce17-1671571568c3cf7a38-0",
+        "slide_xWDrHW",
+        "slide_jeqy7e"
       ],
       "disabled": true,
       "settings": {
         "padding_top": 20,
         "padding_bottom": 20,
-        "fading_interval": 3
+        "fading_interval": 4
+      }
+    },
+    "banner_carousel_bxMRDB": {
+      "type": "Banner-carousel",
+      "blocks": {
+        "slide_DaJjr3": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/desktop_slide_3_bd185492-24e6-49ef-9f6b-2ad8c00611bb.png",
+            "image_alt": "DEsktop Alt tag",
+            "mobile_image_alt": "mobile Alt tag",
+            "link": "https://scribbler-development.myshopify.com/collections/funny-birthday-cards"
+          }
+        },
+        "slide_mAAxyG": {
+          "type": "slide",
+          "settings": {
+            "image_alt": "",
+            "mobile_image_alt": "mobuil",
+            "link": ""
+          }
+        },
+        "slide_RAFCn3": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/desktop_slide_1_89c23355-9216-446b-bf2e-16a68b78835e.png",
+            "image_alt": "Desktop slide 1",
+            "mobile_image": "shopify://shop_images/mobile_slide_3.png",
+            "mobile_image_alt": "Mobile slide 1",
+            "link": "https://scribbler-development.myshopify.com/collections/birthday-cards-view-all"
+          }
+        }
+      },
+      "block_order": [
+        "slide_DaJjr3",
+        "slide_mAAxyG",
+        "slide_RAFCn3"
+      ],
+      "disabled": true,
+      "name": "Default",
+      "settings": {
+        "padding_top": 20,
+        "padding_bottom": 20
       }
     }
   },
   "order": [
-    "infoslider_jRjUtj",
+    "collection_home_page_slider_RcpFr3",
+    "8a4d5318-f6be-451b-87fa-2b4370ba8bb0",
+    "roundalls_aM8Vmt",
     "c1b76f2b-f46e-4142-9934-23779e218e16",
-    "collection_slider_ajax_XJkMXQ",
-    "collection_slider_ajax_cjD48r",
-    "collection_slider_ajax_Attn6n",
+    "multicolumn",
+    "collection_slider_ajax_RnGQLc",
+    "collection_slider_ajax_qHfcX8",
+    "collection_slider_ajax_fAJRfc",
+    "f15f3d7c-9ace-4a49-bbf9-239324be3116",
     "60dc6887-7afe-4c65-b4e2-f622df3bf41e",
     "1657117329eebede9c",
     "a46aa564-94ce-4da6-aa18-e1c4959bbf32",
     "652b511c-b81b-45a6-b9cd-6fc01f70cc70",
-    "c1fd7319-6b01-4edd-9c4c-619f99a4ce17"
+    "c1fd7319-6b01-4edd-9c4c-619f99a4ce17",
+    "banner_carousel_bxMRDB"
   ]
 }
