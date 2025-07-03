@@ -9,6 +9,10 @@
  */
 {
   "current": {
+    "environment": "development",
+    "endpoint": "https://devwholesale.scribbler.com",
+    "sso-endpoint": "https://scribbler-development.myshopify.com/apps/scribblerApi",
+    "api-access-token": "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",
     "sections": {
       "header": {
         "type": "header",
