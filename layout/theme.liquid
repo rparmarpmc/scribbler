@@ -2,12 +2,6 @@
 <html class="no-js" lang="{{ request.locale.iso_code }}">
 
 <head>
-<!-- BEAE-GLOBAL-FONT --> 
-{% capture the_snippet_global_font %}{% include 'beae-global-font' %}{% endcapture %} {% unless the_snippet_global_font contains 'Liquid error' %} {{ the_snippet_global_font }} {% endunless %} 
- <!-- END BEAE-GLOBAL-FONT -->
-<!-- BEAE-HEADER --> 
-{%- render 'beae_header' -%}
-<!-- END BEAE-HEADER -->
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -480,7 +474,6 @@
   {% if template == 'collection.gift-collection' %}{{ 'collection.css' | asset_url | stylesheet_tag }}{% endif %}
   {%- if template == 'product.card-customizer' -%}{{ 'product.css' | asset_url | stylesheet_tag }}{%- endif -%}
   {%- if template == 'product' -%}{{ 'default-product.css' | asset_url | stylesheet_tag }}{%- endif -%}
-    {%- if template == 'product.card-pmc' -%}{{ 'default-product.css' | asset_url | stylesheet_tag }}{%- endif -%}
   {%- if template == 'product.alcohol' -%}{{ 'default-product.css' | asset_url | stylesheet_tag }}{%- endif -%}
   {%- if template == 'search' -%}{{ 'search-page.css' | asset_url | stylesheet_tag }}{%- endif -%}
   {%- if template == 'page.favourites' -%}{{ 'favourites-page.css' | asset_url | stylesheet_tag }}{%- endif -%}
@@ -612,14 +605,11 @@
     }
   })();
 </script>
-
 <!-- Start Printess theme.liquid header block -->
     {% comment %} Version 2.1 {% endcomment %}
     <script src="{{ 'printessEditor.js' | asset_url }}" defer="defer"></script>
-    <script src="{{ 'printessShopify.js' | asset_url }}" defer="defer"></script>
     {{ 'printesseditor.css' | asset_url | stylesheet_tag }}
 <!-- End Printess theme.liquid header block -->
-
 </head>
 <body>
   {%- render 'cart-drawer' -%}
