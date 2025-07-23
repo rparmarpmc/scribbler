@@ -254,7 +254,7 @@ document.addEventListener("DOMContentLoaded", function() {
                                                                                                     "ignoreDataOptionIndex": {% if ignoreDataOptionIndex == true %} true {% else %} false {% endif %},
                                                                                                     "productFormSelector": "{{productFormSelector}}" || "",
                                                                                                     "productButtonSelector": "{{productButtonSelector}}" || "",
-                                                                                                    "uiVersion": {% if product.metafields.printess.uiVersion != blank %} {{ product.metafields.printess.uiVersion | json }} {% else %} "" {% endif %}
+                                                                                                    "uiVersion": "panelUI"/*{% if product.metafields.printess.uiVersion != blank %} {{ product.metafields.printess.uiVersion | json }} {% else %} "" {% endif %}*/
                                                                                                   }) : null;
       let templateName = {{ printessTemplateName | json }};
       const product = {{ product | json }};
